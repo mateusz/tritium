@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 from enum import Enum
-from room import Room, RoomType
+from rooms.room import Room, RoomType
 from crew import CrewMember, CrewType
 
 class ResourceType(Enum):

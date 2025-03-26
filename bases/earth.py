@@ -1,8 +1,11 @@
 from base import Base, ResourceType
 from rooms.research_room import ResearchRoom
-from rooms.hire_room import HireRoom
+from rooms.training_room import TrainingRoom
 from rooms.shuttle_bay import ShuttleBay
 from rooms.storage_room import StorageRoom
+from rooms.mining_room import MiningRoom
+from rooms.shuttle_room import ShuttleRoom
+from rooms.production_room import ProductionRoom
 
 class Earth(Base):
     def __init__(self):
@@ -24,7 +27,10 @@ class Earth(Base):
         self.set_resource_abundance(ResourceType.SILICA, 0.0)  # Not available on Earth according to docs
 
         # Initialize rooms
-        self.add_room(ResearchRoom())  # For research projects
-        self.add_room(HireRoom())      # For crew recruitment
-        self.add_room(ShuttleBay())    # For shuttle operations
-        self.add_room(StorageRoom())   # For resource storage 
+        self.add_room(ResearchRoom())      # For research projects
+        self.add_room(TrainingRoom())      # For crew recruitment
+        self.add_room(ShuttleBay())        # For shuttle operations
+        self.add_room(StorageRoom())       # For resource storage
+        self.add_room(MiningRoom())        # For derrick deployment and mining
+        self.add_room(ShuttleRoom())       # For shuttle interior controls
+        self.add_room(ProductionRoom())    # For item production 
