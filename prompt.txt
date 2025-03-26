@@ -6,6 +6,6 @@ Extract all possible game entities from these files as a markdown multi-level li
 
 ---
 
-Ok, now based on @game_entities.md , figure out a list of abstract classes of objects. So for example, I want an abstract `base` but don't want specifically `mars_base`. Produce the list into docs/abstract_entities.md.
+Ok, now based on game_entities.md, figure out a list of abstract classes of objects. So for example, I want an abstract `base` but don't want specifically `mars_base`. Produce the list into docs/abstract_entities.md.
 
-Additionally, I want you to add entity relationships to these abstract entities. Specifcally, as a markdown list, add all many_many, has_many and has_one relationships between these abstract classes.
+Additionally, I want you to add entity relationships to these abstract entities. Specifcally, as a markdown list, add all has_many and has_one relationships between these abstract classes.

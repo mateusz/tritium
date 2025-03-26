@@ -1,113 +1,65 @@
-# Abstract Base Classes
+# Abstract Base Classes and Their Relationships
 
-## Location Types
-- Base (abstract base for all bases)
-  - EarthBase
-  - OrbitalBase
-  - SurfaceBase
-  - MoonBase
+## Abstract Base Classes
+
+### Location Types
+- Base
 - CelestialBody
-  - Planet
-  - Moon
-  - Asteroid
 - StarSystem
-  - SolarSystem
-  - FarStarSystem
 
-## Personnel Types
-- Personnel (abstract base for all personnel)
-  - Researcher
-  - Marine
-  - Producer
+### Personnel Types
+- Personnel
 
-## Facility Types
-- Facility (abstract base for all facilities)
-  - ResearchFacility
-  - ProductionFacility
-  - MiningFacility
-  - ShuttleBay
-  - SpaceBay
-  - Spacedock
-  - MiningStore
-  - ResourceCenter
-  - SelfDestructFacility
-  - TeleporterFacility
+### Facility Types
+- Facility
 
-## Vehicle Types
-- Vehicle (abstract base for all vehicles)
-  - Shuttle
-  - IOS
-  - SCG
+### Vehicle Types
+- Vehicle
 
-## Equipment Types
-- Equipment (abstract base for all equipment)
-  - BaseEquipment (equipment installable on bases)
-    - Derrick
-    - SelfDestructMechanism
-    - MassTransciever
-    - AutoOperationsComputer
-  
-  - ShipEquipment (equipment installable on ship chassis)
-    - AutoCargoComputer
-    - DroneFleetControlComputer
-    - BattleDrone
+### Equipment Types
+- Equipment
+  - BaseEquipment
+  - ShipEquipment
     - Chassis
-      - ShuttleChassis
-      - IOSChassis
-      - SCGChassis
     - DriveUnit
-      - ShuttleDrive
-      - IOSDrive
-      - SCGDrive
     - Pod
-      - ResourcePod
-      - ToolPod
-      - CryoPod
-      - PrisonPod
     - Tool
-      - Grapple
-      - InstallationRepairEquipment
-      - AsteroidMiningAttachment
-      - ResourceFactoryFrame
-      - OrbitalFactoryFrame
-      - CommunicationsAdapter
-      - PrejudiceTorpedoLauncher
-      - PulseBlastLaser
-      - SonicBlaster
-      - ArtifactPart
-      - CompleteArtifact
-  
-## Resource Types
-- Resource (abstract base for all resources)
-  - Iron
-  - Titanium
-  - Aluminum
-  - Copper
-  - Palladium
-  - Platinum
-  - Silver
-  - Gold
-  - Hydrogen
-  - Helium
-  - Deuterium
-  - Methane
-  - Carbon
-  - Silica
-  - HydrogenMethanolFuel
-  - HeliumDeuteriumFuel
 
-## Rank Types
-- Rank (abstract base for all ranks)
-  - MarineRank
-    - Pilot
-    - Captain
-    - Admiral
-    - Warlord
-  - ProducerRank
-    - Technician
-    - Doctor
-    - Professor
-  - ResearcherRank
-    - Apprentice
-    - Engineer
-    - Expert
+### Resource Types
+- Resource
+
+### Rank Types
+- Rank
+
+## Entity Relationships
+
+### Base
+- has_many: Facilities
+- has_many: Personnel
+- has_many: BaseEquipment
+- has_one: CelestialBody (location)
+
+### CelestialBody
+- has_many: Bases
+- has_many: Resources
+- belongs_to: StarSystem
+
+### StarSystem
+- has_many: CelestialBodies
+- has_many: Bases
+
+### Personnel
+- belongs_to: Base
+- has_one: Rank
+
+### Facility
+- belongs_to: Base
+- has_many: Personnel (if it's a manned facility)
+- has_many: BaseEquipment (if it can have equipment installed)
+
+### Vehicle
+- has_one: Chassis
+- has_one: DriveUnit
+- has_many: Pods
+- has_many: Tools
+- has_many: ShipEquipment
