@@ -1,0 +1,388 @@
+A simple WalkThrough to.............
+
+
+
+    DDDD   EEEEE  U   U  TTTTT  EEEEE  RRRR    OOO    SSSS
+    D   D  E      U   U    T    E      R   R  O   O  S    
+    D   D  EEE    U   U    T    EEE    RRRR   O   O   SSS 
+    D   D  E      U   U    T    E      R  R   O   O      S
+    DDDD   EEEEE   UUU     T    EEEEE  R   R   OOO   SSSS 
+
+
+Table Of Contents:
+I.  Introduction
+II. Basis
+III. Walkthrough
+  a) Story.
+  b) getting to space.
+  c) building you're first space station.
+  c*) going to the moon.
+  d) getting silver & platinium.
+  e) 4 stations and loads of ressources.
+  f) let's exchange with methanoids.
+  g) beginning of a war.
+  h) kicking some ass out of the solar system.
+  i) sceneries.
+  j) ending.
+IV. Cheats & hints
+V. Credits
+
+-------------------------------------------------------------------------------
+-  I. Introduction
+-------------------------------------------------------------------------------
+  Deuteros is a quite old game made by Ian Bird in 1991 for activision.
+It's a strategy/puzzle/adventure game with a bit of real-time.
+I've played it quite a lot when I was young (understand 16-17) and enjoyed it
+quite a lot. But I never arrived to the end, being squashed by the methanoids
+every-time. I've played it recently (during summer 2003) and realized that the
+game was much more puzzled that what I could have thought first.
+In fact if you loose a part of the game it will be the hell to finish. Still
+If you follow a simple order to do things you'll find it a breeze to finish.
+It will take you about 20-30 hours to finish the game, so think it twice
+before starting as the game is quite addictive once you're in :)
+I'm french, so you may find errors in the faq. I'll correct them as they're
+found out of course.
+Now you may wonder why I'm taking time writting a complete walkthrough for
+such a old game. Well I've searched a lot for one on the net, and since I
+haven't found any, I've felt I should help hardcore gamers like me trying
+to get back to "roots" games as we may call them.
+
+-------------------------------------------------------------------------------
+-  I. Basis
+-------------------------------------------------------------------------------
+
+a) How To Play?
+---------------
+Well to play deuteros you have 3 choices.
+- get an original amiga 500 WITHOUT memory upgrade & secondary floppy drive
+- get an original ataris st.
+- run it with an emulator.
+Well the one who choose running it with the two first choices shouldn't have
+problems. Just put the floppy in & run
+
+If you want to play it on an emulator you'll have of course to get the original
+game (can be found on ebay for less than 5$)
+And find an emulator to run it (various places on the net) ut it's nbot quite
+the subject of a faq isn't it?
+Well anyhow if youo've got probleme running it on an amiga emulator (my
+original floppies were amiga ones) you have to remember to disable any expanded
+memory, hard-drive & secondary floppy drive. The game won't run if you've got
+any of those.
+
+b) basic controls.
+------------------
+The game is fully mouse driven, the options will appear as the game run so i'll
+describe them during walkthrough.
+
+-------------------------------------------------------------------------------
+III. Walkthrough
+-------------------------------------------------------------------------------
+
+a) Story
+--------
+The game begins long after millenium (an other game from Ian Bird) in which you
+were colonizing space after the total destruction of earth during a nuclear
+war. The game would begin on the moon base and at the end the colonies
+implanted in planets of the solar system will declare independance, you'll
+discover a terramorphing system, run it on earth and be able to colonize it
+back.
+Millenium take places a thousand year after those events. The old colonies have
+declared war on each others and the methanoids now rule the galaxies.
+In the meantime on earth everything about a moon base and space colony has long
+benn forgotten with the ability to travel through star.
+Until recently when a professor made some new theory about the moon base and
+projects about spaceships who could halp colonize the galaxy, the guy has taken
+with him a few terraneans ready for adventure and created earth-city. A special
+complex with research & production facility on the sole purpose of colonizing
+back space. Now the only guy that everybody's waiting for is the new commander
+of earth city.... You.
+
+b) getting to space
+-------------------
+Ok the game begin with a picture of earth-city. You have only acces to few
+things for now. The most important should be the little floppy down on the
+left.
+Clicking on it will lead you to the save/load programs, first you'll have to
+put a blank floppy in the drive, format it and you're now able to save your
+game (Really usefull).
+Now let's check the upper left icon, click on it then click again. Time
+will advance a bit. Now this is how the game work, you give commands pass some
+times till the commands are done then give other commands.
+Train advancing time, and don't bother big events, during those events the
+time advance will allways stop and the log icon will blink red.
+That's the one just right of the save/load icon. clicking on it will show
+the last events (wel nothing for now of course.)
+So long for the upper icons, now down there you'll find twelve square icons,
+you'll only have acces to 6 of them at the beginning.
+the upper one looking like a drawer is the production, here you can ask your
+crew to build various things. For that they'll need ressource and convert them
+to what you'll ask them to build.
+Now you may wonder where are your ressources, that's the bottom icon looking
+like a cask. Clicking on it you'll find how much of each ressource you have.
+Just above it you've see your derricks working. To have ressources you much
+dig for them, the derrick screen will show you what is currently digged and
+how much derrick you have for digging. the max number of derricks is 8, you
+begin with one. Advance time and you'll see ressource being digged with time.
+In the stock screen you'll see the ressources number growing as they are
+digged.
+So first step let's build derricks. Go the the production screen, on the right
+you(ll find green dots (only one for now) clicking on it will ask your staff
+to build a derrick.
+Advance time... Nothing happen. Well if you look in the bottom right of the
+production screen you'll see a staff icon with nobody in it.
+To build something you'll have first to train some of your troops for building
+things.
+Go to the icon with the three doors and train 41 people in marines,
+100 in research and same in production.
+Advance time, the door will open as soon as they're trained.
+Now go to the production screen you'll notice the guy you've been training is
+now ready to build derricks for you.
+Cool! ask him for a few derricks (7 to fill you're digging screen)
+You may notice the production is quite low, don't bother, the more he'll
+product the faster it will go. In fact you'll see his rank moving three
+times (don't now the names sorry)
+each time a derrick is build you can ask him to make another one and go in
+your digging screen to add a derrick to dig ressources.
+Ok digging things is cool but you were waiting a bit more of the game. That's
+understandable, click on the icon just to the right of the crew one.
+That's your research center, here you'll see dots on the right, red, yellow
+and green ones. Green mean the research are finished (for example that's the
+case for derricks) red means you may research a new thingy to build, during
+the research they'll move to yellow then green.
+Try searching space hull or something. See how it works?
+ok now you may finish your 8 derricks, and research everyting needed for
+a space station, don't worry you've got time.
+After studying everything you should be able to build a space hull, motor,
+fuel and a tool pod.
+Time for the last icon! go to the shuttle one just down the crew icon.
+You may build a new shuttle, add it a motor, fuel it, set a pilot to drive it
+and launch it to space!!!
+Hurrah you've just completed the first part of the game.
+
+c) building you're first space station
+--------------------------------------
+ok going to space is cool, but let's face it you wnat more. So let's build
+orbital stations parts and put them on the tool pod of your shuttle.
+Just click on the pod and select the space station part.
+Now if you build 8 of them and put them in space you'll have you're first
+space station constructed, then train a new crew for production, put them in a
+cryogenic pod and send them up to the station, you have now a fully working
+space production center.
+By the way you may have notice the new icon really up right which will let you
+see all you're space stations in a solar system. You may also research all
+the new thingy like interplanetary ships & stuff.
+One of the best thing is the CCF, this gadget let you put some crew in your
+shuttle and automaticly transfert ressources from planetary to orbit.
+Put a CCF on a shuttle with a ressource pod, click all the green light
+now the shuttle will leave earth and go to stations by itself, refueling
+when needed and transfering ressources each time. This will allow
+you to have all ressources needed in space.
+
+c*) going to the moon
+---------------------
+Well this part is compulsory but usefull, build your big vessel, orbital
+stations elements and build a new orbital station around the moon. Transfer
+ressources (the CCF also works on big vessels) and an engeneer, you'll be able
+to build a space station cleaning droid and get him down with a shuttle. Now
+you'll discover back the original moonbase from the millenium game hurray!!
+
+d) getting silver & platinium
+-----------------------------
+Ok, now you'd like to mine the asteroids and build loads of stations on many
+planets but you lack silver & platinium... Well no problem, equip a big vessel
+with grappin and go to the asteroids line (you can see it usinf tyhe new eye
+icon that let you see planet ressources. The asteroid belt is between mars &
+jupiter. Move your vessel there then wait for an asteroid with less than 100t
+weight containing silver & paladium to pass by. grap it, then take it back to
+any of you're station, you should be able now to build an asteroid mining
+device that you cand send with a CCF back and forward to asteroids to bring
+back paladium and silver.
+Now look at your simple shuttle on earth, have you noticed the pilot you've put
+in at the beginning, he's now amiral (waoh if not just pass time) well put him
+in the orbital station, go down and replace him with another pilot, you'll need
+4 or 5 amirals later on :)
+
+e) 4 stations and loads of ressources.
+--------------------------------------
+Ok now keep building stations, bases & derricks till you've got 4 of them.
+Beware try to build them on planets taht gives you the wider range of
+ressources. With big vessels & CCF you should be able to fill every station
+with all the ressources (there's a max of 50.000 of them) you can even replace
+engeneers on station with CCE that do the same jobs for nothing.
+Now let you're game on time advance & go to dinner.
+a few hours later you should have all your ressources nearly filled.
+
+f) let's exchange with methanoids.
+----------------------------------
+Now for some politic, get a big shuttle, a grapple, and two ressource pods
+filled with anything and send them to uranus (or jupiter... can't remember)
+you should find there a methanoid base.
+Try getting in, a guy will talk to you but you don't understand a word, he'll
+move then your vessel out of the station... With something in the grapple!!
+Back to one of your station you'll find the guy's just given you a communicator
+research it, buil one, then send a vessel with:
+- the communicator (easier to talk)
+- a grapple (don't ask but put one!!)
+- a ressource pod filled with anything.
+send the vessel back to the methanoid station and get in. The guy will propose
+exchanging. Acept and get back to the station.
+Do it 4 or 5 more times, the guy will finally tell you that his mates are
+planning for a war and give you a test laser on your grapple (that's why a
+grapple)
+Now go back to your station, study the thing, you can now build drones.
+But first, save ane advance time till one of your station is attacked, note
+which one and load back your game.
+
+g) beginning of a war.
+----------------------
+Build drones automatically with the CCE in each of you stations, now collect a
+max of them with a vessel equiped with the CCFD and move to the planet they've
+attacked before your last save. When they arrive you should be therer with
+enough brute power to stop them. By the way put an amiral in charge of the
+drone vessels as he gives each drones a 14 base attack points.
+The methanoids will allways attack two time a station then proceed to next.
+Save before each fight, if you loose just load back and fight again. They'll
+never have more than 1400 base power in the solar system.
+Once you've build enough drones to equip 2 or 3 more vessels with amirals
+go and proceed to exterminate the methanoids from the solar system.
+Now let's go for the first methanoid base. Let's say the one with whom you
+were exchanging things, attack it killing all the drones then go aboard.
+waouh a panic button look at it then when it goes below 5 sec leave fast.
+The station will explode, but sinbce you've seen the mechanism your research
+center will be able to duplicate it.
+Now build one and lok at it, if you click the two buttons below the red
+timer you'll activate the destruction mechanism, moving them back will stop
+them. Remember that.
+Next time you attack a humanoid base get in and stop the mechanism (now you
+can) you should then have the sattion under your order, build derricks and move
+to the ressources center.
+Touh a new button, wonder what it does, well you see other stellar system name
+and the station you're in... Advance time, you're search team will
+discover beaming mechanism, now you can forget about big vessels moving
+ressources from one planet to the other, they can just be beamed instantly.
+You can equalize everything with earth or build a complex exchange system, as
+you like. btw the materials are now automatically beamed from the surface to
+orbit!!!
+
+h) kicking some ass out of the solar system.
+--------------------------------------------
+now keep fighting methanoids untill they're definitely out of the solar system,
+You're search team will tell you that they've discover a new cross stellar
+system ships.
+By the way you should have got a few alien messages for now, you may even has
+decipher them. Basically they tell you they've given a big thingy to the
+methanoids that have destroyes it trying to understand how it works. There's
+now part of it scattered around the galaxy. They'tell you as they find them.
+Now the game is quite straight forward, with each solar system you'll have to
+fight methanoids, when all of their bases are under your control the aliens
+will tell you the name of a planet, orbiting it you should find a piece of an
+artifact that can be gotten with a vessel equipped with grapple.
+Those can't be searched, you'll have to wait till you've got all the 8 pieces
+to be able to build the thing.
+Still with each solar system you'll discover something and there will be
+a little story.
+
+i) sceneries.
+-------------
+You should do the stellar systems in the order they appear in the ressource
+center of your station, first one is proxima etc...
+Don't build too much of the drone S they're too costly, try to fill just one
+or two vessels with them and do all proxima with them and normal vessels
+support.
+Proxima is the hardest system to do, because you'll have to do it with drone S
+and no big weapons, don't worry the other systems will be a breeze :)
+at the end of it you'll get a new alien piece and the hability to travel VERY
+fast between system. No do you know what you get when you go from a stellar
+system to another with this new propultion and an amiral in control?
+a warlord. What's the use of a warlord?
+well when you put him in charge of normal drones their power will move from
+14 to... 20! yep same as those big expensive S-Drone.
+Now you should allways attack methanoids in a system with those warlords
+(but the first planet of course) as they're by FAR cheaper.
+In the next system you'll discover torpedoes. what is it? well when you see the
+red alien and green yours drones in a fight getting in the middle of the map,
+launch torpedoes, aliens will move from 200 to 110 drones while you'll move
+from 200 to 185. Get some practise but you'll never loose a fight anymore.
+In the other systems you'll find things but the order may vary.
+- rebel captain:
+One of your captain will get mad and steal your ressources to give them to the
+methanoid.
+You'll reseach center will find a new kind of pod for him (prison pod) when he
+arrive in any of your station put a prison pod, move him in (like for
+a cryogenic one) then immediately press the left mouse button. That will lock
+the pod and the captain will not be able to escape anymore.
+- solar eclipse:
+all the productions center in one of you system will stop working.(they'll be
+back on later on of course)
+- meteor:
+A big meteor will get from nowhere anbd destroy one of your station.
+- nuke:
+your research center will develop a new weapon (nuke) fill a space vessel with
+no crew and a nuke around planets, when methanoids come just make the vessel
+explode, they'all be destroyed, no more need for drone in your systems!!
+- juke box:
+your search team will tell you about a new weapon found in a methanoid library
+after constructing it you'll find it's just a juke box.
+- ressources
+you'll find ressources left by the methanoids on the surface of planets
+conquered.
+
+j) ending.
+----------
+at the end you'll find yourself with no more methanoids and all 8 pieces
+of the alien device, build it, set him on a space vessel use it in the pod
+and 'bravo' you've finished deuteros.
+The endind is not that good, but then the game was fun to play no?
+
+-------------------------------------------------------------------------------
+IV. Cheats & hints
+-------------------------------------------------------------------------------
+ok if you've got problemes completing the game there's some 'tricks' you should
+now.
+
+- Unlimited devices
+pressing shift+C then C again will toggle the unlimited devices cheat. with it
+on you'll allways have at least one of everything but drone & drone S
+it's quite usefull when constructing vessels, but you have to desactivate it
+while sending down derricks to surface of newly conquered planets.
+
+- oracle of attacks.
+the methanoids will allways choos the next target right after the end of an
+attack, so after an attack anywhere save, pass time and learn wich system will
+be the next target, this way you'll never be surprised.
+
+- No attack (unveryfied)
+by building part of an orbital station let's say 1 or 2 modules you'll block
+the methanoids attack, they're cyclic doing one station after the other,
+allthough they can't attack an unbuild station, so by building part of a station
+as your third station on earth you'll stop quite soon all methanoides attack on
+the solar system, allowing you to gather the drones for more important fights.
+
+- getting a station with 0 drones (unverified)
+before atacking a station look how much fuel you need to get to it, then
+arrange for your vessel to arrive with 0 fuel left, you'll still be able to
+get on the station but won't be attacked, and hop 200 free drones for you :)
+
+
+-------------------------------------------------------------------------------
+V. Credits
+-------------------------------------------------------------------------------
+Well I've just done this faq as my little piece of help for all the deuterios
+fans out there or the one wanting to try it.
+We must first thanks Ian Bird for this great game, as the guy also made loads
+of very successfull game like Millenium.
+Thanks to all the guys who have discussed about the game on forums (which i've
+used a lot) and all the emulation fan and developper out ther that allow us
+to play back such great games.
+
+if you want information you may contact me at deuteros@banquept.com
+for anything not written in the faq.
+
+hope you've enjoyed the game as much as me ;)
+
+
+
+
+
+
+

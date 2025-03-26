@@ -1,0 +1,3 @@
+This folder is used for raw screenshots from the original game. The screenshots are all in the original resolution, 320*200 pixels, and saved as .PNG files.
+
+Naming screenshots with relevant names is encouraged, but not mandatory. The ones I've taken haven't been, after all, and the important thing is to put them into the correct folders. If some folders are missing (and I know some are) then create them, rather than putting shots into folders where they don't really belong.
