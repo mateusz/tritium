@@ -54,4 +54,37 @@ Ok, now we will do the same for the equipment, but into the 05_entity_detail_equ
 
 Perfect. Now let's do resources into 06_entity_detail_resources.md. But I want you to only mention game-related things, not real world knowledge. If you can't find anything in the reference, skip.
 
-I've also added a database of resource abundance in different locations as planetdata.csv,
+I've also added a database of resource abundance in different locations as planetdata.csv.
+
+---
+
+Now, try to work out the major stages in the game progression based on the manuals. These should be based on plot events that lead to the game completion. For now, just list the plot stages in the 01_architecture/07_plot.md file.
+
+---
+
+Ok good, but now update the file and insert a stage between 1 and 2, where you build up your first IOS and set up the moon orbital base and fix the resource base.
+
+---
+
+Now also split up stage 6 into initial expansion to a first other star system, and add a stage after that about continuing into other systems.
+
+---
+
+Ok let's try working on the battle mechanics. Try to describe a battle algorithm based off the available information. Add this to 01_architecture/08_battle.md.
+
+---
+
+Ok but try to invent the exact algorithm for calculating battle outcome, based on so far collected information. Add this to 08_battle.
+
+---
+
+Ok pretty good, but now add some randomness to losses.
+
+---
+
+OK, focusing on the core battle mechanic described in 08_battle.md (without torpedo effects etc), can you please create a simulator.py, which:
+
+- lists several input test cases, including edge ones
+- runs the simulation on the test cases many times, producing a statistical result
+- prints information about the test case and the outcome in terms of who won, and how many drones remained.
+---
