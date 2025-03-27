@@ -10,4 +10,48 @@ Ok, now based on 01_game_entities.md, figure out a list of abstract classes of o
 
 ---
 
-Alongside, I want you to add entity relationships to these abstract entities. Specifcally, as a markdown list, add all has_many and has_one relationships between these abstract classes.
+Now, based on the knowledge from manual1.txt, manual2.txt, and manual_orig.txt, work out entity relationships of the abstract entities in 02_top_level_entities.md.
+
+Make sure the entities are connected with has-one, and has-many relationships. 
+
+Print this into 01_architecture/03_entity_relationships.md.
+
+---
+
+Now, based on 01_game_entities.md, take each of the game entities under `System`, and give them a short summary around what it does in the game based on the provided context files.
+
+Produce that into 04_entity_detail.md
+
+---
+
+Now continue with entities under Location. Add it to 04 file.
+
+---
+
+Now continue with entities under Base. Add it to 04 file.
+
+---
+
+Now do the same with Personnel. Add it to 04
+
+---
+
+And now facility.
+
+---
+
+Now, vehicles.
+
+---
+
+And now for ranks
+
+--- 
+
+Ok, now we will do the same for the equipment, but into the 05_entity_detail_equipment.md file.
+
+---
+
+Perfect. Now let's do resources into 06_entity_detail_resources.md. But I want you to only mention game-related things, not real world knowledge. If you can't find anything in the reference, skip.
+
+I've also added a database of resource abundance in different locations as planetdata.csv,

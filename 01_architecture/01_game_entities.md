@@ -115,10 +115,10 @@
     - Admiral
     - Warlord
   - ProducerRank
-    - Technician
-    - Doctor
-    - Professor
-  - ResearcherRank
     - Apprentice
     - Engineer
     - Expert
+  - ResearcherRank
+    - Technician
+    - Doctor
+    - Professor
