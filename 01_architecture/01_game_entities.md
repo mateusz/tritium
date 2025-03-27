@@ -1,46 +1,55 @@
-# Abstract Base Classes
+# Entities
 
-## Location Types
-- Base (abstract base for all bases)
-  - EarthBase
-  - OrbitalBase
-  - SurfaceBase
-  - MoonBase
-- CelestialBody
+## System
+
+- System (abstract base for all planetary systems)
+  - SolarSystem
+  - StarSystem (non-Sun)
+
+## Location
+
+- Location (abstract base for all buildable locations)
   - Planet
   - Moon
   - Asteroid
-- StarSystem
-  - SolarSystem
-  - FarStarSystem
 
-## Personnel Types
+## Base
+
+- Base (buildable structure)
+  - EarthBase (specific to only Earth)
+  - OrbitalBase
+  - ResourceBase (on surface)
+  - MoonBase (specific to only Moon)
+
+## Personnel
+
 - Personnel (abstract base for all personnel)
   - Researcher
   - Marine
   - Producer
 
-## Facility Types
-- Facility (abstract base for all facilities)
-  - ResearchFacility
-  - ProductionFacility
-  - MiningFacility
-  - ShuttleBay
-  - SpaceBay
-  - Spacedock
-  - MiningStore
-  - ResourceCenter
-  - SelfDestructFacility
-  - TeleporterFacility
+## Facility
 
-## Vehicle Types
+- Facility (abstract base for all facilities, accessed in bases, cannot be stored)
+  - Training
+  - Research
+  - Production
+  - Mining
+  - ShuttleBay
+  - Spacedock (for IOS and SCG)
+  - Storage
+  - SelfDestructMechanism
+
+## Vehicle
+
 - Vehicle (abstract base for all vehicles)
   - Shuttle
   - IOS
   - SCG
 
-## Equipment Types
-- Equipment (abstract base for all equipment)
+## Equipment
+
+- Equipment (abstract base for all equipment, all equipment can be stored in storage)
   - BaseEquipment (equipment installable on bases)
     - Derrick
     - SelfDestructMechanism
@@ -64,7 +73,7 @@
       - ToolPod
       - CryoPod
       - PrisonPod
-    - Tool
+    - Tool (installable on ToolPod)
       - Grapple
       - InstallationRepairEquipment
       - AsteroidMiningAttachment
@@ -78,6 +87,7 @@
       - CompleteArtifact
   
 ## Resource Types
+
 - Resource (abstract base for all resources)
   - Iron
   - Titanium
@@ -97,6 +107,7 @@
   - HeliumDeuteriumFuel
 
 ## Rank Types
+
 - Rank (abstract base for all ranks)
   - MarineRank
     - Pilot

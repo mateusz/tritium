@@ -1,0 +1,13 @@
+So I want us to jointly develop a data model for a Deuteros amiga game remake.
+
+I have provided you with context files in the form of a user-written walkthrough @manual1.txt which contains a complete list of various entities.
+
+Extract all possible game entities from these files as a markdown multi-level list. At this point I just need a reliable list added to 01_architecture/01_game_entities.md
+
+---
+
+Ok, now based on 01_game_entities.md, figure out a list of abstract classes of objects. So for example, I want an abstract `base` but don't want specifically `mars_base`. Produce the list into 01_architecture/02_abstract_entities.md.
+
+---
+
+Alongside, I want you to add entity relationships to these abstract entities. Specifcally, as a markdown list, add all has_many and has_one relationships between these abstract classes.

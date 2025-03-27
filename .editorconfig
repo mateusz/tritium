@@ -1,0 +1,9 @@
+[*]
+preferred_line_length = 80
+soft_wrap = false
+
+[*.md]
+soft_wrap = true
+
+[*.txt]
+soft_wrap = true
