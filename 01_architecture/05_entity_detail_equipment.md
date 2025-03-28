@@ -78,7 +78,7 @@ Equipment that can be installed on ToolPods.
 #### Grapple
 For retrieving small objects of up to 250T. Must be pod mounted. Essential for asteroid capture and artifact recovery.
 
-#### InstallationRepairEquipment
+#### InstallationRepairEquipment (Bandaid)
 For the repair of abandoned or derelict surface stations. Must be pod mounted. Requires operative shuttle bay.
 
 #### AsteroidMiningAttachment

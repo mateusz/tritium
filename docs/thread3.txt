@@ -1,0 +1,405 @@
+Drew Paschal
+unread,
+Nov 13, 1997, 9:00:00 PM
+to
+
+I am a big fan of the game Deuteros. I have a question that only the
+diehard Amiga game fans can answer. After you boot up Deuteros, go in
+the disk utility section and play the demo. You will notice that
+there is a huge IOS if you look closely when the demo is bringing up
+the regular IOS. The regular IOS (spaceship) looks something like
+this: (===[ You have: the crew pod, three places to mount various
+payloads and the engine. The other IOS I saw in the demo looked
+something like: (======[ I believe it is used to travel between
+solar systems. Another thing I noticed in the demo is a "Balance
+Everything" screen in which the demo has a pulsing "laser" at the top
+and appears to be using a "beam" or something to transfer various
+minerals, etc from it's various orbital stations. Also, after you
+play the demo and start a new game, you will notice a "Tachyon
+Transmitter" in your development screen! If you try to develop it
+though, it will only go to 10% and no further. I have beat the game,
+but only from destroying all the Methanoids in our solar system. It
+just says game over and ends. I think it is possible to travel
+outdide the galaxy though. Also, can anyone tell me what the
+lightswitch does on the recruiting screen? Hopefully there is a
+master gamer out there that can shed some light on this.
+
+PS-The game is a copy that sayd "Cracked by Black Monks" upon booting.
+I would try to disassemble this, but it is written with the track disk
+device and not a dos disk. Any hints, tips or secrets anyone can
+reveal would be much appreciative.
+
+best regards,
+drew_p...@hotmail.com
+
+Jason Frecknall's profile photo
+Jason Frecknall
+unread,
+Nov 14, 1997, 9:00:00 PM
+to
+
+You will notice that
+> there is a huge IOS if you look closely when the demo is bringing up
+> the regular IOS. The regular IOS (spaceship) looks something like
+> this: (===[ You have: the crew pod, three places to mount various
+> payloads and the engine. The other IOS I saw in the demo looked
+> something like: (======[ I believe it is used to travel between
+> solar systems. Another thing I noticed in the demo is a "Balance
+> Everything" screen in which the demo has a pulsing "laser" at the top
+> and appears to be using a "beam" or something to transfer various
+> minerals, etc from it's various orbital stations. Also, after you
+> play the demo and start a new game, you will notice a "Tachyon
+> Transmitter" in your development screen! If you try to develop it
+> though, it will only go to 10% and no further. I have beat the game,
+> but only from destroying all the Methanoids in our solar system. It
+> just says game over and ends. I think it is possible to travel
+> outdide the galaxy though. Also, can anyone tell me what the
+> lightswitch does on the recruiting screen? Hopefully there is a
+> master gamer out there that can shed some light on this.
+
+Yes I have seen this version, it's a sort of demo I think. I bought the orinal
+off a friend a few years ago which lets you expand beyond our solar system.
+I think also that the versio you have doesn't show a little picture of
+what you are building in the construction screen. The large IOS is the ship
+used to travel beyond our system, laser thing was a matter transmitter for
+transferring stuff between stations without having to transfer it with the IOS.
+Of course it had to be constructed first. The tachyon transmitter is what
+you must build to finish the game. Every time you conquer a system you get a
+message from an uknown alie race informing you where to find another part, which
+you can grab out of orbit with a grapple. once you have all the parts the game
+ends. It's actual use I don't know.
+
+Jay
+
+****************************************************
+A1200 Tower: Blizzard 1260 + SCSI + 32MB Fast
+Cybervision 64/3D
+1.2GB HD, SCSI Zip Drive, 33.6k Modem
+****************************************************
+
+Marc Forrester's profile photo
+Marc Forrester
+unread,
+Nov 14, 1997, 9:00:00 PM
+to
+
+Drew Paschal wrote:
+> I am a big fan of the game Deuteros. I have a question that only the
+> diehard Amiga game fans can answer. After you boot up Deuteros, go in
+> the disk utility section and play the demo. You will notice that
+
+> there is a huge IOS if you look closely when the demo is bringing up
+> the regular IOS. The regular IOS (spaceship) looks something like
+> this: (===[ You have: the crew pod, three places to mount various
+> payloads and the engine. The other IOS I saw in the demo looked
+> something like: (======[ I believe it is used to travel between
+> solar systems.
+
+Reckon so. Ruined the surprise for yourself now, haven't you? :)
+I managed to play all the way through that several times without
+noticing that little flicker..
+
+> Another thing I noticed in the demo is a "Balance Everything"
+> screen in which the demo has a pulsing "laser" at the top
+> and appears to be using a "beam" or something to transfer
+> various minerals, etc from it's various orbital stations.
+
+Er, also, yes.
+
+> I have beat the game, but only from destroying all the Methanoids
+> in our solar system. It just says game over and ends. I think it
+> is possible to travel outdide the galaxy though.
+
+Hardly, but you can go a few light-years. You're not winning the
+game properly though, you see, in Civilization terms you're just
+conquering the planet instead of getting a fully-stocked colony
+ship to the stars whilst the fawning natives give you all their
+gold and the occasional city. What you need to be doing is
+capturing some Methanoid technology instead of blowing it up.
+
+> Also, can anyone tell me what the lightswitch does on the
+> recruiting screen? Hopefully there is a master gamer out
+> there that can shed some light on this.
+
+It is my considered opinion that it turns the light on and off. :)
+
+> PS-The game is a copy that sayd "Cracked by Black Monks" upon booting.
+> I would try to disassemble this, but it is written with the track disk
+> device and not a dos disk. Any hints, tips or secrets anyone can
+> reveal would be much appreciative.
+
+You do have an original as well, of course.
+Or at least you did at some point, but it died?
+
+Adrian Hurt's profile photo
+Adrian Hurt
+unread,
+Nov 18, 1997, 9:00:00 PM
+to
+
+In article <2101.258T1...@inter.nl.net> "Hans Guijt" <hgu...@inter.nl.net> writes:
+
+>Drew Paschal (drew_p...@hotmail.com) wrote:
+>>I am a big fan of the game Deuteros. I have a question that only the
+>>diehard Amiga game fans can answer. After you boot up Deuteros, go in
+>>the disk utility section and play the demo. You will notice that
+>>there is a huge IOS if you look closely when the demo is bringing up
+>>the regular IOS. The regular IOS (spaceship) looks something like
+>>this: (===[ You have: the crew pod, three places to mount various
+>>payloads and the engine. The other IOS I saw in the demo looked
+>>something like: (======[ I believe it is used to travel between
+>>solar systems.
+>
+>It was a very long time ago but I think that's correct. You get to build it
+>after you have developed the Tachyon Transmitter. I think.
+
+I don't remember the term "Tachyon Transmitter". From the rest of Hans'
+article, it seems to be the device that the non-Methanoid aliens give you,
+one piece at a time - you get one piece in each star system when you have
+cleared that system of Methanoids. You get the big ship *before* you get
+the transmitter - in fact, you need the big ship if you're going to get
+any parts of the transmitter! The big ship is the Star Class Galleon, and
+you get to develop and build it when you have cleared the Sun system of
+Methanoids, assuming you have the full game and not just a demo.
+
+>Perhaps someone knows this: is it actually possible to capture the pirate
+>captain?
+
+Yes. In due time, your head of research will design a prison pod, which
+you must build. You can't control the pirate ship but you can see where it
+is going; arrange to have a prison pod and tool module at that place when
+the pirate arrives. Also make sure the spacedock is clear so the pirate
+can dock at the station. First thing to do is remove the pirate from the
+bridge, the same way that you remove any other crew from the bridge of one
+of your ships. Now remove (at least) one of the cargo modules. Fit a
+tool module, fit a prison pod onto the tool module, then click on the
+prison pod. It works much the same way as a cryo pod, so put the pirate
+into the prison pod the same way you put anyone into a cryo pod.
+
+Then click the right mouse button. You only have a second or two to do
+this before the pirate jumps out of the prison pod. Clicking the right
+button locks the pod, and the pirate can not then escape.
+
+I had a couple of dirty tricks involving the pirate. Before you get the
+prison pod, you can still remove the pirate from the bridge of the ship,
+then you can mess with the ship's modules. I removed the lot. That
+meant he could not steal any of my stuff, and I got a bunch of free cargo
+modules. Once I had captured the pirate, I removed all other modules and
+most of its fuel, then sent it to the nearest Methanoid base. You can't
+kill the pirate yourself so I let the Methanoids do the honours. :-)
+
+-- 
+"Keyboard? How quaint!" - M. Scott
+
+Adrian Hurt | JANET: adr...@cee.hw.ac.uk
+UUCP: ..!uknet!cee.hw.ac.uk!adrian | ARPA: adr...@cee.hw.ac.uk
+
+Schaefer Helmut's profile photo
+Schaefer Helmut
+unread,
+Nov 19, 1997, 9:00:00 PM
+to
+
+Another Deuteros Question
+
+Hi there,
+
+i`ve got another litte different problem, but i suppose some of you
+could help me.
+
+I own an Amiga 3000 and Deuteros doesn`t run on it - or at least
+doesn`t run at 100%.
+
+Playing the game directly is not possible. Using T.U.D.E it works almost
+fine. It runs up till Earth City and you could start playing, BUT its
+impossible to access the floppy drive correctly.
+The second floppy (df1:) ist obviously not known to Deuteros, too.
+
+Earlier made game disks (long time ago) are not being recognoised as
+saved games disks. Testing them on an old A500 indicates me that they
+work as usual. Formating new game disks doesn`t work as well. About
+five head-ticks and an error comes up. Did I mention that the disks
+were AmigaOS formatted (WITH verify) and no error occured?
+
+
+Has anybody an idea what is going wrong there?
+
+
+The T.U.D.E. Options are as follows:
+Degrade
+OSPatchOld
+HardReset
+CHIPSET=OLD
+VBASE=ZERO
+CHIPMEM=1024k
+CACHES=NONE
+
+My A3000 has a built-in Double-Speed Disk Drive. (for DDs & HDs)
+This might be of interest.
+
+BTW: I own the original, but never saw the demo. Would someone
+tell where I can get it?
+
+regards,
+Helmut
+
+
+drew_p...@hotmail.com's profile photo
+drew_p...@hotmail.com
+unread,
+Nov 27, 1997, 9:00:00 PM
+to
+
+In article <64ukev$j1i$1...@av2.rz.fh-augsburg.de>,
+
+I have now found a version that seems to have an AGA fix built in. This
+version boots fine, but it is real jerky. Let me explain...lets say that
+the mouse pointer is in the center of the screen. If you move the mouse
+pointer to the left of the screen, it stays in the center of the screen
+for about 2 seconds and then moves to the left of the screen. Also if
+you watch the spinning globe icon on the earth city screen, it will spin,
+stop, spin again, etc. It is like there is some internal interrupt that
+is interfearing with the game or something. Has anyone else had this
+problem?
+
+-------------------==== Posted via Deja News ====-----------------------
+http://www.dejanews.com/ Search, Read, Post to Usenet
+
+drew_p...@hotmail.com's profile photo
+drew_p...@hotmail.com
+unread,
+Nov 28, 1997, 9:00:00 PM
+to
+
+In article <880665...@dejanews.com>,
+
+I found out the cure. I just coldbooted the A3000 with Deuteros disk 1
+in df0. No more jerking. Ran smooth as everything. Now if I can just
+figure out what to do after getting the Star Class Galleons. :|
+
+Drew
+
+Roy L. Nash's profile photo
+Roy L. Nash
+unread,
+Nov 28, 1997, 9:00:00 PM
+to
+
+If your are able to read this, your reader is not MIME compliant.
+Use Metamail or a MIME aware reader to view the message properly.
+
+--p4TteRSuKXBIgGr8gRiNDIkkZAlLD3I
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7bit
+
+>I am a big fan of the game Deuteros. I have a question that only the
+>diehard Amiga game fans can answer. After you boot up Deuteros, go in
+>the disk utility section and play the demo.
+
+In the original game there is no demo.
+
+> You will notice that
+>there is a huge IOS if you look closely when the demo is bringing up
+>the regular IOS. The regular IOS (spaceship) looks something like
+>this: (===[ You have: the crew pod, three places to mount various
+>payloads and the engine. The other IOS I saw in the demo looked
+>something like: (======[ I believe it is used to travel between
+>solar systems.
+
+You are correct. It travels between stars. It is called a Star Class Galleon.
+S.C.G
+
+> Another thing I noticed in the demo is a "Balance
+>Everything" screen in which the demo has a pulsing "laser" at the top
+>and appears to be using a "beam" or something to transfer various
+
+>minerals, etc from it's various orbital stations. Also, after you
+>play the demo and start a new game, you will notice a "Tachyon
+>Transmitter" in your development screen! If you try to develop it
+>though, it will only go to 10% and no further.
+
+The balance everything is just that. You can share every resource between
+stations. Yes, it is a "transporter" like in Star Trek.
+The Tachyon Transmitter will only develop if you have the proper knowledge
+i.e. does your main research know about it.
+
+> I have beat the game,
+>but only from destroying all the Methanoids in our solar system. It
+>just says game over and ends. I think it is possible to travel
+>outdide the galaxy though.
+
+You can't travel outside the galaxy but to other stars.
+
+> Also, can anyone tell me what the
+>lightswitch does on the recruiting screen?
+
+Nothing is listed in the instructions.
+
+> Hopefully there is a
+>master gamer out there that can shed some light on this.
+
+>PS-The game is a copy that sayd "Cracked by Black Monks" upon booting.
+
+
+>I would try to disassemble this, but it is written with the track disk
+>device and not a dos disk. Any hints, tips or secrets anyone can
+>reveal would be much appreciative.
+
+I would again suggest you get a REAL version. Only about $5 - $10. Surely you
+can afford that.
+
+>best regards,
+>drew_p...@hotmail.com
+
+Attached to this is a Lotus WKS file. You should be able to import it to any
+DECENT spreadsheet program. ProCalc, MaxiPlan......
+
+It lists the Stars, Planets, moons, and has blanks for minerals found on the
+planets or moons.
+
+<tsb>28-Nov-97 23:05:37
+--
+<sb>Whyy
+Mailto:Wh...@Who.Net Mailto:Wh...@Sprynet.Com
+--
+<sb>Team *AMIGA*
+<sb>Miami 2.1p, Thor 2.5a, IBrowse 1.12a
+<sb>Amiga 1200 ('040, 2MB C, 16MB F, 15MB V) 6GB HardDrives
+Http://Whyy.Simplenet.Com
+<tsb>
+
+--p4TteRSuKXBIgGr8gRiNDIkkZAlLD3I
+Content-type: application/octet-stream; name="DEUTROS.WKS"
+Content-transfer-encoding: base64
+
+<encoded_portion_removed>
+
+--p4TteRSuKXBIgGr8gRiNDIkkZAlLD3I--
+
+
+Marc Forrester's profile photo
+Marc Forrester
+unread,
+Nov 29, 1997, 9:00:00 PM
+to
+
+drew_p...@hotmail.com wrote:
+> I found out the cure. I just coldbooted the A3000 with Deuteros
+> disk 1 in df0. No more jerking. Ran smooth as everything.
+> Now if I can just figure out what to do after getting the
+> Star Class Galleons. :|
+
+Well, to begin with you warp out there and kick some
+serious Methanoid posterior.. Have you started that yet?
+
+drew_p...@hotmail.com's profile photo
+drew_p...@hotmail.com
+unread,
+Nov 29, 1997, 9:00:00 PM
+to
+
+Well, I have sent a SCG out to Proximia and I have a pilot, but when I try
+to activate even the first of eight sections for the orbital station, it
+tells me that a crew is required to activate this payload and must be
+ranked pilot. How wierd. I also tried using a grapple, a SCG with a DFCC
+and orbital battle drones. I dunno what I am doing wrong. Is the first

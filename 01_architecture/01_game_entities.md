@@ -76,11 +76,11 @@
       - PrisonPod
     - Tool (installable on ToolPod)
       - Grapple
-      - InstallationRepairEquipment
+      - InstallationRepairEquipment (Bandaid)
       - AsteroidMiningAttachment
       - ResourceFactoryFrame
       - OrbitalFactoryFrame
-      - CommunicationsAdapter
+      - CommunicationsAdapter (COMMSPOD)
       - PrejudiceTorpedoLauncher
       - PulseBlastLaser
       - SonicBlaster

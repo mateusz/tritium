@@ -1,0 +1,31 @@
+id,Item,Tech Level,Factory,Iron,Titanium,Aluminium,Carbon,Copper,Hydrogen,Deuterium,Methane,Helium,Paladium,Platinum,Silver,Gold,Silica,Mass
+1,Unknown Item,,,,,,,,,,,,,,,,,
+2,Derrick,1,Any factory,3,4,,1,,,,,,,,,,,8
+3,S Chasis,1,Any factory,20,50,35,10,15,,,,,,,,,,130
+4,S Drive,1,Any factory,6,10,4,,,,,,,,,,,,20
+5,MeH Fuel,1,Any factory,,,,,,2,,2,,,,,,,3
+6,OF Frame,1,Any factory,55,80,50,25,40,,,,,,,,,,250
+7,Supply Pod,1,Any factory,,2,1,,1,,,,,,,,,,4
+8,Tool Pod,1,Any factory,,2,1,,1,,,,,,,,,,4
+9,Cryo Pod,1,Any factory,,2,1,,1,,,,,,,,,,4
+10,Pulse Blaste Laser,,,,,,,,,,,,120,30,,,,
+11,I Chassis,2,Orbit only,100,250,175,50,75,,,,,,,,,,650
+12,I Drive,2,Orbit only,30,50,,,15,,,,,,,,,,95
+13,G Chassis,3,Orbit only,250,600,400,,185,,,,,,100,100,50,,1685
+14,Star Drive,3,Orbit only,50,100,,,30,,,,,50,25,10,,,265
+15,HeD Fuel,3,Orbit only,,,,,,,2,,2,,,,,,3
+16,ACC,3,Any factory,,2,1,1,1,,,,,,,,,,5
+17,AOC,3,Orbit only,,4,1,2,,,,,,,,1,,,8
+18,Bandaid,3,Orbit only,30,30,30,30,30,,,,,,,,,,150
+19,S.D.M.,3,,,,5,,1,,,,,1,2,,,,9
+20,Grapple,3,Orbit only,2,2,,,1,,,,,,,,,,5
+21,DFCC,3,Orbit only,,2,1,1,1,,,,,,2,,1,,8
+22,AMA,3,Orbit only,6,70,10,30,2,,,,,,5,1,,,124
+23,Hyperlight,3,,,,,,,,,,,,,,,,0
+24,M.T.X.,3,,,500,,,82,,,,,100,,,40,,722
+25,,,,,,,,,,,,,,,,,,
+26,R Frame,3,Orbit only,35,50,20,15,30,,,,,,25,10,,15,200
+27,Prejudice Torpedo Launcher,,,,96,45,,10,,,,,,,,,,
+28,COMMSPOD,,,,,2,1,1,,,,,,,,1,,
+29,IOS Drone,3,Orbit only,120,120,120,15,55,,,,,30,30,,,,490
+30,Star Drone,3,Orbit only,300,300,,,100,,,,,90,80,95,50,,1015

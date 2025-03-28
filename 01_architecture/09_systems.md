@@ -56,7 +56,7 @@ The 8 other systems have resources and Methanoid ownership randomly generated at
 - Pluto (Methanoid controlled)
   - Charon
   - Decuria
-  
+
 ## Proxima System (4 locations)
 The first star system beyond Sol that becomes accessible after developing advanced space travel technology.
 

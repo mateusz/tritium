@@ -1,0 +1,1043 @@
+This website uses cookies to ensure you get the best experience on our website. Learn more
+Got it!
+Atari-Forum
+
+A forum about Atari 16/32 computers and their clones. This forum is in no way affiliated with Atari Interactive.
+
+Skip to content
+
+    Quick links
+    FAQ
+    Rules
+    Login
+    Register
+
+    Board index Atari ST Gaming Games - General
+
+Deuteros:the next millenium
+
+Moderators: simonsunnyboy, Mug UK, ICS, Doctor Bob Gordon, Moderator Team
+38 posts
+
+    1 
+
+sober_hobo	
+    Atarian
+    Atarian	
+    Posts: 5	
+    Joined: Mon Sep 24, 2007 3:08 pm	
+
+Deuteros:the next millenium
+
+Post by sober_hobo » Mon Sep 24, 2007 3:17 pm
+Hi people,
+I am trying to locate the original disks for Deuteros, I have an atari ST ready but cant get hold of the disks anywhere and was hoping someone here could help. If they are not available is it possible to use the image files in some way on an original ST, extract them to a disk or something, long shot but worth a try. Well hope someone can help out there, would really appreciate it.
+
+thanks,
+Brian
+Top
+
+User avatar
+teh3pwner	
+    Atari Super Hero
+    Atari Super Hero	
+    Posts: 506	
+    Joined: Sun Mar 18, 2007 9:31 pm	
+    Location: Slovenia, Ptuj
+
+Post by teh3pwner » Mon Sep 24, 2007 4:33 pm
+you will find everything about running images puting them on disks here:
+http://www.ppest.org/atari/
+
+and the game is attached.
+
+oh and welcome to our fine forum hope you enjoy your stay here.
+You do not have the required permissions to view the files attached to this post.
+All glory to the Hypnotoad!
+Top
+
+User avatar
+Greenious	
+    Hardware Guru
+    Hardware Guru	
+    Posts: 1733	
+    Joined: Sat Apr 24, 2004 5:39 pm	
+    Location: Sweden
+
+Post by Greenious » Tue Sep 25, 2007 10:28 am
+Aah, Deuteros is one of my all-time fave games.
+
+Millennium 2.2, the first one in the series is not bad either, and I loved that one too, but Deuteros... Aah, the memories...
+Check out the hardware preservation project: https://www.atari-forum.com/viewtopic.php?t=43023
+And my old guide thread with various information: https://www.atari-forum.com/viewtopic.php?t=5040
+Top
+
+simonsunnyboy	
+    Moderator
+    Moderator	
+    Posts: 5789	
+    Joined: Wed Oct 23, 2002 4:36 pm	
+    Location: Friedrichshafen, Germany
+    Contact: Contact simonsunnyboy
+
+Post by simonsunnyboy » Tue Sep 25, 2007 1:29 pm
+
+    teh3pwner wrote:
+    you will find everything about running images puting them on disks here:
+    http://www.ppest.org/atari/
+
+    and the game is attached.
+
+    oh and welcome to our fine forum hope you enjoy your stay here.
+
+Well, take note that you cannot write PASTI images back to disk. So if you want to play such a game on a real ST you have to get a crack of it.
+
+The tools by ppera will only deal with MSA and ST, not STX disk images.
+Simon Sunnyboy/Paradize - http://paradize.atari.org/
+
+Stay cool, stay Atari!
+
+1x2600jr, 1x1040STFm, 1x1040STE 4MB+TOS2.06+SatanDisk, 1xF030 14MB+FPU+NetUS-Bee
+Top
+
+User avatar
+teh3pwner	
+    Atari Super Hero
+    Atari Super Hero	
+    Posts: 506	
+    Joined: Sun Mar 18, 2007 9:31 pm	
+    Location: Slovenia, Ptuj
+
+Post by teh3pwner » Tue Sep 25, 2007 1:59 pm
+oh yeah silly me I didn't know that :lol: :lol: :lol: :lol:
+
+the .st is attached :lol: :lol:
+You do not have the required permissions to view the files attached to this post.
+All glory to the Hypnotoad!
+Top
+
+sober_hobo	
+    Atarian
+    Atarian	
+    Posts: 5	
+    Joined: Mon Sep 24, 2007 3:08 pm	
+
+Deuteros
+
+Post by sober_hobo » Tue Sep 25, 2007 8:59 pm
+Thanks a lot guys, really appreciate the help. You have no idea what I have been through for this :)
+
+Off to try it out.
+
+thanks again
+Top
+
+sober_hobo	
+    Atarian
+    Atarian	
+    Posts: 5	
+    Joined: Mon Sep 24, 2007 3:08 pm	
+
+Image is blank
+
+Post by sober_hobo » Wed Sep 26, 2007 7:10 am
+Hi again,
+Ok I used the utility to create the 2 floppys for deuteros but there appears to be nothing in the image files if you browse them. I tried using the program with several other images and you get a list of files so assuming there is something wrong with the deuteros.zip, can anyone else confirm if it is working ok.
+
+I have tried the few images I could find and they seem to be ok.
+
+Thanks,
+Brian
+
+P.S. Can anyone give me a link or two to download more images, I have tried dozens but they all seem to promise but not deliver, mostly lists of games for information only.
+Top
+
+sober_hobo	
+    Atarian
+    Atarian	
+    Posts: 5	
+    Joined: Mon Sep 24, 2007 3:08 pm	
+
+STX
+
+Post by sober_hobo » Wed Sep 26, 2007 7:15 am
+Also one more thing, I searched the newsgroups and found a huge load of games but they are in STX format, is there any way of doing the same thing with these images? I saw that simonsunnnyboy said that the floppy image program wont do it, maybe another program?
+
+Why does this seem more complicated now I am older than when I was in my teens doing this :lol: Guess it is senility setting in..... :?
+Top
+
+User avatar
+Klapauzius	
+    The Klaz
+    The Klaz	
+    Posts: 4309	
+    Joined: Sun Jul 04, 2004 7:55 am	
+    Location: Bavaria
+    Contact: Contact Klapauzius
+
+Post by Klapauzius » Wed Sep 26, 2007 7:20 am
+Hi Brian,
+
+the disk images are ok.
+
+There are no files to be seen, because there aren't any in this version of the game. ;-)
+
+Just put disk 1 into your ST's floppy drive, press the reset button and the game should load automatically.
+
+Cheers
+
+Klaz
+
+PS: for more ST disks try:
+http://www.planetemu.net/
+This should keep you busy for a while :-)
+http://www.klapauzius.net
+https://d-bug.me/klaz/Old_Games.html
+
+The tears are welling in my eyes again, I need twenty big buckets to catch them in, twenty pretty girls to carry them down, twenty deep holes to bury them in.
+Top
+
+sober_hobo	
+    Atarian
+    Atarian	
+    Posts: 5	
+    Joined: Mon Sep 24, 2007 3:08 pm	
+
+Post by sober_hobo » Wed Sep 26, 2007 7:54 am
+Thanks for that I thought that was all I had to do. Only things left to clear up is will Deuteros run on a 520st or does it need 1024st? not give this a thought until now.
+
+Thanks for the link, got some gooduns there. :D
+Top
+
+User avatar
+teh3pwner	
+    Atari Super Hero
+    Atari Super Hero	
+    Posts: 506	
+    Joined: Sun Mar 18, 2007 9:31 pm	
+    Location: Slovenia, Ptuj
+
+Post by teh3pwner » Wed Sep 26, 2007 2:18 pm
+hi I tryed it with tos 1.04 and 512k of ram and it worked like a charm :lol: :lol: :lol: :lol: :lol: :lol: :lol: :lol: :lol:
+All glory to the Hypnotoad!
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Tue Jun 08, 2010 7:49 pm
+Good evening, I thought I would resurrect this thread as I've as of yet been unable to get this game to work properly on STEEM....
+Does anyone know of a version of this game either menu or whatever that they know to work on the STEEM emulator from PERSONAL EXPERIENCE, i.e. they have completed the game from start to finish this way and know with version they used?
+I'm not bothered about what it says on other topics or what google throws back, I've been there and now I'm here, I've tried the PASTI version, cracks of this game, I even resorted to trying the amiga version on WInUAE and that version actually worked for the longest before I couldn't go any further....
+And just in case I was simply missing something I checked the walkthroughs etc and as such it now seems the version I am playing is no good either...
+Cheers.
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Tue Jun 08, 2010 9:16 pm
+Oh how rude of me I forgot to say please :wink:
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Wed Jun 09, 2010 4:01 pm
+Ok here's an easier question:
+The item that is found floating in space outside the earth station, which you grab using the hydraulic grapple.
+On one version of Deuteros when I start to research this item it shows as "Unknown Object", in another version of the game it is shown while being researched as a "Tachyon Transmitter", anyway in all versions of the game I have tried on both emulators when I try to research this item the research progress indicator sticks at 12% forever, I've fast forwarded the emulation but it doesn't move...
+I've read about receiving messages from friendly aliens, I am assuming that I can't do this because I don't have the tachyon thingy cos this is the most buggy game ever made for 16 bit platforms perhaps???
+Or am I missing something?
+:x
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+coy	
+    Captain Atari
+    Captain Atari	
+    Posts: 277	
+    Joined: Tue Oct 21, 2008 9:03 am	
+
+Re: Deuteros:the next millenium
+
+Post by coy » Thu Jun 17, 2010 8:31 am
+
+    RetroGamerUK wrote:
+    Ok here's an easier question:
+    The item that is found floating in space outside the earth station, which you grab using the hydraulic grapple.
+    anyway in all versions of the game I have tried on both emulators when I try to research this item the research progress indicator sticks at 12% forever, I've fast forwarded the emulation but it doesn't move...
+    I've read about receiving messages from friendly aliens, I am assuming that I can't do this because I don't have the tachyon thingy cos this is the most buggy game ever made for 16 bit platforms perhaps???
+    Or am I missing something?
+    :x
+
+Hello
+It's absolutly normal.
+
+I guess it's because you haven't visited the others galaxy yet (there are 8 of them). Each parts of the Unkown Object are located over there; every times you find a new portion, the research progresses a little. I've been playing this game for days now, and my reasearch progreess indicator is at 36%. You don't have to establish new colony in all them though, just destroy all the bases of the methanoids, and after you will discover a new technology, then visit each planet of the galaxie with your grapple and you'll find a new part of the Unknow Objet. Have made a step by step walkthrough (and now i'm exausted...). Have decided to have a look because of the many great reviews about this game. Well, it's rather good and certainly have an entertaining atmosphere, but one thing that completely ruins the gameplay is that these #%!£@§! of methanoids keep on attacking your bases with their ships. I wonder how they can keep on building new ships since they have no more factory. Make no senses...
+
+I play with the Pompey Pirates version by the way, excep one or two minor bugs, works fine so far
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Fri Jun 18, 2010 5:03 pm
+Ahh cheers coy! ;-)
+I think I've figured out the problem I was having though, seems there is a bug in most versions the game in that the object shouldn't appear above earth at first, I am playing let's say a "different" version of the game now and there is no object in orbit above earth, the Meths have bases over more bodies in the System, and once defeated the plans for the big ship and better drones are found... and I have even got a foothold in another system, I've had more messages from the friendly aliens, it didn't take long to decipher their language since their alphabet and language differ to English only in the actual letters lol - what's the odds of that eh? :lol:
+So basically I think that if you grab the object too soon it messes up the game so that you don't get the interstellar ship technology..
+Hey but what a game! I can't pull myself away from it!
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Sat Jun 19, 2010 8:33 am
+The tactic I have used is to build no more than 5 bases (including the first one over earth), that way the Meths don't attack until either you build a 6th base or trade with them enough for them to warn you or the impending attack and give you the plans to the laser.
+Incidentally I believe that the amount of trading required to trigger this event is either randomly determined at the game start or differs across different versions of the game.
+
+Anyway to have the best chance of surviving the sustained attacks is to first let your stocks build up to 50,000 at all 5 of your bases, particularly in Iron, Titanium and Aluminium, use transporters to balance it all, fast forward in the game and on the emulator helps.
+Then you can trigger the war by either trading or building another base, at this point you get the laser / drone tech of course.
+Then as soon as you have researched the drones begin to produce them at all bases constantly, it's easier to save the game, fast forward and note the base which gets attacked first, then re-load and make sure there's at least 200 drones with a fleet control ship there. I know this is cheating but trust me there is no way to build enough drones at every base quick enough, and like you say the meths seem to cheat anyway ;-)
+
+Even with this method you will still need to produce shedloads of drones to have a chance of whacking the meths out of our system whilst maintaining a defence fleet at the target base.
+And don't forget to produce plenty of Admirals.
+
+Like I said, what a game 8)
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+coy	
+    Captain Atari
+    Captain Atari	
+    Posts: 277	
+    Joined: Tue Oct 21, 2008 9:03 am	
+
+Re: Deuteros:the next millenium
+
+Post by coy » Sat Jun 19, 2010 3:39 pm
+
+    RetroGamerUK wrote:
+    The tactic I have used is to build no more than 5 bases (including the first one over earth), that way the Meths don't attack until either you build a 6th base or trade with them enough for them to warn you or the impending attack and give you the plans to the laser.
+    Incidentally I believe that the amount of trading required to trigger this event is either randomly determined at the game start or differs across different versions of the game.
+
+    Anyway to have the best chance of surviving the sustained attacks is to first let your stocks build up to 50,000 at all 5 of your bases, particularly in Iron, Titanium and Aluminium, use transporters to balance it all, fast forward in the game and on the emulator helps.
+    Then you can trigger the war by either trading or building another base, at this point you get the laser / drone tech of course.
+    Then as soon as you have researched the drones begin to produce them at all bases constantly, it's easier to save the game, fast forward and note the base which gets attacked first, then re-load and make sure there's at least 200 drones with a fleet control ship there. I know this is cheating but trust me there is no way to build enough drones at every base quick enough, and like you say the meths seem to cheat anyway ;-)
+
+This is indeed the way how to proceed, I even think this is the only one
+
+Anyway, I've completed the game.. After you will get PLT (very useful to destroy many drones at once, but you should use it when you have very few drones in your ship as the torpedo kills both of them), the MTX which enable to tranfer instantaneously your stuff from planet to planet (works with all the galaxies), the Blaser (very good but you get it at the very end of the game) etc...
+
+I think I prefer the first part (before the war); after it is too much like 'guess which planet will be attacked / reload the game / destroy the ship...' I mean it never stop, and it is somewhat tiring. Also there are too many galaxies (with more than 100 planets)... The gameplay remains the same so it becomes quite repetitive after a while. In the other hand, i like how you have to build a homogeneous network between the planets, how you have to be careful that the planets which continually build drones get all the required resources from the other ones. Pure management! When you have many planets, it can get very confusing..
+
+    RetroGamerUK wrote:
+    And don't forget to produce plenty of Admirals
+
+:lol: All my pilots are Warlord 8) I guess we don't play in the same category :mrgreen:
+
+Seriously, an Amiral is upgrated to Warlord once you have made a round trip from a galaxie to another one; when you put a Warlord in a IOS ship, its power will be increased from 1400 to 2000! :wink:
+
+Good luck anyway, it took me a week to beat the game. Don't expect to see an awesome ending though
+Top
+
+coy	
+    Captain Atari
+    Captain Atari	
+    Posts: 277	
+    Joined: Tue Oct 21, 2008 9:03 am	
+
+Re: Deuteros:the next millenium
+
+Post by coy » Sat Jun 19, 2010 8:38 pm
+Have just found a trick from a forum; basically, if you want no more attack, just make one frame (Orbital Factory Section) and carry it to the end of the star system (Decuria) then set up the frame, and that's it... The Methanoids will try to attack, but as the base isn't yet functionnal, it won't work... cannot believe it, it's so simple :lol:
+
+I know it's like a kind of cheat and it may kill the spirit of the game but IT'S JUST SO RESTFUL !! (Wish I found this tip earlier :?)
+
+
+EDIT: forgot to mention i've just tested the tip and it just works fine
+EDIT2: it seems that it only works with the Solar System
+Top
+
+User avatar
+calimero	
+    Fuji Shaped Bastard
+    Fuji Shaped Bastard	
+    Posts: 2636	
+    Joined: Thu Sep 15, 2005 10:01 am	
+    Location: Serbia
+    Contact: Contact calimero
+
+Re: Deuteros:the next millenium
+
+Post by calimero » Sun Jun 20, 2010 8:30 am
+Hi,
+I played and finished this game a long time ago (on original Atari ST) but I cannot remember all things in game:
+
+I remember that there is unknown object (18%)
+I remember that there are some cryptic message
+...all stuff that you are mentioned here :)
+
+but could you wrote in short list of all milestone in game (with some screenshots perhaps)? :) (e.g. like these two thing above (unknown object and cryptic message))?
+
+btw http://www.dixiak.com/deuteros/ but I am sure that all know for this... :)
+using Atari since 1986. ・ http://wet.atari.org ・ http://milan.kovac.cc/atari/software/ ・ Atari Falcon030/CT63/SV ・ Atari STe ・ Atari Mega4/MegaFile30/SM124 ・ Amiga 1200/PPC ・ Amiga 500 ・ C64 ・ ZX Spectrum ・ RPi ・ MagiC! ・ MiNT 1.18 ・ OS X
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Sun Jun 20, 2010 7:16 pm
+
+    coy wrote:
+    the MTX which enable to tranfer instantaneously your stuff from planet to planet (works with all the galaxies) 
+
+Yeah you get this after capturing the first Meth Base :)
+
+    coy wrote:
+    :lol: All my pilots are Warlord 8) I guess we don't play in the same category :mrgreen:
+
+    Seriously, an Amiral is upgrated to Warlord once you have made a round trip from a galaxie to another one; when you put a Warlord in a IOS ship, its power will be increased from 1400 to 2000! :wink:
+
+Ahh never knew about that one, I've not yet made a round trip :o
+
+    coy wrote:
+    Have just found a trick from a forum; basically, if you want no more attack, just make one frame (Orbital Factory Section) and carry it to the end of the star system (Decuria) then set up the frame, and that's it... The Methanoids will try to attack, but as the base isn't yet functionnal, it won't work... cannot believe it, it's so simple :lol:
+
+    I know it's like a kind of cheat and it may kill the spirit of the game but IT'S JUST SO RESTFUL !! (Wish I found this tip earlier :?)
+
+
+    EDIT: forgot to mention i've just tested the tip and it just works fine
+    EDIT2: it seems that it only works with the Solar System
+
+I've seen these tips on a walkthrough, although it's probably impossible to finish the game without some sort of cheat I find it an acceptable challenge to let them bring their attacks once I've build a big enough stock of minerals etc... so I suppose I'm only "slightly cheating" lol
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Mon Jun 21, 2010 5:40 pm
+Well I seem to have found another possible bug...
+Following coy's advice I sent the inter-system ships on return journeys back to Sol from the system I had reached, with the intention of promoting the Admirals to Warlords...
+However, as soon as the ships arrive back they explode! 8O
+I tried using a new ship with the same admiral, tried going to a different system for the second trip but it resulted in the same, the instant that the ships arrive they explode!
+Is this supposed to happen?
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Tue Jun 22, 2010 8:55 pm
+Ahh I've found the answer myself ;-)
+Seems that the other systems have to be taken in the order that they appear in the Mass Transporter buttons, otherwise key events won't happen lol
+I tried this new approach after reading a walkthrough written in very dodgy Engrish!
+When the Proxima system is taken (i.e. the meths are defeated there) you get the technology to travel at warp speed between systems and fancy that - your ships no longer explode! :)
+So it's not such an open ended game after all :lol:
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+coy	
+    Captain Atari
+    Captain Atari	
+    Posts: 277	
+    Joined: Tue Oct 21, 2008 9:03 am	
+
+Re: Deuteros:the next millenium
+
+Post by coy » Wed Jun 23, 2010 1:29 am
+
+    RetroGamerUK wrote:
+    Well I seem to have found another possible bug...
+    Following coy's advice I sent the inter-system ships on return journeys back to Sol from the system I had reached, with the intention of promoting the Admirals to Warlords...
+    However, as soon as the ships arrive back they explode! 8O
+    I tried using a new ship with the same admiral, tried going to a different system for the second trip but it resulted in the same, the instant that the ships arrive they explode!
+    Is this supposed to happen?
+
+:lol: i did excatly the same thing than you, we're both as good :lol: (although i already suspected at that time that i'd need something else to get further in the game :angel: )
+
+Glad you have found the HED fuel - HINT : Later on in the game, you'll need a lot of them, so remember, Helium + Deuterium = HED (you'll understand why it is important)
+
+
+I've planned to play Millennium 2.2 btw (which is the first part actually); have you ever played that game? Some reviews say it's good but too easy..
+
+    calimero wrote:
+    Hi,
+    I played and finished this game a long time ago (on original Atari ST) but I cannot remember all things in game:
+
+    I remember that there is unknown object (18%)
+    I remember that there are some cryptic message
+    ...all stuff that you are mentioned here :)
+
+    but could you wrote in short list of all milestone in game (with some screenshots perhaps)? :) (e.g. like these two thing above (unknown object and cryptic message))
+
+Gonna try (not very sure if it's exactly what you're asking for, though) :
+
+Basically, you start on a planet with one rig, thanks to which, you can extract some resources (normal); from there, and after having created some workers (and also pilots and scientists), you build more rigs... to get more resources, then your scientists discovers the spacecraft technology, thanks to which, you'll be able to carry some stuff in space to... yes... set up a space station... In the space station (and only there), you can build a bigger ship so that you can travel and reach the others planets to... yesImage ... build others stations, and then you can... (!)... extract new resources, to... right... build new technologies ..Image
+
+The aim of getting all those resources is to be able to build plenty warships and drones (ship's weapon) then you can prepare to meet the methanoids; after a few exchange with them, and because they're bored, they will declare war. As you have already a well trained army, hehe, it's not a problem, you can start to fight and drive them out of the solar system... then explore the others galaxies, discover new technologies etc... etc...
+
+But the main goal of the game is to retrieve the parts of the Unknow Objet wich are scattered in each galaxies... What's the point with the coded messages? (forbidden to RGUK - spoilers)
+
+Code: Select all
+
+GREETINGS HUMAN.
+
+WE ARE MONITORING ALL OF YOUR
+TRANSMISSIONS IN AN ATTEMPT TO
+UNDERSTAND YOUR LANGUAGE
+
+THIS MESSAGE SHALL BE REPEATED
+UNTIL WE ARE ABLE TO COMMUNICATE
+FLUENTLY
+
+THERE IS A SUBJECT OF GREAT
+IMPORTANCE WE MUST DISCUSS
+WITH YOU.
+
+--------
+
+GREETINGS ONCE AGAIN, HUMAN.
+
+ALLOW US TO INTRODUCE OURSELVES.
+WE ARE A PEACEFUL RACE, SIMILAR
+TO YOURSELVES FROM A GALAXY
+SOME 700000 PARSECS DISTANT.
+
+WE HAVE ALREADY MADE CONTACT
+WITH A RACE IN YOUR GALAXY AND
+OBSERVE THAT YOU ARE BOTH AT
+WAR. THIS IS TO BE EXPECTED.
+WE TOO HAVE FOUND THEM TO BE
+DISHONOURABLE. THIS TIME WE
+MUST BE CERTAIN BEFORE PLACING
+OUR TRUST IN YOU.
+
+CONTACT WILL FOLLOW WHEN
+OBSERVATIONS ARE COMPLETE.
+
+--------
+
+GREETINGS, FRIEND.
+
+WE BELIEVE WE CAN TRUST YOU AND
+REQUEST YOUR ASSISTANCE IN A
+PROJECT TO OUR MUTUAL BENEFIT.
+
+MANY LAND AGO, WE TRANSMUTED A
+GIFT TO THE METHANOIDS. A GIFT
+OF GREAT POWER AND IMPORTANCE.
+
+SADLY, THEY DISASSEMBLED IT IN
+AN ATTEMPT TO UNDERSTAND THE
+TECHNOLOGY, A GRAVE MISTAKE.
+OUR SCANNERS TELL US THAT THE
+SEGMENTS ARE SCATTERED AMONG 8
+STARS IN YOUR GALAXY. WE SHALL
+INFORM YOU OF THEIR EXACT
+LOCATION AS WE DETECT THEM.
+
+--------
+
+GREETINGS, FRIEND.
+
+WE HAVE CONFIRMATION FROM OUR
+SCANNERS THAT ONE SEGMENT OF
+OUR APPARATUS IS
+LYING IN ORBIT AROUND ATLANTIC,CHLOE, BABYLON,HADRIAN,ROMULUS,CAESIUS,PLIOCENE,ALPHA <=== random each new game
+
+PLEASE ATTEMPT TO RECOVER THE
+SEGMENT AND RETURN IT TO ANY
+OF YOUR FACTORIES.
+
+Also: http://www.youtube.com/watch?v=-I9l9tyR ... re=related
+Top
+
+coy	
+    Captain Atari
+    Captain Atari	
+    Posts: 277	
+    Joined: Tue Oct 21, 2008 9:03 am	
+
+Re: Deuteros:the next millenium
+
+Post by coy » Wed Jun 23, 2010 3:32 am
+...
+deut_001.png
+deut_002.png
+deut_003.png
+deut_004.png
+deut_005.gif
+You do not have the required permissions to view the files attached to this post.
+Top
+38 posts
+
+    1 
+
+Return to “Games - General”
+
+    Board index	
+    All times are UTC
+    Delete cookies
+    Contact us
+
+Powered by phpBB® Forum Software © phpBB Limited
+
+Privacy | Terms
+
+
+This website uses cookies to ensure you get the best experience on our website. Learn more
+Got it!
+Atari-Forum
+
+A forum about Atari 16/32 computers and their clones. This forum is in no way affiliated with Atari Interactive.
+
+Skip to content
+
+    Quick links
+    FAQ
+    Rules
+    Login
+    Register
+
+    Board index Atari ST Gaming Games - General
+
+Deuteros:the next millenium
+
+Moderators: simonsunnyboy, Mug UK, ICS, Doctor Bob Gordon, Moderator Team
+38 posts
+
+    2 
+
+coy	
+    Captain Atari
+    Captain Atari	
+    Posts: 277	
+    Joined: Tue Oct 21, 2008 9:03 am	
+
+Re: Deuteros:the next millenium
+
+Post by coy » Wed Jun 23, 2010 3:35 am
+...
+deut_006.png
+deut_007.png
+deut_008.png
+deut_009.png
+deut_010.png
+You do not have the required permissions to view the files attached to this post.
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Wed Jun 23, 2010 4:45 pm
+Yes I've played Millenuim 2.2 coy, it's another classic!
+Hehe yeah didn't take long to decipher the alien language, I'm fairly confident I'll be able to complete the game now, but if I do get stuck I'll soon say so :wink:
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+coy	
+    Captain Atari
+    Captain Atari	
+    Posts: 277	
+    Joined: Tue Oct 21, 2008 9:03 am	
+
+Re: Deuteros:the next millenium
+
+Post by coy » Sat Jun 26, 2010 2:29 am
+should be a routine now :D - Good luck anyway
+Top
+
+coy	
+    Captain Atari
+    Captain Atari	
+    Posts: 277	
+    Joined: Tue Oct 21, 2008 9:03 am	
+
+Re: Deuteros:the next millenium
+
+Post by coy » Sat Jun 26, 2010 4:13 am
+Forget to mention that the Pompey Pirates version has a 1634 trainer option
+
+Code: Select all
+
+ TRAINER INSTRUCTIONS
+====================
+
+Last summer Gino bet that I couldn't put 50 trainers into a game. Well, it took
+some time for a suitable game to appear, but I've done it. Not just 50
+trainers, but ONE THOUSAND SIX HUNDRED AND THIRTY FOUR. If you're going to be
+a flash git you may as well be a @4really@5 flash git!
+
+There are 16 types of resources available in Orbital Factories (OF), some of
+which are not available at the very start of the game. What I've done is make
+it possible for you to top up the stores to their limit (50000t) every 60
+seconds (real time, not game time). You can individually select the OF's you
+wish to keep supplied in this manner, and you can of course select particular
+resources as well. There are a maximum of 98 OF's in the game, so that's 1568
+options alone (98 * 16).
+
+Please note that though the star system names are shown, the names of the
+orbital factories are not - this is because I have no idea in what order you
+are going to set them up. Orbital Factory number 1 in 'The Sun' star system
+will always be Earth however. The numbering order goes from left to right, top
+to bottom - so the icons in Master Control for the OF's are laid out like this:
+
+			1		2
+			3		4
+			5		etc...
+
+Next are the refuel and rearm options for the IOS' and SCG's. You can have a
+maximum of 16 types of each craft, and you can individually select particular
+craft to refuel and particular craft to rearm. The refuelling and rearming to
+the limits (250t fuel and 200 drones) is again carried out once every 60
+seconds realtime. That's another 64 options; 16 fuel and 16 arm options for
+both IOS' and SCG's.
+
+Again, the individual craft are only identified by number and not by name
+because I have no idea what you will call them! The numbering order is the same
+as for the OF's above.
+
+The last 2 options are to make your drones invincible, so that you always win
+battles against enemy drones, and to stop Prejudice Torpedoes from using the
+100t of fuel they require. You will still need at least 100t to fire the
+weapon, but it will not actually @4use@5 the fuel, so you can keep firing until
+the enemy drones are all destroyed.
+
+So there you have it, 1568 + 64 + 2 = 1634 options. Just be bloody glad that I
+didn't include the surface stores (another 1568 options), and equipment stores
+both in orbit and on the surface (another couple of thousand)! But the code to
+carry out the current trainers is already getting rather complex, and would
+slow the game down if it kicked in more often than once every minute or if it
+was got more complicated!
+
+If you don't fancy actually using the first 1568 trainers you can press Esc to
+skip them entirely and go straight to the refuel/rearm/drone/torpedo trainers.
+Of course you can always activate all the trainers, load in a saved game, wait
+until the trainer kicks in (it will do so 10 seconds after loading to start
+with, every 60 seconds from then on), then save the game. Then that save file
+will have full resources etc., and you won't need to use the trainer until
+resources start getting low again.
+
+Ridiculous :lol:
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Fri Jul 27, 2012 5:22 pm
+I've been playing this classic again, and this time I've continued to just about nearly conquering the final star system! (sorry if I drone on a bit..
+
+    coy wrote:
+    In the other hand, i like how you have to build a homogeneous network between the planets, how you have to be careful that the planets which continually build drones get all the required resources from the other ones. Pure management! When you have many planets, it can get very confusing..
+
+I've been using an easy system to manage the movement of elements between planets, it's obvious really, I call it a star network, which it is in 2 ways, it is a network between the stars, and all of the points are connected to a central point.
+
+Any new planet I've just conquered or set a base at, the orbital MTX is set to connect to the central point in the star network (Earth obviously), then depending on present mineral stocks at other bases, I set the MTX to either SHARE with the network or FEED it.
+
+To FEED the star network the MTX is set to send to Earth only the elements it produces, thus feeding the network.
+To SHARE it would be set to BALANCE ALL elements with Earth, and so Earth and all other SHARED systems would maintain the same (or thereabouts) levels of elements.
+MeH and HeD fuel: all SHARED planets, can share these fuels so that a large stock builds up, and feeder systems that produce the required elements can also feed the fuel they produce.
+
+At the start of the game, Silver is the most scarce of elements, especially once star drones are produced, so it's best to set all SHARED planets to FEED silver into the network, except Earth and a couple of other close systems which would be mass producing the star drones.
+
+Generally, newly added planets are set to FEED the network, then as the game progresses, and stocks start to reach 50k at Earth and the shared planets, more planets can be changed from feeders to sharers, this expands the capacity of the network, and allows for more bases to have access to all the elements available.
+This system leaves the MTX at Earth free for use as necessary, handy as the systems are gradually conquered.
+
+The star network can also be used when mass producing IOS and star drones (or any item to an extent), all planets producing the drones are set to send them to Earth, which stockpiles them, then any new conquered base can be set to SHARE the drones with Earth which will fetch half of the stock over for immediate use, having replenished the fleet, the MTX can be set to send the drones back to Earth. Basically it's a quick way of grabbing drones from Earth without having to do it from the MTX at Earth.
+The same can be done to fetch fuel from Earth.
+
+For items that have a max stock level of 15 such as the derrick, it is easier to set the MTX at Earth to send these to the first base in the system being conquered at any given time, then manually send the derricks out from there to each base as it's swiped from the Meths.
+
+With the star network looking after the elements, the most time consuming part of the game is the installation of derricks, the Meth bases never have 8 when conquered, probably not essential to fit all of the planets with 8, but I did :lol:
+
+Anyway, so there it is, thank you for reading 8)
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+coy	
+    Captain Atari
+    Captain Atari	
+    Posts: 277	
+    Joined: Tue Oct 21, 2008 9:03 am	
+
+Re: Deuteros:the next millenium
+
+Post by coy » Sun Jul 29, 2012 4:50 pm
+beware, the methanoids are cheaters, no matter if you kill their army, they are constantly regenerated and keep on attacking your planets, i think this makes no sense and just kill the fun - at first i thought it was a bug
+
+when i play a game, it's not be forced every 15 min to return to your planet and defend it while the enemy's army is supposed to be destroyed - or at least greatly reduced.. shame as this game has great potential..
+
+the first part, establishing a base, find components to build sophisticated ships, to be able to fly deeper in the galaxy, that's what i like and found entertaining about this game. The 2nd part = rubbish
+
+
+you can say 'hello' from me to these bast*rds if you wish btw :mrgreen:
+Top
+
+User avatar
+Methanoid	
+    Captain Atari
+    Captain Atari	
+    Posts: 341	
+    Joined: Mon Jan 26, 2004 2:41 pm	
+    Location: England.. where else?
+
+Re: Deuteros:the next millenium
+
+Post by Methanoid » Mon Jul 30, 2012 12:46 pm
+
+    coy wrote:
+    beware, the methanoids are cheaters, no matter if you kill their army, they are constantly regenerated and keep on attacking your planets, i think this makes no sense and just kill the fun - at first i thought it was a bug
+
+    when i play a game, it's not be forced every 15 min to return to your planet and defend it while the enemy's army is supposed to be destroyed - or at least greatly reduced.. shame as this game has great potential..
+
+    the first part, establishing a base, find components to build sophisticated ships, to be able to fly deeper in the galaxy, that's what i like and found entertaining about this game. The 2nd part = rubbish
+
+
+    you can say 'hello' from me to these bast*rds if you wish btw :mrgreen:
+
+How dare you call my fellow Methanoids cheaters? We just play to win!! :lol:
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Mon Jul 30, 2012 7:37 pm
+Well actually I found that the attacks did slow down eventually, and with the prejudice torpedoes and eventually the smart bomb thingy their attacks became no problem at all.
+At the final star system they would have a second wave defending their bases, again, not a prob with torpedoes.
+I enjoyed all parts of the game except the annoying pirate bit.
+I must say again that I did cheat though throughout the game by saving, fast forwarding to the next attack then loading the save game so I could prepare the next target for attack, can't imagine trying to complete the game without this cheat... I suppose it would be possible but it would require many many drones and many IOS ships to re-build lost bases...
+Maybe next time I play I'll try this, have either of you finished the game this way? i.e. no cheating?
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+User avatar
+calimero	
+    Fuji Shaped Bastard
+    Fuji Shaped Bastard	
+    Posts: 2636	
+    Joined: Thu Sep 15, 2005 10:01 am	
+    Location: Serbia
+    Contact: Contact calimero
+
+Re: Deuteros:the next millenium
+
+Post by calimero » Mon Jul 30, 2012 7:46 pm
+
+    RetroGamerUK wrote:
+    I must say again that I did cheat though throughout the game by saving, fast forwarding to the next attack then loading the save game so I could prepare the next target for attack, can't imagine trying to complete the game without this cheat... I suppose it would be possible but it would require many many drones and many IOS ships to re-build lost bases...
+    Maybe next time I play I'll try this, have either of you finished the game this way? i.e. no cheating?
+
+I finish Deuteros on original ST back in 90s without cheating ;)
+
+
+" annoying pirate bit"
+
+...what are these pirates? I do not remember them ?!?
+
+
+btw did Ian Bird maka something after Deuteros?
+using Atari since 1986. ・ http://wet.atari.org ・ http://milan.kovac.cc/atari/software/ ・ Atari Falcon030/CT63/SV ・ Atari STe ・ Atari Mega4/MegaFile30/SM124 ・ Amiga 1200/PPC ・ Amiga 500 ・ C64 ・ ZX Spectrum ・ RPi ・ MagiC! ・ MiNT 1.18 ・ OS X
+Top
+
+User avatar
+Methanoid	
+    Captain Atari
+    Captain Atari	
+    Posts: 341	
+    Joined: Mon Jan 26, 2004 2:41 pm	
+    Location: England.. where else?
+
+Re: Deuteros:the next millenium
+
+Post by Methanoid » Mon Jul 30, 2012 7:52 pm
+http://en.wikipedia.org/wiki/Ian_Bird_( ... developer)
+
+I think you mean Altered Destinies?
+
+I actually had a chat with Ian and he told me about his HD crash causing Deuteros code for PC to be lost forever... and he shared some pictures and video of a 2000s reboot of M22... I think the trailer is still on YouTube where I uploaded it
+
+http://www.youtube.com/watch?v=mZBP99saUck
+Top
+
+User avatar
+RetroGamerUK	
+    RetroLamerUK
+    RetroLamerUK	
+    Posts: 2923	
+    Joined: Fri Mar 26, 2004 6:37 pm	
+    Location: Northwest England.
+
+Re: Deuteros:the next millenium
+
+Post by RetroGamerUK » Mon Jul 30, 2012 8:13 pm
+
+    calimero wrote:
+    " annoying pirate bit"
+
+    ...what are these pirates? I do not remember them ?!? 
+
+Ahh this is awkward, I could never find an ST version of this game that worked properly so I played the <cough> amiga version :oops:
+WHERE CAN I DOWNLOAD ST/FALCON GAMES???
+WHERE CAN I BUY ST/FALCON/TT HARDWARE AND SOFTWARE???
+Image
+Top
+
+User avatar
+calimero	
+    Fuji Shaped Bastard
+    Fuji Shaped Bastard	
+    Posts: 2636	
+    Joined: Thu Sep 15, 2005 10:01 am	
+    Location: Serbia
+    Contact: Contact calimero
+
+Re: Deuteros:the next millenium
+
+Post by calimero » Mon Jul 30, 2012 8:20 pm
+^
+what is M22 ?? Ian's remake of original Millenium for PC ? :) does he still work on this - it looks promising! :)
+
+
+Did you play Altered Destinies? Is it at least half good as Deuteros and Millenium? :)
+using Atari since 1986. ・ http://wet.atari.org ・ http://milan.kovac.cc/atari/software/ ・ Atari Falcon030/CT63/SV ・ Atari STe ・ Atari Mega4/MegaFile30/SM124 ・ Amiga 1200/PPC ・ Amiga 500 ・ C64 ・ ZX Spectrum ・ RPi ・ MagiC! ・ MiNT 1.18 ・ OS X
+Top
+
+User avatar
+Methanoid	
+    Captain Atari
+    Captain Atari	
+    Posts: 341	
+    Joined: Mon Jan 26, 2004 2:41 pm	
+    Location: England.. where else?
+
+Re: Deuteros:the next millenium
+
+Post by Methanoid » Mon Jul 30, 2012 9:00 pm
+
+    calimero wrote:
+    ^
+    what is M22 ?? Ian's remake of original Millenium for PC ? :) does he still work on this - it looks promising! :)
+
+
+    Did you play Altered Destinies? Is it at least half good as Deuteros and Millenium? :)
+
+Its just a trailer that Ian knocked up to sell the concept of the remake he was working on to s/w companies but nobody picked up on it so he shelved it. I've got some conceptual art around somewhere :wink:
+Top
+38 posts
+
+    2 
+
+Return to “Games - General”
+
+    Board index	
+    All times are UTC
+    Delete cookies
+    Contact us
+
+Powered by phpBB® Forum Software © phpBB Limited
+
+Privacy | Terms

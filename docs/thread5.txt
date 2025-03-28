@@ -1,0 +1,614 @@
+Gregory Baker
+unread,
+Mar 10, 2000, 9:00:00 PM
+to
+Okay, it's old and obscure, but I never finished it. If anyone has an
+original copy they are will to trade for cash, please e-mail me.
+
+I just can't sleep knowing the universe isn't safe from Methanoids. :)
+
+--
+Gregory Baker
+gba...@cim-solutions.com
+
+Michael McClay's profile photo
+Michael McClay
+unread,
+Mar 10, 2000, 9:00:00 PM
+to
+You can download it for free on this emulation site. Activision have granted
+them a license to distribute it given the age of the game. Get it at
+http://back2roots.emuunlim.com/Games/Downloads/D/ and yeah its a damn fine
+game. I only wish he'd continued the saga.
+
+Mike.
+
+Gregory Baker <gba...@cim-solutions.com> wrote in message
+news:38C87951...@cim-solutions.com...
+
+Mike Price's profile photo
+Mike Price
+unread,
+Mar 11, 2000, 9:00:00 PM
+to
+On Fri, 10 Mar 2000 04:27:05 GMT, Gregory Baker
+<gba...@cim-solutions.com> wrote:
+
+>Okay, it's old and obscure, but I never finished it. If anyone has an
+>original copy they are will to trade for cash, please e-mail me.
+>
+>I just can't sleep knowing the universe isn't safe from Methanoids. :)
+
+
+I always get my arse kicked as soon as the baddies arrive :( Loved
+the game though. :)
+
+Mike
+
+Gregory Baker's profile photo
+Gregory Baker
+unread,
+Mar 12, 2000, 9:00:00 PM
+to
+
+Mike Price wrote:
+
+> I always get my arse kicked as soon as the baddies arrive :( Loved
+> the game though. :)
+
+Once I discovered that war was triggered by building a certain number of
+stations I started over (after finding out what resources are required to
+build drones). I built as many stations as I could without causing
+conflict, then I let the computer run for a day or two stockpiling the
+necessary amount of resources so that when I triggered war I could produce
+enormous amounts of drones. Tedious, but it worked! Once I cleared them
+out of our space, I made the jump to the closest star system and discovered
+that I should have sent more warships to protect my first base out there.
+
+Then I sold my A2000. :-(
+
+--
+Gregory Baker
+gba...@cim-solutions.com
+
+Gregory Baker's profile photo
+Gregory Baker
+unread,
+Mar 13, 2000, 9:00:00 PM
+to
+Michael McClay wrote:
+
+> You can download it for free on this emulation site. Activision have granted
+> them a license to distribute it given the age of the game. Get it at
+> http://back2roots.emuunlim.com/Games/Downloads/D/ and yeah its a damn fine
+> game. I only wish he'd continued the saga.
+
+Okay, only one problem though. How does one create a save game disk if using
+WinUAE to play the game? It does not want to format a blank .adf file, so it
+must be trying to do something unusual to the disk
+
+Does anyone have an adf of the save disk? :)
+
+--
+Gregory Baker
+gba...@cim-solutions.com
+
+MORB's profile photo
+MORB
+unread,
+Mar 16, 2000, 9:00:00 PM
+to
+Gregory Baker a écrit:
+
+Some time ago, I started to play seriously, and found a more or less
+efficient way of defending against methanoids. They often attacked the
+same station, so I posted two war ships there. I was letting the first
+one to fight, and when it had almost no longer drones, I retreated, and
+then let my second ship attack and clear up the ennemy ship. I was doing
+attacks the same way, using two ships. But it needed an HUGE production
+of drones. I don't remember how I was doing to colonize an entire
+system... But it was long, slow, and needed to play everytime. I stopped
+to play too long to achieve to continue the game where I left it.
+
+--
+Antoine 'MORB' Chavasse / CdBS Software
+
+Thomas Jørgen Wold Hansen's profile photo
+Thomas Jørgen Wold Hansen
+unread,
+Mar 16, 2000, 9:00:00 PM
+to
+
+> > Once I discovered that war was triggered by building a certain number of
+> > stations I started over (after finding out what resources are required to
+> > build drones). I built as many stations as I could without causing
+> > conflict, then I let the computer run for a day or two stockpiling the
+> > necessary amount of resources so that when I triggered war I could produce
+> > enormous amounts of drones. Tedious, but it worked! Once I cleared them
+> > out of our space, I made the jump to the closest star system and discovered
+> > that I should have sent more warships to protect my first base out there.
+> >
+>
+> Some time ago, I started to play seriously, and found a more or less
+> efficient way of defending against methanoids. They often attacked the
+> same station, so I posted two war ships there. I was letting the first
+> one to fight, and when it had almost no longer drones, I retreated, and
+> then let my second ship attack and clear up the ennemy ship. I was doing
+> attacks the same way, using two ships. But it needed an HUGE production
+> of drones. I don't remember how I was doing to colonize an entire
+> system... But it was long, slow, and needed to play everytime. I stopped
+> to play too long to achieve to continue the game where I left it.
+
+
+A few tips then:
+1. Always use the your highest ranking crews in battles.
+2. Stock up on a LOT of resources before colonizing the system that
+starts the methanoid war.
+3. Never try to defend bases in other star systems, thats a futile
+and unnecessary task. You only need one base in each remote galaxy to get
+that "thing". When you get it, leave the poor base to die.
+
+It still takes a LONG time to win this game.
+
+
+thomas
+
+Lurker at the Threshhold's profile photo
+Lurker at the Threshhold
+unread,
+Mar 16, 2000, 9:00:00 PM
+to
+In article <y9yaejy...@ormar.ifi.uio.no>,
+
+>
+>A few tips then:
+>1. Always use the your highest ranking crews in battles.
+
+A Warlord gives IOS drones the same combat strength as SSG Drones.
+Considering that the former are much cheaper to build, this makes
+defending other start systems much more viable.
+
+Also using an unmanned carrier just long enough to launch a PTL
+or two before running can soften up an attacking force quite nicely
+for another IOS carrier to deal with. This can be a usefull tactic
+early in the game when IOS drones are tough to come buy and
+experienced crews even tougher, or when you're caught in the middle
+of setting up a base's defenses.
+
+>3. Never try to defend bases in other star systems, thats a futile
+> and unnecessary task. You only need one base in each remote galaxy to get
+> that "thing". When you get it, leave the poor base to die.
+
+I strongly disagree with this one. The same "the Methanoids attack the
+same base twice" and "the Methanoids usually attack the last captured base,
+then coreward" rules apply here, making defenses fairly easy to set up.
+The production gained from the additional bases, however, makes the effort
+well worth it. By games end your war machine should be producing *hundreds*
+of IOS drones above what is needed for defense (which will eventually be
+none, once the B-laser is available). The last times I played, I had
+2 tag team IOS carriers blitz through the last 3 star systems, pausing
+only to capture each base, teleport over more drones, and continue the
+process. The only lags were the initial base capture and getting the
+crews trained to Warlord status and on site to man the IOS ships, not
+a major delay if you set these up for your next system in advance.
+
+------------------------------------------------------------------------
+- Robert Stetler, k...@netcom.com "A friend said he was into astral -
+- projection, but I told him he was out of his mind." -
+------------------------------------------------------------------------
+
+
+Gregory Baker's profile photo
+Gregory Baker
+unread,
+Mar 17, 2000, 9:00:00 PM
+to
+Well, I thank everyone for the strategy tips, but if I can't build the save game
+disk, it is all for naught! :)
+
+Quick rehash for anyone who missed the original post: I'm running Deuteros on
+WinUAE, so I can't create a save game disk. Can it be done? Does it already
+exist as an ADF?
+
+Lurker at the Threshhold wrote:
+
+> Also using an unmanned carrier just long enough to launch a PTL
+> or two before running can soften up an attacking force quite nicely
+> for another IOS carrier to deal with. This can be a usefull tactic
+> early in the game when IOS drones are tough to come buy and
+> experienced crews even tougher, or when you're caught in the middle
+> of setting up a base's defenses.
+
+PTL? What am I missing here?
+
+> The last times I played, I had
+> 2 tag team IOS carriers blitz through the last 3 star systems, pausing
+> only to capture each base, teleport over more drones, and continue the
+> process.
+
+Um, you lost me. Don't you need an SSG to go from system to system, and an IOS
+in the system?
+
+Gregory Baker
+gba...@cim-solutions.com
+
+Gregory Baker's profile photo
+Gregory Baker
+unread,
+Mar 17, 2000, 9:00:00 PM
+to
+
+"Thomas Jørgen Wold Hansen" wrote:
+
+<snip>
+
+> It still takes a LONG time to win this game.
+
+I like to think that was my fault. ;-)
+
+I bought the first game in the series and had it finished after 18 hours. I wrote
+a letter and sent it to Microprose (I believe they were the publisher) complaining
+about how short the game was. Deuteros was taking WAY longer, so I thought the
+authors were getting back at me. :-)
+
+--
+Gregory Baker
+gba...@cim-solutions.com
+
+Shane Monroe's profile photo
+Shane Monroe
+unread,
+Mar 17, 2000, 9:00:00 PM
+to
+If all you need is a 'blank formatted disk' to save on, then nip over to
+www.amigaemulation.com and download the blank disk images there. Select
+SAVE GAME, then 'insert' the blank disk. Works for a lot of my visitors.
+
+Good luck!
+
+In article <38D1A37A...@cim-solutions.com>, gbaker@cim-
+solutions.com says...
+
+
+> Well, I thank everyone for the strategy tips, but if I can't build the save game
+> disk, it is all for naught! :)
+>
+> Quick rehash for anyone who missed the original post: I'm running Deuteros on
+> WinUAE, so I can't create a save game disk. Can it be done? Does it already
+> exist as an ADF?
+>
+
+-- 
+Shane R. Monroe - Web Developer/Insomniac/Average Joe:
+monroeworld.com / amigaemulation.com / scorchedtanks.com / cynthiarothrock.org
+davidcarradine.org / deluxegalaga.monroeworld.com / dup.monroeworld.com
+
+Lurker at the Threshhold's profile photo
+Lurker at the Threshhold
+unread,
+Mar 17, 2000, 9:00:00 PM
+to
+In article <38D1A37A...@cim-solutions.com>,
+
+Gregory Baker <gba...@cim-solutions.com> wrote:
+>
+>Quick rehash for anyone who missed the original post: I'm running Deuteros on
+>WinUAE, so I can't create a save game disk. Can it be done? Does it already
+>exist as an ADF?
+
+We know, but the conversation thread got sidetracked. This is one of
+those games that the mere mention gets people to post old stories about.
+
+Good luck, I can't help you here (I played the game on the real thing).
+The thought of playing Deuteros again on my Pentium III laptop, however,
+has me quite intrigued.
+
+>> Also using an unmanned carrier just long enough to launch a PTL
+>> or two before running can soften up an attacking force quite nicely
+>> for another IOS carrier to deal with. This can be a usefull tactic
+>> early in the game when IOS drones are tough to come buy and
+>> experienced crews even tougher, or when you're caught in the middle
+>> of setting up a base's defenses.
+>
+>PTL? What am I missing here?
+
+Prejudice Torpedo Launcher. Nifty little gadget that blows a load
+of fuel and (if timed right) nails a good number of enemy drones in
+combat (as well as several of yours - or more, if your luck or timing
+is lacking). Not as effective as the B-laser, but at least its mobile.
+
+>> The last times I played, I had 2 tag team IOS carriers blitz through
+>> the last 3 star systems, pausing only to capture each base, teleport
+>> over more drones, and continue the process.
+>
+>Um, you lost me. Don't you need an SSG to go from system to system, and an IOS
+>in the system?
+
+As I stated, there is a minor (usually *very* minor) delay of using a
+SSG to take the first base in each system, and one to haul along a crew
+for the IOS carriers (take the other crew from the SSG before it heads
+home). Once that first base is taken, teleport the IOS components and
+drones, assemble them and repeat the process. If your SSG is waiting ready
+for the next system assault as your IOS ships finish the prior one, the
+timing flow is almost seamless. Bottom line is you should only need to use
+a SSG drone carrier once per system outside to Sol system. Besides,
+maintaining more than 1 SSG carrier (and even that, if you keep it
+manned) is just asking for a Warlord to go pirate.
+
+And on that note, anyone figure out what the hell you do once you've
+got that bastard locked away ? Nothing else happened when I played,
+no messages, nothing. Always wanted to "find out why" he turned traitor.
+
+Angus Manwaring's profile photo
+Angus Manwaring
+unread,
+Mar 17, 2000, 9:00:00 PM
+to
+On 17-Mar-00 08:17:25, Gregory Baker said
+
+>Well, I thank everyone for the strategy tips, but if I can't build the save
+>game disk, it is all for naught! :)
+
+>Quick rehash for anyone who missed the original post: I'm running Deuteros on
+
+
+>WinUAE, so I can't create a save game disk. Can it be done? Does it already
+>exist as an ADF?
+
+I wish you luck Gregory but that's a question for another newsgroup.
+
+All the best,
+Angus Manwaring. (for e-mail remove ANTISPEM)
+
+I need your memories for the Amiga Games Database: A collection of Amiga
+Game reviews by Amiga players http://www.angusm.demon.co.uk/AGDB/AGDB.html
+
+
+Shane R. Monroe's profile photo
+Shane R. Monroe
+unread,
+Mar 17, 2000, 9:00:00 PM
+to
+For lack of a better place, I'll post the Deuteros save game ADF in
+alt.binaries.warez.amiga
+
+In article <662.111T1547T11735082@angusm_ANTISPEM_.demon.co.uk>,
+angus@angusm_ANTISPEM_.demon.co.uk says...
+Gregory Baker's profile photo
+Gregory Baker
+unread,
+Mar 20, 2000, 8:00:00 PM
+to
+Lurker at the Threshhold wrote:
+
+> Good luck, I can't help you here (I played the game on the real thing).
+> The thought of playing Deuteros again on my Pentium III laptop, however,
+> has me quite intrigued.
+
+It had me intrigued too! It looks good playing in a window on my NT laptop. Sadly,
+it isn't meant to be.
+
+Thank you to those who supplied the save disk in .adz format. Unfortunately,
+Deuteros still does not like the disk. I guess WinUAE is expecting disks to conform
+to a certain layout and the Deuteros save disk must be using its own. Time to find
+an A500! :)
+--
+Gregory Baker
+gba...@cim-solutions.com
+
+Shane R. Monroe's profile photo
+Shane R. Monroe
+unread,
+Mar 20, 2000, 8:00:00 PM
+to
+Did you try the save disk I posted to a.b.w.a?
+
+I got it to at least come up and see the existing saved games.
+
+In article <38D57B79...@cim-solutions.com>, gbaker@cim-
+solutions.com says...
+
+Adrian Hurt's profile photo
+Adrian Hurt
+unread,
+Mar 20, 2000, 8:00:00 PM
+to
+In article <8arfmk$595$1...@slb6.atl.mindspring.net> k...@netcom.com (Lurker at the Threshhold) writes:
+>In article <y9yaejy...@ormar.ifi.uio.no>,
+>>
+>>A few tips then:
+>>1. Always use the your highest ranking crews in battles.
+>
+> A Warlord gives IOS drones the same combat strength as SSG Drones.
+>Considering that the former are much cheaper to build, this makes
+>defending other start systems much more viable.
+
+Correct. I had two fully equipped SCG fleets. There are two Methanoid
+bases in the Proxima system; I hit them both at the same time in order to
+get the hyperdrive as soon as possible, then started churning out Warlords.
+
+> Also using an unmanned carrier just long enough to launch a PTL
+>or two before running can soften up an attacking force quite nicely
+>for another IOS carrier to deal with. This can be a usefull tactic
+
+>early in the game when IOS drones are tough to come buy...
+
+The only snag here is that you don't have the PTL early in the game. :-)
+You only get it when you have cleared another system of Methanoids.
+
+Having two fleets helps, though. Have the first fleet engage, knock off a
+few Methanoid drones, disengage the first fleet, engage the second fleet.
+Battles are tests of strength, pure and simple - your full strength second
+fleet *will* beat the weakened Methanoid fleet, assuming a Warlord commands it.
+
+>>3. Never try to defend bases in other star systems, thats a futile
+>> and unnecessary task. You only need one base in each remote galaxy to get
+>> that "thing". When you get it, leave the poor base to die.
+>
+> I strongly disagree with this one. The same "the Methanoids attack the
+>same base twice" and "the Methanoids usually attack the last captured base,
+>then coreward" rules apply here, making defenses fairly easy to set up.
+
+Moreover, note that a Methanoid attack takes four days to capture a base. It
+also takes your fleet four days to get from one planet to another. So one
+fleet can actually defend up to three planets - the one it's at and its two
+adjacent neighbours.
+
+Also, the more bases you have, the more resources you get, and resources is
+everything. Especially titanium and aluminium.
+
+
+>The production gained from the additional bases, however, makes the effort
+
+>The last times I played, I had
+
+
+>2 tag team IOS carriers blitz through the last 3 star systems, pausing
+>only to capture each base, teleport over more drones, and continue the
+
+>process. The only lags were the initial base capture and getting the
+>crews trained to Warlord status and on site to man the IOS ships, not
+>a major delay if you set these up for your next system in advance.
+
+I had one SCG filled with cryo pods carrying Warlords, which accompanied the
+SCG attack fleets and dropped off Warlords when needed. Meanwhile, I always
+had three commanders in training - one on the Earth surface shuttle, one on
+the Moon surface shuttle, and one in an IOS moving between Earth and Moon.
+
+-- 
+"It'll be alright. I've done this before." - M. Garibaldi
+-----------------+------------------------------+--------------------
+Adrian Hurt | E-mail: adr...@cee.hw.ac.uk |
+| UKRA: 1026 | Kenny: RIP 30/8/99
+
+Gregory Baker's profile photo
+Gregory Baker
+unread,
+Mar 21, 2000, 8:00:00 PM
+to
+Someone forwarded me a copy of the .adz file. Deuteros still would not recognize it. I
+wonder if I have gzip configured incorrectly?
+
+"Shane R. Monroe" wrote:
+
+> Did you try the save disk I posted to a.b.w.a?
+>
+> I got it to at least come up and see the existing saved games.
+
+--
+Gregory Baker
+gba...@cim-solutions.com
+
+Gregory Baker's profile photo
+Gregory Baker
+unread,
+Mar 22, 2000, 8:00:00 PM
+to
+"Shane R. Monroe" wrote:
+
+> Did you try the save disk I posted to a.b.w.a?
+>
+> I got it to at least come up and see the existing saved games.
+
+Further to my previous post, the copy I was forwarded was the image you posted to a.b.w.a
+(thanks!).
+
+It does not list any existing saved games, nor does Deuteros recognize the disk. I tried
+a copy of Awesome that I have as .adz files and it loads fine, so I know I don't have a
+configuration issue with gzip. I'm not aware of any other parameters I can change re:
+floppy access, so I think I am pretty much sunk. The hunt for an A500 continues! :-)
+
+Thanks for all your help!
+--
+Gregory Baker
+gba...@cim-solutions.com
+
+Nathan Wain's profile photo
+Nathan Wain
+unread,
+Mar 23, 2000, 8:00:00 PM
+to
+
+On Wed, 22 Mar 2000, Gregory Baker wrote:
+> "Shane R. Monroe" wrote:
+
+> > Did you try the save disk I posted to a.b.w.a?
+> > I got it to at least come up and see the existing saved games.
+>
+> Further to my previous post, the copy I was forwarded was the image
+> you posted to a.b.w.a (thanks!).
+>
+> It does not list any existing saved games, nor does Deuteros recognize
+
+> the disk. I tried a copy of Awesome as .adz files and it loads fine,
+
+The only things I can think of to try to narrow down the problem:
+1) Can WinZIP extract the disk without complaining about the archive?
+Rename it to a .Z (gzip) file, and try to extract with WinZip... if
+WinZIP complains, we know the disk-image has been corrupted on its
+way to you. (Unlikely, I know, but worth testing for paranoias sake. :)
+
+2) Have you tried to get hold of, say, Shanes ADZ of Deuteros itself?
+Maybe you have a version hacked by different people, and they hacked
+around with the save-disk format as well, making it incompatible with
+other cracks? (Or yours is an incomplete hack of Deuteros where the
+save-game stuff just plain wont work?) ...Have you verified that it's
+the same crack?
+
+3) Are you using the same version of the same emulator as Shane? (With
+the same preferences settings?) Maybe there are emulation issues
+with the Save-disk code?
+
+I don't have an Amiga-emulator, or this game. ...But from what I've
+heard, those are the only things I can think could be wrong. :/ It's
+got me stumped.
+
+Nathan.
+--
+nat...@caverock.net homepages.caverock.net.nz/~nathan
+A4000 030/25MHz 1.2Gig HDD, 24xCD, Viewsonic17", and a *big* stereo.
+A1200, A500, SX64, C128 and Speccy+ too, for serious retrogaming. :)
+
+
+Gregory Baker's profile photo
+Gregory Baker
+unread,
+Mar 23, 2000, 8:00:00 PM
+to
+Nathan Wain wrote:
+
+> The only things I can think of to try to narrow down the problem:
+> 1) Can WinZIP extract the disk without complaining about the archive?
+> Rename it to a .Z (gzip) file, and try to extract with WinZip... if
+> WinZIP complains, we know the disk-image has been corrupted on its
+> way to you. (Unlikely, I know, but worth testing for paranoias sake. :)
+
+Winzip opened the .z and produced an .adf file. The .adf does not work
+either. :-(
+
+> 2) Have you tried to get hold of, say, Shanes ADZ of Deuteros itself?
+> Maybe you have a version hacked by different people, and they hacked
+> around with the save-disk format as well, making it incompatible with
+> other cracks? (Or yours is an incomplete hack of Deuteros where the
+> save-game stuff just plain wont work?) ...Have you verified that it's
+> the same crack?
+
+A possibility. I downloaded my copy from
+http://www.fortunecity.com/meltingpot/rain/321/adf.html
+
+The game appears to run just fine, until I can't stay awake any longer...
+
+> 3) Are you using the same version of the same emulator as Shane? (With
+> the same preferences settings?) Maybe there are emulation issues
+> with the Save-disk code?
+
+One would hope that an adf is an adf. This would represent a serious set back
+to the development of the emulator otherwise... :-)
+
+> I don't have an Amiga-emulator, or this game. ...But from what I've
+> heard, those are the only things I can think could be wrong. :/ It's
+> got me stumped.
+
+Me too! :-)
+
+Thanks for the suggestions though. Anyone else interested? :-)

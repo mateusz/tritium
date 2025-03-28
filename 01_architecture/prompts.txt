@@ -110,6 +110,16 @@ Let's now figure out a full nested list of systems and their locations from the 
 
 ---
 
-Now look carefully at @solar_system.csv which is a CSV table showing which planets/moons/asteroids have which resources. Add these resources under the relevant solar system locations in 09_systems.md as another nested level (just listing the resources present).
+Now look carefully at @solar_system.csv which is a CSV table showing which planets/moons/asteroids have which resources. Add these resources under the relevant solar system locations in 01_architecture/09_systems.md.
 
 You can find resource enum names in 06_entity_detail_resources.md. Use these names only.
+
+Here is an example of how this should look:
+
+BEFORE
+- Mercury
+
+AFTER
+- Mercury: Iron, Titanium, Carbon, Copper, Palladium, Silica
+
+Be very careful at transcribing correct resources - we will check your work later.

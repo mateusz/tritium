@@ -1,0 +1,295 @@
+Graham Hutchings
+Nov 11, 2001, 10:49:14 AM
+to
+** To reply in e-mail, remove "punpuw." and ".invalid" from address **
+
+In Deutros I have built 4 orbital factories and I have met the geezers from Jupiter so I now have axxess to Helium. Can someone tell me what happens next? I visited Saturn and was warned that those nasty Methane Breathing geezers were planning to kill me, but now research has come to a grinding halt and I cannot seem to progress. Any Ideas?
+
+--
+
+Angus Manwaring's profile photo
+Angus Manwaring
+Nov 15, 2001, 5:53:54 AM
+to
+On 10-Nov-01 21:49:14, Graham Hutchings said
+
+
+Sorry - I don't recall the details, but in the absence of any other help,
+I seem to remember that as you continued to expand one of your colonies
+stumbles on something that leads to more breakthroughs. Its certainly
+worth keeping your Marines as highly trained as possible! :)
+
+Anybody else got a better memory?
+
+All the best,
+Angus Manwaring. (for e-mail remove ANTISPEM)
+
+I need your memories for the Amiga Games Database: A collection of Amiga
+Game reviews by Amiga players http://www.angusm.demon.co.uk/AGDB/AGDB.html
+
+kid...@remoov.qwest.net's profile photo
+kid...@remoov.qwest.net
+Nov 15, 2001, 2:41:49 PM
+to
+>On 10-Nov-01 21:49:14, Graham Hutchings said
+>>** To reply in e-mail, remove "punpuw." and ".invalid" from address **
+
+>>In Deutros I have built 4 orbital factories and I have met the geezers from
+>>Jupiter so I now have axxess to Helium. Can someone tell me what happens
+>>next? I visited Saturn and was warned that those nasty Methane Breathing
+>>geezers were planning to kill me, but now research has come to a grinding
+>>halt and I cannot seem to progress. Any Ideas?
+
+
+>Sorry - I don't recall the details, but in the absence of any other help,
+>I seem to remember that as you continued to expand one of your colonies
+>stumbles on something that leads to more breakthroughs. Its certainly
+>worth keeping your Marines as highly trained as possible! :)
+
+First you're mixing your games, Angus. There are no Marines in Deuteros,
+just pilots and fighter drones. Are you maybe thinking Supremacy?
+
+>Anybody else got a better memory?
+
+Warning... Spoiler...
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
+IIRC (been a while for me as well), what you want to do is head back to
+their alien base orbiting Jupiter. When you do the base will have been set
+to self destruct. There are two switches, one on either side of the self
+destruct unit. Flip them. Leave... Quickly! When you get back home your
+scientists will replicate the self destruct and then eventually give you
+the ability to make fighter drones and the computer required to controll
+them. I HIGHLY recomend you stock pile large amounts of elments before you
+do this as once the Aliens attack you are in for a hell of a fight and
+will need the elements for making drones.
+
+Adrian Hurt's profile photo
+Adrian Hurt
+Nov 15, 2001, 11:22:13 PM
+to
+In article <1982.718T2471T...@remoov.qwest.net> kid...@remoov.qwest.net writes:
+>>On 10-Nov-01 21:49:14, Graham Hutchings said
+>>>** To reply in e-mail, remove "punpuw." and ".invalid" from address **
+>
+>>>In Deutros I have built 4 orbital factories and I have met the geezers from
+>>>Jupiter so I now have axxess to Helium. Can someone tell me what happens
+>>>next? I visited Saturn and was warned that those nasty Methane Breathing
+>>>geezers were planning to kill me, but now research has come to a grinding
+>>>halt and I cannot seem to progress. Any Ideas?
+>
+>
+>>Sorry - I don't recall the details, but in the absence of any other help,
+>>I seem to remember that as you continued to expand one of your colonies
+>>stumbles on something that leads to more breakthroughs. Its certainly
+>>worth keeping your Marines as highly trained as possible! :)
+>
+>First you're mixing your games, Angus. There are no Marines in Deuteros,
+>just pilots and fighter drones. Are you maybe thinking Supremacy?
+
+Marines are the crews of your spacecraft in Deuteros. :-)
+
+But first, you'll need to have researched the IOS Drone and DFCC; you'll need
+to have built at least one DFCC and at least 200 Drones; and you'll need a
+crew rated Admiral in charge of the flagship (an otherwise ordinary IOS fitted
+with a DFCC). I prefer to make sure I win the battle by having two fleets. :-)
+
+
+
+>When you do the base will have been set
+>to self destruct. There are two switches, one on either side of the self
+>destruct unit. Flip them. Leave... Quickly! When you get back home your
+>scientists will replicate the self destruct and then eventually give you
+>the ability to make fighter drones and the computer required to controll
+>them.
+
+Hmm... this must be a tactic I haven't heard of. I thought any ship which
+approaches a Methanoid base gets attacked, and only gets to dock with the
+base once it has defeated the defending drones. Also, the first time I try
+to capture a Methanoid base, the levers don't work - they only move after
+Research has figured out how to duplicate the mechanism. As for the drones
+and DFCC, there are two ways to get Research to invent them, depending on how
+the war started. If you build a sixth orbital factory, the Methanoids get
+upset and declare war. Research then says "Those Methanoids can't scare us"
+and invents the drones and DFCC. Alternatively, if you have no more than 5
+orbital factories and keep trading with Jupiter, they eventually decide to
+attack anyway. Your friend on Jupiter gives you a prototype laser, which
+Research will investigate and find to be useless, then they devise the drones
+and DFCC.
+
+As for helium, you won't need that until a lot later. You *will* need lots
+of titanium and aluminium. Keep this in mind when deciding where to put your
+orbital factories!
+
+-- 
+"It'll be fine. I've done this before." - M. Garibaldi
+-------------+-----------------------------+----------------------------
+Adrian Hurt | E-mail: adr...@cee.hw.ac.uk |
+| UKRA: 1026 | Orang-utan in space: 5/8/01
+
+Angus Manwaring's profile photo
+Angus Manwaring
+Nov 16, 2001, 7:21:31 AM
+to
+On 15-Nov-01 01:41:49, kidice said
+
+>>On 10-Nov-01 21:49:14, Graham Hutchings said
+>>>** To reply in e-mail, remove "punpuw." and ".invalid" from address **
+
+>>>In Deutros I have built 4 orbital factories and I have met the geezers from
+>>>Jupiter so I now have axxess to Helium. Can someone tell me what happens
+>>>next? I visited Saturn and was warned that those nasty Methane Breathing
+>>>geezers were planning to kill me, but now research has come to a grinding
+>>>halt and I cannot seem to progress. Any Ideas?
+
+
+>>Sorry - I don't recall the details, but in the absence of any other help,
+>>I seem to remember that as you continued to expand one of your colonies
+>>stumbles on something that leads to more breakthroughs. Its certainly
+>>worth keeping your Marines as highly trained as possible! :)
+
+>First you're mixing your games, Angus. There are no Marines in Deuteros,
+
+Hah! You think not, eh?!!! ;)
+
+Check the screen with the three doors for recruiting new personel. They
+are listed, Resaerch, Product and Marines.
+
+I thank you.
+
+
+>just pilots and fighter drones. Are you maybe thinking Supremacy?
+
+I'm thinking of _my_ supremacy, yes. :)
+
+kid...@remoov.qwest.net's profile photo
+kid...@remoov.qwest.net
+Nov 16, 2001, 8:11:17 AM
+to
+>Hah! You think not, eh?!!! ;)
+
+>Check the screen with the three doors for recruiting new personel. They
+>are listed, Resaerch, Product and Marines.
+
+>I thank you.
+
+Erm... Not on my version. It says Research, Product, Serfs. ;-)
+
+>I'm thinking of _my_ supremacy, yes. :)
+
+Do you have to gloat? :-)
+
+Angus Manwaring's profile photo
+Angus Manwaring
+Nov 16, 2001, 9:04:43 AM
+to
+On 15-Nov-01 19:11:17, kidice said
+
+>>Hah! You think not, eh?!!! ;)
+
+>>Check the screen with the three doors for recruiting new personel. They
+>>are listed, Resaerch, Product and Marines.
+
+>>I thank you.
+
+>Erm... Not on my version. It says Research, Product, Serfs. ;-)
+
+ROTFL! :)
+
+>>I'm thinking of _my_ supremacy, yes. :)
+
+>Do you have to gloat? :-)
+
+But I have so few opportunities. :)
+
+Joachim Froholt's profile photo
+Joachim Froholt
+Nov 17, 2001, 12:40:40 AM
+to
+
+Angus Manwaring wrote:
+
+> On 15-Nov-01 19:11:17, kidice said
+> >>Hah! You think not, eh?!!! ;)
+>
+> >>Check the screen with the three doors for recruiting new personel. They
+> >>are listed, Resaerch, Product and Marines.
+>
+> >>I thank you.
+>
+> >Erm... Not on my version. It says Research, Product, Serfs. ;-)
+>
+> ROTFL! :)
+
+Yeah, me too... it was so refreshing to see a serf joke that didn't come from
+me or Angus :-)
+
+Joachim

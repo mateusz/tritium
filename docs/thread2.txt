@@ -1,0 +1,227 @@
+Philipp Druyts
+unread,
+Jul 27, 1999, 7:00:00 PM
+to
+Hi
+
+Has anyone a complete solution of Deuteros ?
+
+Thanks
+
+Philipp (phi...@village.uunet.be)
+
+Nate Daken's profile photo
+Nate Daken
+unread,
+Jul 27, 1999, 7:00:00 PM
+to
+
+Philipp Druyts <phi...@village.uunet.be> wrote in message
+news:7nkort$8b$1...@xenon.inbe.net...
+
+There is no solution to Deuteros! You have to keep plugging away until you
+win! I will give you these hints though:
+
+Do not build a third orbital space station until you have built up quite a
+substantial supply of drones. I think it is the thrid station, maybe its
+the fourth. Methanoids will attack you once this station is built.
+
+The Methaniods have a base around Jupiter. You will gain some alien
+technology if you go there, but only do this before building the third or
+fourth station.
+
+Take full advantage of the asteroids! Mine them for as much as you can. I
+believe Aluminum is always in demand, and tends to run out when building
+equipment. Set the autopilots to automatically mine and return. Sticking
+some green pilots on mining missions is a great way to get them Admiral
+status in a short amount of time.
+
+You need 8 of the special artifact pieces to complete the game.
+
+One of your top pilots will turn into a pirate and help the Methanoids, so
+be careful!
+
+
+This truly is a great game. I have yet to find one like it for the PC.
+Wish I could.... I have a save disk from when I completed the game, took
+about 250 hours, if I remember correctly. Yea, I was addicted pretty bad.
+
+Have fun!
+
+Lurker at the Threshhold's profile photo
+Lurker at the Threshhold
+unread,
+Jul 28, 1999, 7:00:00 PM
+to
+In article <7nlfr6$7...@nnrp3.farm.idt.net>, Nate Daken <Mug...@idt.net> wrote:
+>
+>Do not build a third orbital space station until you have built up quite a
+>substantial supply of drones. I think it is the thrid station, maybe its
+>the fourth. Methanoids will attack you once this station is built.
+
+Actually I believe it is the sixth station that triggers the declaration
+of war.
+
+More importantly, you cannot even research drones until after war has
+been declared, so trying to build them up in advance is futile. Instead
+you should build up a surplus of essential metals (don't remember the
+list offhand, the platinum varients, iron, and aluminum come to mind
+as the critical ones). I actually left my Amiga running overnight one
+game, with system ships ferrying materials from base to base in an
+effort to build a balanced stockpile. Next morning everything was near
+maximum, at which point I had a waiting ISO place the last piece of
+the sixth base to start the fun.
+
+>The Methaniods have a base around Jupiter. You will gain some alien
+>technology if you go there, but only do this before building the third or
+>fourth station.
+
+The Methanoids have several bases in the system, any one of which will
+result in gaining a useless communication translation device and quickly
+afterwards trigger a war. IMO this is not the route to take to start
+the war - better to have six bases up and running. Better still to have
+several ships stationed ready to complete bases 6, 7, 8, etc at the same
+time, assuming you can cover that much territory with your defenses.
+
+>Take full advantage of the asteroids! Mine them for as much as you can. I
+>believe Aluminum is always in demand, and tends to run out when building
+>equipment. Set the autopilots to automatically mine and return. Sticking
+>some green pilots on mining missions is a great way to get them Admiral
+>status in a short amount of time.
+
+The best way to pump experience is simply put the pilots on ground base
+shuttles - even if they are autopiloted. You get a lot more trips in a
+lot less time that way. Putting them on an asteroid flight (or other system
+hop) might be required to get them that final step to admiral status (can't
+remember for sure, could be like interstellar ship jumps are required to turn
+admirals into warlords).
+
+Asteroid mining itself is a good tactic, required if I remember correctly
+for some rarer materials without building an otherwise useless base on some
+rock for them. But I didn't have much success addressing ISO drone material
+demads with them - its just too damn slow. You have to start your asteroid
+mining fleet out early, hunting for those specific materials, and even then
+you're just slowing the bleeding down. Its no substitute for having a base
+on a planet / moon that supplies those materials, never use an asteroid
+fleet as a replacement for such.
+
+>One of your top pilots will turn into a pirate and help the Methanoids, so
+>be careful!
+
+Thats a may, not a will. Only a pilot on interstellar ships will turn
+traitor, and only in certain circumstances (not sure what they are - I
+actually had to work at getting one of them to turn, just so I could
+see what the fuss was about. Even then I never figured out what to do
+after you get the bastard into the prison pod). Considering system drones
+are cheaper than interstellar ones, and with a Warlord commanding them
+they are just as effective, I can't see why anyone would use interstellar
+ships for anything other than taking over the first base in a new system.
+And after the jump, the Admiral is now a Warlord, so moving him off the
+insterstellar ship and onto the system carrier (sent via transporters
+to the newly captured base) is a no brainer.
+
+Damn, all this makes me want to bust the game out again. Too bad my
+monitor is on the fritz. In over 15 years of computer game playing
+I've yet to see a space strategic-economic game with more atmosphere
+than this one. My guess is even today this game could get a PC conversion
+without any additional flash and still make decent sales figures. If I
+ever meet the programmer (Ian Bird, I think), drinks are on me.
+
+------------------------------------------------------------------------
+- Robert Stetler, k...@netcom.com "A friend said he was into astral -
+- projection, but I told him he was out of his mind." -
+------------------------------------------------------------------------
+
+
+Nate Daken's profile photo
+Nate Daken
+unread,
+Jul 28, 1999, 7:00:00 PM
+to
+
+It's been almost 10 years since I beat this game. My memory on details is
+not that good. You hit the nail on the head more accurately. Thanks for
+cutting through my fog!
+
+I too would love to see this program re-done for other platforms. I have
+never seen a game that even comes close to this in gameplay. My son was
+playing it a year ago and it was like watching myself....
+
+
+Adrian Hurt's profile photo
+Adrian Hurt
+unread,
+Aug 3, 1999, 7:00:00 PM
+to
+In article <7nloj3$9...@dfw-ixnews17.ix.netcom.com> k...@netcom.com (Lurker at the Threshhold) writes:
+>In article <7nlfr6$7...@nnrp3.farm.idt.net>, Nate Daken <Mug...@idt.net> wrote:
+>>
+>>Do not build a third orbital space station until you have built up quite a
+>>substantial supply of drones. I think it is the thrid station, maybe its
+>>the fourth. Methanoids will attack you once this station is built.
+>
+> Actually I believe it is the sixth station that triggers the declaration
+>of war.
+
+That's my recollection, too. I had stations at Earth, The Moon, Leda,
+Callisto and Ganymede, and three more under construction among the moons
+of Saturn.
+
+>>The Methaniods have a base around Jupiter. You will gain some alien
+>>technology if you go there, but only do this before building the third or
+>>fourth station.
+>
+> The Methanoids have several bases in the system, any one of which will
+>result in gaining a useless communication translation device and quickly
+>afterwards trigger a war. IMO this is not the route to take to start
+>the war - better to have six bases up and running. Better still to have
+>several ships stationed ready to complete bases 6, 7, 8, etc at the same
+>time, assuming you can cover that much territory with your defenses.
+
+I did both. Once my first five bases were operational and the next three
+almost ready to go, I started trading at Jupiter. Eventually the Methanoids
+decided to start a war; maybe they got bored with all the chatter. At this
+point, three ships which had been waiting for this moment went round the
+Saturnian bases dropping off modules, engineers and materials, and shortly
+thereafter, the three bases went on line.
+
+> The best way to pump experience is simply put the pilots on ground base
+>shuttles - even if they are autopiloted. You get a lot more trips in a
+>lot less time that way. Putting them on an asteroid flight (or other system
+>hop) might be required to get them that final step to admiral status (can't
+>remember for sure, could be like interstellar ship jumps are required to turn
+>admirals into warlords).
+
+They can become admirals just by being in the automated surface shuttles.
+They don't need to go on interplanetary journeys.
+
+> Asteroid mining itself is a good tactic, required if I remember correctly
+>for some rarer materials without building an otherwise useless base on some
+>rock for them.
+
+As I recall, the asteroids could not supply some of the really rare stuff.
+They can supply extra titanium and aluminium, and they get you your first
+silver.
+
+>>One of your top pilots will turn into a pirate and help the Methanoids, so
+>>be careful!
+>
+> Thats a may, not a will. Only a pilot on interstellar ships will turn
+>traitor, and only in certain circumstances (not sure what they are - I
+>actually had to work at getting one of them to turn, just so I could
+>see what the fuss was about. Even then I never figured out what to do
+>after you get the bastard into the prison pod).
+
+It must be a Star Class Galleon and it must be fitted out as a carrier. The
+first trick with the pirate is to look at his bridge; you can't touch anything
+but you can see where he's going and when he will get there. Then you take
+off all his cargo pods. I think you can do this even if you have no prison
+pod. That prevents him from stealing your materials.
+
+Once he's locked in the prison pod, you have to leave him there. It's a
+waste of a SCG, although you can put some of your other "souvenirs" on the
+same ship. Or you can be evil, send the ship to the nearest Methanoid base,
+leave it there, and let them kill him. :-)
+
+-- 
+"It'll be alright. I've done this before." - M. Garibaldi
