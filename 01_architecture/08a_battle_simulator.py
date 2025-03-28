@@ -27,12 +27,21 @@ def calculate_fleet_power(drone_count: int, drone_type: str, pilot_rank: str) ->
 
 def calculate_round_losses(attacker_power: int, defender_power: int, luck_factor: float) -> int:
     """Calculate losses for a single round of combat."""
-    # Power ratio now has more impact on losses
-    power_ratio = attacker_power / (attacker_power + defender_power)
-    adjusted_ratio = power_ratio * luck_factor
+    # Add more chaos with additional randomness
+    chaos_factor = random.uniform(0.5, 1.5)  # High variance chaos factor
     
-    # Base losses now scale with attacker's power
-    base_losses = int(defender_power * 0.03 * (attacker_power / defender_power))
+    # Power ratio with more randomness
+    power_ratio = attacker_power / (attacker_power + defender_power)
+    adjusted_ratio = power_ratio * luck_factor * chaos_factor
+    
+    # More random base losses
+    random_intensity = random.uniform(0.02, 0.06)  # Varies the intensity of combat
+    base_losses = int(defender_power * random_intensity * (attacker_power / defender_power))
+    
+    # Chance for critical hit
+    if random.random() < 0.1:  # 10% chance for critical hit
+        base_losses = int(base_losses * random.uniform(1.5, 2.5))
+    
     return max(1, int(base_losses * adjusted_ratio))
 
 def resolve_battle(
@@ -48,6 +57,11 @@ def resolve_battle(
     player_luck = 1.0
     round_number = 0
     
+    # Chance for immediate advantage to either side
+    battle_momentum = random.uniform(0.9, 1.1)
+    player_momentum = battle_momentum
+    methanoid_momentum = 2 - battle_momentum
+    
     while current_player_count > 0 and current_methanoid_count > 0:
         round_number += 1
         
@@ -55,13 +69,37 @@ def resolve_battle(
         player_power = calculate_fleet_power(current_player_count, player_drone_type, player_pilot_rank)
         methanoid_power = calculate_fleet_power(current_methanoid_count, "IOS", "None")
         
-        # Update luck factor (oscillating between 0.7 and 1.3 with some randomness)
-        player_luck += random.uniform(-0.2, 0.2)
-        player_luck = max(0.7, min(1.3, player_luck))  # Clamp between 0.7 and 1.3
+        # Update luck factor with wider swings
+        player_luck = random.uniform(0.7, 1.3)
         
-        # Calculate round losses with power-based scaling
-        methanoid_round_losses = calculate_round_losses(player_power, methanoid_power, player_luck)
-        player_round_losses = calculate_round_losses(methanoid_power, player_power, 2 - player_luck)
+        # Update momentum (can shift dramatically)
+        if random.random() < 0.15:  # 15% chance for momentum shift
+            momentum_shift = random.uniform(-0.2, 0.2)
+            player_momentum = max(0.6, min(1.4, player_momentum + momentum_shift))
+            methanoid_momentum = 2 - player_momentum
+        
+        # Calculate round losses with increased chaos
+        methanoid_round_losses = calculate_round_losses(
+            player_power, 
+            methanoid_power, 
+            player_luck * player_momentum
+        )
+        player_round_losses = calculate_round_losses(
+            methanoid_power, 
+            player_power, 
+            (2 - player_luck) * methanoid_momentum
+        )
+        
+        # Random event: overwhelming assault (rare)
+        if random.random() < 0.05:  # 5% chance
+            if random.random()>=0.5:
+                methanoid_round_losses = int(methanoid_round_losses * random.uniform(2.0, 3.0))
+                print_event = "Player's fleet executes a brilliant maneuver!"
+            else:
+                player_round_losses = int(player_round_losses * random.uniform(2.0, 3.0))
+                print_event = "Methanoids launch a devastating attack!"
+        else:
+            print_event = None
         
         # Apply losses
         current_methanoid_count = max(0, current_methanoid_count - methanoid_round_losses)
@@ -76,7 +114,9 @@ def resolve_battle(
             "methanoid_losses": methanoid_round_losses,
             "luck_factor": player_luck,
             "player_power": player_power,
-            "methanoid_power": methanoid_power
+            "methanoid_power": methanoid_power,
+            "player_momentum": player_momentum,
+            "event": print_event
         })
     
     player_victory = current_player_count > 0
@@ -173,6 +213,35 @@ def print_result(scenario: str, stats: dict, player_info: tuple, methanoid_count
         f"{stats['avg_methanoid_losses']:>6.1f}±{stats['std_methanoid_losses']:>4.1f}"
     )
 
+def print_detailed_battle(result: BattleResult):
+    """Print detailed round-by-round battle information."""
+    print("\nDetailed Battle Report")
+    print("=" * 120)
+    print(f"Initial forces: {result.player_drone_count} {result.player_drone_type} vs {result.methanoid_drone_count} Methanoid IOS")
+    print("-" * 120)
+    print(f"{'Round':<6} {'Player':<8} {'P.Power':<8} {'Methanoid':<8} {'M.Power':<8} {'P.Losses':<8} {'M.Losses':<8} {'Luck':<6} {'Momentum':<8} {'Event'}")
+    print("-" * 120)
+    
+    for round_data in result.rounds:
+        event_text = round_data.get("event", "")
+        print(
+            f"{round_data['round']:<6} "
+            f"{round_data['player_count']:<8} "
+            f"{round_data['player_power']:<8} "
+            f"{round_data['methanoid_count']:<8} "
+            f"{round_data['methanoid_power']:<8} "
+            f"{round_data['player_losses']:<8} "
+            f"{round_data['methanoid_losses']:<8} "
+            f"{round_data['luck_factor']:.2f} "
+            f"{round_data.get('player_momentum', 1.0):.2f}     "
+            f"{event_text or ''}"
+        )
+    
+    print("-" * 120)
+    print(f"Battle outcome: {'Victory' if result.player_victory else 'Defeat'}")
+    print(f"Total rounds: {len(result.rounds)}")
+    print(f"Final forces - Player: {result.rounds[-1]['player_count']}, Methanoid: {result.rounds[-1]['methanoid_count']}")
+
 def main():
     # Test cases
     test_cases = [
@@ -216,6 +285,11 @@ def main():
         print_result(scenario, stats, (player_count, drone_type, pilot_rank), methanoid_count)
     
     print("\nNote: Each scenario simulated 1000 times. Stats shown as mean±std")
+    
+    # Print a detailed example battle
+    print("\nExample Detailed Battle:")
+    example_result = run_simulation(100, "IOS", "None", 100, iterations=1)[0]
+    print_detailed_battle(example_result)
 
 if __name__ == "__main__":
     main()

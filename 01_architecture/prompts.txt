@@ -89,3 +89,17 @@ OK, focusing on the core battle algorithm described in 08_battle.md (without tor
 - lists several typical input test cases, including edge ones
 - runs the simulation on the test cases many times, producing a statistical result
 - prints information about the test case and the outcome in terms of who won, and how many drones remained, preferable in a one-line, \t separated format, for easy reading in the CLI.
+
+---
+
+Make sure the printout aligns in the CLI, for easy reading. Also, add starting fleet counts and powers to the output.
+
+---
+
+Now update the battle code to go round by round. I want small progressions with each round, so that I can update the player display. I also want luck to ebb and flow from the player.
+
+---
+
+Add number of rounds to the display (making sure it's formatted in fixed columns).
+
+Also, make sure fleet power is incorporated. I can see fleet power has less impact than drone count currently, to the point of drone power not having any impact. Star drones / warlords should win more.
