@@ -1,359 +1,163 @@
-#!/usr/bin/env python3
 import random
+from typing import Tuple, List
+from collections import defaultdict
 from dataclasses import dataclass
-from typing import List, Tuple, Dict, Literal
-import statistics
-import argparse
-
-# Global randomness parameters
-INITIAL_LUCK_MIN = 0.6  # Minimum initial luck factor
-INITIAL_LUCK_MAX = 1.4  # Maximum initial luck factor
-BASE_DAMAGE_MIN = 0.1   # Minimum base damage percentage
-BASE_DAMAGE_MAX = 0.15  # Maximum base damage percentage
-DAMAGE_RANDOM_MIN = 0.7  # Minimum damage randomness multiplier
-DAMAGE_RANDOM_MAX = 1.3  # Maximum damage randomness multiplier
-LUCK_UPDATE_MIN = 0.95  # Minimum luck update factor
-LUCK_UPDATE_MAX = 1.05  # Maximum luck update factor
+from statistics import mean, stdev
 
 @dataclass
-class Fleet:
-    """Represents a drone fleet in battle"""
-    name: str
-    drones: int
-    drone_type: Literal["IOS", "Star"]
-    pilot_rank: Literal["None", "Admiral", "Warlord"]
-    
-    def calculate_power(self) -> int:
-        """Calculate the total power of the fleet based on drone type and pilot rank"""
-        base_power = 7 if self.drone_type == "IOS" else 10
-        
-        # Star Drones ignore pilot rank modifier
-        if self.drone_type == "Star":
-            return base_power * self.drones
-            
-        # Apply pilot rank modifier for IOS drones
-        pilot_bonus = 0
-        if self.pilot_rank == "Admiral":
-            pilot_bonus = 3
-        elif self.pilot_rank == "Warlord":
-            pilot_bonus = 6
-            
-        return (base_power + pilot_bonus) * self.drones
+class BattleResult:
+    player_victory: bool
+    player_losses: int
+    methanoid_losses: int
+    player_drone_type: str
+    player_pilot_rank: str
+    player_drone_count: int
+    methanoid_drone_count: int
 
+def calculate_fleet_power(drone_count: int, drone_type: str, pilot_rank: str) -> int:
+    """Calculate total fleet power based on drone count, type and pilot rank."""
+    if drone_type == "IOS":
+        base_power = 7
+        if pilot_rank == "Warlord":
+            base_power += 3
+    else:  # Star Drone
+        base_power = 10
+    return drone_count * base_power
 
-def simulate_battle(attacker: Fleet, defender: Fleet, random_seed: int = None) -> Tuple[Fleet, Fleet, str, int]:
-    """
-    Simulate a battle between two fleets.
+def resolve_battle(
+    player_drone_count: int,
+    player_drone_type: str,
+    player_pilot_rank: str,
+    methanoid_drone_count: int
+) -> Tuple[bool, int, int]:
+    """Resolve a battle between player and Methanoid fleets."""
+    player_power = calculate_fleet_power(player_drone_count, player_drone_type, player_pilot_rank)
+    methanoid_power = calculate_fleet_power(methanoid_drone_count, "IOS", "None")
     
-    Args:
-        attacker: The attacking fleet
-        defender: The defending fleet
-        random_seed: Optional seed for reproducibility
-        
-    Returns:
-        Tuple of (updated attacker fleet, updated defender fleet, winner name, battle rounds)
-    """
-    # Clone the fleets to avoid modifying the originals
-    attacker = Fleet(
-        name=attacker.name,
-        drones=attacker.drones,
-        drone_type=attacker.drone_type,
-        pilot_rank=attacker.pilot_rank
-    )
+    total_power = player_power + methanoid_power
+    player_ratio = player_power / total_power
     
-    defender = Fleet(
-        name=defender.name,
-        drones=defender.drones,
-        drone_type=defender.drone_type,
-        pilot_rank=defender.pilot_rank
-    )
+    random_factor = random.uniform(0.9, 1.1)
+    adjusted_ratio = player_ratio * random_factor
     
-    # Set random seed if provided
-    if random_seed is not None:
-        random.seed(random_seed)
+    player_victory = adjusted_ratio > 0.5
     
-    # Battle parameters
-    battle_round = 1
-    max_rounds = 100
-    
-    # Initial luck factor (random advantage based on global parameters)
-    attacker_luck = random.uniform(INITIAL_LUCK_MIN, INITIAL_LUCK_MAX)
-    defender_luck = random.uniform(INITIAL_LUCK_MIN, INITIAL_LUCK_MAX)
-    
-    # Main battle loop
-    while battle_round <= max_rounds:
-        # Calculate round power with random luck factor
-        attacker_power = attacker.calculate_power() * attacker_luck
-        defender_power = defender.calculate_power() * defender_luck
-        
-        # Calculate normalized power ratio (always between 0.5 and 2.0)
-        if attacker_power >= defender_power:
-            power_ratio = 1.0 + min(0.5, (attacker_power - defender_power) / defender_power)
-        else:
-            power_ratio = 1.0 / (1.0 + min(0.5, (defender_power - attacker_power) / attacker_power))
-        
-        # Base damage is a percentage of current drones
-        # For equal power, each side loses about BASE_DAMAGE_MIN to BASE_DAMAGE_MAX % of their drones per round
-        base_damage_percent = random.uniform(BASE_DAMAGE_MIN, BASE_DAMAGE_MAX)
-        
-        # Apply power ratio to damage
-        if power_ratio >= 1.0:  # Attacker advantage
-            attacker_loss_percent = base_damage_percent / power_ratio
-            defender_loss_percent = base_damage_percent * power_ratio
-        else:  # Defender advantage
-            attacker_loss_percent = base_damage_percent / power_ratio
-            defender_loss_percent = base_damage_percent * power_ratio
-        
-        # Add randomness to damage based on global parameters
-        attacker_damage_rand = random.uniform(DAMAGE_RANDOM_MIN, DAMAGE_RANDOM_MAX)
-        defender_damage_rand = random.uniform(DAMAGE_RANDOM_MIN, DAMAGE_RANDOM_MAX)
-        
-        # Calculate actual drone losses
-        attacker_loss = round(attacker.drones * attacker_loss_percent * attacker_damage_rand)
-        defender_loss = round(defender.drones * defender_loss_percent * defender_damage_rand)
-        
-        # Ensure minimum damage
-        attacker_loss = max(1, attacker_loss) if attacker.drones > 1 else attacker.drones
-        defender_loss = max(1, defender_loss) if defender.drones > 1 else defender.drones
-        
-        # Add proportional damage cap for highly unbalanced fleet sizes
-        # This prevents excessively high casualties in a large fleet when fighting a small one
-        if attacker.drones >= 5 * defender.drones:
-            # Cap attacker losses proportionally to defender size
-            attacker_loss = min(attacker_loss, max(1, round(defender.drones * 0.5)))
-        elif defender.drones >= 5 * attacker.drones:
-            # Cap defender losses proportionally to attacker size
-            defender_loss = min(defender_loss, max(1, round(attacker.drones * 0.5)))
-        
-        # Apply damage
-        attacker.drones -= attacker_loss
-        defender.drones -= defender_loss
-        
-        # Ensure no negative drones
-        attacker.drones = max(0, attacker.drones)
-        defender.drones = max(0, defender.drones)
-        
-        # Check for battle end conditions
-        if attacker.drones <= 0 or defender.drones <= 0:
-            break
-        
-        # Update luck factor for next round using global parameters
-        attacker_luck *= random.uniform(LUCK_UPDATE_MIN, LUCK_UPDATE_MAX)
-        defender_luck *= random.uniform(LUCK_UPDATE_MIN, LUCK_UPDATE_MAX)
-        
-        # Keep luck factor within bounds
-        attacker_luck = max(INITIAL_LUCK_MIN, min(INITIAL_LUCK_MAX, attacker_luck))
-        defender_luck = max(INITIAL_LUCK_MIN, min(INITIAL_LUCK_MAX, defender_luck))
-        
-        battle_round += 1
-    
-    # Determine the winner
-    winner = ""
-    if attacker.drones <= 0 and defender.drones <= 0:
-        # Both destroyed - 50/50 chance
-        winner = random.choice([attacker.name, defender.name])
-    elif attacker.drones <= 0:
-        winner = defender.name
-    elif defender.drones <= 0:
-        winner = attacker.name
+    if player_victory:
+        player_losses = int(methanoid_drone_count * (1 - player_ratio) * random.uniform(0.7, 0.9))
+        methanoid_losses = methanoid_drone_count
     else:
-        # Max rounds reached - compare remaining drones
-        if attacker.drones > defender.drones:
-            winner = attacker.name
-        elif defender.drones > attacker.drones:
-            winner = defender.name
-        else:
-            # Equal drones - defender wins (home advantage)
-            winner = defender.name
+        player_losses = player_drone_count
+        methanoid_losses = int(player_drone_count * player_ratio * random.uniform(0.7, 0.9))
     
-    return attacker, defender, winner, battle_round
+    return player_victory, player_losses, methanoid_losses
 
-
-def run_simulations(attacker: Fleet, defender: Fleet, num_simulations: int = 1000) -> Dict:
-    """
-    Run multiple battle simulations and collect statistics
-    
-    Args:
-        attacker: The attacking fleet
-        defender: The defending fleet
-        num_simulations: Number of simulations to run
-        
-    Returns:
-        Dictionary with statistics about the battle results
-    """
-    results = {
-        "attacker_wins": 0,
-        "defender_wins": 0,
-        "attacker_remaining_drones": [],
-        "defender_remaining_drones": [],
-        "battle_rounds": []
-    }
-    
-    for i in range(num_simulations):
-        # Generate a unique seed for each simulation for reproducibility
-        seed = i + 1000  # Different base seed to avoid any patterns
-        
-        # Run the simulation
-        final_attacker, final_defender, winner, rounds = simulate_battle(
-            attacker, defender, random_seed=seed
+def run_simulation(
+    player_drone_count: int,
+    player_drone_type: str,
+    player_pilot_rank: str,
+    methanoid_drone_count: int,
+    iterations: int = 1000
+) -> List[BattleResult]:
+    """Run multiple battle simulations and return results."""
+    results = []
+    for _ in range(iterations):
+        victory, player_losses, methanoid_losses = resolve_battle(
+            player_drone_count, player_drone_type, player_pilot_rank, methanoid_drone_count
         )
-        
-        # Update statistics
-        if winner == attacker.name:
-            results["attacker_wins"] += 1
-        else:
-            results["defender_wins"] += 1
-            
-        results["attacker_remaining_drones"].append(final_attacker.drones)
-        results["defender_remaining_drones"].append(final_defender.drones)
-        results["battle_rounds"].append(rounds)
-    
-    # Calculate percentages
-    total_simulations = results["attacker_wins"] + results["defender_wins"]
-    results["attacker_win_percent"] = (results["attacker_wins"] / total_simulations) * 100
-    results["defender_win_percent"] = (results["defender_wins"] / total_simulations) * 100
-    
-    # Calculate averages and medians for remaining drones
-    results["avg_attacker_remaining"] = statistics.mean(results["attacker_remaining_drones"])
-    results["avg_defender_remaining"] = statistics.mean(results["defender_remaining_drones"])
-    results["median_attacker_remaining"] = statistics.median(results["attacker_remaining_drones"])
-    results["median_defender_remaining"] = statistics.median(results["defender_remaining_drones"])
-    results["avg_battle_rounds"] = statistics.mean(results["battle_rounds"])
-    
+        results.append(BattleResult(
+            player_victory=victory,
+            player_losses=player_losses,
+            methanoid_losses=methanoid_losses,
+            player_drone_type=player_drone_type,
+            player_pilot_rank=player_pilot_rank,
+            player_drone_count=player_drone_count,
+            methanoid_drone_count=methanoid_drone_count
+        ))
     return results
 
+def analyze_results(results: List[BattleResult]) -> dict:
+    """Analyze battle results and return statistics."""
+    victories = sum(1 for r in results if r.player_victory)
+    win_rate = victories / len(results)
+    
+    player_losses = [r.player_losses for r in results]
+    methanoid_losses = [r.methanoid_losses for r in results]
+    
+    return {
+        "win_rate": win_rate,
+        "avg_player_losses": mean(player_losses),
+        "std_player_losses": stdev(player_losses) if len(player_losses) > 1 else 0,
+        "avg_methanoid_losses": mean(methanoid_losses),
+        "std_methanoid_losses": stdev(methanoid_losses) if len(methanoid_losses) > 1 else 0
+    }
 
-def print_simulation_results(test_case: str, attacker: Fleet, defender: Fleet, results: Dict):
-    """Print formatted simulation results"""
-    print(f"\n{'=' * 70}")
-    print(f"TEST CASE: {test_case}")
-    print(f"{'=' * 70}")
-    
-    print(f"ATTACKER: {attacker.name}")
-    print(f"  - Drones: {attacker.drones} {attacker.drone_type}")
-    print(f"  - Pilot: {attacker.pilot_rank}")
-    print(f"  - Initial Power: {attacker.calculate_power()}")
-    
-    print(f"\nDEFENDER: {defender.name}")
-    print(f"  - Drones: {defender.drones} {defender.drone_type}")
-    print(f"  - Pilot: {defender.pilot_rank}")
-    print(f"  - Initial Power: {defender.calculate_power()}")
-    
-    print(f"\nRESULTS (after {len(results['attacker_remaining_drones'])} simulations):")
-    print(f"  - Attacker Win Rate: {results['attacker_win_percent']:.2f}%")
-    print(f"  - Defender Win Rate: {results['defender_win_percent']:.2f}%")
-    print(f"  - Average Attacker Remaining Drones: {results['avg_attacker_remaining']:.2f}")
-    print(f"  - Average Defender Remaining Drones: {results['avg_defender_remaining']:.2f}")
-    print(f"  - Median Attacker Remaining Drones: {results['median_attacker_remaining']}")
-    print(f"  - Median Defender Remaining Drones: {results['median_defender_remaining']}")
-    print(f"  - Average Battle Rounds: {results['avg_battle_rounds']:.2f}")
+def format_fleet_info(count: int, type_str: str, rank: str, power: int) -> str:
+    """Format fleet information string."""
+    rank_str = f" ({rank})" if rank != "None" else ""
+    return f"{count} {type_str}{rank_str} (Power: {power})"
 
+def print_header():
+    """Print header for results table."""
+    headers = [
+        "Scenario",
+        "Player Fleet",
+        "Methanoid Fleet",
+        "Win Rate",
+        "Player Losses",
+        "Methanoid Losses"
+    ]
+    print(f"{headers[0]:<30} {headers[1]:<35} {headers[2]:<25} {headers[3]:<10} {headers[4]:<20} {headers[5]:<20}")
+    print("-" * 140)
 
-def define_test_cases() -> List[Tuple[str, Fleet, Fleet]]:
-    """Define test cases including normal scenarios and edge cases"""
-    test_cases = []
+def print_result(scenario: str, stats: dict, player_info: tuple, methanoid_count: int):
+    """Print formatted battle statistics."""
+    player_count, player_type, player_rank = player_info
+    player_power = calculate_fleet_power(player_count, player_type, player_rank)
+    methanoid_power = calculate_fleet_power(methanoid_count, "IOS", "None")
     
-    # Test Case 1: Example from documentation - Admiral vs Warlord
-    test_cases.append((
-        "Admiral vs Warlord (Example from docs)",
-        Fleet(name="IOS Admiral", drones=200, drone_type="IOS", pilot_rank="Admiral"),
-        Fleet(name="IOS Warlord", drones=200, drone_type="IOS", pilot_rank="Warlord")
-    ))
+    player_fleet = format_fleet_info(player_count, player_type, player_rank, player_power)
+    methanoid_fleet = format_fleet_info(methanoid_count, "IOS", "None", methanoid_power)
     
-    # Test Case 2: Equal fleets with equal pilots
-    test_cases.append((
-        "Equal IOS fleets with Admiral pilots",
-        Fleet(name="IOS Admiral 1", drones=200, drone_type="IOS", pilot_rank="Admiral"),
-        Fleet(name="IOS Admiral 2", drones=200, drone_type="IOS", pilot_rank="Admiral")
-    ))
-    
-    # Test Case 3: Different drone types
-    test_cases.append((
-        "IOS vs Star drones - equal counts",
-        Fleet(name="IOS Fleet", drones=200, drone_type="IOS", pilot_rank="None"),
-        Fleet(name="Star Fleet", drones=200, drone_type="Star", pilot_rank="None")
-    ))
-    
-    # Test Case 4: Different fleet sizes
-    test_cases.append((
-        "Different fleet sizes - same drone type",
-        Fleet(name="Large Fleet", drones=200, drone_type="IOS", pilot_rank="None"),
-        Fleet(name="Small Fleet", drones=100, drone_type="IOS", pilot_rank="None")
-    ))
-    
-    # Test Case 5: Edge case - minimum fleet size
-    test_cases.append((
-        "Edge case - minimum fleet size",
-        Fleet(name="Minimal Fleet", drones=1, drone_type="IOS", pilot_rank="None"),
-        Fleet(name="Standard Fleet", drones=100, drone_type="IOS", pilot_rank="None")
-    ))
-    
-    # Test Case 6: Max power difference
-    test_cases.append((
-        "Max power difference - Star Warlord vs IOS None",
-        Fleet(name="Max Star", drones=200, drone_type="Star", pilot_rank="Warlord"),
-        Fleet(name="Basic IOS", drones=200, drone_type="IOS", pilot_rank="None")
-    ))
-    
-    # Test Case 7: Nearly identical power
-    test_cases.append((
-        "Nearly identical total power",
-        Fleet(name="IOS Warlord", drones=100, drone_type="IOS", pilot_rank="Warlord"),
-        Fleet(name="Star Fleet", drones=130, drone_type="Star", pilot_rank="None")
-    ))
-
-    # Test Case 8: Very small fleets
-    test_cases.append((
-        "Very small fleets with high rank pilots",
-        Fleet(name="Small Warlord", drones=10, drone_type="IOS", pilot_rank="Warlord"),
-        Fleet(name="Small Admiral", drones=10, drone_type="IOS", pilot_rank="Admiral")
-    ))
-
-    return test_cases
-
-
-def create_custom_fleet(
-    name: str, 
-    drones: int, 
-    drone_type: str, 
-    pilot_rank: str
-) -> Fleet:
-    """Create a custom fleet based on user inputs"""
-    # Validate drone count
-    drones = max(1, min(200, drones))
-    
-    # Validate drone type
-    if drone_type.upper() not in ["IOS", "STAR"]:
-        print(f"Invalid drone type: {drone_type}. Using IOS as default.")
-        drone_type = "IOS"
-    else:
-        drone_type = drone_type.upper()
-    
-    # Validate pilot rank
-    if pilot_rank.upper() not in ["NONE", "ADMIRAL", "WARLORD"]:
-        print(f"Invalid pilot rank: {pilot_rank}. Using None as default.")
-        pilot_rank = "None"
-    else:
-        pilot_rank = pilot_rank.capitalize()
-        if pilot_rank == "None":
-            pilot_rank = "None"  # Preserve case for None
-    
-    return Fleet(name=name, drones=drones, drone_type=drone_type, pilot_rank=pilot_rank)
-
-
+    print(
+        f"{scenario:<30} "
+        f"{player_fleet:<35} "
+        f"{methanoid_fleet:<25} "
+        f"{stats['win_rate']:>8.1%}  "
+        f"{stats['avg_player_losses']:>6.1f}±{stats['std_player_losses']:>4.1f}     "
+        f"{stats['avg_methanoid_losses']:>6.1f}±{stats['std_methanoid_losses']:>4.1f}"
+    )
 
 def main():
-    """Main function to run the simulation"""
+    # Test cases
+    test_cases = [
+        # Equal forces
+        (200, "IOS", "None", 200, "Equal IOS"),
+        (200, "IOS", "Warlord", 200, "Equal Warlord"),
+        (200, "Star", "None", 200, "Equal Star"),
+        
+        (200, "IOS", "None", 190, "Advantage 10"),
+        (200, "IOS", "None", 170, "Advantage 30"),
+        (200, "IOS", "None", 150, "Advantage 50"),
+        (200, "IOS", "None", 100, "Advantage 100"),
+        (200, "IOS", "None", 50, "Advantage 150"),
+        (200, "IOS", "None", 1, "Tiny"),
     
-    print("DEUTEROS BATTLE SIMULATOR")
-    print("------------------------")
-    
-    # Run all test cases
-    test_cases = define_test_cases()
-    for test_case, attacker, defender in test_cases:
-        results = run_simulations(attacker, defender, 1000)
-        print_simulation_results(test_case, attacker, defender, results)
+        (50, "IOS", "None", 40, "Advantage 10"),
+        (50, "IOS", "None", 20, "Advantage 30"),
+        (50, "IOS", "None", 1, "Tiny"),
 
+    ]
+    
+    print("\nDeuteros Battle Simulator")
+    print("=" * 140)
+    print_header()
+    
+    for player_count, drone_type, pilot_rank, methanoid_count, scenario in test_cases:
+        results = run_simulation(player_count, drone_type, pilot_rank, methanoid_count)
+        stats = analyze_results(results)
+        print_result(scenario, stats, (player_count, drone_type, pilot_rank), methanoid_count)
+    
+    print("\nNote: Each scenario simulated 1000 times. Losses shown as mean±std")
 
 if __name__ == "__main__":
     main() 

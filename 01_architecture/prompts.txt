@@ -70,21 +70,22 @@ Now also split up stage 6 into initial expansion to a first other star system, a
 
 ---
 
-Ok let's try working on the battle mechanics. Try to describe a battle algorithm based off the available information. Add this to 01_architecture/08_battle.md.
+Ok let's try working on the battle mechanics. Try to describe a battle algorithm based off the available information. 
+
+Note the manual is confusing re the specific numbers, so use only the numbers in 05 for numeric values of drone and fleet power.
+
+The battle algorithm should be written in markdown, do not use any code. Add this content to 01_architecture/08_battle.md.
 
 ---
 
-Ok but try to invent the exact algorithm for calculating battle outcome, based on so far collected information. Add this to 08_battle.
+Now based on 08_battle.md information, invent the exact algorithm for calculating battle outcome as a python code block. Add this to 08_battle.
+
+Make sure the battles are always against Methanoids. Stronger fleet should win most of the time, but there should be some randomness involved. Skip torpedo damage for now.
 
 ---
 
-Ok pretty good, but now add some randomness to losses.
+OK, focusing on the core battle algorithm described in 08_battle.md (without torpedo effects etc), can you please create a simulator.py, which:
 
----
-
-OK, focusing on the core battle mechanic described in 08_battle.md (without torpedo effects etc), can you please create a simulator.py, which:
-
-- lists several input test cases, including edge ones
+- lists several typical input test cases, including edge ones
 - runs the simulation on the test cases many times, producing a statistical result
-- prints information about the test case and the outcome in terms of who won, and how many drones remained.
----
+- prints information about the test case and the outcome in terms of who won, and how many drones remained, preferable in a one-line, \t separated format, for easy reading in the CLI.

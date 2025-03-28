@@ -1,173 +1,128 @@
 # Battle Mechanics
 
 ## Overview
-Battles in Deuteros are primarily fought using drone fleets controlled by ships equipped with Drone Fleet Control Computers (DFCC). The battle system is turn-based and involves strategic positioning and management of drone fleets.
+Battles in Deuteros occur when Methanoid forces attack player bases or when player forces attack Methanoid bases. The core of the battle system revolves around drone fleets controlled by special computers.
 
 ## Fleet Composition
 
 ### Drone Types
-1. IOS Battle Drones
-   - Base power: 7 per drone
-   - Maximum fleet size: 200 drones (1400 total power)
-   - Can only be used in solar system battles
-   - Controlled by IOS ships with DFCC
+1. IOS Battle Drone
+   - Base power: 7
+   - Can be controlled by IOS ships
+   - Maximum 200 drones per fleet
+   - Total fleet power: 1400 (200 * 7)
 
-2. Star Drones
-   - Base power: 10 per drone
-   - Maximum fleet size: 200 drones (2000 total power)
-   - Can be used in interstellar battles
-   - Controlled by SCG ships with DFCC
-
-### Fleet Power Modifiers
-- Admiral pilot: +3 power per drone
-- Warlord pilot: +6 power per drone
-- Star Drones maintain 10 power regardless of pilot rank
-
-## Battle Mechanics
+2. Star Drone
+   - Base power: 10
+   - Can be controlled by SCG ships
+   - Maximum 200 drones per fleet
+   - Total fleet power: 2000 (200 * 10)
 
 ### Fleet Control
-1. Ships must be equipped with DFCC to control drones
-   - IOS: Takes up all 3 pod mountings
-   - SCG: Takes up all 6 pod mountings
+- Fleet Control Computer takes up:
+  - All 3 pod mountings on an IOS
+  - All 6 pod mountings on an SCG
+- Maximum of 200 drones per fleet
+- Drones automatically go to drone pool in space when built
+- Fleet power is calculated by summing individual drone powers
 
-2. Drone Management
-   - Drones are stored in a pool when built
-   - Must be manually added to fleet (up to 200)
-   - Can be removed from fleet back to pool
-   - Fleet power is calculated based on drone count and pilot rank
-
-### Combat Resolution
-1. Battle Initiation
-   - Methanoids attack bases with 4 days warning
-   - Player must position defending fleet within 4 days
-   - Maximum Methanoid fleet power in solar system: 1400
-
-2. Battle Process
-   - Fleets engage in combat when in range
-   - Power comparison determines battle outcome
-   - Higher power fleet typically wins
-   - Torpedoes can be used when fleets are closely packed
-     - Cost: 100T fuel per shot
-     - Maximum 2 shots with full fuel
-     - Reduces enemy fleet by ~90 drones
-     - Reduces friendly fleet by ~15 drones
-
-3. Special Weapons
-   - Prejudice Torpedo Launcher: Strategic weapon for fleet combat
-   - Pulse Blast Laser: Defensive weapon that destroys both enemy drones and carrier ship
-   - Sonic Blaster: Non-combat device (plays music)
+### Pilot Ranks and Power Modifiers
+- Warlord pilots increase IOS drone power by 3 (from 7 to 10)
+- Warlord pilots do not affect Star drone power (stays at 10)
+- Methanoids can only use IOS Battle Drones at base power (7), unaffected by rank
 
 ## Battle Algorithm
 
-### Fleet Power Calculation
-1. Base Fleet Power
-   - IOS Drones: 7 × number_of_drones
-   - Star Drones: 10 × number_of_drones
+1. Fleet Formation
+   - Each side forms up to 200 drones into a fleet
+   - Fleet power is calculated based on drone types and pilot ranks
+   - Drones are represented on the battle map as red (enemy) and green (player)
 
-2. Pilot Rank Modifier
-   - Admiral: +3 power per drone
-   - Warlord: +6 power per drone
-   - Star Drones ignore pilot rank modifier
+2. Battle Initiation
+   - Battle begins when fleets are in range of each other
+   - Each fleet starts with full strength (200 drones)
+   - Battle continues until one side is defeated
 
-3. Final Fleet Power Formula
-   ```
-   For IOS Drones:
-   total_power = (7 + pilot_rank_bonus) × number_of_drones
-   
-   For Star Drones:
-   total_power = 10 × number_of_drones
-   ```
+3. Combat Resolution
+   - Fleets engage in direct combat
+   - Drones are lost based on relative fleet strengths
+   - Battle continues in rounds until one side is defeated
+   - Victory is achieved when enemy fleet is destroyed
 
-### Battle Resolution Algorithm
-1. Initial Setup
-   - Calculate total power for both fleets
-   - Initialize battle_round = 1
-   - Set max_rounds = 10
-   - Set random_seed based on game state for reproducibility
+4. Special Weapons
+   - Prejudice Torpedo Launcher can be used during battle
+   - Fires torpedo loaded with 100T of fuel
+   - Most effective when enemy drones are closely packed
+   - Can fire two torpedoes with full fuel
+   - Each torpedo can significantly reduce enemy drone numbers
 
-2. Main Battle Loop
-   ```
-   while battle_round <= max_rounds:
-       # Check for torpedo usage
-       if fleets_are_closely_packed and torpedo_available:
-           apply_torpedo_effects()
-           continue
-       
-       # Calculate round damage
-       attacker_power = calculate_fleet_power(attacker)
-       defender_power = calculate_fleet_power(defender)
-       
-       # Calculate base damage with power difference
-       power_difference = abs(attacker_power - defender_power)
-       base_damage = power_difference / 10
-       
-       # Apply random variance to damage
-       random_factor = random(0.8, 1.2)  # ±20% variance
-       attacker_damage = base_damage * random_factor
-       defender_damage = base_damage * random_factor * 0.5  # Defender takes half damage
-       
-       # Apply damage with randomness
-       if attacker_power > defender_power:
-           defender_drones -= round(attacker_damage)
-           attacker_drones -= round(defender_damage)
-       else:
-           attacker_drones -= round(attacker_damage)
-           defender_drones -= round(defender_damage)
-       
-       # Ensure no negative drones
-       defender_drones = max(0, defender_drones)
-       attacker_drones = max(0, attacker_drones)
-       
-       # Check for battle end conditions
-       if attacker_drones <= 0 or defender_drones <= 0:
-           return determine_winner()
-       
-       battle_round += 1
-   ```
+5. Battle Outcomes
+   - Defeat: All drones lost
+   - Victory: Enemy fleet destroyed
+   - Base capture possible after fleet victory
 
-3. Torpedo Effects
-   ```
-   def apply_torpedo_effects():
-       if torpedo_fuel >= 100:
-           # Apply random variance to torpedo damage
-           enemy_random = random(0.85, 1.15)  # ±15% variance
-           friendly_random = random(0.9, 1.1)  # ±10% variance
-           
-           enemy_drones -= round(90 * enemy_random)
-           friendly_drones -= round(15 * friendly_random)
-           torpedo_fuel -= 100
-   ```
+## Battle Outcome Calculation
 
-4. Battle End Conditions
-   - Winner is determined by:
-     - First fleet to reach 0 drones loses
-     - If both fleets survive max_rounds, winner is fleet with more remaining drones
-     - If equal drones remain, defender wins (home advantage)
-     - In case of exact tie, random chance (50/50) determines winner
+```python
+import random
+from typing import Tuple
 
-5. Special Cases
-   - Pulse Blast Laser: Immediately destroys both fleets and carrier ship
-   - Maximum Methanoid fleet power in solar system is capped at 1400
-   - Star Drones maintain constant power regardless of pilot rank
-   - Random seed is preserved for save/reload consistency
+def calculate_fleet_power(drone_count: int, drone_type: str, pilot_rank: str) -> int:
+    """
+    Calculate total fleet power based on drone count, type and pilot rank.
+    Methanoids always use IOS drones at base power (7).
+    """
+    if drone_type == "IOS":
+        base_power = 7
+        if pilot_rank == "Warlord":
+            base_power += 3  # Warlord bonus only applies to IOS drones
+    else:  # Star Drone
+        base_power = 10  # Star drones always at 10, unaffected by rank
+    
+    return drone_count * base_power
 
-### Example Battle
-```
-Attacker: 200 IOS Drones with Admiral (+3 power)
-Defender: 200 IOS Drones with Warlord (+6 power)
+def resolve_battle(
+    player_drone_count: int,
+    player_drone_type: str,
+    player_pilot_rank: str,
+    methanoid_drone_count: int
+) -> Tuple[bool, int, int]:
+    """
+    Resolve a battle between player and Methanoid fleets.
+    Returns: (player_victory, player_drones_lost, methanoid_drones_lost)
+    """
+    # Calculate fleet powers
+    player_power = calculate_fleet_power(player_drone_count, player_drone_type, player_pilot_rank)
+    methanoid_power = calculate_fleet_power(methanoid_drone_count, "IOS", "None")  # Methanoids always use IOS drones
+    
+    # Calculate power ratio (0.0 to 1.0)
+    total_power = player_power + methanoid_power
+    player_ratio = player_power / total_power
+    
+    # Add some randomness (10% variance)
+    random_factor = random.uniform(0.9, 1.1)
+    adjusted_ratio = player_ratio * random_factor
+    
+    # Determine winner based on adjusted ratio
+    player_victory = adjusted_ratio > 0.5
+    
+    # Calculate losses (roughly proportional to enemy power)
+    if player_victory:
+        # Player wins - lose fewer drones
+        player_losses = int(methanoid_drone_count * (1 - player_ratio) * random.uniform(0.7, 0.9))
+        methanoid_losses = methanoid_drone_count  # Methanoids lose all drones
+    else:
+        # Methanoids win - lose fewer drones
+        player_losses = player_drone_count  # Player loses all drones
+        methanoid_losses = int(player_drone_count * player_ratio * random.uniform(0.7, 0.9))
+    
+    return player_victory, player_losses, methanoid_losses
 
-Initial Power:
-- Attacker: (7 + 3) × 200 = 2000 power
-- Defender: (7 + 6) × 200 = 2600 power
-
-Round 1:
-- Defender has advantage
-- Power difference: 2600 - 2000 = 600
-- Base damage: 600 / 10 = 60
-- Random factors: 0.95 (attacker), 1.05 (defender)
-- Attacker loses: round(60 * 0.95) = 57 drones
-- Defender loses: round(60 * 0.95 * 0.5) = 29 drones
-- Remaining: Attacker 143, Defender 171
-
-Battle continues until one fleet is destroyed or max rounds reached
+# Example usage:
+# player_victory, player_losses, methanoid_losses = resolve_battle(
+#     player_drone_count=200,
+#     player_drone_type="IOS",
+#     player_pilot_rank="Warlord",
+#     methanoid_drone_count=200
+# )
 ```

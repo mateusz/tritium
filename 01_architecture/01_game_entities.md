@@ -59,7 +59,8 @@
   - ShipEquipment (equipment installable on ship chassis)
     - AutoCargoComputer
     - DroneFleetControlComputer
-    - BattleDrone
+    - IOSBattleDrone
+    - StarDrone
     - Chassis
       - ShuttleChassis
       - IOSChassis

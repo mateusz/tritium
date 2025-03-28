@@ -27,8 +27,11 @@ Equipment that can be installed on ship chassis to enhance their capabilities.
 ### DroneFleetControlComputer
 Carried by fleet flagship. Controls fuel and drone dispersal. Automatically switches to combat mode when alien fleet detected. Takes up all 3 pod mountings on an IOS and 6 pod mountings on an SCG. Can control up to 200 drones in one fleet. Drones automatically go to the drone pool in space when built. Each drone adds 7 to fleet power (1400 total with 200 drones). Warlord pilots increase each drone's power by 3.
 
-### BattleDrone
-Special chassis incorporating one fusion laser. Flight controlled via flagship drone computer. Used for combat operations against Methanoid forces. Can be deployed in fleets of up to 200 units.
+### IOSBattleDrone
+Special chassis incorporating one fusion laser. Flight controlled via flagship drone computer installed on IOS. Used for combat operations against Methanoid forces. Can be deployed in fleets of up to 200 units. Each drone has a power of 7, unless commanded by the Warlord, in which case the power increases to 10. Note Methanoids can only use IOSBattleDrones at power 7, unaffecteed by rank.
+
+### StarDrone
+Similar to IOSBattleDrone, except can be installed on SCG. More expensive, but comes with a base power of 10. However if commanded by a pilot or captain, drone power goes down to 7.
 
 ### Chassis
 Base ship frames that can be equipped with various components.

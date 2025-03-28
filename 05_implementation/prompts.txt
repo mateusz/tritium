@@ -1,0 +1,7 @@
+Now take 01_game_entities.md and implement these as empty python classes. Do not implement any methods or fields.
+
+There should only be one class per file.
+
+Create the classes in a `data_model` directory. Also, add subdirectories as needed to reflect the nesting structure in the source file.
+
+Resource should be a simple enum.
