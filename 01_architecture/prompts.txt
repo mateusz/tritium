@@ -123,3 +123,50 @@ AFTER
 - Mercury: Iron, Titanium, Carbon, Copper, Palladium, Silica
 
 Be very careful at transcribing correct resources - we will check your work later.
+
+---
+
+Now verify your work. Make sure 09_systems.md matches solar_system.csv. Think carefully, and check every planet in the solar system making sure solar_system.csv shows an X for each resource listed in 09.
+
+Let's begin by checking inner planets, from Mercury to Asteroid belt.
+
+---
+
+Now check saturn and jupiter
+
+---
+
+Now check uranus, neptune and pluto.
+
+---
+
+Now look carefully at @equipment_costs.csv which is a CSV table showing costs and requirements to produce particular equipment. Add these requirements and costs to 01_architecture/10_equipment.md.
+
+If you cannot find the correct item, you can reference 05_entity_detail_equipment.md, which has equipment descriptions.
+
+Here is an example of how this should look:
+
+BEFORE
+- IOSChassis
+
+AFTER
+- IOSChassis:
+  - RequiredRank: 2
+  - RequiredLocation: Orbit only
+  - Cost: 100 Iron, 250 Titanium, 175 Aluminium, 50 Carbon, 75 Copper
+
+Be very careful at transcribing correct costs and requirements - we will check your work later.
+
+---
+
+Now verify your work. Make sure 10_equipment.md matches equipment_costs.csv. Think carefully, and check every piece of equipment making sure equipment_costs.csv shows the correct number for each resource listed in 10_equipment.md. If needed, fix 10_equipment.md.
+
+Let's begin by checking from Derrick to SCGChassis.
+
+---
+
+Now check saturn and jupiter
+
+---
+
+Now check uranus, neptune and pluto.
