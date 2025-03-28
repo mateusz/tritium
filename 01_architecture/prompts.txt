@@ -177,6 +177,19 @@ Output this as markdown into 01_architecture/11_views.md.
 
 ---
 
+Now merge and clean up the aforemention two views, and also cross check with Cross-check these with the 07_plot.md.
+
+Then I want you to sort the clean list into the following categories:
+
+- Master game control views available from anywhere in the game (stocktaker, base overview, notifications, save/load)
+- base facility views (you can get to these by clicking the icons on the left, and they depend on base)
+- vehicle views (when you are inside a vehicle, or battling, including orbital station assembly)
+- game progression views (triggered by game progression)
+
+Produce this cleaned up document into 01_architecture/11b_views_merged.md
+
+---
+
 
 
 
