@@ -36,3 +36,4 @@
 - has-one: Base (if docked)
 - has-one: Personnel (crew)
 - has-many: Equipment (installable)
+- has-many: Artifact (installable)

@@ -49,7 +49,7 @@
 
 ## Equipment
 
-- Equipment (abstract base for all equipment, all equipment can be stored in storage)
+- Equipment (abstract base for all equipment, all equipment can be built and stored in storage)
   - BaseEquipment (equipment installable on bases)
     - Derrick
     - SelfDestructMechanism
@@ -84,8 +84,10 @@
       - PrejudiceTorpedoLauncher
       - PulseBlastLaser
       - SonicBlaster
-      - ArtifactPart
-      - CompleteArtifact
+
+## Artifacts
+- ArtifactPart
+- CompleteArtifact
   
 ## Resource Types
 

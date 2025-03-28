@@ -103,3 +103,13 @@ Now update the battle code to go round by round. I want small progressions with 
 Add number of rounds to the display (making sure it's formatted in fixed columns).
 
 Also, make sure fleet power is incorporated. I can see fleet power has less impact than drone count currently, to the point of drone power not having any impact. Star drones / warlords should win more.
+
+---
+
+Let's now figure out a full nested list of systems and their locations from the source files. Produce this complete list into 01_architecture/09_systems.md.
+
+---
+
+Now look carefully at @solar_system.csv which is a CSV table showing which planets/moons/asteroids have which resources. Add these resources under the relevant solar system locations in 09_systems.md as another nested level (just listing the resources present).
+
+You can find resource enum names in 06_entity_detail_resources.md. Use these names only.

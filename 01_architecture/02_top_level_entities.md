@@ -7,5 +7,6 @@
 - Facility
 - Vehicle
 - Equipment
+- Artifacts
 - Resource
 - Rank 

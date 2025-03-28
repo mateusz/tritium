@@ -102,8 +102,3 @@ Highly destructive pulse weapon. Requires at least 3 chassis units for correct o
 #### SonicBlaster
 Methanoid origin. Fusion powered unit. Emits pulses at present intervals and frequencies. Power adjuster fitted. Not actually a weapon despite being labeled as one - functions as a music player.
 
-#### ArtifactPart
-One of eight pieces of an unknown alien artifact. Can be collected using a grapple. Each piece is found in a different star system after conquering Methanoid bases.
-
-#### CompleteArtifact
-The fully assembled alien artifact. Can only be built after collecting all eight pieces. When activated in a tool pod on an SCG, triggers the game's ending sequence. 
