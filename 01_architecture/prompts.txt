@@ -165,8 +165,24 @@ Let's begin by checking from Derrick to SCGChassis.
 
 ---
 
-Now check saturn and jupiter
+Now check from ShuttleDrive to PulseBlastLaser.
 
 ---
 
-Now check uranus, neptune and pluto.
+Based on all the content I've attached, can you figure out a simple list of ALL views that are available in the game? For example include all facility-specific views (such as training), all ship-specific views (such as IOS cabin), master game control views (such as stocktaker), battle views (for battle), Methanoid threat messages, research messages and anything else you can find!
+
+Put a lot of effort, this will be hard to find. Add things that are only mentioned in passing, I will filter this list later using my knowledge of the game. Try to make a complete list.
+
+Output this as markdown into 01_architecture/11_views.md.
+
+---
+
+
+
+
+
+
+
+
+
+Based on all the content I've attached, can you figure out a simple list of ALL interactions one can have with the training base facility? Keep strictly to what's included in the text files, do not make things up. Do not include master game controls that appear in every facility, stick to training only.

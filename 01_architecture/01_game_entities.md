@@ -61,6 +61,7 @@
     - DroneFleetControlComputer
     - IOSBattleDrone
     - StarDrone
+    - Hyperspace (Hyperlight)
     - Chassis
       - ShuttleChassis
       - IOSChassis

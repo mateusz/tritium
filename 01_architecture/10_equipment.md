@@ -32,6 +32,10 @@
   - RequiredRank: 3
   - RequiredLocation: Orbit only
   - Cost: 300 Iron, 300 Titanium, 100 Copper, 90 Paladium, 80 Platinum, 95 Silver, 50 Gold
+- Hyperspace:
+  - RequiredRank: 3
+  - RequiredLocation: ?
+  - Cost: ?
 - ShuttleChassis:
   - RequiredRank: 1
   - RequiredLocation: Any factory

@@ -33,6 +33,10 @@ Special chassis incorporating one fusion laser. Flight controlled via flagship d
 ### StarDrone
 Similar to IOSBattleDrone, except can be installed on SCG. More expensive, but comes with a base power of 10. However if commanded by a pilot or captain, drone power goes down to 7.
 
+### Hyperspace (Hyperlight)
+
+Mentioned tangentially in a few places, it might be the faster-than-light drive for SCG that is discovered at some point?
+
 ### Chassis
 Base ship frames that can be equipped with various components.
 
