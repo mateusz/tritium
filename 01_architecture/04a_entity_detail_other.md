@@ -117,10 +117,13 @@ Mid-level rank for researchers. Can research more advanced technologies and item
 Highest rank for researchers. Can research all available technologies and items. Required for the most advanced research projects.
 
 
-## Artifact
+## Grapplables
 
-#### ArtifactPart
+### CommspodDesign
+Passed by methanoids on the first visit, allows researching CommsPod.
+
+### Asteroid
+Grapple can pick up asteroids up to 150T mass.
+
+### ArtifactPart
 One of eight pieces of an unknown alien artifact. Can be collected using a grapple. Each piece is found in a different star system after conquering Methanoid bases.
-
-#### CompleteArtifact
-The fully assembled alien artifact. Can only be built after collecting all eight pieces. When activated in a tool pod on an SCG, triggers the game's ending sequence. 

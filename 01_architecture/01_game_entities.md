@@ -55,7 +55,6 @@
     - SelfDestructMechanism
     - MassTransciever
     - AutoOperationsComputer
-  
   - ShipEquipment (equipment installable on ship chassis)
     - AutoCargoComputer
     - DroneFleetControlComputer
@@ -85,10 +84,12 @@
       - PrejudiceTorpedoLauncher
       - PulseBlastLaser
       - SonicBlaster
+      - CompleteArtifact
 
-## Artifacts
+## Grapplables (stuff that can be grappled)
+- CommspodDesign
+- Asteroid
 - ArtifactPart
-- CompleteArtifact
   
 ## Resource Types
 

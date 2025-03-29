@@ -6,12 +6,12 @@
   - Cost: 3 Iron, 4 Titanium, 1 Carbon
 - SelfDestructMechanism:
   - RequiredRank: 3
-  - RequiredLocation: ?
-  - Cost: 5 Titanium, 1 Carbon, 1 Paladium, 2 Platinum
+  - RequiredLocation: Orbit only
+  - Cost: 5 Aluminium, 1 Copper, 1 Paladium, 2 Platinum
 - MassTransciever:
   - RequiredRank: 3
-  - RequiredLocation: ?
-  - Cost: 500 Iron, 82 Carbon, 100 Paladium, 40 Gold
+  - RequiredLocation: Orbit only
+  - Cost: 500 Titanium, 82 Copper, 100 Paladium, 40 Gold
 - AutoOperationsComputer:
   - RequiredRank: 3
   - RequiredLocation: Any factory
@@ -23,7 +23,7 @@
 - DroneFleetControlComputer:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
-  - Cost: 2 Titanium, 1 Aluminium, 1 Carbon, 1 Copper, 2 Paladium, 1 Gold
+  - Cost: 2 Titanium, 1 Aluminium, 1 Carbon, 1 Copper, 2 Platinum, 1 Gold
 - IOSBattleDrone:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
@@ -96,10 +96,10 @@
   - RequiredRank: 1
   - RequiredLocation: Any factory
   - Cost: 55 Iron, 80 Titanium, 50 Aluminium, 25 Carbon, 40 Copper
-- CommunicationsAdapter (COMMSPOD):
-  - RequiredRank: ?
-  - RequiredLocation: ?
-  - Cost: 2 Titanium, 1 Aluminium, 1 Carbon, 1 Gold
+- CommunicationsAdapter (CommsPod):
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 2 Aluminium, 1 Carbon, 1 Copper, 1 Gold
 - PrejudiceTorpedoLauncher:
   - RequiredRank: ?
   - RequiredLocation: ?

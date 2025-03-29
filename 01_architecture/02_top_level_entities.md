@@ -7,6 +7,6 @@
 - Facility
 - Vehicle
 - Equipment
-- Artifacts
+- Grapplable
 - Resource
 - Rank 

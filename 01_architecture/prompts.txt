@@ -190,6 +190,15 @@ Produce this cleaned up document into 01_architecture/11b_views_merged.md
 
 ---
 
+Now I want you to prepare a game design brief document, as if we were making a proposal to a funding body. The document should include game synopsis, specify why it is going to be a good game, what kind of artistic flavour it's going to have and so on.
+
+Produce this into 01_architecture/00_brief.md.
+
+---
+
+Let's now build a python dataclass-based data model. Include all entities in 01_game_entities.md as classes, with a deeply nested directory structure in data_model directory. For now only create emtpy classes. I want to first make sure we have modeled all entities from the list.
+
+Make sure you only include one class per file - ie I want as many files as there are classes. 
 
 
 

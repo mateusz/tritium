@@ -41,7 +41,7 @@ Battles in Deuteros occur when Methanoid forces attack player bases or when play
 2. Battle Initiation
    - Battle begins when fleets are in range of each other
    - Each fleet starts with full strength (200 drones)
-   - Battle continues until one side is defeated
+   - Battle continues until one side is defeated, or retreats (which immediately stops the battle)
 
 3. Combat Resolution
    - Fleets engage in direct combat

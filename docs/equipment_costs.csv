@@ -17,15 +17,15 @@ id,Item,Tech Level,Factory,Iron,Titanium,Aluminium,Carbon,Copper,Hydrogen,Deuter
 16,ACC,3,Any factory,,2,1,1,1,,,,,,,,,,5
 17,AOC,3,Orbit only,,4,1,2,,,,,,,,1,,,8
 18,Bandaid,3,Orbit only,30,30,30,30,30,,,,,,,,,,150
-19,S.D.M.,3,,,,5,,1,,,,,1,2,,,,9
+19,S.D.M.,3,Orbit only,,,5,,1,,,,,1,2,,,,9
 20,Grapple,3,Orbit only,2,2,,,1,,,,,,,,,,5
 21,DFCC,3,Orbit only,,2,1,1,1,,,,,,2,,1,,8
 22,AMA,3,Orbit only,6,70,10,30,2,,,,,,5,1,,,124
 23,Hyperlight,3,,,,,,,,,,,,,,,,0
-24,M.T.X.,3,,,500,,,82,,,,,100,,,40,,722
+24,M.T.X.,3,Orbit only,,500,,,82,,,,,100,,,40,,722
 25,,,,,,,,,,,,,,,,,,
 26,R Frame,3,Orbit only,35,50,20,15,30,,,,,,25,10,,15,200
 27,Prejudice Torpedo Launcher,,,,96,45,,10,,,,,,,,,,
-28,COMMSPOD,,,,,2,1,1,,,,,,,,1,,
+28,COMMSPOD,3,Orbit only,,,2,1,1,,,,,,,,1,,5
 29,IOS Drone,3,Orbit only,120,120,120,15,55,,,,,30,30,,,,490
 30,Star Drone,3,Orbit only,300,300,,,100,,,,,90,80,95,50,,1015
