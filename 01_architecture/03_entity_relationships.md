@@ -25,6 +25,7 @@
 - has-one: Base
 - has-one: Rank
 - has-one: Vehicle (if assigned as pilot/crew)
+- has-one: CryoPod (if in cryo pod)
 
 ### Facility
 - has-one: Base

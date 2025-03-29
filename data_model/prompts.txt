@@ -1,0 +1,7 @@
+
+Let's now build a python dataclass-based data model. Include all entities in 01_game_entities.md as classes, with a deeply nested directory structure in data_model directory. For now only create emtpy classes. I want to first make sure we have modeled all entities from the list.
+
+Make sure you only include one class per file - ie I want as many files as there are classes. 
+
+---
+
