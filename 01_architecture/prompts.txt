@@ -196,12 +196,4 @@ Produce this into 01_architecture/00_brief.md.
 
 ---
 
-
-
-
-
-
-
-
-
 Based on all the content I've attached, can you figure out a simple list of ALL interactions one can have with the training base facility? Keep strictly to what's included in the text files, do not make things up. Do not include master game controls that appear in every facility, stick to training only.

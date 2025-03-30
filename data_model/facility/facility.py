@@ -9,5 +9,3 @@ from data_model.personnel.personnel import Personnel
 class Facility(ABC):
     """Abstract base for all facilities, accessed in bases, cannot be stored"""
     base: Optional[Base] = None
-    personnel: List[Personnel] = field(default_factory=list)
-    pass 

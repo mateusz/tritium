@@ -3,5 +3,4 @@ from data_model.facility.facility import Facility
 
 @dataclass
 class Training(Facility):
-    """Training facility"""
-    pass 
+    pass

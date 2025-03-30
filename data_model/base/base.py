@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import List, Optional, Dict
 
 from data_model.system.system import System
@@ -9,6 +9,8 @@ from data_model.personnel.personnel import Personnel
 from data_model.vehicle.vehicle import Vehicle
 from data_model.equipment.equipment import Equipment, EquipmentType
 from data_model.resource.resource import Resource, ResourceType
+from data_model.base.resource_base import ResourceBase
+from data_model.base.orbital_base import OrbitalBase
 
 @dataclass
 class Base(ABC):
@@ -33,6 +35,17 @@ class Base(ABC):
             for resource_type in Resource:
                 self.resources[resource_type] = 0
             
+    @property
+    @abstractmethod
+    def is_operational(self) -> bool:
+        """
+        Check if the base is operational. Derived classes must implement this.
+        
+        Returns:
+            bool: True if the base is operational
+        """
+        pass
+            
     def add_equipment(self, equipment_type: EquipmentType, amount: int = 1):
         """
         Add a specified amount of equipment to the base's storage
@@ -44,3 +57,42 @@ class Base(ABC):
         current_amount = self.storage.get(equipment_type, 0)
         self.storage[equipment_type] = current_amount + amount
             
+    def add_personnel(self, person: Personnel) -> bool:
+        """
+        Add a personnel to the base
+        
+        Args:
+            person: The personnel to add
+            
+        Returns:
+            bool: True if the personnel was added successfully
+        """
+        if not person:
+            return False
+            
+        # Set the base reference on the personnel
+        person.base = self
+        self.personnel.append(person)
+        return True
+        
+    def get_resource_base(self) -> Optional[ResourceBase]:
+        """Get the resource base for this location"""
+        return self.location.get_resource_base()
+
+    def get_orbital_base(self) -> Optional[OrbitalBase]:
+        """Get the orbital base for this location"""
+        return self.location.get_orbital_base()
+    
+    def add_facility(self, facility: Facility) -> bool:
+        """
+        Add a facility to the base and establish bidirectional relationship
+        
+        Args:
+            facility: The facility to add
+            
+        Returns:
+            bool: True if the facility was added successfully
+        """
+        facility.base = self
+        self.facilities.append(facility)
+        return True

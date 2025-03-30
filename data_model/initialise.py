@@ -4,6 +4,7 @@ from data_model.location.moon import Moon
 from data_model.location.asteroid import Asteroid
 from data_model.resource.resource import Resource
 from data_model.base.earth_base import EarthBase
+from data_model.base.moon_base import MoonBase
 from data_model.equipment.equipment import Equipment, EquipmentType
 
 
@@ -49,12 +50,9 @@ def initialize_solar_system():
     }
     solar_system.add_location(earth)
 
-    # Create Earth Base
     earth_base = EarthBase()
-    # Add one derrick to storage using the convenience function
     earth_base.add_equipment(EquipmentType.DERRICK, 1)
-    # Set the base for Earth
-    earth.set_base(earth_base)
+    earth.set_resource_base(earth_base)
     
     # Earth's Moon
     moon = Moon()
@@ -68,7 +66,10 @@ def initialize_solar_system():
         Resource.SILICA: 100.0
     }
     solar_system.add_location(moon)
-    
+
+    moon_base = MoonBase()
+    moon.set_resource_base(moon_base) 
+
     # Mars
     mars = Planet()
     mars.resources = {
