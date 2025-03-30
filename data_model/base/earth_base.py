@@ -1,7 +1,7 @@
 from dataclasses import dataclass
-from data_model.base.base import Base
+from data_model.base.resource_base import ResourceBase
 
 @dataclass
-class EarthBase(Base):
+class EarthBase(ResourceBase):
     """Base specific to Earth"""
     pass 

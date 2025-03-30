@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 from enum import Enum, auto
+from typing import Dict, Optional
+from data_model.resource.resource import Resource
 
 class EquipmentType(Enum):
     # Base Equipment
@@ -48,4 +50,5 @@ class Equipment:
     """
     Base class for all equipment. All equipment can be built and stored in storage.
     """
-    type: EquipmentType 
+    type: EquipmentType
+    costs: Optional[Dict[Resource, int]] = None 

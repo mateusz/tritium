@@ -12,4 +12,14 @@ class System(ABC):
     locations: List[Location] = field(default_factory=list)
     bases: List[Base] = field(default_factory=list)
     vehicles: List[Vehicle] = field(default_factory=list)
+    
+    def add_location(self, location: Location):
+        """Add a location to this system and set up bidirectional references.
+        
+        Args:
+            location: The location to add to this system
+        """
+        location.system = self
+        self.locations.append(location)
+
     pass 

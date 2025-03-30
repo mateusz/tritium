@@ -1,0 +1,4 @@
+Here are general principles you should follow where applicable:
+
+* Do not add spurious comments that simply state what the code does. Only add comments that explain the intent.
+* Do not cause leaky abstractions - do not reach into other classes' fields (unless it's the parent class). Introduce sensible getters and setters.

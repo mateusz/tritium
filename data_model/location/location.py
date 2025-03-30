@@ -13,4 +13,9 @@ class Location(ABC):
     system: Optional[System] = None
     base: Optional[Base] = None
     resources: Dict[Resource, float] = field(default_factory=dict)
-    vehicles: List[Vehicle] = field(default_factory=list) 
+    vehicles: List[Vehicle] = field(default_factory=list)
+    
+    def set_base(self, base: Base):
+        """Set the base for this location"""
+        self.base = base
+        base.location = self 
