@@ -1,22 +1,24 @@
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, TYPE_CHECKING
 
-from data_model.system.system import System
-from data_model.location.location import Location
 from data_model.facility.facility import Facility
 from data_model.personnel.personnel import Personnel
 from data_model.vehicle.vehicle import Vehicle
 from data_model.equipment.equipment import Equipment, EquipmentType
-from data_model.resource.resource import Resource, ResourceType
-from data_model.base.resource_base import ResourceBase
-from data_model.base.orbital_base import OrbitalBase
+from data_model.resource.resource import Resource
+
+if TYPE_CHECKING:
+    from data_model.system.system import System
+    from data_model.location.location import Location
+    from data_model.base.resource_base import ResourceBase
+    from data_model.base.orbital_base import OrbitalBase
 
 @dataclass
 class Base(ABC):
     """Abstract base for all buildable structures"""
-    system: Optional[System] = None
-    location: Optional[Location] = None
+    system: Optional['System'] = None
+    location: Optional['Location'] = None
     facilities: List[Facility] = field(default_factory=list)
     personnel: List[Personnel] = field(default_factory=list)
     shuttle_bay_vehicle: Optional[Vehicle] = None
@@ -29,7 +31,7 @@ class Base(ABC):
         """Initialize equipment dictionary with all equipment types set to zero"""
         if not self.equipment:
             for equip_type in EquipmentType:
-                self.equipment[Equipment(type=equip_type)] = 0
+                self.equipment[equip_type] = 0
             
         if not self.resources:
             for resource_type in Resource:
@@ -79,11 +81,11 @@ class Base(ABC):
         self.personnel.append(person)
         return True
         
-    def get_resource_base(self) -> Optional[ResourceBase]:
+    def get_resource_base(self) -> Optional['ResourceBase']:
         """Get the resource base for this location"""
         return self.location.get_resource_base()
 
-    def get_orbital_base(self) -> Optional[OrbitalBase]:
+    def get_orbital_base(self) -> Optional['OrbitalBase']:
         """Get the orbital base for this location"""
         return self.location.get_orbital_base()
     

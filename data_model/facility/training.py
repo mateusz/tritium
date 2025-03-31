@@ -1,12 +1,14 @@
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, TYPE_CHECKING
 from enum import Enum, auto
-from data_model.facility.facility import Facility
 from data_model.personnel.researcher import Researcher
 from data_model.personnel.producer import Producer
 from data_model.personnel.marine import Marine
 from data_model.personnel.personnel import PersonnelType
-from data_model.base.earth_base import EarthBase
+from data_model.facility.facility import Facility
+
+if TYPE_CHECKING:
+    from data_model.base.earth_base import EarthBase
 
 @dataclass
 class TrainingBatch:
@@ -29,9 +31,7 @@ class Training(Facility):
     producers_selector: int = 0
     light_switched_on: bool = False
 
-    def get_earth_base(self) -> Optional[EarthBase]:
-        if not isinstance(self.base, EarthBase):
-            raise Exception("Training facility must be on Earth")
+    def get_earth_base(self) -> Optional['EarthBase']:
         return self.base
     
     def can_train_marines(self, number: int) -> bool:

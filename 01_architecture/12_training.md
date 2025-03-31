@@ -1,5 +1,7 @@
 # Training
 
+Depicts three elevators for training new staff. There is one each for the three personnel types. Each elevator allows choosing the amount, and as soon as time is progressed, the elevator closes and begins training. Elevator opens after the training is finished.
+
 Train personnel in three different categories:
 
 - Research
