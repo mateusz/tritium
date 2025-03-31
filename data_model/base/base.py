@@ -35,6 +35,10 @@ class Base(ABC):
             for resource_type in Resource:
                 self.resources[resource_type] = 0
             
+    def has_free_personnel_slot(self) -> bool:
+        """Check if there is a free personnel slot available"""
+        return len(self.personnel) < 4
+    
     @property
     @abstractmethod
     def is_operational(self) -> bool:
@@ -67,10 +71,10 @@ class Base(ABC):
         Returns:
             bool: True if the personnel was added successfully
         """
-        if not person:
+        # Only possible to add if there is a slot left - max 4
+        if len(self.personnel) >= 4:
             return False
-            
-        # Set the base reference on the personnel
+        
         person.base = self
         self.personnel.append(person)
         return True
@@ -96,3 +100,7 @@ class Base(ABC):
         facility.base = self
         self.facilities.append(facility)
         return True
+
+    def update(self):
+        for facility in self.facilities:
+            facility.update()

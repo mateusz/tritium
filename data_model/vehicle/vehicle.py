@@ -18,3 +18,6 @@ class Vehicle(ABC):
     crew: Optional[Personnel] = None
     equipment: List[Equipment] = field(default_factory=list)
     artifacts: List[Artifact] = field(default_factory=list) 
+
+    def update(self):
+        pass

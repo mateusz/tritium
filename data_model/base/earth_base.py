@@ -10,8 +10,6 @@ from data_model.facility.shuttle_bay import ShuttleBay
 
 @dataclass
 class EarthBase(ResourceBase):
-    """Base specific to Earth - the only base that can train personnel"""
-    available_population: int = 6000  # Initial population available for recruiting
     
     def __post_init__(self):
         """Initialize with all Earth-specific facilities"""

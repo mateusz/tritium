@@ -1,0 +1,7 @@
+Now, based on functionality described in 12_training, give me a list of things that should be implemented into the training facility. Note this should be state-modifying functions, but not display-related things.
+
+Remember to use the `base` reference in the parent class as needed, as that stores some of the game state. Use the data model from personnel directory. Include a game-tick `update` function in the facility to progress the training (the game runs in days)
+
+Here are general principles you should follow where applicable:
+* Do not add spurious comments that simply state what the code does. Only add comments that explain the intent.
+* Do not cause leaky abstractions - do not reach into other classes' fields (unless it's the parent class). Introduce sensible getters and setters.

@@ -8,7 +8,7 @@ from data_model.base.moon_base import MoonBase
 from data_model.equipment.equipment import Equipment, EquipmentType
 
 
-def initialize_solar_system():
+def initialize_solar_system() -> SolarSystem:
     """Initialize the Solar System with all planets, moons, and their resources."""
     solar_system = SolarSystem()
     
@@ -452,7 +452,3 @@ def initialize_solar_system():
     
     return solar_system
 
-
-def get_solar_system():
-    """Get the initialized solar system."""
-    return initialize_solar_system() 
