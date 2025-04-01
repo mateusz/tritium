@@ -1,4 +1,5 @@
 from data_model.game_state import GameState
+from colorama import Fore, Back, Style
 
 class MasterView:
     def __init__(self, game_state: GameState):
@@ -12,12 +13,15 @@ class MasterView:
     def display(self):
         """Display the current game state in the console"""
         self.clear_screen()
-        print("=== TRITIUM - Main View ===")
-        print(f"Game Time: {self.game_state.game_time}")
-        print("\nCommands:")
-        print("  .    - Advance time by one round")
-        print("  e    - Switch to Earth view")
-        print("  q    - Quit game")
+        # Header with background color
+        print(Back.BLUE + Fore.WHITE + Style.BRIGHT + "=== TRITIUM - Main View ===".center(80) + Style.RESET_ALL)
+        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_state.game_time}")
+        
+        # Commands section
+        print(Fore.GREEN + "\nCommands:")
+        print(Fore.WHITE + "  " + Fore.CYAN + ".    " + Fore.WHITE + "- Advance time by one round")
+        print(Fore.WHITE + "  " + Fore.CYAN + "e    " + Fore.WHITE + "- Switch to Earth view")
+        print(Fore.WHITE + "  " + Fore.CYAN + "q    " + Fore.WHITE + "- Quit game")
     
     def advance_time(self):
         """Progress the game time by one round"""
@@ -44,9 +48,9 @@ class MasterView:
             earth_view = EarthView(self.game_state)
             return ('switch', earth_view)
         else:
-            print("Unknown command. Type '.' to continue, 'e' for Earth view, or 'q' to quit.")
+            print(Fore.RED + "Unknown command. Type '.' to continue, 'e' for Earth view, or 'q' to quit.")
             return ('continue', None)
     
     def get_prompt(self):
         """Return the command prompt for this view"""
-        return "Command: " 
+        return Fore.GREEN + "Command: " + Fore.WHITE 
