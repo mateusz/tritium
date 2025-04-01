@@ -45,7 +45,7 @@ class Training(Facility):
         if not self.get_earth_base().has_free_personnel_slot():
             return False
 
-        if number > 41:
+        if number > 41 or number<0:
             return False
 
         if self.available_population - number < 0:
@@ -70,7 +70,7 @@ class Training(Facility):
             return False
 
         # Maximum 100 researchers per batch as per specification
-        if number > 100:
+        if number > 100 or number<0:
             return False
         
         if self.available_population - number < 0:
@@ -96,7 +96,7 @@ class Training(Facility):
             return False
             
         # Maximum 100 producers per batch as per specification
-        if number > 100:
+        if number > 100 or number<0:
             return False
 
         if self.available_population - number < 0:
@@ -199,6 +199,7 @@ class Training(Facility):
                 # Marines training complete - create a new marine squad
                 if earth_base.add_personnel(Marine(count=self.marines_in_training.amount)):
                     self.marines_in_training = None
+                    self.marines_selector = 0
         
         # Update researchers training
         if self.researchers_in_training is not None:
@@ -208,6 +209,7 @@ class Training(Facility):
                 if research_facility is not None:
                     if research_facility.add_researchers(self.researchers_in_training.amount):
                         self.researchers_in_training = None
+                        self.researchers_selector = 0
         
         # Update producers training
         if self.producers_in_training is not None:
@@ -217,7 +219,7 @@ class Training(Facility):
                 if production_facility is not None:
                     if production_facility.add_producers(self.producers_in_training.amount):
                         self.producers_in_training = None
-        
+                        self.producers_selector = 0 
     
     def for_view(self) -> Dict[str, Any]:
         return {

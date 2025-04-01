@@ -30,6 +30,7 @@ class MessageManager:
         self.messages: List[Message] = []
         self.max_messages = 3  # Maximum number of messages to show
         self.message_ttl = 10.0  # Time to live for messages in seconds
+        self.fixed_height = 5  # Fixed height of the message area (1 for top border + max_messages + 1 for bottom border)
     
     def add_message(self, text: str, color: str = Fore.WHITE):
         """Add a message to the buffer"""
@@ -69,14 +70,26 @@ class MessageManager:
         return self.messages
     
     def get_message_display(self) -> str:
-        """Get a formatted string of all messages for display"""
-        if not self.messages:
-            return ""
-        
+        """Get a formatted string of all messages for display with fixed height"""
+        # Top border
         result = "─" * 80 + "\n"
-        for msg in self.messages:
+        
+        # Get the most recent messages
+        self._clean_old_messages()
+        display_messages = self.messages[-self.max_messages:] if self.messages else []
+        
+        # Add existing messages
+        for msg in display_messages:
             result += f"{msg}\n"
+        
+        # Add empty lines if we don't have enough messages to fill the space
+        empty_lines = self.max_messages - len(display_messages)
+        for _ in range(empty_lines):
+            result += " " * 80 + "\n"
+        
+        # Bottom border
         result += "─" * 80
+        
         return result
     
     def clear_messages(self):

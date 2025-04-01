@@ -77,21 +77,15 @@ class TrainingView(MasterView):
         print(Fore.WHITE + "  " + Fore.CYAN + "q        " + Fore.WHITE + "- Quit game")
         
         print(Fore.LIGHTRED_EX + Style.BRIGHT + "\nMarine Training Setup:" + Style.RESET_ALL)
-        print(Fore.WHITE + "  " + Fore.CYAN + "m+       " + Fore.WHITE + "- Increase marines selection by 1")
         print(Fore.WHITE + "  " + Fore.CYAN + "m+N      " + Fore.WHITE + "- Increase marines selection by N (e.g. m+10)")
-        print(Fore.WHITE + "  " + Fore.CYAN + "m-       " + Fore.WHITE + "- Decrease marines selection by 1")
         print(Fore.WHITE + "  " + Fore.CYAN + "m-N      " + Fore.WHITE + "- Decrease marines selection by N (e.g. m-5)")
         
         print(Fore.LIGHTBLUE_EX + Style.BRIGHT + "\nResearcher Training Setup:" + Style.RESET_ALL)
-        print(Fore.WHITE + "  " + Fore.CYAN + "r+       " + Fore.WHITE + "- Increase researchers selection by 1")
         print(Fore.WHITE + "  " + Fore.CYAN + "r+N      " + Fore.WHITE + "- Increase researchers selection by N (e.g. r+10)")
-        print(Fore.WHITE + "  " + Fore.CYAN + "r-       " + Fore.WHITE + "- Decrease researchers selection by 1")
         print(Fore.WHITE + "  " + Fore.CYAN + "r-N      " + Fore.WHITE + "- Decrease researchers selection by N (e.g. r-5)")
         
         print(Fore.LIGHTYELLOW_EX + Style.BRIGHT + "\nProducer Training Setup:" + Style.RESET_ALL)
-        print(Fore.WHITE + "  " + Fore.CYAN + "p+       " + Fore.WHITE + "- Increase producers selection by 1")
         print(Fore.WHITE + "  " + Fore.CYAN + "p+N      " + Fore.WHITE + "- Increase producers selection by N (e.g. p+10)")
-        print(Fore.WHITE + "  " + Fore.CYAN + "p-       " + Fore.WHITE + "- Decrease producers selection by 1")
         print(Fore.WHITE + "  " + Fore.CYAN + "p-N      " + Fore.WHITE + "- Decrease producers selection by N (e.g. p-5)")
     
     def increase_marines_by(self, amount):
@@ -240,20 +234,6 @@ class TrainingView(MasterView):
             amount = int(m_minus_match.group(1))
             self.decrease_marines_by(amount)
             return ('continue', None)
-        elif command == "m+":
-            result = self.training_facility.marines_selector_up()
-            if not result:
-                self.log_message("Cannot increase marines selection further", "error")
-            else:
-                self.log_message("Increased marines selection by 1", "success")
-            return ('continue', None)
-        elif command == "m-":
-            result = self.training_facility.marines_selector_down()
-            if not result:
-                self.log_message("Cannot decrease marines selection further", "error")
-            else:
-                self.log_message("Decreased marines selection by 1", "success")
-            return ('continue', None)
         
         # Researcher training commands
         elif r_plus_match:
@@ -266,20 +246,6 @@ class TrainingView(MasterView):
             amount = int(r_minus_match.group(1))
             self.decrease_researchers_by(amount)
             return ('continue', None)
-        elif command == "r+":
-            result = self.training_facility.researchers_selector_up()
-            if not result:
-                self.log_message("Cannot increase researchers selection further", "error")
-            else:
-                self.log_message("Increased researchers selection by 1", "success")
-            return ('continue', None)
-        elif command == "r-":
-            result = self.training_facility.researchers_selector_down()
-            if not result:
-                self.log_message("Cannot decrease researchers selection further", "error")
-            else:
-                self.log_message("Decreased researchers selection by 1", "success")
-            return ('continue', None)
         
         # Producer training commands
         elif p_plus_match:
@@ -291,20 +257,6 @@ class TrainingView(MasterView):
             # Decrease producers by a specific amount
             amount = int(p_minus_match.group(1))
             self.decrease_producers_by(amount)
-            return ('continue', None)
-        elif command == "p+":
-            result = self.training_facility.producers_selector_up()
-            if not result:
-                self.log_message("Cannot increase producers selection further", "error")
-            else:
-                self.log_message("Increased producers selection by 1", "success")
-            return ('continue', None)
-        elif command == "p-":
-            result = self.training_facility.producers_selector_down()
-            if not result:
-                self.log_message("Cannot decrease producers selection further", "error")
-            else:
-                self.log_message("Decreased producers selection by 1", "success")
             return ('continue', None)
         
         else:
