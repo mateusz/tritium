@@ -5,13 +5,12 @@ from data_model.game_state import GameState
 # Initialize Pygame
 pygame.init()
 
-# Get the display info to set up a full-screen window
-display_info = pygame.display.Info()
-WINDOW_WIDTH = display_info.current_w
-WINDOW_HEIGHT = display_info.current_h
+# Set window dimensions
+WINDOW_WIDTH = 1024
+WINDOW_HEIGHT = 768
 
-# Set up the display
-screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.FULLSCREEN)
+# Set up the display in windowed mode
+screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption("Tritium")
 
 # Initialize font for the timer
@@ -35,6 +34,7 @@ while running:
 
     # Update game state
     game_state.update()
+    training = game_state.get_earth_base().get_training_facility()
 
     # Clear screen with black background
     screen.fill((0, 0, 0))

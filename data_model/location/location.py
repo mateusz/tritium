@@ -14,6 +14,7 @@ if TYPE_CHECKING:
 @dataclass
 class Location(ABC):
     """Abstract base for all buildable locations"""
+    name: Optional[str] = None
     system: Optional['System'] = None
     orbital_base: Optional[Base] = None
     resource_base: Optional[Base] = None

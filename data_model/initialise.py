@@ -14,6 +14,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Mercury
     mercury = Planet()
+    mercury.name = 'Mercury'
     mercury.resources = {
         Resource.IRON: 100.0,
         Resource.TITANIUM: 100.0,
@@ -26,6 +27,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Venus
     venus = Planet()
+    venus.name = 'Venus'
     venus.resources = {
         Resource.ALUMINUM: 100.0,
         Resource.CARBON: 100.0,
@@ -37,6 +39,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Earth
     earth = Planet()
+    earth.name = 'Earth'
     earth.resources = {
         Resource.IRON: 100.0,
         Resource.TITANIUM: 100.0,
@@ -56,6 +59,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Earth's Moon
     moon = Moon()
+    moon.name = 'Moon'
     moon.resources = {
         Resource.IRON: 100.0,
         Resource.TITANIUM: 100.0,
@@ -72,6 +76,7 @@ def initialize_solar_system() -> SolarSystem:
 
     # Mars
     mars = Planet()
+    mars.name = 'Mars'
     mars.resources = {
         Resource.IRON: 100.0,
         Resource.CARBON: 100.0,
@@ -82,6 +87,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Mars' Moons
     phobos = Moon()
+    phobos.name = 'Phobos'
     phobos.resources = {
         Resource.CARBON: 100.0,
         Resource.SILICA: 100.0
@@ -89,6 +95,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(phobos)
     
     deimos = Moon()
+    deimos.name = 'Deimos'
     deimos.resources = {
         Resource.CARBON: 100.0,
         Resource.SILICA: 100.0
@@ -97,6 +104,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Asteroid Belt
     asteroid_belt = Asteroid()
+    asteroid_belt.name = 'Asteroid Belt'
     asteroid_belt.resources = {
         Resource.TITANIUM: 100.0,
         Resource.ALUMINUM: 100.0,
@@ -111,6 +119,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Jupiter
     jupiter = Planet()
+    jupiter.name = 'Jupiter'
     jupiter.resources = {
         Resource.HYDROGEN: 100.0,
         Resource.HELIUM: 100.0
@@ -119,6 +128,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Jupiter's Moons
     amalthea = Moon()
+    amalthea.name = 'Amalthea'
     amalthea.resources = {
         Resource.CARBON: 100.0,
         Resource.SILICA: 100.0
@@ -126,6 +136,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(amalthea)
     
     io = Moon()
+    io.name = 'Io'
     io.resources = {
         Resource.CARBON: 100.0,
         Resource.METHANE: 100.0,
@@ -134,6 +145,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(io)
     
     europa = Moon()
+    europa.name = 'Europa'
     europa.resources = {
         Resource.CARBON: 100.0,
         Resource.DEUTERIUM: 100.0,
@@ -142,6 +154,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(europa)
     
     ganymede = Moon()
+    ganymede.name = 'Ganymede'
     ganymede.resources = {
         Resource.IRON: 100.0,
         Resource.TITANIUM: 100.0,
@@ -154,6 +167,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(ganymede)
     
     callisto = Moon()
+    callisto.name = 'Callisto'
     callisto.resources = {
         Resource.IRON: 100.0,
         Resource.ALUMINUM: 100.0,
@@ -164,6 +178,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(callisto)
     
     leda = Moon()
+    leda.name = 'Leda'
     leda.resources = {
         Resource.IRON: 100.0,
         Resource.TITANIUM: 100.0,
@@ -177,6 +192,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(leda)
     
     himalia = Moon()
+    himalia.name = 'Himalia'
     himalia.resources = {
         Resource.CARBON: 100.0,
         Resource.GOLD: 100.0,
@@ -185,6 +201,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(himalia)
     
     elara = Moon()
+    elara.name = 'Elara'
     elara.resources = {
         Resource.CARBON: 100.0,
         Resource.SILICA: 100.0
@@ -192,6 +209,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(elara)
     
     pasiphae = Moon()
+    pasiphae.name = 'Pasiphae'
     pasiphae.resources = {
         Resource.CARBON: 100.0,
         Resource.SILICA: 100.0
@@ -200,6 +218,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Saturn
     saturn = Planet()
+    saturn.name = 'Saturn'
     saturn.resources = {
         Resource.HYDROGEN: 100.0
     }
@@ -207,6 +226,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Saturn's Moons
     mimas = Moon()
+    mimas.name = 'Mimas'
     mimas.resources = {
         Resource.CARBON: 100.0,
         Resource.SILICA: 100.0
@@ -214,6 +234,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(mimas)
     
     enceladus = Moon()
+    enceladus.name = 'Enceladus'
     enceladus.resources = {
         Resource.IRON: 100.0,
         Resource.ALUMINUM: 100.0,
@@ -225,6 +246,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(enceladus)
     
     tethys = Moon()
+    tethys.name = 'Tethys'
     tethys.resources = {
         Resource.TITANIUM: 100.0,
         Resource.ALUMINUM: 100.0,
@@ -238,6 +260,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(tethys)
     
     dione = Moon()
+    dione.name = 'Dione'
     dione.resources = {
         Resource.CARBON: 100.0,
         Resource.SILICA: 100.0
@@ -245,6 +268,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(dione)
     
     rhea = Moon()
+    rhea.name = 'Rhea'
     rhea.resources = {
         Resource.CARBON: 100.0,
         Resource.HYDROGEN: 100.0,
@@ -256,6 +280,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(rhea)
     
     titan = Moon()
+    titan.name = 'Titan'
     titan.resources = {
         Resource.TITANIUM: 100.0,
         Resource.CARBON: 100.0,
@@ -269,6 +294,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(titan)
     
     hyperion = Moon()
+    hyperion.name = 'Hyperion'
     hyperion.resources = {
         Resource.ALUMINUM: 100.0,
         Resource.CARBON: 100.0,
@@ -281,6 +307,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(hyperion)
     
     iapet = Moon()
+    iapet.name = 'Iapet'
     iapet.resources = {
         Resource.CARBON: 100.0,
         Resource.SILICA: 100.0
@@ -288,6 +315,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(iapet)
     
     phoebe = Moon()
+    phoebe.name = 'Phoebe'
     phoebe.resources = {
         Resource.IRON: 100.0,
         Resource.TITANIUM: 100.0,
@@ -302,6 +330,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Uranus
     uranus = Planet()
+    uranus.name = 'Uranus'
     uranus.resources = {
         Resource.IRON: 100.0,
         Resource.TITANIUM: 100.0,
@@ -316,6 +345,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Uranus' Moons
     miranda = Moon()
+    miranda.name = 'Miranda'
     miranda.resources = {
         Resource.IRON: 100.0,
         Resource.CARBON: 100.0,
@@ -327,6 +357,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(miranda)
     
     ariel = Moon()
+    ariel.name = 'Ariel'
     ariel.resources = {
         Resource.ALUMINUM: 100.0,
         Resource.HYDROGEN: 100.0,
@@ -338,6 +369,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(ariel)
     
     umbriel = Moon()
+    umbriel.name = 'Umbriel'
     umbriel.resources = {
         Resource.CARBON: 100.0,
         Resource.HYDROGEN: 100.0,
@@ -346,6 +378,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(umbriel)
     
     titania = Moon()
+    titania.name = 'Titania'
     titania.resources = {
         Resource.IRON: 100.0,
         Resource.CARBON: 100.0,
@@ -359,6 +392,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(titania)
     
     oberon = Moon()
+    oberon.name = 'Oberon'
     oberon.resources = {
         Resource.IRON: 100.0,
         Resource.TITANIUM: 100.0,
@@ -373,6 +407,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Neptune
     neptune = Planet()
+    neptune.name = 'Neptune'
     neptune.resources = {
         Resource.IRON: 100.0,
         Resource.ALUMINUM: 100.0,
@@ -387,6 +422,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Neptune's Moons
     triton = Moon()
+    triton.name = 'Triton'
     triton.resources = {
         Resource.TITANIUM: 100.0,
         Resource.CARBON: 100.0,
@@ -400,6 +436,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(triton)
     
     nereid = Moon()
+    nereid.name = 'Nereid'
     nereid.resources = {
         Resource.CARBON: 100.0,
         Resource.PALLADIUM: 100.0,
@@ -408,6 +445,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(nereid)
     
     n3 = Moon()
+    n3.name = 'N3'
     n3.resources = {
         Resource.CARBON: 100.0,
         Resource.SILICA: 100.0
@@ -415,6 +453,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(n3)
     
     n4 = Moon()
+    n4.name = 'N4'
     n4.resources = {
         Resource.SILICA: 100.0
     }
@@ -422,6 +461,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Pluto
     pluto = Planet()
+    pluto.name = 'Pluto'
     pluto.resources = {
         Resource.CARBON: 100.0,
         Resource.HYDROGEN: 100.0,
@@ -435,6 +475,7 @@ def initialize_solar_system() -> SolarSystem:
     
     # Pluto's Moons
     charon = Moon()
+    charon.name = 'Charon'
     charon.resources = {
         Resource.CARBON: 100.0,
         Resource.SILICA: 100.0
@@ -442,6 +483,7 @@ def initialize_solar_system() -> SolarSystem:
     solar_system.add_location(charon)
     
     decuria = Moon()
+    decuria.name = 'Decuria'
     decuria.resources = {
         Resource.TITANIUM: 100.0,
         Resource.CARBON: 100.0,

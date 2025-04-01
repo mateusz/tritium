@@ -5,3 +5,7 @@ Make sure you only include one class per file - ie I want as many files as there
 
 ---
 
+Now based on 03, implement the specified relationships as fields in the data_model.
+
+---
+
