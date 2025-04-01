@@ -63,7 +63,6 @@ def main():
         if action == 'quit':
             running = False
         elif action == 'switch' and new_view:
-            # The view itself provides the new view instance
             current_view = new_view
 
     print(Fore.YELLOW + "Game ended. Goodbye!")

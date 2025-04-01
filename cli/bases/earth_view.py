@@ -7,10 +7,17 @@ class EarthView(MasterView):
         super().__init__(game_state)
         self.earth_base = game_state.get_earth_base()
         self.view_name = "earth"
-        
+    
     def display(self):
         """Display Earth-specific game state"""
         self.clear_screen()
+        
+        # Display any pending messages at the top
+        messages_display = self.message_manager.get_message_display()
+        if messages_display:
+            print(messages_display)
+            print()
+            
         # Header with background color
         print(Back.GREEN + Fore.BLACK + Style.BRIGHT + "=== TRITIUM - Earth Base View ===".center(80) + Style.RESET_ALL)
         print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_state.game_time}")
@@ -59,7 +66,7 @@ class EarthView(MasterView):
             training_view = TrainingView(self.game_state)
             return ('switch', training_view)
         else:
-            print(Fore.RED + "Unknown command. Type '.' to continue, 't' for Training, 'm' for main view, or 'q' to quit.")
+            self.log_message(f"Unknown command: {command}", "error")
             return ('continue', None)
     
     def get_prompt(self):

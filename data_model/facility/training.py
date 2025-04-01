@@ -173,10 +173,25 @@ class Training(Facility):
         self.light_switched_on = not self.light_switched_on
         return self.light_switched_on
     
+    def start_pending_trainings(self):
+        """Start any pending trainings based on current selector values"""
+        # Check if there are any pending trainings to start
+        if self.marines_selector > 0 and self.marines_in_training is None:
+            self.train_marines(self.marines_selector)
+            
+        if self.researchers_selector > 0 and self.researchers_in_training is None:
+            self.train_researchers(self.researchers_selector)
+            
+        if self.producers_selector > 0 and self.producers_in_training is None:
+            self.train_producers(self.producers_selector)
+    
     def update(self):
         earth_base = self.get_earth_base()
         if earth_base is None:
             return
+        
+        # Start any pending trainings first
+        self.start_pending_trainings()
             
         # Update marines training
         if self.marines_in_training is not None:

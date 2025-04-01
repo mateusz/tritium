@@ -1,10 +1,12 @@
 from data_model.game_state import GameState
 from colorama import Fore, Back, Style
+from cli.message_system import MessageManager
 
 class MasterView:
     def __init__(self, game_state: GameState):
         self.game_state = game_state
         self.view_name = "master"
+        self.message_manager = MessageManager.get_instance()
     
     def clear_screen(self):
         """Simple cross-platform clear screen"""
@@ -13,6 +15,13 @@ class MasterView:
     def display(self):
         """Display the current game state in the console"""
         self.clear_screen()
+        
+        # Display any pending messages at the top
+        messages_display = self.message_manager.get_message_display()
+        if messages_display:
+            print(messages_display)
+            print()
+            
         # Header with background color
         print(Back.BLUE + Fore.WHITE + Style.BRIGHT + "=== TRITIUM - Main View ===".center(80) + Style.RESET_ALL)
         print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_state.game_time}")
@@ -26,6 +35,20 @@ class MasterView:
     def advance_time(self):
         """Progress the game time by one round"""
         self.game_state.update()
+        self.message_manager.add_info("Advanced time by one round")
+    
+    def log_message(self, message: str, message_type: str = "info"):
+        """Log a message to be displayed across view refreshes"""
+        if message_type == "info":
+            self.message_manager.add_info(message)
+        elif message_type == "success":
+            self.message_manager.add_success(message)
+        elif message_type == "warning":
+            self.message_manager.add_warning(message)
+        elif message_type == "error":
+            self.message_manager.add_error(message)
+        else:
+            self.message_manager.add_message(message)
     
     def process_command(self, command: str):
         """Process a user command
@@ -48,7 +71,7 @@ class MasterView:
             earth_view = EarthView(self.game_state)
             return ('switch', earth_view)
         else:
-            print(Fore.RED + "Unknown command. Type '.' to continue, 'e' for Earth view, or 'q' to quit.")
+            self.log_message(f"Unknown command: {command}", "error")
             return ('continue', None)
     
     def get_prompt(self):
