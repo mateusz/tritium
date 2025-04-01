@@ -1,55 +1,47 @@
-import pygame
 import sys
 from data_model.game_state import GameState
+from cli.master_view import MasterView
+from cli.bases.earth_view import EarthView
+from cli.facilities.training_view import TrainingView
 
-# Initialize Pygame
-pygame.init()
+def get_view_by_name(name, game_state):
+    """Return a view instance based on its name"""
+    if name == 'master':
+        return MasterView(game_state)
+    elif name == 'earth':
+        return EarthView(game_state)
+    elif name == 'training':
+        return TrainingView(game_state)
+    else:
+        raise ValueError(f"Invalid view name: {name}")
 
-# Set window dimensions
-WINDOW_WIDTH = 1024
-WINDOW_HEIGHT = 768
-
-# Set up the display in windowed mode
-screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-pygame.display.set_caption("Tritium")
-
-# Initialize font for the timer
-font = pygame.font.Font(None, 36)
-
-# Initialize game state
-game_state = GameState()
-
-# Game loop
-clock = pygame.time.Clock()
-running = True
-
-while running:
-    # Handle events
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+def main():
+    # Initialize game state
+    game_state = GameState()
+    
+    # Start with master view
+    current_view = MasterView(game_state)
+    running = True
+    
+    # Main game loop
+    while running:
+        current_view.display()
+        
+        # Get user input 
+        user_input = input(current_view.get_prompt())
+        
+        # Process command
+        action, new_view = current_view.process_command(user_input)
+        
+        # Handle the action
+        if action == 'quit':
             running = False
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                running = False
+        elif action == 'switch' and new_view:
+            # The view itself provides the new view instance
+            current_view = new_view
 
-    # Update game state
-    game_state.update()
-    training = game_state.get_earth_base().get_training_facility()
+    print("Game ended. Goodbye!")
+    return 0
 
-    # Clear screen with black background
-    screen.fill((0, 0, 0))
-
-    # Render timer
-    timer_text = f"Game Time: {game_state.game_time}"
-    timer_surface = font.render(timer_text, True, (255, 255, 255))
-    screen.blit(timer_surface, (10, 10))
-
-    # Update display
-    pygame.display.flip()
-
-    # Cap the frame rate
-    clock.tick(1)
-
-# Quit Pygame
-pygame.quit()
-sys.exit() 
+if __name__ == "__main__":
+    sys.exit(main()) 
