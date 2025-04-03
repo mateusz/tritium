@@ -197,3 +197,13 @@ Produce this into 01_architecture/00_brief.md.
 ---
 
 Based on all the content I've attached, can you figure out a simple list of ALL interactions one can have with the training base facility? Keep strictly to what's included in the text files, do not make things up. Do not include master game controls that appear in every facility, stick to training only.
+
+---
+
+Based on @manual1.txt , @manual2.txt , @manual3.txt , @manual_orig.txt , can you figure out a simple list of ALL interactions one can have with the research base facility? Keep strictly to what's included in the text files, do not make things up. Do not include master game controls that appear in every facility, stick to research only.
+
+Output this summary into 01_architecture/13_research.md
+
+---
+
+Now, take @equipment_costs.md  and update costs in @10_equipment.md . Only update the resource requirepemtns! Don't touch titles, ranks or locations.

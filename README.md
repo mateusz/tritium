@@ -3,7 +3,6 @@
 TODO
 
 - add mass to equipment, in case its needed for transport
-- add fuzlaser (useless, but a stepping stone to drones) - lvl3, 25t, orbit only, 5 copper, 10 paladium, 10 platinum
 - problems with equipment costs - the table hasn't been read correctly
 - battle at https://youtu.be/e1a-zN6cF-E?si=e4NkqKKtKxlc7jO8&t=1991
 - the battles generally you can see going your way or not after first 10 casualties 

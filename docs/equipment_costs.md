@@ -1,0 +1,111 @@
+- Derrick:
+  - RequiredRank: 1
+  - RequiredLocation: Any factory
+  - Cost: 3 Iron, 4 Titanium, 1 Carbon, 8 Mass
+- S Chasis:
+  - RequiredRank: 1
+  - RequiredLocation: Any factory
+  - Cost: 20 Iron, 50 Titanium, 35 Aluminium, 10 Carbon, 15 Copper, 130 Mass
+- S Drive:
+  - RequiredRank: 1
+  - RequiredLocation: Any factory
+  - Cost: 6 Iron, 10 Titanium, 4 Aluminium, 20 Mass
+- MeH Fuel:
+  - RequiredRank: 1
+  - RequiredLocation: Any factory
+  - Cost: 2 Hydrogen, 2 Methane, 3 Mass
+- OF Frame:
+  - RequiredRank: 1
+  - RequiredLocation: Any factory
+  - Cost: 55 Iron, 80 Titanium, 50 Aluminium, 25 Carbon, 40 Copper, 250 Mass
+- Supply Pod:
+  - RequiredRank: 1
+  - RequiredLocation: Any factory
+  - Cost: 2 Titanium, 1 Aluminium, 1 Copper, 4 Mass
+- Tool Pod:
+  - RequiredRank: 1
+  - RequiredLocation: Any factory
+  - Cost: 2 Titanium, 1 Aluminium, 1 Copper, 4 Mass
+- Cryo Pod:
+  - RequiredRank: 1
+  - RequiredLocation: Any factory
+  - Cost: 2 Titanium, 1 Aluminium, 1 Copper, 4 Mass
+- Pulse Blaste Laser:
+  - RequiredRank: 
+  - RequiredLocation: 
+  - Cost: 120 Paladium, 30 Platinum
+- I Chassis:
+  - RequiredRank: 2
+  - RequiredLocation: Orbit only
+  - Cost: 100 Iron, 250 Titanium, 175 Aluminium, 50 Carbon, 75 Copper, 650 Mass
+- I Drive:
+  - RequiredRank: 2
+  - RequiredLocation: Orbit only
+  - Cost: 30 Iron, 50 Titanium, 15 Copper, 95 Mass
+- G Chassis:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 250 Iron, 600 Titanium, 400 Aluminium, 185 Copper, 100 Platinum, 100 Silver, 50 Gold, 1685 Mass
+- Star Drive:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 50 Iron, 100 Titanium, 30 Copper, 50 Paladium, 25 Platinum, 10 Silver, 265 Mass
+- HeD Fuel:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 2 Deuterium, 2 Helium, 3 Mass
+- ACC:
+  - RequiredRank: 3
+  - RequiredLocation: Any factory
+  - Cost: 2 Titanium, 1 Aluminium, 1 Carbon, 1 Copper, 5 Mass
+- AOC:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 4 Titanium, 1 Aluminium, 2 Carbon, 1 Silver, 8 Mass
+- Bandaid:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 30 Iron, 30 Titanium, 30 Aluminium, 30 Carbon, 30 Copper, 150 Mass
+- S.D.M.:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 5 Aluminium, 1 Copper, 1 Paladium, 2 Platinum, 9 Mass
+- Grapple:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 2 Iron, 2 Titanium, 1 Copper, 5 Mass
+- DFCC:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 2 Titanium, 1 Aluminium, 1 Carbon, 1 Copper, 2 Platinum, 1 Gold, 8 Mass
+- AMA:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 6 Iron, 70 Titanium, 10 Aluminium, 30 Carbon, 2 Copper, 5 Platinum, 1 Silver, 124 Mass
+- Hyperlight:
+  - RequiredRank: 3
+  - RequiredLocation: 
+- M.T.X.:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 500 Titanium, 82 Copper, 100 Paladium, 40 Gold, 722 Mass
+- R Frame:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 35 Iron, 50 Titanium, 20 Aluminium, 15 Carbon, 30 Copper, 25 Platinum, 10 Silver, 15 Silica, 200 Mass
+- Prejudice Torpedo Launcher:
+  - RequiredRank: 
+  - RequiredLocation: 
+  - Cost: 96 Titanium, 45 Aluminium, 10 Copper
+- COMMSPOD:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 2 Aluminium, 1 Carbon, 1 Copper, 1 Gold, 5 Mass
+- IOS Drone:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 120 Iron, 120 Titanium, 120 Aluminium, 15 Carbon, 55 Copper, 30 Paladium, 30 Platinum, 490 Mass
+- Star Drone:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 300 Iron, 300 Titanium, 100 Copper, 90 Paladium, 80 Platinum, 95 Silver, 50 Gold, 1015 Mass

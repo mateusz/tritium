@@ -1,0 +1,11 @@
+Add a code here to achieve the following:
+Read equipment_costs.csv and convert it to a markdown list file
+The headings of CSV are in order: id,Item,Tech Level,Factory,Iron,Titanium,Aluminium,Carbon,Copper,Hydrogen,Deuterium,Methane,Helium,Paladium,Platinum,Silver,Gold,Silica,Mass
+I this to convert this list to the following format:
+
+- <Item>:
+  - RequiredRank: <Tech Level>
+  - RequiredLocation: <Factory>
+  - Cost: 3 Iron, 4 Titanium, 1 Carbon
+- <Item>:
+...

@@ -1,0 +1,13 @@
+Now in cli/facilities/research_view.py, implement a view for that facility. Use @training_view.py as an example. Underlying data model is in @research.py and the rough description of functionality is in @13_research.md .
+
+You might also need to know about @master_view.py .
+
+---
+
+Now update @earth_view.py to be able to switch to research facility with "R".
+
+---
+
+Now in @equipment.py  implement a static method to get an instance of equipment based on EquipmentType enum passed in. This should return a valid class from the @equipment data model directory.
+
+Update @research_view.py to use this, instead of the imaginary equipment manager.

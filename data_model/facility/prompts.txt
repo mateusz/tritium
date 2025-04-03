@@ -5,3 +5,22 @@ Remember to use the `base` reference in the parent class as needed, as that stor
 Here are general principles you should follow where applicable:
 * Do not add spurious comments that simply state what the code does. Only add comments that explain the intent.
 * Do not cause leaky abstractions - do not reach into other classes' fields (unless it's the parent class). Introduce sensible getters and setters.
+
+---
+Now, update @research.py based on functionality listed in @13_research.md . You might need to look at @equipment.py to see the `EquipmentType` and also look at `get_research_technician_days`.
+
+Operate in research_technician_days, so that research progress adjusts accordingly as the researchers rank up. You can find the ranks in @researcher_rank.py .
+
+Also, operate on EquipmentType where you can.
+
+---
+
+Now, update @research.py based on functionality listed in @13_research.md . You might need to look at @equipment.py to see the `EquipmentType` and also look at `get_research_technician_days`.
+
+Operate in research_technician_days, so that research progress adjusts accordingly as the researchers rank up. You can find the ranks in @researcher_rank.py .
+
+Also, operate on EquipmentType where you can.
+
+--- 
+
+Ok pretty good. Now update @research.py to replace research_progress and research_total_days with: current_technician_days_remaining, which tracks number of tech-days to go, and current_technician_days_total which holds the tech-days to go through to achieve current tech.

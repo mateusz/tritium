@@ -18,6 +18,10 @@ Methanoid origin equipment that allows transmission of inanimate objects to any 
 ### AutoOperationsComputer
 Automates production processes, eliminating the need for Artisans. Can be programmed for on/off or repeating production. Yellow button indicates one-time production, green button indicates continuous production. Essential for automated drone production and resource management.
 
+### FuzLaser
+
+Useless piece of equipment, but a required stepping stone to get drones and DFCC.
+
 ## ShipEquipment
 Equipment that can be installed on ship chassis to enhance their capabilities.
 

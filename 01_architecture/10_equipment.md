@@ -4,111 +4,144 @@
   - RequiredRank: 1
   - RequiredLocation: Any factory
   - Cost: 3 Iron, 4 Titanium, 1 Carbon
+  - Mass: 8
 - SelfDestructMechanism:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
   - Cost: 5 Aluminium, 1 Copper, 1 Paladium, 2 Platinum
+  - Mass: 9
 - MassTransciever:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
   - Cost: 500 Titanium, 82 Copper, 100 Paladium, 40 Gold
+  - Mass: 722
 - AutoOperationsComputer:
   - RequiredRank: 3
   - RequiredLocation: Any factory
   - Cost: 2 Titanium, 1 Aluminium, 1 Carbon, 1 Copper
+  - Mass: 5
 - AutoCargoComputer:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
   - Cost: 4 Titanium, 1 Aluminium, 2 Carbon, 1 Silver
+  - Mass: 8
 - DroneFleetControlComputer:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
   - Cost: 2 Titanium, 1 Aluminium, 1 Carbon, 1 Copper, 2 Platinum, 1 Gold
+  - Mass: 8
 - IOSBattleDrone:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
   - Cost: 120 Iron, 120 Titanium, 120 Aluminium, 15 Carbon, 55 Copper, 30 Paladium, 30 Platinum
+  - Mass: 490
 - StarDrone:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
   - Cost: 300 Iron, 300 Titanium, 100 Copper, 90 Paladium, 80 Platinum, 95 Silver, 50 Gold
+  - Mass: 1015
 - Hyperspace:
   - RequiredRank: 3
   - RequiredLocation: ?
   - Cost: ?
+  - Mass: ?
 - ShuttleChassis:
   - RequiredRank: 1
   - RequiredLocation: Any factory
   - Cost: 20 Iron, 50 Titanium, 35 Aluminium, 10 Carbon, 15 Copper
+  - Mass: 130
 - IOSChassis:
   - RequiredRank: 2
   - RequiredLocation: Orbit only
   - Cost: 100 Iron, 250 Titanium, 175 Aluminium, 50 Carbon, 75 Copper
+  - Mass: 650
 - SCGChassis:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
-  - Cost: 250 Iron, 600 Titanium, 400 Aluminium, 185 Copper, 100 Paladium, 100 Platinum, 50 Silver
+  - Cost: 250 Iron, 600 Titanium, 400 Aluminium, 185 Copper, 100 Paladium, 100 Silver, 50 Gold
+  - Mass: 1685
 - ShuttleDrive:
   - RequiredRank: 1
   - RequiredLocation: Any factory
   - Cost: 6 Iron, 10 Titanium, 4 Aluminium
+  - Mass: 20
 - IOSDrive:
   - RequiredRank: 2
   - RequiredLocation: Orbit only
   - Cost: 30 Iron, 50 Titanium, 15 Copper
+  - Mass: 95
 - SCGDrive:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
   - Cost: 50 Iron, 100 Titanium, 30 Copper, 50 Paladium, 25 Platinum, 10 Silver
+  - Mass: 265
 - ResourcePod:
   - RequiredRank: 1
   - RequiredLocation: Any factory
   - Cost: 2 Titanium, 1 Aluminium, 1 Copper
+  - Mass: 4
 - ToolPod:
   - RequiredRank: 1
   - RequiredLocation: Any factory
   - Cost: 2 Titanium, 1 Aluminium, 1 Copper
+  - Mass: 4
 - CryoPod:
   - RequiredRank: 1
   - RequiredLocation: Any factory
   - Cost: 2 Titanium, 1 Aluminium, 1 Copper
+  - Mass: 4
 - PrisonPod:
   - RequiredRank: ?
   - RequiredLocation: ?
   - Cost: ?
+  - Mass: ?
 - Grapple:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
   - Cost: 2 Iron, 2 Titanium, 1 Copper
+  - Mass: 5
 - InstallationRepairEquipment (Bandaid):
   - RequiredRank: 3
   - RequiredLocation: Orbit only
   - Cost: 30 Iron, 30 Titanium, 30 Aluminium, 30 Carbon, 30 Copper
+  - Mass: 150
 - AsteroidMiningAttachment:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
-  - Cost: 6 Iron, 70 Titanium, 10 Aluminium, 30 Carbon, 2 Copper, 5 Paladium, 1 Platinum
+  - Cost: 6 Iron, 70 Titanium, 10 Aluminium, 30 Carbon, 2 Copper, 5 Platinum, 1 Silver
+  - Mass: 124
 - ResourceFactoryFrame:
   - RequiredRank: 3
   - RequiredLocation: Orbit only
-  - Cost: 35 Iron, 50 Titanium, 20 Aluminium, 15 Carbon, 30 Copper, 25 Paladium, 10 Platinum, 15 Silica
+  - Cost: 35 Iron, 50 Titanium, 20 Aluminium, 15 Carbon, 30 Copper, 25 Platinum, 10 Silver, 15 Silica
+  - Mass: 200
 - OrbitalFactoryFrame:
   - RequiredRank: 1
   - RequiredLocation: Any factory
   - Cost: 55 Iron, 80 Titanium, 50 Aluminium, 25 Carbon, 40 Copper
+  - Mass: 250
 - CommunicationsAdapter (CommsPod):
   - RequiredRank: 3
   - RequiredLocation: Orbit only
   - Cost: 2 Aluminium, 1 Carbon, 1 Copper, 1 Gold
+  - Mass: 5
 - PrejudiceTorpedoLauncher:
   - RequiredRank: ?
   - RequiredLocation: ?
-  - Cost: 96 Iron, 45 Titanium, 10 Carbon
+  - Cost: 96 Titanium, 45 Aluminium, 10 Copper
+  - Mass: ?
 - PulseBlastLaser:
   - RequiredRank: ?
   - RequiredLocation: ?
   - Cost: 120 Paladium, 30 Platinum
+  - Mass: ?
 - SonicBlaster:
   - RequiredRank: ?
   - RequiredLocation: ?
   - Cost: ?
+  - Mass: ?
+- FuzLaser:
+  - RequiredRank: 3
+  - RequiredLocation: Orbit only
+  - Cost: 5 copper, 10 paladium, 10 platinum
+  - Mass: ?

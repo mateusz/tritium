@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
 from data_model.equipment.ship_equipment.chassis.chassis import Chassis
-from data_model.equipment.equipment import EquipmentType
+from data_model.equipment.equipment import EquipmentType, RequiredLocation
 from data_model.resource.resource import Resource
 from typing import Dict
-
+from data_model.rank.researcher_rank import ResearcherRank
 @dataclass
 class ShuttleChassis(Chassis):
     """
@@ -17,4 +17,6 @@ class ShuttleChassis(Chassis):
         Resource.CARBON: 10,
         Resource.COPPER: 15
     }, init=False)
-    pass 
+    mass: int = field(default=130, init=False)
+    required_rank: int = field(default=ResearcherRank.TECHNICIAN, init=False)
+    required_location: RequiredLocation = field(default=RequiredLocation.ANY_FACTORY, init=False)

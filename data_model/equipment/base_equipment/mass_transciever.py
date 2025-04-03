@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
 from data_model.equipment.base_equipment.base_equipment import BaseEquipment
-from data_model.equipment.equipment import EquipmentType
+from data_model.equipment.equipment import EquipmentType, RequiredLocation
 from data_model.resource.resource import Resource
 from typing import Dict
-
+from data_model.rank.researcher_rank import ResearcherRank
 @dataclass
 class MassTransciever(BaseEquipment):
     """
@@ -16,4 +16,7 @@ class MassTransciever(BaseEquipment):
         Resource.PALLADIUM: 100,
         Resource.GOLD: 40
     }, init=False)
+    mass: int = field(default=722, init=False)
+    required_rank: int = field(default=ResearcherRank.PROFESSOR, init=False)
+    required_location: RequiredLocation = field(default=RequiredLocation.ORBIT_ONLY, init=False)
     pass 

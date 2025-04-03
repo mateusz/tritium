@@ -31,11 +31,20 @@ class EarthView(MasterView):
                 print(Fore.WHITE + "  Training Facility: " + Fore.LIGHTGREEN_EX + "Active")
         except (AttributeError, NotImplementedError):
             print(Fore.WHITE + "  Training Facility: " + Fore.RED + "Not implemented yet")
+            
+        # Access and display research facility information if available
+        try:
+            research = self.earth_base.get_research_facility()
+            if research:
+                print(Fore.WHITE + "  Research Facility: " + Fore.LIGHTGREEN_EX + "Active")
+        except (AttributeError, NotImplementedError):
+            print(Fore.WHITE + "  Research Facility: " + Fore.RED + "Not implemented yet")
         
         # Commands section
         print(Fore.GREEN + "\nCommands:")
         print(Fore.WHITE + "  " + Fore.CYAN + ".    " + Fore.WHITE + "- Advance time by one round")
         print(Fore.WHITE + "  " + Fore.CYAN + "t    " + Fore.WHITE + "- Go to Training Facility")
+        print(Fore.WHITE + "  " + Fore.CYAN + "r    " + Fore.WHITE + "- Go to Research Facility")
         print(Fore.WHITE + "  " + Fore.CYAN + "m    " + Fore.WHITE + "- Return to main view")
         print(Fore.WHITE + "  " + Fore.CYAN + "q    " + Fore.WHITE + "- Quit game")
     
@@ -65,6 +74,11 @@ class EarthView(MasterView):
             from cli.facilities.training_view import TrainingView
             training_view = TrainingView(self.game_state)
             return ('switch', training_view)
+        elif command == "r":
+            # Switch to Research Facility view - create and hydrate the new view
+            from cli.facilities.research_view import ResearchView
+            research_view = ResearchView(self.game_state)
+            return ('switch', research_view)
         else:
             self.log_message(f"Unknown command: {command}", "error")
             return ('continue', None)
