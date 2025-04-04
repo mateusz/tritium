@@ -164,6 +164,13 @@ class ClassDependencyAnalyzer:
         if class_name in self.class_dependencies:
             return self.class_dependencies[class_name]
         return set()
+    
+    def find_cycles(self):
+        """Find and return all cycles in the dependency graph."""
+        try:
+            return list(nx.simple_cycles(self.dependency_graph))
+        except nx.NetworkXNoCycle:
+            return []
 
 def main():
     analyzer = ClassDependencyAnalyzer()
@@ -180,6 +187,24 @@ def main():
             print(f"{i}. {class_name} - {file_path} - Depends on: {dependencies_str}")
         else:
             print(f"{i}. {class_name} - {file_path} - No dependencies")
+    
+    # Print cycles in the dependency graph
+    cycles = analyzer.find_cycles()
+    if cycles:
+        print("\nCircular dependencies detected:")
+        for i, cycle in enumerate(cycles, 1):
+            # Format the cycle as Class1 -> Class2 -> Class3 -> Class1
+            cycle_str = " -> ".join(cycle)
+            cycle_str += f" -> {cycle[0]}"
+            print(f"Cycle {i}: {cycle_str}")
+            
+            # Print file paths for classes in the cycle
+            print("  File paths:")
+            for class_name in cycle:
+                file_path = analyzer.class_to_file.get(class_name, "Unknown")
+                print(f"    {class_name}: {file_path}")
+    else:
+        print("\nNo circular dependencies detected.")
     
     # Optionally, visualize the graph if pydot is installed
     try:

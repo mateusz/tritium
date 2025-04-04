@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
-from typing import List, Optional, Dict, TYPE_CHECKING
+from typing import List, Optional, Dict
 
 from data_model.facility.facility import Facility
 from data_model.personnel.personnel import Personnel
