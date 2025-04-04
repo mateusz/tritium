@@ -1,7 +1,6 @@
 from textual.interface import TextInterface
 from textual.master_view import MasterView
 from coordinators.game_coordinator import GameCoordinator
-from colorama import Fore, Back, Style
 import re
 
 class TrainingView(MasterView):
@@ -26,81 +25,83 @@ class TrainingView(MasterView):
             print()
             
         # Header with background color
-        print(Back.MAGENTA + Fore.WHITE + Style.BRIGHT + "=== TRITIUM - Training Facility ===".center(80) + Style.RESET_ALL)
-        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.time_coordinator.get_game_time()}")
+        print(self.interface.colorize("=== TRITIUM - Training Facility ===".center(80), fg="white", bg="magenta", style="bright"))
+        print(self.interface.colorize(f"Game Time: ", fg="cyan") + self.interface.colorize(f"{self.time_coordinator.get_game_time()}", fg="yellow"))
         
         # Get training facility from coordinator
         training_facility = self.training_coordinator.get_training_facility()
         
         # Show training facility status
-        print(Fore.LIGHTBLUE_EX + Style.BRIGHT + f"\nAvailable Population for Recruitment: " + 
-              Fore.YELLOW + f"{self.training_coordinator.get_available_population()}" + Style.RESET_ALL)
+        print(self.interface.colorize(f"\nAvailable Population for Recruitment: ", fg="lightblue", style="bright") + 
+              self.interface.colorize(f"{self.training_coordinator.get_available_population()}", fg="yellow"))
         
         # Show marines training status
-        print(Fore.LIGHTRED_EX + Style.BRIGHT + "\nMarines Training:" + Style.RESET_ALL)
+        print(self.interface.colorize("\nMarines Training:", fg="lightred", style="bright"))
         marines_in_training = self.training_coordinator.get_marines_in_training()
         if marines_in_training:
-            print(Fore.WHITE + "  Status: " + Fore.YELLOW + "TRAINING IN PROGRESS")
-            print(Fore.WHITE + f"  Amount: " + Fore.YELLOW + f"{marines_in_training.amount}")
-            print(Fore.WHITE + f"  Days Remaining: " + Fore.YELLOW + f"{marines_in_training.days_remaining}")
+            print(self.interface.colorize("  Status: ", fg="white") + self.interface.colorize("TRAINING IN PROGRESS", fg="yellow"))
+            print(self.interface.colorize(f"  Amount: ", fg="white") + self.interface.colorize(f"{marines_in_training.amount}", fg="yellow"))
+            print(self.interface.colorize(f"  Days Remaining: ", fg="white") + self.interface.colorize(f"{marines_in_training.days_remaining}", fg="yellow"))
         else:
             marines_selector = self.training_coordinator.get_marines_selector()
-            print(Fore.WHITE + "  Status: " + Fore.GREEN + "Ready for training")
-            print(Fore.WHITE + f"  Current Selection: " + Fore.YELLOW + f"{marines_selector}" + Fore.WHITE + " marines")
+            print(self.interface.colorize("  Status: ", fg="white") + self.interface.colorize("Ready for training", fg="green"))
+            print(self.interface.colorize(f"  Current Selection: ", fg="white") + self.interface.colorize(f"{marines_selector}", fg="yellow") + self.interface.colorize(" marines", fg="white"))
             if not self.training_coordinator.can_train_marines(marines_selector):
-                print(Fore.WHITE + "  NOTE: " + Fore.RED + "Cannot train marines at the current selection level")
+                print(self.interface.colorize("  NOTE: ", fg="white") + self.interface.colorize("Cannot train marines at the current selection level", fg="red"))
         
         # Show researchers training status
-        print(Fore.LIGHTBLUE_EX + Style.BRIGHT + "\nResearchers Training:" + Style.RESET_ALL)
+        print(self.interface.colorize("\nResearchers Training:", fg="lightblue", style="bright"))
         researchers_in_training = self.training_coordinator.get_researchers_in_training()
         if researchers_in_training:
-            print(Fore.WHITE + "  Status: " + Fore.YELLOW + "TRAINING IN PROGRESS")
-            print(Fore.WHITE + f"  Amount: " + Fore.YELLOW + f"{researchers_in_training.amount}")
-            print(Fore.WHITE + f"  Days Remaining: " + Fore.YELLOW + f"{researchers_in_training.days_remaining}")
+            print(self.interface.colorize("  Status: ", fg="white") + self.interface.colorize("TRAINING IN PROGRESS", fg="yellow"))
+            print(self.interface.colorize(f"  Amount: ", fg="white") + self.interface.colorize(f"{researchers_in_training.amount}", fg="yellow"))
+            print(self.interface.colorize(f"  Days Remaining: ", fg="white") + self.interface.colorize(f"{researchers_in_training.days_remaining}", fg="yellow"))
         else:
             researchers_selector = self.training_coordinator.get_researchers_selector()
-            print(Fore.WHITE + "  Status: " + Fore.GREEN + "Ready for training")
-            print(Fore.WHITE + f"  Current Selection: " + Fore.YELLOW + f"{researchers_selector}" + Fore.WHITE + " researchers")
+            print(self.interface.colorize("  Status: ", fg="white") + self.interface.colorize("Ready for training", fg="green"))
+            print(self.interface.colorize(f"  Current Selection: ", fg="white") + self.interface.colorize(f"{researchers_selector}", fg="yellow") + self.interface.colorize(" researchers", fg="white"))
             if not self.training_coordinator.can_train_researchers(researchers_selector):
-                print(Fore.WHITE + "  NOTE: " + Fore.RED + "Cannot train researchers at the current selection level")
+                print(self.interface.colorize("  NOTE: ", fg="white") + self.interface.colorize("Cannot train researchers at the current selection level", fg="red"))
         
         # Show producers training status
-        print(Fore.LIGHTYELLOW_EX + Style.BRIGHT + "\nProducers Training:" + Style.RESET_ALL)
+        print(self.interface.colorize("\nProducers Training:", fg="lightyellow", style="bright"))
         producers_in_training = self.training_coordinator.get_producers_in_training()
         if producers_in_training:
-            print(Fore.WHITE + "  Status: " + Fore.YELLOW + "TRAINING IN PROGRESS")
-            print(Fore.WHITE + f"  Amount: " + Fore.YELLOW + f"{producers_in_training.amount}")
-            print(Fore.WHITE + f"  Days Remaining: " + Fore.YELLOW + f"{producers_in_training.days_remaining}")
+            print(self.interface.colorize("  Status: ", fg="white") + self.interface.colorize("TRAINING IN PROGRESS", fg="yellow"))
+            print(self.interface.colorize(f"  Amount: ", fg="white") + self.interface.colorize(f"{producers_in_training.amount}", fg="yellow"))
+            print(self.interface.colorize(f"  Days Remaining: ", fg="white") + self.interface.colorize(f"{producers_in_training.days_remaining}", fg="yellow"))
         else:
             producers_selector = self.training_coordinator.get_producers_selector()
-            print(Fore.WHITE + "  Status: " + Fore.GREEN + "Ready for training")
-            print(Fore.WHITE + f"  Current Selection: " + Fore.YELLOW + f"{producers_selector}" + Fore.WHITE + " producers")
+            print(self.interface.colorize("  Status: ", fg="white") + self.interface.colorize("Ready for training", fg="green"))
+            print(self.interface.colorize(f"  Current Selection: ", fg="white") + self.interface.colorize(f"{producers_selector}", fg="yellow") + self.interface.colorize(" producers", fg="white"))
             if not self.training_coordinator.can_train_producers(producers_selector):
-                print(Fore.WHITE + "  NOTE: " + Fore.RED + "Cannot train producers at the current selection level")
+                print(self.interface.colorize("  NOTE: ", fg="white") + self.interface.colorize("Cannot train producers at the current selection level", fg="red"))
         
         # Show light switch status
         light_status = 'ON' if training_facility.light_switched_on else 'OFF'
-        light_color = Fore.YELLOW if training_facility.light_switched_on else Fore.LIGHTBLACK_EX
-        print(Fore.CYAN + f"\nLight Switch: " + light_color + f"{light_status}")
+        light_color = "yellow" if training_facility.light_switched_on else "lightblack"
+        print(self.interface.colorize(f"\nLight Switch: ", fg="cyan") + self.interface.colorize(f"{light_status}", fg=light_color))
         
         # Show commands
-        print(Fore.GREEN + Style.BRIGHT + "\nCommands:" + Style.RESET_ALL)
-        print(Fore.WHITE + "  " + Fore.CYAN + ".        " + Fore.WHITE + "- Advance time by one round" + Fore.YELLOW + " (Training will start automatically)")
-        print(Fore.WHITE + "  " + Fore.CYAN + "e        " + Fore.WHITE + "- Return to Earth Base view")
-        print(Fore.WHITE + "  " + Fore.CYAN + "l        " + Fore.WHITE + "- Toggle light switch")
-        print(Fore.WHITE + "  " + Fore.CYAN + "q        " + Fore.WHITE + "- Quit game")
+        print(self.interface.colorize("\nCommands:", fg="green", style="bright"))
+        print(self.interface.colorize("  ", fg="white") + self.interface.colorize(".        ", fg="cyan") + 
+              self.interface.colorize("- Advance time by one round", fg="white") + 
+              self.interface.colorize(" (Training will start automatically)", fg="yellow"))
+        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("e        ", fg="cyan") + self.interface.colorize("- Return to Earth Base view", fg="white"))
+        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("l        ", fg="cyan") + self.interface.colorize("- Toggle light switch", fg="white"))
+        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("q        ", fg="cyan") + self.interface.colorize("- Quit game", fg="white"))
         
-        print(Fore.LIGHTRED_EX + Style.BRIGHT + "\nMarine Training Setup:" + Style.RESET_ALL)
-        print(Fore.WHITE + "  " + Fore.CYAN + "m+N      " + Fore.WHITE + "- Increase marines selection by N (e.g. m+10)")
-        print(Fore.WHITE + "  " + Fore.CYAN + "m-N      " + Fore.WHITE + "- Decrease marines selection by N (e.g. m-5)")
+        print(self.interface.colorize("\nMarine Training Setup:", fg="lightred", style="bright"))
+        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("m+N      ", fg="cyan") + self.interface.colorize("- Increase marines selection by N (e.g. m+10)", fg="white"))
+        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("m-N      ", fg="cyan") + self.interface.colorize("- Decrease marines selection by N (e.g. m-5)", fg="white"))
         
-        print(Fore.LIGHTBLUE_EX + Style.BRIGHT + "\nResearcher Training Setup:" + Style.RESET_ALL)
-        print(Fore.WHITE + "  " + Fore.CYAN + "r+N      " + Fore.WHITE + "- Increase researchers selection by N (e.g. r+10)")
-        print(Fore.WHITE + "  " + Fore.CYAN + "r-N      " + Fore.WHITE + "- Decrease researchers selection by N (e.g. r-5)")
+        print(self.interface.colorize("\nResearcher Training Setup:", fg="lightblue", style="bright"))
+        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("r+N      ", fg="cyan") + self.interface.colorize("- Increase researchers selection by N (e.g. r+10)", fg="white"))
+        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("r-N      ", fg="cyan") + self.interface.colorize("- Decrease researchers selection by N (e.g. r-5)", fg="white"))
         
-        print(Fore.LIGHTYELLOW_EX + Style.BRIGHT + "\nProducer Training Setup:" + Style.RESET_ALL)
-        print(Fore.WHITE + "  " + Fore.CYAN + "p+N      " + Fore.WHITE + "- Increase producers selection by N (e.g. p+10)")
-        print(Fore.WHITE + "  " + Fore.CYAN + "p-N      " + Fore.WHITE + "- Decrease producers selection by N (e.g. p-5)")
+        print(self.interface.colorize("\nProducer Training Setup:", fg="lightyellow", style="bright"))
+        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("p+N      ", fg="cyan") + self.interface.colorize("- Increase producers selection by N (e.g. p+10)", fg="white"))
+        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("p-N      ", fg="cyan") + self.interface.colorize("- Decrease producers selection by N (e.g. p-5)", fg="white"))
     
     def increase_marines_by(self, amount):
         """Increase marines selection by a specific amount"""
@@ -285,4 +286,4 @@ class TrainingView(MasterView):
     
     def get_prompt(self):
         """Return the command prompt for this view"""
-        return Fore.GREEN + "Training Command: " + Fore.WHITE 
+        return self.interface.colorize("Training Command: ", fg="green") + self.interface.colorize("", fg="white") 
