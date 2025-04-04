@@ -2,7 +2,7 @@ from textual.master_view import MasterView
 from coordinators.game_coordinator import GameCoordinator
 from data_model.equipment.equipment import EquipmentType, Equipment
 import re
-from textual.interface import TextInterface
+from textual.interface import TextInterface, TextColor
 class ResearchView(MasterView):
     def __init__(self, game_coordinator: GameCoordinator = None, interface: TextInterface = None):
         super().__init__(game_coordinator, interface)
@@ -13,6 +13,7 @@ class ResearchView(MasterView):
         if game_coordinator:
             self.research_coordinator = game_coordinator.get_research_coordinator()
             self.time_coordinator = game_coordinator.get_time_coordinator()
+            self.equipment_coordinator = game_coordinator.get_equipment_coordinator()
         
     def display(self):
         """Display Research Facility view"""
@@ -25,27 +26,37 @@ class ResearchView(MasterView):
             print()
             
         # Header with background color
-        print(self.interface.colorize("=== TRITIUM - Research Facility ===".center(80), fg="white", bg="blue", style="bright"))
-        print(self.interface.colorize(f"Game Time: ", fg="cyan") + self.interface.colorize(f"{self.time_coordinator.get_game_time()}", fg="yellow"))
+        header = self.interface.center_text("=== TRITIUM - Research Facility ===", 80)
+        header = self.interface.colorize(header, TextColor.FG_WHITE)
+        header = self.interface.colorize(header, TextColor.BG_BLUE)
+        header = self.interface.colorize(header, TextColor.STYLE_BRIGHT)
+        print(header)
+        
+        time_display = self.interface.colorize("Game Time: ", TextColor.FG_CYAN) + self.interface.colorize(f"{self.time_coordinator.get_game_time()}", TextColor.FG_YELLOW)
+        print(time_display)
         
         # Get research facility from coordinator
         research_facility = self.research_coordinator.get_research_facility()
         
         # Show research status
         current_research = self.research_coordinator.get_current_research()
-        print(self.interface.colorize("\nResearch Status:", fg="lightblue", style="bright"))
+        research_status = self.interface.colorize("\nResearch Status:", TextColor.FG_LIGHTBLUE)
+        research_status = self.interface.colorize(research_status, TextColor.STYLE_BRIGHT)
+        print(research_status)
         
         if current_research:
-            equipment_data = Equipment.get_equipment(current_research)
+            equipment_data = self.equipment_coordinator.get_equipment(current_research)
             progress = self.research_coordinator.get_research_progress_percentage()
-            print(self.interface.colorize("  Currently Researching: ", fg="white") + self.interface.colorize(f"{current_research.name}", fg="yellow"))
-            print(self.interface.colorize("  Tech Level: ", fg="white") + self.interface.colorize(f"{equipment_data.required_rank}", fg="yellow"))
-            print(self.interface.colorize("  Progress: ", fg="white") + self.interface.colorize(f"{progress}%", fg="yellow"))
+            print(self.interface.colorize("  Currently Researching: ", TextColor.FG_WHITE) + self.interface.colorize(f"{current_research.name}", TextColor.FG_YELLOW))
+            print(self.interface.colorize("  Tech Level: ", TextColor.FG_WHITE) + self.interface.colorize(f"{equipment_data.required_rank}", TextColor.FG_YELLOW))
+            print(self.interface.colorize("  Progress: ", TextColor.FG_WHITE) + self.interface.colorize(f"{progress}%", TextColor.FG_YELLOW))
         else:
-            print(self.interface.colorize("  No research in progress. Select a project to begin.", fg="green"))
+            print(self.interface.colorize("  No research in progress. Select a project to begin.", TextColor.FG_GREEN))
         
         # Show research options
-        print(self.interface.colorize("\nResearch Projects:", fg="lightblue", style="bright"))
+        research_projects = self.interface.colorize("\nResearch Projects:", TextColor.FG_LIGHTBLUE)
+        research_projects = self.interface.colorize(research_projects, TextColor.STYLE_BRIGHT)
+        print(research_projects)
         
         # Fetch all equipment types and categorize them by status
         all_equipment = list(EquipmentType)
@@ -56,7 +67,7 @@ class ResearchView(MasterView):
         unavailable_items = []
         
         for item in all_equipment:
-            equipment_data = Equipment.get_equipment(item)
+            equipment_data = self.equipment_coordinator.get_equipment(item)
             status = self.research_coordinator.get_research_status(item)
             
             if status == 'researched':
@@ -72,49 +83,58 @@ class ResearchView(MasterView):
         # Green for completed, Yellow for in-progress, Blue for available, Red for unavailable
         
         if researched_items:
-            print(self.interface.colorize("  Completed Research:", fg="green"))
+            print(self.interface.colorize("  Completed Research:", TextColor.FG_GREEN))
             for i, (item, equipment_data) in enumerate(researched_items):
-                print(self.interface.colorize(f"    [{i+1}] {item.name} (Tech Level: {equipment_data.required_rank})", fg="green"))
+                print(self.interface.colorize(f"    [{i+1}] {item.name} (Tech Level: {equipment_data.required_rank})", TextColor.FG_GREEN))
         
         if in_progress_items:
-            print(self.interface.colorize("  Research In Progress:", fg="yellow"))
+            print(self.interface.colorize("  Research In Progress:", TextColor.FG_YELLOW))
             for i, (item, equipment_data) in enumerate(in_progress_items):
                 progress = self.research_coordinator.get_research_progress_percentage()
-                print(self.interface.colorize(f"    [{i+1}] {item.name} - {progress}% Complete (Tech Level: {equipment_data.required_rank})", fg="yellow"))
+                print(self.interface.colorize(f"    [{i+1}] {item.name} - {progress}% Complete (Tech Level: {equipment_data.required_rank})", TextColor.FG_YELLOW))
         
         if available_items:
-            print(self.interface.colorize("  Available for Research:", fg="blue"))
+            print(self.interface.colorize("  Available for Research:", TextColor.FG_BLUE))
             for i, (item, equipment_data) in enumerate(available_items):
-                print(self.interface.colorize(f"    [{i+1}] {item.name} (Tech Level: {equipment_data.required_rank})", fg="blue"))
+                print(self.interface.colorize(f"    [{i+1}] {item.name} (Tech Level: {equipment_data.required_rank})", TextColor.FG_BLUE))
         
         if unavailable_items:
-            print(self.interface.colorize("  Unavailable (Rank Requirements Not Met):", fg="red"))
+            print(self.interface.colorize("  Unavailable (Rank Requirements Not Met):", TextColor.FG_RED))
             for i, (item, equipment_data) in enumerate(unavailable_items):
-                print(self.interface.colorize(f"    [{i+1}] {item.name} (Tech Level: {equipment_data.required_rank})", fg="red"))
+                print(self.interface.colorize(f"    [{i+1}] {item.name} (Tech Level: {equipment_data.required_rank})", TextColor.FG_RED))
         
         # Show researcher information
-        print(self.interface.colorize("\nResearch Team:", fg="lightblue", style="bright"))
+        research_team = self.interface.colorize("\nResearch Team:", TextColor.FG_LIGHTBLUE)
+        research_team = self.interface.colorize(research_team, TextColor.STYLE_BRIGHT)
+        print(research_team)
+        
         researcher_count = self.research_coordinator.get_researcher_count()
         max_researchers = self.research_coordinator.get_max_researcher_count()
         leader_rank = self.research_coordinator.get_leader_rank()
         
         if leader_rank:
-            print(self.interface.colorize(f"  Leader Rank: ", fg="white") + self.interface.colorize(f"{leader_rank.name}", fg="yellow"))
+            print(self.interface.colorize(f"  Leader Rank: ", TextColor.FG_WHITE) + self.interface.colorize(f"{leader_rank.name}", TextColor.FG_YELLOW))
         else:
-            print(self.interface.colorize(f"  Leader Rank: ", fg="white") + self.interface.colorize("No Leader", fg="red"))
+            print(self.interface.colorize(f"  Leader Rank: ", TextColor.FG_WHITE) + self.interface.colorize("No Leader", TextColor.FG_RED))
             
-        print(self.interface.colorize(f"  Researchers: ", fg="white") + self.interface.colorize(f"{researcher_count}/{max_researchers}", fg="yellow"))
+        print(self.interface.colorize(f"  Researchers: ", TextColor.FG_WHITE) + self.interface.colorize(f"{researcher_count}/{max_researchers}", TextColor.FG_YELLOW))
         
         # Show commands
-        print(self.interface.colorize("\nCommands:", fg="green", style="bright"))
-        print(self.interface.colorize("  ", fg="white") + self.interface.colorize(".        ", fg="cyan") + self.interface.colorize("- Advance time by one round", fg="white"))
-        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("e        ", fg="cyan") + self.interface.colorize("- Return to Earth Base view", fg="white"))
-        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("q        ", fg="cyan") + self.interface.colorize("- Quit game", fg="white"))
+        commands = self.interface.colorize("\nCommands:", TextColor.FG_GREEN)
+        commands = self.interface.colorize(commands, TextColor.STYLE_BRIGHT)
+        print(commands)
         
-        print(self.interface.colorize("\nResearch Commands:", fg="lightblue", style="bright"))
-        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("r#       ", fg="cyan") + self.interface.colorize("- Start research on available item # (e.g. r2)", fg="white"))
-        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("v#       ", fg="cyan") + self.interface.colorize("- View details of item # (e.g. v1)", fg="white"))
-        print(self.interface.colorize("  ", fg="white") + self.interface.colorize("a#       ", fg="cyan") + self.interface.colorize("- Add # researchers (e.g. a10)", fg="white"))
+        print(self.interface.colorize("  ", TextColor.FG_WHITE) + self.interface.colorize(".        ", TextColor.FG_CYAN) + self.interface.colorize("- Advance time by one round", TextColor.FG_WHITE))
+        print(self.interface.colorize("  ", TextColor.FG_WHITE) + self.interface.colorize("e        ", TextColor.FG_CYAN) + self.interface.colorize("- Return to Earth Base view", TextColor.FG_WHITE))
+        print(self.interface.colorize("  ", TextColor.FG_WHITE) + self.interface.colorize("q        ", TextColor.FG_CYAN) + self.interface.colorize("- Quit game", TextColor.FG_WHITE))
+        
+        research_commands = self.interface.colorize("\nResearch Commands:", TextColor.FG_LIGHTBLUE)
+        research_commands = self.interface.colorize(research_commands, TextColor.STYLE_BRIGHT)
+        print(research_commands)
+        
+        print(self.interface.colorize("  ", TextColor.FG_WHITE) + self.interface.colorize("r#       ", TextColor.FG_CYAN) + self.interface.colorize("- Start research on available item # (e.g. r2)", TextColor.FG_WHITE))
+        print(self.interface.colorize("  ", TextColor.FG_WHITE) + self.interface.colorize("v#       ", TextColor.FG_CYAN) + self.interface.colorize("- View details of item # (e.g. v1)", TextColor.FG_WHITE))
+        print(self.interface.colorize("  ", TextColor.FG_WHITE) + self.interface.colorize("a#       ", TextColor.FG_CYAN) + self.interface.colorize("- Add # researchers (e.g. a10)", TextColor.FG_WHITE))
     
     def process_command(self, command: str):
         """Process Research Facility specific commands
@@ -162,7 +182,7 @@ class ResearchView(MasterView):
             # Get available items 
             available_items = []
             for item in list(EquipmentType):
-                equipment_data = Equipment.get_equipment(item)
+                equipment_data = self.equipment_coordinator.get_equipment(item)
                 if self.research_coordinator.get_research_status(item) == 'available':
                     available_items.append((item, equipment_data))
             
@@ -185,7 +205,7 @@ class ResearchView(MasterView):
             # Get all items
             all_items = []
             for item in list(EquipmentType):
-                equipment_data = Equipment.get_equipment(item)
+                equipment_data = self.equipment_coordinator.get_equipment(item)
                 all_items.append((item, equipment_data))
             
             if 1 <= index <= len(all_items):
@@ -220,4 +240,4 @@ class ResearchView(MasterView):
     
     def get_prompt(self):
         """Return the command prompt for this view"""
-        return self.interface.colorize("Research Command: ", fg="green") + self.interface.colorize("", fg="white") 
+        return self.interface.colorize("Research Command: ", TextColor.FG_GREEN) 

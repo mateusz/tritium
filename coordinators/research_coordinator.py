@@ -1,6 +1,7 @@
 from coordinators.coordinator import Coordinator
-from data_model.facility.research import Research
+from coordinators.equipment_coordinator import EquipmentCoordinator
 from data_model.equipment.equipment import EquipmentType
+from data_model.rank.researcher_rank import ResearcherRank
 
 class ResearchCoordinator(Coordinator):
     """
@@ -132,6 +133,15 @@ class ResearchCoordinator(Coordinator):
         if not self._game_state.current_game_progression.is_technology_available(equipment_data):
             return False
             
+        equipment_coordinator = EquipmentCoordinator(self._game_state)
+        equipment_data = equipment_coordinator.get_equipment(equipment_data)
+        if equipment_data.required_rank==ResearcherRank.DOCTOR and self.researchers.rank == ResearcherRank.TECHNICIAN:
+            return False
+        elif equipment_data.required_rank==ResearcherRank.PROFESSOR and self.researchers.rank == ResearcherRank.DOCTOR:
+            return False
+        elif equipment_data.required_rank==ResearcherRank.PROFESSOR and self.researchers.rank == ResearcherRank.TECHNICIAN:
+            return False
+
         research_facility = self.get_research_facility()
         return research_facility.can_research(equipment_data)
     

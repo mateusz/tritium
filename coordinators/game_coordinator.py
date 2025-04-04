@@ -4,6 +4,7 @@ from coordinators.training_coordinator import TrainingCoordinator
 from coordinators.research_coordinator import ResearchCoordinator
 from coordinators.time_coordinator import TimeCoordinator
 from data_model.game_state import GameState
+from coordinators.equipment_coordinator import EquipmentCoordinator
 
 class GameCoordinator(Coordinator):
     """
@@ -36,6 +37,8 @@ class GameCoordinator(Coordinator):
         
         # Create research coordinator
         self._coordinators['time'] = TimeCoordinator(self._game_state)
+
+        self._coordinators['equipment'] = EquipmentCoordinator(self._game_state)
         # Add more coordinators as needed
     
     def get_coordinator(self, coordinator_name: str) -> Optional[Coordinator]:
@@ -76,3 +79,12 @@ class GameCoordinator(Coordinator):
             The time coordinator
         """
         return self._coordinators['time']
+    
+    def get_equipment_coordinator(self) -> EquipmentCoordinator:
+        """
+        Get the equipment coordinator.
+        
+        Returns:
+            The equipment coordinator
+        """
+        return self._coordinators['equipment']

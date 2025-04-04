@@ -3,7 +3,7 @@ from data_model.facility.facility import Facility
 from data_model.personnel.researcher import Researcher
 from data_model.equipment.equipment import EquipmentType, Equipment
 from data_model.rank.researcher_rank import ResearcherRank
-from typing import List, Optional, Dict
+from typing import List, Optional
 from dataclasses import field
 
 @dataclass
@@ -64,13 +64,6 @@ class Research(Facility):
         if self.researchers is None or self.researchers.count == 0:
             return False
 
-        equipment_data = Equipment.get_equipment(equipment_data)
-        if equipment_data.required_rank==ResearcherRank.DOCTOR and self.researchers.rank == ResearcherRank.TECHNICIAN:
-            return False
-        elif equipment_data.required_rank==ResearcherRank.PROFESSOR and self.researchers.rank == ResearcherRank.DOCTOR:
-            return False
-        elif equipment_data.required_rank==ResearcherRank.PROFESSOR and self.researchers.rank == ResearcherRank.TECHNICIAN:
-            return False
         return True
 
     def get_research_status(self, equipment_type: EquipmentType) -> str:

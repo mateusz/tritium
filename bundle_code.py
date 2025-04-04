@@ -1,217 +1,135 @@
+#!/usr/bin/env python3
 import os
-import re
+import ast
+import importlib.util
+from pathlib import Path
+from sorted_deps import ClassDependencyAnalyzer
 
-# Directories to scan
-directories = [
-    "data_model",
-    "coordinators",
-    "textual",
-    "web"
-]
-
-# Main output file
-output_file = "tritium_bundle.py"
-
-# Dictionary to store module content
-modules = {}
-
-# Function to clean up imports
-def clean_imports(content, module_path):
-    # Replace relative imports with absolute imports
-    lines = content.split('\n')
-    cleaned_lines = []
-    
-    for line in lines:
-        # Skip empty lines or comments
-        if not line.strip() or line.strip().startswith('#'):
-            cleaned_lines.append(line)
-            continue
+def load_class_content(file_path, class_name):
+    """Extract a class definition from a file."""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            code = f.read()
         
-        # Handle various import patterns
-        if re.match(r'^from\s+\.\.?[.\w]*\s+import', line) or re.match(r'^import\s+\.', line):
-            # Skip relative imports as we'll consolidate everything
-            continue
-        elif re.match(r'^from\s+(data_model|coordinators|textual|cli|web)\s+import', line) or re.match(r'^import\s+(data_model|coordinators|textual|cli|web)', line):
-            # Skip project-specific imports as we'll consolidate everything
-            continue
-        else:
-            # Keep external imports
-            cleaned_lines.append(line)
-    
-    return '\n'.join(cleaned_lines)
+        tree = ast.parse(code)
+        
+        # Find the class definition
+        for node in ast.walk(tree):
+            if isinstance(node, ast.ClassDef) and node.name == class_name:
+                # Get the source code for the class
+                class_source = ast.get_source_segment(code, node)
+                if class_source:
+                    return class_source
+        
+        return None
+    except Exception as e:
+        print(f"Error extracting class {class_name} from {file_path}: {e}")
+        return None
 
-# Function to scan directory and get all Python files
-def scan_directory(directory):
-    for root, _, files in os.walk(directory):
-        for file in files:
-            if file.endswith('.py'):
-                file_path = os.path.join(root, file)
-                module_path = file_path.replace('/', '.').replace('\\', '.').replace('.py', '')
+def get_imports(file_path):
+    """Extract all import statements from a file."""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            code = f.read()
+        
+        tree = ast.parse(code)
+        
+        imports = []
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.Import, ast.ImportFrom)):
+                import_source = ast.get_source_segment(code, node)
+                if import_source:
+                    imports.append(import_source)
+        
+        return imports
+    except Exception as e:
+        print(f"Error extracting imports from {file_path}: {e}")
+        return []
+
+def is_local_import(import_stmt, class_names):
+    """Determine if an import statement is referencing one of our bundled classes."""
+    try:
+        tree = ast.parse(import_stmt)
+        for node in ast.walk(tree):
+            if isinstance(node, ast.ImportFrom):
+                # Check if importing from a module that matches a bundled class
+                # This is a simplification - for a complete solution, we'd need to 
+                # map module names to actual file paths
+                for name in class_names:
+                    if name.lower() in node.module.lower():
+                        return True
                 
-                try:
-                    with open(file_path, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                        
-                    # Clean up imports
-                    cleaned_content = clean_imports(content, module_path)
-                    
-                    # Store content
-                    modules[module_path] = {
-                        'path': file_path,
-                        'content': cleaned_content
-                    }
-                    print(f"Processed: {file_path}")
-                except Exception as e:
-                    print(f"Error processing {file_path}: {str(e)}")
-
-# Function to sort modules in dependency order
-def sort_modules():
-    # Simple approach: put __init__ files first, then move data_model before coordinators before textual/cli/web
-    sorted_modules = {}
-    
-    # First: all __init__ files
-    for module, data in modules.items():
-        if module.endswith('__init__'):
-            sorted_modules[module] = data
-    
-    # Second: data_model files (non-init)
-    for module, data in modules.items():
-        if 'data_model' in module and not module.endswith('__init__'):
-            sorted_modules[module] = data
-    
-    # Third: coordinators files (non-init)
-    for module, data in modules.items():
-        if 'coordinators' in module and not module.endswith('__init__'):
-            sorted_modules[module] = data
-    
-    # Fourth: cli files
-    for module, data in modules.items():
-        if 'cli' in module and not module.endswith('__init__'):
-            sorted_modules[module] = data
+                # Check if importing specific classes that we're bundling
+                for alias in node.names:
+                    if alias.name in class_names:
+                        return True
             
-    # Fifth: web files
-    for module, data in modules.items():
-        if 'web' in module and not module.endswith('__init__'):
-            sorted_modules[module] = data
-            
-    # Sixth: textual files (non-init)
-    for module, data in modules.items():
-        if 'textual' in module and not module.endswith('__init__'):
-            sorted_modules[module] = data
-    
-    # Finally: any remaining files
-    for module, data in modules.items():
-        if module not in sorted_modules:
-            sorted_modules[module] = data
-    
-    return sorted_modules
-
-# Function to process web_interface.py separately to maintain compatibility
-def process_web_interface():
-    web_interface_path = "web/interface.py"
-    if os.path.exists(web_interface_path):
-        try:
-            with open(web_interface_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-            
-            # Get only the essential parts needed for the web interface
-            # This is specific to the project's structure
-            return content
-        except Exception as e:
-            print(f"Error processing web interface: {str(e)}")
-            return ""
-    return ""
-
-# Function to write the combined file
-def write_combined_file(sorted_modules):
-    with open(output_file, 'w', encoding='utf-8') as f:
-        # Write header
-        f.write("""#!/usr/bin/env python3
-# Tritium Game - Bundled Version
-# This file is auto-generated and contains all game code combined into a single file.
-
-""")
+            elif isinstance(node, ast.Import):
+                for alias in node.names:
+                    if alias.name in class_names:
+                        return True
         
-        # Write external imports (only once)
-        external_imports = set()
-        for module, data in sorted_modules.items():
-            content = data['content']
-            for line in content.split('\n'):
-                if line.startswith('import ') or line.startswith('from '):
-                    if not any(proj_dir in line for proj_dir in ['data_model', 'coordinators', 'textual', 'cli', 'web', '.']):
-                        external_imports.add(line)
-        
-        for imp in sorted(external_imports):
-            f.write(f"{imp}\n")
-        
-        f.write("\n\n# ========== START OF BUNDLED CODE ==========\n\n")
-        
-        # Write each module's content
-        for module, data in sorted_modules.items():
-            path = data['path']
-            content = data['content']
-            
-            # Skip imports as we've handled them
-            content_without_imports = '\n'.join([line for line in content.split('\n') 
-                                              if not (line.startswith('import ') or 
-                                                     line.startswith('from '))])
-            
-            f.write(f"\n# ===== Module: {path} =====\n")
-            f.write(content_without_imports)
-            f.write("\n\n")
-        
-        # Write launcher code
-        f.write("""
-# ========== END OF BUNDLED CODE ==========
+        return False
+    except Exception as e:
+        print(f"Error checking if import is local: {e}")
+        return False
 
-# Launcher code
-if __name__ == "__main__":
-    # Web mode check
-    import sys
-    if len(sys.argv) > 1 and sys.argv[1] == "--web":
-        # For web mode
-        try:
-            from web.interface import WebInterface
-            from textual.game_runner import start_game as start_game_internal
-            
-            def start_game():
-                return start_game_internal(interface_type='web')
-                
-            result = start_game()
-            print(result)
-        except Exception as e:
-            print(f"Error starting web game: {str(e)}")
-    else:
-        # For CLI mode
-        try:
-            from cli.interface import CliInterface
-            from textual.game_runner import start_game as start_game_internal
-            
-            def start_game():
-                return start_game_internal(interface_type='cli')
-                
-            result = start_game()
-            print(result)
-        except Exception as e:
-            print(f"Error starting CLI game: {str(e)}")
-""")
-
-# Main execution
 def main():
-    print(f"Starting bundling process to create {output_file}...")
+    # Create analyzer and find all classes
+    analyzer = ClassDependencyAnalyzer()
+    analyzer.find_all_classes()
     
-    # Scan all directories
-    for directory in directories:
-        scan_directory(directory)
+    # Get classes sorted by dependencies
+    sorted_classes = analyzer.get_sorted_classes()
     
-    # Sort modules
-    sorted_modules = sort_modules()
+    # Dictionary to track processed files and their imports
+    processed_files = set()
+    all_imports = set()
     
-    # Write combined file
-    write_combined_file(sorted_modules)
+    # Open output file
+    with open('tritium_bundle.py', 'w', encoding='utf-8') as outfile:
+        # Add header
+        outfile.write("#!/usr/bin/env python3\n")
+        outfile.write("# This file was automatically generated by bundle_code.py\n\n")
+        
+        # Process each class
+        for class_name in sorted_classes:
+            file_path = analyzer.class_to_file.get(class_name)
+            if not file_path:
+                continue
+            
+            # Get imports from file if we haven't processed it yet
+            if file_path not in processed_files:
+                imports = get_imports(file_path)
+                for imp in imports:
+                    all_imports.add(imp)
+                processed_files.add(file_path)
+            
+            # Extract class content
+            class_content = load_class_content(file_path, class_name)
+            if class_content:
+                outfile.write(f"\n# From {file_path}\n")
+                outfile.write(class_content)
+                outfile.write("\n\n")
+        
+        # Filter out local imports
+        filtered_imports = []
+        for imp in sorted(all_imports):
+            if not is_local_import(imp, sorted_classes):
+                filtered_imports.append(imp)
+        
+        imports_text = "\n".join(filtered_imports)
+        
+        # Add imports to the top of the file
+        with open('tritium_bundle.py', 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        with open('tritium_bundle.py', 'w', encoding='utf-8') as f:
+            header_lines = content.split('\n\n', 1)[0]
+            f.write(f"{header_lines}\n\n# External Imports Only\n{imports_text}\n\n")
+            f.write(content.split('\n\n', 1)[1])
     
-    print(f"Completed! All code has been bundled into {output_file}")
-    print(f"Total modules processed: {len(modules)}")
+    print(f"Bundle complete! Classes bundled to tritium_bundle.py")
 
 if __name__ == "__main__":
-    main() 
+    main()

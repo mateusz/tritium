@@ -12,3 +12,12 @@ You may rewrite game.py for this purpose. Write web-specific files into `web` di
 Reuse files in @textual  as-is, perhaps abstracting away the input and the output so that we can implement a different approach for cli and for web. I want to be able to maintain a single textual directory for both runtimes.
 
 Nothing fancy please - just the basics.
+
+
+---
+
+Now lets work on bundle_code.py that produces tritium_bundle.py from all the code in web, textual, data_model and coordinators
+
+The classes need to be ordered, so that dependencies work, based on imports only (not directory co-location). There should be no circular dependencies in code.
+
+You may use networkx module for dependency graph analysis.

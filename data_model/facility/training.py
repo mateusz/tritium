@@ -1,14 +1,6 @@
-from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any, TYPE_CHECKING
-from enum import Enum, auto
-from data_model.personnel.researcher import Researcher
-from data_model.personnel.producer import Producer
-from data_model.personnel.marine import Marine
+from dataclasses import dataclass
 from data_model.personnel.personnel import PersonnelType
 from data_model.facility.facility import Facility
-
-if TYPE_CHECKING:
-    from data_model.base.earth_base import EarthBase
 
 @dataclass
 class TrainingBatch:
