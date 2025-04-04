@@ -66,7 +66,7 @@ class ResearchView(MasterView):
                 in_progress_items.append((item, equipment_data))
             elif status == 'available':
                 available_items.append((item, equipment_data))
-            elif status == 'unavailable':
+            elif status == 'no_suitable_researchers':
                 unavailable_items.append((item, equipment_data))
         
         # Display research items by category with different colors
@@ -75,7 +75,7 @@ class ResearchView(MasterView):
         if researched_items:
             print(Fore.GREEN + "  Completed Research:")
             for i, (item, equipment_data) in enumerate(researched_items):
-                print(Fore.GREEN + f"    [{i+1}] {item.name} (Tech Level: {equipment_data.terequired_rankch_level})")
+                print(Fore.GREEN + f"    [{i+1}] {item.name} (Tech Level: {equipment_data.required_rank})")
         
         if in_progress_items:
             print(Fore.YELLOW + "  Research In Progress:")
@@ -217,24 +217,6 @@ class ResearchView(MasterView):
             
             return ('continue', None)
             
-        # Add researchers
-        elif add_researchers_match:
-            # Add researchers
-            amount = int(add_researchers_match.group(1))
-            
-            if amount <= 0:
-                self.log_message("Amount must be positive", "error")
-            else:
-                if self.research_coordinator.can_add_researchers(amount):
-                    if self.research_coordinator.add_researchers(amount):
-                        self.log_message(f"Added {amount} researchers", "success")
-                    else:
-                        self.log_message("Failed to add researchers", "error")
-                else:
-                    self.log_message(f"Cannot add {amount} researchers - exceeds maximum", "error")
-            
-            return ('continue', None)
-        
         else:
             self.log_message(f"Unknown command: {command}", "error")
             return ('continue', None)

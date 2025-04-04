@@ -55,8 +55,10 @@ class TrainingCoordinator(Coordinator):
         Returns:
             True if successful, False otherwise
         """
-        training_facility = self.get_training_facility()
-        return training_facility.marines_selector_up()
+        if self.can_train_marines(1):
+            training_facility = self.get_training_facility()
+            return training_facility.marines_selector_up()
+        return False
     
     def marines_selector_down(self):
         """
@@ -65,8 +67,10 @@ class TrainingCoordinator(Coordinator):
         Returns:
             True if successful, False otherwise
         """
-        training_facility = self.get_training_facility()
-        return training_facility.marines_selector_down()
+        if self.can_train_marines(-1):
+            training_facility = self.get_training_facility()
+            return training_facility.marines_selector_down()
+        return False
     
     def can_train_marines(self, amount):
         """
@@ -116,8 +120,10 @@ class TrainingCoordinator(Coordinator):
         Returns:
             True if successful, False otherwise
         """
-        training_facility = self.get_training_facility()
-        return training_facility.researchers_selector_up()
+        if self.can_train_researchers(1):
+            training_facility = self.get_training_facility()
+            return training_facility.researchers_selector_up()
+        return False
     
     def researchers_selector_down(self):
         """
@@ -126,8 +132,10 @@ class TrainingCoordinator(Coordinator):
         Returns:
             True if successful, False otherwise
         """
-        training_facility = self.get_training_facility()
-        return training_facility.researchers_selector_down()
+        if self.can_train_researchers(-1):
+            training_facility = self.get_training_facility()
+            return training_facility.researchers_selector_down()
+        return False
     
     def can_train_researchers(self, amount):
         """
@@ -178,8 +186,10 @@ class TrainingCoordinator(Coordinator):
         Returns:
             True if successful, False otherwise
         """
-        training_facility = self.get_training_facility()
-        return training_facility.producers_selector_up()
+        if self.can_train_producers(1):
+            training_facility = self.get_training_facility()
+            return training_facility.producers_selector_up()
+        return False
     
     def producers_selector_down(self):
         """
@@ -188,8 +198,10 @@ class TrainingCoordinator(Coordinator):
         Returns:
             True if successful, False otherwise
         """
-        training_facility = self.get_training_facility()
-        return training_facility.producers_selector_down()
+        if self.can_train_producers(-1):
+            training_facility = self.get_training_facility()
+            return training_facility.producers_selector_down()
+        return False
     
     def can_train_producers(self, amount):
         """

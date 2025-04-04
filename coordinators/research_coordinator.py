@@ -128,6 +128,10 @@ class ResearchCoordinator(Coordinator):
         Returns:
             True if the equipment can be researched, False otherwise
         """
+        # Check if technology is available in current game progression
+        if not self._game_state.current_game_progression.is_technology_available(equipment_data):
+            return False
+            
         research_facility = self.get_research_facility()
         return research_facility.can_research(equipment_data)
     
@@ -141,18 +145,11 @@ class ResearchCoordinator(Coordinator):
         Returns:
             String indicating status: 'researched', 'in_progress', 'available', or 'unavailable'
         """
+        if not self._game_state.current_game_progression.is_technology_available(equipment_type):
+            return 'unavailable'
+
         research_facility = self.get_research_facility()
-        return research_facility.get_research_status(equipment_type)
-    
-    def advance_research(self, days):
-        """
-        Advance research by a number of days.
-        
-        Args:
-            days: Number of days to advance research
+        status = research_facility.get_research_status(equipment_type)
             
-        Returns:
-            True if research was completed during this period, False otherwise
-        """
-        research_facility = self.get_research_facility()
-        return research_facility.advance_research(days) 
+        return status
+    

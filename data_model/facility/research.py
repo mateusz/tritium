@@ -35,15 +35,12 @@ class Research(Facility):
     
     def start_research(self, equipment_type: EquipmentType, equipment_data: Equipment) -> bool:
         """Start researching an equipment type"""
-        if self.researchers is None or self.researchers.count == 0:
-            return False
         
         # Check if already researched
         if equipment_type in self.researched_equipment:
             return False
             
-        # Check researcher rank against required rank
-        if equipment_data.required_rank and self.researchers.rank.value < equipment_data.required_rank:
+        if not self.can_research(equipment_type):
             return False
             
         self.current_research = equipment_type
@@ -64,6 +61,9 @@ class Research(Facility):
         """Check if the equipment can be researched with current rank"""
         if self.researchers is None:
             return False
+        if self.researchers is None or self.researchers.count == 0:
+            return False
+
         equipment_data = Equipment.get_equipment(equipment_data)
         if equipment_data.required_rank==ResearcherRank.DOCTOR and self.researchers.rank == ResearcherRank.TECHNICIAN:
             return False
@@ -85,7 +85,7 @@ class Research(Facility):
         if self.can_research(equipment_type):
             return 'available'
         else:
-            return 'unavailable'
+            return 'no_suitable_researchers'
     
     def get_leader_rank(self) -> Optional[ResearcherRank]:
         """Get the rank of the research leader"""
@@ -124,7 +124,7 @@ class Research(Facility):
             rank_multiplier = 2.0
             
         daily_progress = self.researchers.count * rank_multiplier
-        technician_days_completed = int(daily_progress * days)
+        technician_days_completed = int(daily_progress)
         self.current_technician_days_remaining -= technician_days_completed
         
         # Check if research is complete

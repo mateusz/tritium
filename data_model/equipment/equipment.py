@@ -176,10 +176,10 @@ class Equipment:
         Calculate the number of technician-days required to research this equipment.
         Scales proportionally with rank and the number of rare elements required.
         
-        The base value is 700 technician-days for the simplest equipment.
+        The base value is 1400 technician-days for the simplest equipment.
         """
         # Base research time
-        base_days = 700
+        base_days = 1400
         
         # Rank multiplier based on ResearcherRank enum
         rank_multiplier = 1.0  # Default for no rank requirement
