@@ -85,7 +85,7 @@ class GameCoordinator(Coordinator):
         Returns:
             A new MasterView instance
         """
-        from cli.master_view import MasterView
+        from textual.master_view import MasterView
         return MasterView(self)
     
     def create_earth_view(self):
@@ -95,7 +95,7 @@ class GameCoordinator(Coordinator):
         Returns:
             A new Earth view instance
         """
-        from cli.bases.earth_view import EarthView
+        from textual.bases.earth_view import EarthView
         return EarthView(self)
     
     def create_research_view(self):
@@ -105,7 +105,7 @@ class GameCoordinator(Coordinator):
         Returns:
             A new ResearchView instance
         """
-        from cli.facilities.research_view import ResearchView
+        from textual.facilities.research_view import ResearchView
         return ResearchView(self)
     
     def create_training_view(self):
@@ -115,5 +115,5 @@ class GameCoordinator(Coordinator):
         Returns:
             A new TrainingView instance
         """
-        from cli.facilities.training_view import TrainingView
+        from textual.facilities.training_view import TrainingView
         return TrainingView(self) 

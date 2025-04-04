@@ -3,7 +3,7 @@ import readline
 from colorama import init, Fore, Back, Style
 from data_model.game_state import GameState
 from coordinators.game_coordinator import GameCoordinator
-from cli.master_view import MasterView
+from textual.master_view import MasterView
 from data_model.persistence import save_game, load_game
 
 # Initialize colorama

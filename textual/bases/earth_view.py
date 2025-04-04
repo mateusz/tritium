@@ -1,4 +1,4 @@
-from cli.master_view import MasterView
+from textual.master_view import MasterView
 from colorama import Fore, Back, Style
 from coordinators.game_coordinator import GameCoordinator
 

@@ -1,5 +1,5 @@
 from colorama import Fore, Back, Style
-from cli.message_system import MessageManager
+from textual.message_system import MessageManager
 from coordinators.game_coordinator import GameCoordinator
 from data_model.persistence import save_game
 
