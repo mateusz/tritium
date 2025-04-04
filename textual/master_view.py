@@ -13,11 +13,7 @@ class MasterView:
             self.game_coordinator = game_coordinator
             
         # Set up interface
-        if interface is None:
-            from textual.cli_interface import CliInterface
-            self.interface = CliInterface()
-        else:
-            self.interface = interface
+        self.interface = interface
             
         self.view_name = "master"
         self.message_manager = MessageManager.get_instance()

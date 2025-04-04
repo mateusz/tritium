@@ -1,78 +1,131 @@
 #!/usr/bin/env python3
 import os
-import ast
-import importlib.util
+import re
 from pathlib import Path
 from sorted_deps import ClassDependencyAnalyzer
 
-def load_class_content(file_path, class_name):
-    """Extract a class definition from a file."""
+def extract_classes_from_file(file_path):
+    """Extract all class definitions from a file using a simple text-based approach."""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
-            code = f.read()
+            content = f.readlines()
         
-        tree = ast.parse(code)
+        # Dictionary to store classes with their full content
+        classes = {}
         
-        # Find the class definition
-        for node in ast.walk(tree):
-            if isinstance(node, ast.ClassDef) and node.name == class_name:
-                # Get the source code for the class
-                class_source = ast.get_source_segment(code, node)
-                if class_source:
-                    return class_source
+        # Track if we're inside a class definition
+        inside_class = False
+        current_class = None
+        class_content = []
+        class_indent = None
         
-        return None
-    except Exception as e:
-        print(f"Error extracting class {class_name} from {file_path}: {e}")
-        return None
-
-def get_imports(file_path):
-    """Extract all import statements from a file."""
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            code = f.read()
+        # Regular expression to match class definition
+        class_pattern = re.compile(r'^\s*class\s+(\w+)')
         
-        tree = ast.parse(code)
-        
-        imports = []
-        for node in ast.walk(tree):
-            if isinstance(node, (ast.Import, ast.ImportFrom)):
-                import_source = ast.get_source_segment(code, node)
-                if import_source:
-                    imports.append(import_source)
-        
-        return imports
-    except Exception as e:
-        print(f"Error extracting imports from {file_path}: {e}")
-        return []
-
-def is_local_import(import_stmt, class_names):
-    """Determine if an import statement is referencing one of our bundled classes."""
-    try:
-        tree = ast.parse(import_stmt)
-        for node in ast.walk(tree):
-            if isinstance(node, ast.ImportFrom):
-                # Check if importing from a module that matches a bundled class
-                # This is a simplification - for a complete solution, we'd need to 
-                # map module names to actual file paths
-                for name in class_names:
-                    if name.lower() in node.module.lower():
-                        return True
+        # Process each line
+        for line in content:
+            if not inside_class:
+                # Look for a new class definition
+                match = class_pattern.match(line)
+                if match:
+                    current_class = match.group(1)
+                    inside_class = True
+                    class_content = [line]
+                    class_indent = None  # Will be determined by the first indented line
+            else:
+                # We're already inside a class
+                stripped = line.rstrip()
                 
-                # Check if importing specific classes that we're bundling
-                for alias in node.names:
-                    if alias.name in class_names:
-                        return True
-            
-            elif isinstance(node, ast.Import):
-                for alias in node.names:
-                    if alias.name in class_names:
-                        return True
+                # If line is empty, just add it and continue
+                if not stripped:
+                    class_content.append(line)
+                    continue
+                
+                # Get indentation of current line
+                current_indent = len(line) - len(line.lstrip())
+                
+                # If this is the first indented line, record the indentation level
+                if class_indent is None and current_indent > 0:
+                    class_indent = current_indent
+                
+                # Check if we've encountered a new top-level statement
+                if current_indent == 0:
+                    # Check if it's a new class definition
+                    match = class_pattern.match(line)
+                    if match:
+                        # Store previous class
+                        classes[current_class] = ''.join(class_content)
+                        
+                        # Start new class
+                        current_class = match.group(1)
+                        class_content = [line]
+                        class_indent = None
+                    else:
+                        # Found a non-class top-level statement, end the class
+                        classes[current_class] = ''.join(class_content)
+                        inside_class = False
+                else:
+                    # Still inside the class
+                    class_content.append(line)
         
-        return False
+        # Don't forget to store the last class if we were tracking one
+        if inside_class and current_class:
+            classes[current_class] = ''.join(class_content)
+        
+        return classes
+    
     except Exception as e:
-        print(f"Error checking if import is local: {e}")
-        return False
+        print(f"Error extracting classes from {file_path}: {e}")
+        return {}
+
+def extract_external_imports(files):
+    """Extract all import statements from files to include in the bundle."""
+    try:
+        imports = set()
+        
+        # Regular expressions to match import statements
+        import_patterns = [
+            re.compile(r'^\s*import\s+(.+)$'),
+            re.compile(r'^\s*from\s+(\w+(?:\.\w+)*)\s+import\s+(.+)$')
+        ]
+        
+        # Known modules from the codebase (to exclude)
+        local_modules = set(["web", "textual", "data_model", "coordinators"])
+        
+        for file_path in files:
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.readlines()
+                
+                for line in content:
+                    stripped = line.strip()
+                    
+                    # Skip comments and empty lines
+                    if not stripped or stripped.startswith('#'):
+                        continue
+                    
+                    # Check for import statements
+                    for pattern in import_patterns:
+                        match = pattern.match(line)
+                        if match:
+                            # Check if this is an external import
+                            if pattern == import_patterns[0]:  # import x
+                                module_name = match.group(1).split('.')[0].strip()
+                                if module_name not in local_modules:
+                                    imports.add(line.rstrip())
+                            else:  # from x import y
+                                module_name = match.group(1).split('.')[0].strip()
+                                if module_name not in local_modules:
+                                    imports.add(line.rstrip())
+                            break
+            except Exception as e:
+                print(f"Error processing imports from {file_path}: {e}")
+        
+        return sorted(list(imports))
+    
+    except Exception as e:
+        print(f"Error extracting external imports: {e}")
+        return []
 
 def main():
     # Create analyzer and find all classes
@@ -82,9 +135,21 @@ def main():
     # Get classes sorted by dependencies
     sorted_classes = analyzer.get_sorted_classes()
     
-    # Dictionary to track processed files and their imports
-    processed_files = set()
-    all_imports = set()
+    # Get a set of all files containing classes
+    all_files = set()
+    for class_name in sorted_classes:
+        file_path = analyzer.class_to_file.get(class_name)
+        if file_path:
+            all_files.add(file_path)
+    
+    # Extract external imports from all files
+    external_imports = extract_external_imports(all_files)
+    
+    # Extract all classes from all files
+    all_classes = {}
+    for file_path in all_files:
+        classes = extract_classes_from_file(file_path)
+        all_classes.update(classes)
     
     # Open output file
     with open('tritium_bundle.py', 'w', encoding='utf-8') as outfile:
@@ -92,44 +157,22 @@ def main():
         outfile.write("#!/usr/bin/env python3\n")
         outfile.write("# This file was automatically generated by bundle_code.py\n\n")
         
-        # Process each class
+        # Add external imports
+        outfile.write("# External Imports\n")
+        for imp in external_imports:
+            outfile.write(f"{imp}\n")
+        outfile.write("\n\n")
+        
+        # Add classes in dependency order
         for class_name in sorted_classes:
-            file_path = analyzer.class_to_file.get(class_name)
-            if not file_path:
-                continue
-            
-            # Get imports from file if we haven't processed it yet
-            if file_path not in processed_files:
-                imports = get_imports(file_path)
-                for imp in imports:
-                    all_imports.add(imp)
-                processed_files.add(file_path)
-            
-            # Extract class content
-            class_content = load_class_content(file_path, class_name)
-            if class_content:
+            if class_name in all_classes:
+                file_path = analyzer.class_to_file.get(class_name, "Unknown")
                 outfile.write(f"\n# From {file_path}\n")
-                outfile.write(class_content)
-                outfile.write("\n\n")
-        
-        # Filter out local imports
-        filtered_imports = []
-        for imp in sorted(all_imports):
-            if not is_local_import(imp, sorted_classes):
-                filtered_imports.append(imp)
-        
-        imports_text = "\n".join(filtered_imports)
-        
-        # Add imports to the top of the file
-        with open('tritium_bundle.py', 'r', encoding='utf-8') as f:
-            content = f.read()
-        
-        with open('tritium_bundle.py', 'w', encoding='utf-8') as f:
-            header_lines = content.split('\n\n', 1)[0]
-            f.write(f"{header_lines}\n\n# External Imports Only\n{imports_text}\n\n")
-            f.write(content.split('\n\n', 1)[1])
+                outfile.write(all_classes[class_name])
+                outfile.write("\n")
     
     print(f"Bundle complete! Classes bundled to tritium_bundle.py")
+    print(f"Bundled {len(sorted_classes)} classes from {len(all_files)} files.")
 
 if __name__ == "__main__":
     main()
