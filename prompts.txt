@@ -2,3 +2,13 @@ Here are general principles you should follow where applicable:
 
 * Do not add spurious comments that simply state what the code does. Only add comments that explain the intent.
 * Do not cause leaky abstractions - do not reach into other classes' fields (unless it's the parent class). Introduce sensible getters and setters.
+
+---
+
+Ok, let's now make this game run in WASM via pygbag. I want a simplest possible setup, in which I can simply open index.html. You can freely reference game files in the surrounding directories.
+
+You may rewrite game.py for this purpose. Write web-specific files into `web` directory.
+
+Reuse files in @textual  as-is, perhaps abstracting away the input and the output so that we can implement a different approach for cli and for web. I want to be able to maintain a single textual directory for both runtimes.
+
+Nothing fancy please - just the basics.

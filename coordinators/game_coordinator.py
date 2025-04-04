@@ -5,7 +5,6 @@ from coordinators.research_coordinator import ResearchCoordinator
 from coordinators.time_coordinator import TimeCoordinator
 from data_model.game_state import GameState
 
-
 class GameCoordinator(Coordinator):
     """
     Central coordinator that manages the entire game state and provides access to
@@ -77,43 +76,3 @@ class GameCoordinator(Coordinator):
             The time coordinator
         """
         return self._coordinators['time']
-
-    def create_master_view(self):
-        """
-        Create a new MasterView instance.
-        
-        Returns:
-            A new MasterView instance
-        """
-        from textual.master_view import MasterView
-        return MasterView(self)
-    
-    def create_earth_view(self):
-        """
-        Create a new Earth view instance.
-        
-        Returns:
-            A new Earth view instance
-        """
-        from textual.bases.earth_view import EarthView
-        return EarthView(self)
-    
-    def create_research_view(self):
-        """
-        Create a new Research view instance.
-        
-        Returns:
-            A new ResearchView instance
-        """
-        from textual.facilities.research_view import ResearchView
-        return ResearchView(self)
-    
-    def create_training_view(self):
-        """
-        Create a new Training view instance.
-        
-        Returns:
-            A new TrainingView instance
-        """
-        from textual.facilities.training_view import TrainingView
-        return TrainingView(self) 

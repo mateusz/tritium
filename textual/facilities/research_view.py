@@ -3,10 +3,10 @@ from coordinators.game_coordinator import GameCoordinator
 from colorama import Fore, Back, Style
 from data_model.equipment.equipment import EquipmentType, Equipment
 import re
-
+from textual.interface import TextInterface
 class ResearchView(MasterView):
-    def __init__(self, game_coordinator: GameCoordinator = None):
-        super().__init__(game_coordinator)
+    def __init__(self, game_coordinator: GameCoordinator = None, interface: TextInterface = None):
+        super().__init__(game_coordinator, interface)
         self.view_name = "research"
         
         # Get the research coordinator from the game coordinator
@@ -133,9 +133,7 @@ class ResearchView(MasterView):
         add_researchers_match = re.match(r'^a(\d+)$', command)
         
         if command == "e":
-            # Return to Earth Base view using the coordinator
-            earth_view = self.game_coordinator.create_earth_view()
-            return ('switch', earth_view)
+            return ('switch', 'earth_view')
         elif command == "q":
             # Quit the entire game
             return ('quit', None)

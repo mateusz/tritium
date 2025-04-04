@@ -1,11 +1,12 @@
+from textual.interface import TextInterface
 from textual.master_view import MasterView
 from coordinators.game_coordinator import GameCoordinator
 from colorama import Fore, Back, Style
 import re
 
 class TrainingView(MasterView):
-    def __init__(self, game_coordinator: GameCoordinator = None):
-        super().__init__(game_coordinator)
+    def __init__(self, game_coordinator: GameCoordinator = None, interface: TextInterface = None):
+        super().__init__(game_coordinator, interface)
         self.view_name = "training"
         
         # Get the training coordinator from the game coordinator
@@ -210,9 +211,7 @@ class TrainingView(MasterView):
         p_minus_match = re.match(r'^p\-(\d+)$', command)
         
         if command == "e":
-            # Return to Earth Base view using the coordinator
-            earth_view = self.game_coordinator.create_earth_view()
-            return ('switch', earth_view)
+            return ('switch', 'earth_view')
         elif command == "q":
             # Quit the entire game
             return ('quit', None)
