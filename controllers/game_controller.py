@@ -1,6 +1,7 @@
 from typing import Dict, Optional, Any, Type
 from controllers.controller import Controller
 from controllers.training_controller import TrainingController
+from controllers.research_controller import ResearchController
 from data_model.game_state import GameState
 
 
@@ -29,6 +30,9 @@ class GameController(Controller):
         # Create training controller
         self._controllers['training'] = TrainingController(self._game_state)
         
+        # Create research controller
+        self._controllers['research'] = ResearchController(self._game_state)
+        
         # Add more controllers as needed
     
     def get_controller(self, controller_name: str) -> Optional[Controller]:
@@ -51,6 +55,15 @@ class GameController(Controller):
             The training controller
         """
         return self._controllers['training']
+    
+    def get_research_controller(self) -> ResearchController:
+        """
+        Get the research controller.
+        
+        Returns:
+            The research controller
+        """
+        return self._controllers['research']
     
     def get_game_time(self) -> str:
         """

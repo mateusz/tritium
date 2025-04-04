@@ -84,12 +84,53 @@ class Research(Facility):
         completed = self.current_technician_days_total - self.current_technician_days_remaining
         return int((completed / self.current_technician_days_total) * 100)
     
-    def can_research(self, equipment_data: Equipment) -> bool:
+    def can_research(self, equipment_data: EquipmentType) -> bool:
         """Check if the equipment can be researched with current rank"""
         if self.researchers is None:
             return False
-        
-        if equipment_data.required_rank and self.researchers.rank.value < equipment_data.required_rank:
+        equipment_data = Equipment.get_equipment(equipment_data)
+        if equipment_data.required_rank==ResearcherRank.DOCTOR and self.researchers.rank == ResearcherRank.TECHNICIAN:
             return False
-            
+        elif equipment_data.required_rank==ResearcherRank.PROFESSOR and self.researchers.rank == ResearcherRank.DOCTOR:
+            return False
+        elif equipment_data.required_rank==ResearcherRank.PROFESSOR and self.researchers.rank == ResearcherRank.TECHNICIAN:
+            return False
         return True
+
+    def get_research_status(self, equipment_type: EquipmentType) -> str:
+        """Get the status of a specific research item
+        Returns one of: 'researched', 'in_progress', 'available', 'unavailable'
+        """
+        if equipment_type in self.researched_equipment:
+            return 'researched'
+        if self.current_research == equipment_type:
+            return 'in_progress'
+        
+        if self.can_research(equipment_type):
+            return 'available'
+        else:
+            return 'unavailable'
+    
+    def get_leader_rank(self) -> Optional[ResearcherRank]:
+        """Get the rank of the research leader"""
+        if self.researchers is None:
+            return None
+        return self.researchers.rank
+    
+    def get_researcher_count(self) -> int:
+        """Get the current number of researchers"""
+        if self.researchers is None:
+            return 0
+        return self.researchers.count
+    
+    def get_max_researcher_count(self) -> int:
+        """Get the maximum allowed number of researchers"""
+        return 250
+    
+    def get_current_research(self) -> Optional[EquipmentType]:
+        """Get the currently researched equipment type"""
+        return self.current_research
+    
+    def get_researched_equipment(self) -> List[EquipmentType]:
+        """Get the list of researched equipment types"""
+        return self.researched_equipment.copy()
