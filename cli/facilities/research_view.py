@@ -1,18 +1,19 @@
 from cli.master_view import MasterView
-from controllers.game_controller import GameController
+from coordinators.game_coordinator import GameCoordinator
 from colorama import Fore, Back, Style
 from data_model.equipment.equipment import EquipmentType, Equipment
 import re
 
 class ResearchView(MasterView):
-    def __init__(self, game_controller: GameController = None):
-        super().__init__(game_controller)
+    def __init__(self, game_coordinator: GameCoordinator = None):
+        super().__init__(game_coordinator)
         self.view_name = "research"
         
-        # Get the research controller from the game controller
-        self.research_controller = None
-        if game_controller:
-            self.research_controller = game_controller.get_research_controller()
+        # Get the research coordinator from the game coordinator
+        self.research_coordinator = None
+        if game_coordinator:
+            self.research_coordinator = game_coordinator.get_research_coordinator()
+            self.time_coordinator = game_coordinator.get_time_coordinator()
         
     def display(self):
         """Display Research Facility view"""
@@ -26,18 +27,18 @@ class ResearchView(MasterView):
             
         # Header with background color
         print(Back.BLUE + Fore.WHITE + Style.BRIGHT + "=== TRITIUM - Research Facility ===".center(80) + Style.RESET_ALL)
-        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_controller.get_game_time()}")
+        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.time_coordinator.get_game_time()}")
         
-        # Get research facility from controller
-        research_facility = self.research_controller.get_research_facility()
+        # Get research facility from coordinator
+        research_facility = self.research_coordinator.get_research_facility()
         
         # Show research status
-        current_research = self.research_controller.get_current_research()
+        current_research = self.research_coordinator.get_current_research()
         print(Fore.LIGHTBLUE_EX + Style.BRIGHT + "\nResearch Status:" + Style.RESET_ALL)
         
         if current_research:
             equipment_data = Equipment.get_equipment(current_research)
-            progress = self.research_controller.get_research_progress_percentage()
+            progress = self.research_coordinator.get_research_progress_percentage()
             print(Fore.WHITE + "  Currently Researching: " + Fore.YELLOW + f"{current_research.name}")
             print(Fore.WHITE + "  Tech Level: " + Fore.YELLOW + f"{equipment_data.required_rank}")
             print(Fore.WHITE + "  Progress: " + Fore.YELLOW + f"{progress}%")
@@ -57,7 +58,7 @@ class ResearchView(MasterView):
         
         for item in all_equipment:
             equipment_data = Equipment.get_equipment(item)
-            status = self.research_controller.get_research_status(item)
+            status = self.research_coordinator.get_research_status(item)
             
             if status == 'researched':
                 researched_items.append((item, equipment_data))
@@ -79,7 +80,7 @@ class ResearchView(MasterView):
         if in_progress_items:
             print(Fore.YELLOW + "  Research In Progress:")
             for i, (item, equipment_data) in enumerate(in_progress_items):
-                progress = self.research_controller.get_research_progress_percentage()
+                progress = self.research_coordinator.get_research_progress_percentage()
                 print(Fore.YELLOW + f"    [{i+1}] {item.name} - {progress}% Complete (Tech Level: {equipment_data.required_rank})")
         
         if available_items:
@@ -94,9 +95,9 @@ class ResearchView(MasterView):
         
         # Show researcher information
         print(Fore.LIGHTBLUE_EX + Style.BRIGHT + "\nResearch Team:" + Style.RESET_ALL)
-        researcher_count = self.research_controller.get_researcher_count()
-        max_researchers = self.research_controller.get_max_researcher_count()
-        leader_rank = self.research_controller.get_leader_rank()
+        researcher_count = self.research_coordinator.get_researcher_count()
+        max_researchers = self.research_coordinator.get_max_researcher_count()
+        leader_rank = self.research_coordinator.get_leader_rank()
         
         if leader_rank:
             print(Fore.WHITE + f"  Leader Rank: " + Fore.YELLOW + f"{leader_rank.name}")
@@ -132,26 +133,26 @@ class ResearchView(MasterView):
         add_researchers_match = re.match(r'^a(\d+)$', command)
         
         if command == "e":
-            # Return to Earth Base view using the controller
-            earth_view = self.game_controller.create_earth_view()
+            # Return to Earth Base view using the coordinator
+            earth_view = self.game_coordinator.create_earth_view()
             return ('switch', earth_view)
         elif command == "q":
             # Quit the entire game
             return ('quit', None)
         elif command == ".":
-            # Advance time using the controller
-            self.game_controller.advance_time()
+            # Advance time using the coordinator
+            self.time_coordinator.advance_time()
             
             # Check if research completed
-            current_research_before = self.research_controller.get_current_research()
+            current_research_before = self.research_coordinator.get_current_research()
             if current_research_before:
-                current_research_after = self.research_controller.get_current_research()
+                current_research_after = self.research_coordinator.get_current_research()
                 if current_research_after is None:
                     # Research completed
                     self.log_message(f"Research completed: {current_research_before.name}", "success")
                 else:
                     # Research in progress
-                    progress = self.research_controller.get_research_progress_percentage()
+                    progress = self.research_coordinator.get_research_progress_percentage()
                     self.log_message(f"Research progress: {progress}% complete", "info")
             
             return ('continue', None)
@@ -165,12 +166,12 @@ class ResearchView(MasterView):
             available_items = []
             for item in list(EquipmentType):
                 equipment_data = Equipment.get_equipment(item)
-                if self.research_controller.get_research_status(item) == 'available':
+                if self.research_coordinator.get_research_status(item) == 'available':
                     available_items.append((item, equipment_data))
             
             if 1 <= index <= len(available_items):
                 equipment_type, equipment_data = available_items[index-1]
-                if self.research_controller.start_research(equipment_type, equipment_data):
+                if self.research_coordinator.start_research(equipment_type, equipment_data):
                     self.log_message(f"Started research on {equipment_type.name}", "success")
                 else:
                     self.log_message(f"Cannot start research on {equipment_type.name}", "error")
@@ -192,7 +193,7 @@ class ResearchView(MasterView):
             
             if 1 <= index <= len(all_items):
                 equipment_type, equipment_data = all_items[index-1]
-                status = self.research_controller.get_research_status(equipment_type)
+                status = self.research_coordinator.get_research_status(equipment_type)
                 
                 details = f"Item: {equipment_type.name}\n"
                 details += f"Tech Level: {equipment_data.required_rank}\n"
@@ -203,7 +204,7 @@ class ResearchView(MasterView):
                     details += f"Required Minerals: {equipment_data.required_minerals}\n"
                     details += f"Production Location: {'Orbit' if equipment_data.orbit_producible else 'Earth'}"
                 elif status == 'in_progress':
-                    progress = self.research_controller.get_research_progress_percentage()
+                    progress = self.research_coordinator.get_research_progress_percentage()
                     details += f"Status: In Progress ({progress}% complete)"
                 elif status == 'available':
                     details += f"Status: Available for Research"
@@ -224,8 +225,8 @@ class ResearchView(MasterView):
             if amount <= 0:
                 self.log_message("Amount must be positive", "error")
             else:
-                if self.research_controller.can_add_researchers(amount):
-                    if self.research_controller.add_researchers(amount):
+                if self.research_coordinator.can_add_researchers(amount):
+                    if self.research_coordinator.add_researchers(amount):
                         self.log_message(f"Added {amount} researchers", "success")
                     else:
                         self.log_message("Failed to add researchers", "error")

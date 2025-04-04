@@ -8,17 +8,10 @@ from data_model.vehicle.vehicle import Vehicle
 from data_model.equipment.equipment import Equipment, EquipmentType
 from data_model.resource.resource import Resource
 
-if TYPE_CHECKING:
-    from data_model.system.system import System
-    from data_model.location.location import Location
-    from data_model.base.resource_base import ResourceBase
-    from data_model.base.orbital_base import OrbitalBase
 
 @dataclass
 class Base(ABC):
     """Abstract base for all buildable structures"""
-    system: Optional['System'] = None
-    location: Optional['Location'] = None
     facilities: List[Facility] = field(default_factory=list)
     personnel: List[Personnel] = field(default_factory=list)
     shuttle_bay_vehicle: Optional[Vehicle] = None
@@ -81,14 +74,6 @@ class Base(ABC):
         self.personnel.append(person)
         return True
         
-    def get_resource_base(self) -> Optional['ResourceBase']:
-        """Get the resource base for this location"""
-        return self.location.get_resource_base()
-
-    def get_orbital_base(self) -> Optional['OrbitalBase']:
-        """Get the orbital base for this location"""
-        return self.location.get_orbital_base()
-    
     def add_facility(self, facility: Facility) -> bool:
         """
         Add a facility to the base and establish bidirectional relationship
@@ -99,10 +84,9 @@ class Base(ABC):
         Returns:
             bool: True if the facility was added successfully
         """
-        facility.base = self
         self.facilities.append(facility)
         return True
 
-    def update(self):
+    def advance_time(self):
         for facility in self.facilities:
-            facility.update()
+            facility.advance_time()

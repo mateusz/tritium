@@ -1,9 +1,9 @@
-from controllers.controller import Controller
+from coordinators.coordinator import Coordinator
 from data_model.facility.training import Training
 
-class TrainingController(Controller):
+class TrainingCoordinator(Coordinator):
     """
-    Controller for managing training facilities.
+    Coordinator for managing training facilities.
     Handles training of personnel and facility operations.
     """
     
@@ -78,6 +78,13 @@ class TrainingController(Controller):
         Returns:
             True if marines can be trained, False otherwise
         """
+            
+        if self.get_earth_base() is None:
+            return False
+            
+        if not self.get_earth_base().has_free_personnel_slot():
+            return False
+
         training_facility = self.get_training_facility()
         return training_facility.can_train_marines(amount)
     
@@ -132,6 +139,14 @@ class TrainingController(Controller):
         Returns:
             True if researchers can be trained, False otherwise
         """
+            
+        research_facility = self.get_earth_base().get_research_facility()
+        if research_facility is None:
+            return False
+            
+        if not research_facility.can_add_researchers(amount):
+            return False
+        
         training_facility = self.get_training_facility()
         return training_facility.can_train_researchers(amount)
     
@@ -186,6 +201,15 @@ class TrainingController(Controller):
         Returns:
             True if producers can be trained, False otherwise
         """
+            
+        # Get the production facility and check if it has space
+        production_facility = self.get_earth_base().get_production_facility()
+        if production_facility is None:
+            return False
+            
+        if not production_facility.can_add_producers(amount):
+            return False
+
         training_facility = self.get_training_facility()
         return training_facility.can_train_producers(amount)
     

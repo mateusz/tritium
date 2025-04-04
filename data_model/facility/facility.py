@@ -9,8 +9,6 @@ if TYPE_CHECKING:
 
 @dataclass
 class Facility(ABC):
-    """Abstract base for all facilities, accessed in bases, cannot be stored"""
-    base: Optional['Base'] = None
 
-    def update(self):
+    def advance_time(self):
         pass

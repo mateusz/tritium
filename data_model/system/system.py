@@ -10,8 +10,6 @@ from data_model.vehicle.vehicle import Vehicle
 class System(ABC):
     """Abstract base class for all planetary systems."""
     locations: List[Location] = field(default_factory=list)
-    bases: List[Base] = field(default_factory=list)
-    vehicles: List[Vehicle] = field(default_factory=list)
     
     def add_location(self, location: Location):
         """Add a location to this system and set up bidirectional references.
@@ -21,5 +19,3 @@ class System(ABC):
         """
         location.system = self
         self.locations.append(location)
-
-    pass 

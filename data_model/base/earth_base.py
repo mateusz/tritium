@@ -16,15 +16,15 @@ class EarthBase(ResourceBase):
         super().__post_init__()
         
         # Add the Training facility
-        training_facility = Training(base=self)
+        training_facility = Training()
         self.facilities.append(training_facility)
         
         # Add Research facility
-        research_facility = Research(base=self)
+        research_facility = Research()
         self.facilities.append(research_facility)
         
         # Add Production facility
-        production_facility = Production(base=self)
+        production_facility = Production()
         self.facilities.append(production_facility)
         
         

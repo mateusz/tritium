@@ -18,15 +18,15 @@ class ResourceBase(Base):
         super().__post_init__()
         
         # Add Mining facility
-        mining_facility = Mining(base=self)
+        mining_facility = Mining()
         self.facilities.append(mining_facility)
         
         # Add Storage facility
-        storage_facility = Storage(base=self)
+        storage_facility = Storage()
         self.facilities.append(storage_facility)
         
         # Add ShuttleBay facility
-        shuttle_bay = ShuttleBay(base=self)
+        shuttle_bay = ShuttleBay()
         self.facilities.append(shuttle_bay)
 
     def deploy_derrick(self):

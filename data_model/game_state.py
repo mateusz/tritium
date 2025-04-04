@@ -25,9 +25,9 @@ class GameState:
         # Restore instance attributes
         self.__dict__.update(state)
 
-    def update(self):
+    def advance_time(self):
         self.game_time += 1
-        self.solar_system.update()
+        self.solar_system.advance_time()
 
     def get_location_by_name(self, name: str):
         for location in self.solar_system.locations:

@@ -1,10 +1,10 @@
-from controllers.controller import Controller
+from coordinators.coordinator import Coordinator
 from data_model.facility.research import Research
 from data_model.equipment.equipment import EquipmentType
 
-class ResearchController(Controller):
+class ResearchCoordinator(Coordinator):
     """
-    Controller for managing research facilities.
+    Coordinator for managing research facilities.
     Handles research projects and facility operations.
     """
     
@@ -118,7 +118,7 @@ class ResearchController(Controller):
         research_facility = self.get_research_facility()
         return research_facility.start_research(equipment_type, equipment_data)
     
-    def can_research(self, equipment_data):
+    def can_research(self, equipment_data: EquipmentType) -> bool:
         """
         Check if the equipment can be researched with current rank.
         
@@ -131,7 +131,7 @@ class ResearchController(Controller):
         research_facility = self.get_research_facility()
         return research_facility.can_research(equipment_data)
     
-    def get_research_status(self, equipment_type):
+    def get_research_status(self, equipment_type: EquipmentType) -> str:
         """
         Get the status of a specific research item.
         

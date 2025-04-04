@@ -8,14 +8,10 @@ from data_model.base.resource_base import ResourceBase
 from data_model.resource.resource import Resource
 from data_model.vehicle.vehicle import Vehicle
 
-if TYPE_CHECKING:
-    from data_model.system.system import System
-
 @dataclass
 class Location(ABC):
     """Abstract base for all buildable locations"""
     name: Optional[str] = None
-    system: Optional['System'] = None
     orbital_base: Optional[Base] = None
     resource_base: Optional[Base] = None
     resources: Dict[Resource, float] = field(default_factory=dict)
@@ -39,10 +35,10 @@ class Location(ABC):
         """Get the orbital base for this location"""
         return self.orbital_base
 
-    def update(self):
+    def advance_time(self):
         if self.orbital_base is not None:
-            self.orbital_base.update()
+            self.orbital_base.advance_time()
         if self.resource_base is not None:
-            self.resource_base.update()
+            self.resource_base.advance_time()
         for vehicle in self.vehicles:
-            vehicle.update()
+            vehicle.advance_time()

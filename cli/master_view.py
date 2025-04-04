@@ -1,19 +1,20 @@
 from colorama import Fore, Back, Style
 from cli.message_system import MessageManager
-from controllers.game_controller import GameController
+from coordinators.game_coordinator import GameCoordinator
 from data_model.persistence import save_game
 
 class MasterView:
-    def __init__(self, game_controller: GameController = None):
-        # Ensure we have a game controller
-        if game_controller is None:
-            # Create a game controller if one wasn't provided
-            self.game_controller = GameController()
+    def __init__(self, game_coordinator: GameCoordinator = None):
+        # Ensure we have a game coordinator
+        if game_coordinator is None:
+            # Create a game coordinator if one wasn't provided
+            self.game_coordinator = GameCoordinator()
         else:
-            self.game_controller = game_controller
+            self.game_coordinator = game_coordinator
             
         self.view_name = "master"
         self.message_manager = MessageManager.get_instance()
+        self.time_coordinator = game_coordinator.get_time_coordinator()
     
     def clear_screen(self):
         """Simple cross-platform clear screen"""
@@ -31,7 +32,7 @@ class MasterView:
             
         # Header with background color
         print(Back.BLUE + Fore.WHITE + Style.BRIGHT + "=== TRITIUM - Main View ===".center(80) + Style.RESET_ALL)
-        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_controller.get_game_time()}")
+        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.time_coordinator.get_game_time()}")
         
         # Commands section
         print(Fore.GREEN + "\nCommands:")
@@ -42,7 +43,7 @@ class MasterView:
     
     def advance_time(self):
         """Progress the game time by one round"""
-        self.game_controller.advance_time()
+        self.time_coordinator.advance_time()
         self.message_manager.add_info("Advanced time by one round")
     
     def log_message(self, message: str, message_type: str = "info"):
@@ -72,7 +73,7 @@ class MasterView:
             return ('quit', None)
         elif command == "s":
             # Save the game
-            if save_game(self.game_controller.game_state):
+            if save_game(self.game_coordinator.game_state):
                 self.log_message("Game saved successfully!", "success")
             else:
                 self.log_message("Failed to save game", "error")
@@ -81,8 +82,8 @@ class MasterView:
             self.advance_time()
             return ('continue', None)
         elif command == "e":
-            # Create Earth view via controller
-            earth_view = self.game_controller.create_earth_view()
+            # Create Earth view via coordinator
+            earth_view = self.game_coordinator.create_earth_view()
             return ('switch', earth_view)
         else:
             self.log_message(f"Unknown command: {command}", "error")

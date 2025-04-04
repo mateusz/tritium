@@ -2,7 +2,7 @@ import sys
 import readline
 from colorama import init, Fore, Back, Style
 from data_model.game_state import GameState
-from controllers.game_controller import GameController
+from coordinators.game_coordinator import GameCoordinator
 from cli.master_view import MasterView
 from data_model.persistence import save_game, load_game
 
@@ -50,11 +50,11 @@ def main():
     if not game_state:
         game_state = GameState()
     
-    game_controller = GameController(game_state)
+    game_coordinator = GameCoordinator(game_state)
     command_history = CommandHistory()
     
     # Start with master view, passing the game controller
-    current_view = MasterView(game_controller)
+    current_view = MasterView(game_coordinator)
     running = True
     
     # Main game loop

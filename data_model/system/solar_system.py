@@ -3,6 +3,6 @@ from data_model.system.system import System
 
 @dataclass
 class SolarSystem(System):
-    def update(self):
+    def advance_time(self):
         for location in self.locations:
-            location.update()
+            location.advance_time()

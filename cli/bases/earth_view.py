@@ -1,11 +1,12 @@
 from cli.master_view import MasterView
 from colorama import Fore, Back, Style
-from controllers.game_controller import GameController
+from coordinators.game_coordinator import GameCoordinator
 
 class EarthView(MasterView):
-    def __init__(self, game_controller: GameController = None):
-        super().__init__(game_controller)
+    def __init__(self, game_coordinator: GameCoordinator = None):
+        super().__init__(game_coordinator)
         self.view_name = "earth"
+        self.time_coordinator = game_coordinator.get_time_coordinator()
     
     def display(self):
         """Display Earth-specific game state"""
@@ -19,10 +20,10 @@ class EarthView(MasterView):
             
         # Header with background color
         print(Back.GREEN + Fore.BLACK + Style.BRIGHT + "=== TRITIUM - Earth Base View ===".center(80) + Style.RESET_ALL)
-        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_controller.get_game_time()}")
+        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.time_coordinator.get_game_time()}")
         
-        # Get Earth base through the controller
-        earth_base = self.game_controller.get_earth_base()
+        # Get Earth base through the coordinator
+        earth_base = self.game_coordinator.get_earth_base()
         
         # Display Earth-specific information
         print(Fore.GREEN + Style.BRIGHT + "\nEarth Base Status:" + Style.RESET_ALL)
@@ -61,23 +62,23 @@ class EarthView(MasterView):
         command = command.strip().lower()
         
         if command == "m":
-            # Return to main view using the controller
-            master_view = self.game_controller.create_master_view()
+            # Return to main view using the coordinator
+            master_view = self.game_coordinator.create_master_view()
             return ('switch', master_view)
         elif command == "q":
             # Quit the entire game
             return ('quit', None)
         elif command == ".":
-            # Advance time using the controller
-            self.game_controller.advance_time()
+            # Advance time using the coordinator
+            self.time_coordinator.advance_time()
             return ('continue', None)
         elif command == "t":
-            # Switch to Training Facility view using the controller
-            training_view = self.game_controller.create_training_view()
+            # Switch to Training Facility view using the coordinator
+            training_view = self.game_coordinator.create_training_view()
             return ('switch', training_view)
         elif command == "r":
-            # Switch to Research Facility view using the controller
-            research_view = self.game_controller.create_research_view()
+            # Switch to Research Facility view using the coordinator
+            research_view = self.game_coordinator.create_research_view()
             return ('switch', research_view)
         else:
             self.log_message(f"Unknown command: {command}", "error")
