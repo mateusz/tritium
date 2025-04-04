@@ -43,26 +43,3 @@ class TextInterface(ABC):
         """
         pass
 
-
-class CliInterface(TextInterface):
-    """CLI implementation of the TextInterface."""
-    
-    def print_line(self, text: str) -> None:
-        """Print a line of text to the console."""
-        print(text)
-    
-    def clear_screen(self) -> None:
-        """Clear the console screen."""
-        print("\033[H\033[J", end="")
-    
-    def read_line(self, prompt: str = "") -> str:
-        """Read a line of input from the console."""
-        return input(prompt)
-    
-    def read_command(self, prompt: str = "", history: Optional[List[str]] = None) -> str:
-        """Read a command from the console.
-        
-        Note: This basic implementation doesn't support command history navigation.
-        A more advanced implementation could use a library like 'readline' or 'prompt_toolkit'.
-        """
-        return self.read_line(prompt) 

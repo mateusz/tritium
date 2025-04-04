@@ -1,4 +1,4 @@
-from textual.interface import TextInterface, CliInterface
+from textual.interface import TextInterface
 from textual.master_view import MasterView
 from textual.bases.earth_view import EarthView
 from textual.facilities.training_view import TrainingView

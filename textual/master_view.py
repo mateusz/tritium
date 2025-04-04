@@ -1,6 +1,6 @@
 from colorama import Fore, Back, Style
 from textual.message_system import MessageManager
-from textual.interface import TextInterface, CliInterface
+from textual.interface import TextInterface
 from coordinators.game_coordinator import GameCoordinator
 from data_model.persistence import save_game
 
