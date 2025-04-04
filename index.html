@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tritium Game</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: monospace;
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        #game-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #2d2d2d;
+        }
+        #output {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #555;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #0d0d0d;
+            white-space: pre-wrap;
+        }
+        #prompt {
+            color: #4caf50;
+            margin-bottom: 5px;
+        }
+        #input-container {
+            display: flex;
+            margin-top: 10px;
+        }
+        #input {
+            flex-grow: 1;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 5px;
+            font-family: monospace;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #status {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 3px;
+            display: none;
+        }
+        .success {
+            background-color: #4caf50;
+            color: white;
+        }
+        .error {
+            background-color: #f44336;
+            color: white;
+        }
+        .loading {
+            text-align: center;
+            margin: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Tritium Game</h1>
+        <div id="loading" class="loading">Loading Pyodide and game files...</div>
+        <div id="game-ui" style="display: none;">
+            <div id="output"></div>
+            <div id="prompt"></div>
+            <div id="input-container">
+                <input type="text" id="input" placeholder="Enter command..." autocomplete="off">
+                <button id="submit">Submit</button>
+                <button id="save">Save Game</button>
+            </div>
+            <div id="status"></div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let pyodide;
+        let inputElement = document.getElementById('input');
+        let outputElement = document.getElementById('output');
+        let promptElement = document.getElementById('prompt');
+        let submitButton = document.getElementById('submit');
+        let saveButton = document.getElementById('save');
+        let statusElement = document.getElementById('status');
+        let gameUI = document.getElementById('game-ui');
+        let loadingElement = document.getElementById('loading');
+
+        // Function to print output to the game console
+        function printOutput(text) {
+            outputElement.innerHTML += text + '<br>';
+            outputElement.scrollTop = outputElement.scrollHeight;
+        }
+
+        // Function to clear the output console
+        function clearOutput() {
+            outputElement.innerHTML = '';
+        }
+
+        // Function to set the prompt text
+        function setPrompt(text) {
+            promptElement.innerHTML = text;
+        }
+
+        // Function to set the input value
+        function setInputValue(text) {
+            inputElement.value = text;
+        }
+
+        // Function to show status messages
+        function showSaveStatus(message, type) {
+            statusElement.textContent = message;
+            statusElement.className = type;
+            statusElement.style.display = 'block';
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                statusElement.style.display = 'none';
+            }, 3000);
+        }
+
+        // Function to show errors
+        function showError(message) {
+            showSaveStatus(message, 'error');
+        }
+
+        // Function to enable history navigation
+        function enableHistoryNavigation(enabled) {
+            if (enabled) {
+                // History navigation is handled by keyboard events
+            }
+        }
+
+        // Handle keyboard navigation for command history
+        inputElement.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                if (pyodide) {
+                    pyodide.globals.get('history_up')();
+                }
+            } else if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                if (pyodide) {
+                    pyodide.globals.get('history_down')();
+                }
+            } else if (event.key === 'Enter') {
+                event.preventDefault();
+                submitInput();
+            }
+        });
+
+        // Function to submit input
+        function submitInput() {
+            const inputText = inputElement.value;
+            if (inputText.trim() !== '') {
+                // Display the input in the output area
+                printOutput(`<span style="color: #4caf50;">${promptElement.innerHTML}</span> ${inputText}`);
+                
+                // Pass the input to Python
+                if (pyodide) {
+                    pyodide.globals.get('handle_user_input')(inputText);
+                }
+                
+                // Clear the input field
+                inputElement.value = '';
+            }
+        }
+
+        // Set up the submit button
+        submitButton.addEventListener('click', submitInput);
+
+        // Set up the save button
+        saveButton.addEventListener('click', function() {
+            if (pyodide) {
+                pyodide.globals.get('save_game_wrapper')();
+            }
+        });
+
+        // Initialize and load Pyodide
+        async function main() {
+            try {
+                // Load Pyodide
+                pyodide = await loadPyodide();
+                printOutput("Pyodide loaded successfully!");
+                
+                // Install required packages
+                await pyodide.loadPackagesFromImports(`
+                    import pickle
+                    import base64
+                    import asyncio
+                `);
+                
+                // Load the game files
+                await pyodide.runPythonAsync(`
+                    import sys
+                    import os
+                    from pyodide.http import pyfetch
+                    
+                    async def load_python_file(url):
+                        try:
+                            response = await pyfetch(url)
+                            if response.status == 200:
+                                return await response.string()
+                            else:
+                                print(f"Failed to load {url}: {response.status}")
+                                return None
+                        except Exception as e:
+                            print(f"Error fetching {url}: {str(e)}")
+                            return None
+                    
+                    # Function to ensure directory exists
+                    def ensure_dir(directory):
+                        try:
+                            if directory and not os.path.exists(directory):
+                                os.makedirs(directory, exist_ok=True)
+                                print(f"Created directory: {directory}")
+                        except Exception as e:
+                            print(f"Error creating directory {directory}: {str(e)}")
+                    
+                    # Basic files needed for immediate imports
+                    base_files = [
+                        "data_model/__init__.py",
+                        "data_model/game_state.py",
+                        "data_model/persistence.py",
+                        "data_model/initialise.py",
+                        "coordinators/__init__.py",
+                        "coordinators/game_coordinator.py",
+                        "textual/__init__.py",
+                        "textual/interface.py",
+                        "textual/game_runner.py",
+                        "textual/web_interface.py",
+                        "game_web.py"
+                    ]
+                    
+                    # Resource-related modules
+                    resource_modules = [
+                        "data_model/resource/__init__.py",
+                        "data_model/resource/resource.py"
+                    ]
+                    
+                    # System-related modules
+                    system_modules = [
+                        "data_model/system/__init__.py",
+                        "data_model/system/solar_system.py"
+                        "data_model/system/system.py"
+                    ]
+                    
+                    # Location-related modules
+                    location_modules = [
+                        "data_model/location/__init__.py",
+                        "data_model/location/planet.py",
+                        "data_model/location/moon.py",
+                        "data_model/location/asteroid.py"
+                    ]
+                    
+                    # Base-related modules
+                    base_modules = [
+                        "data_model/base/__init__.py",
+                        "data_model/base/earth_base.py",
+                        "data_model/base/moon_base.py",
+                        "data_model/base/resource_base.py"
+                    ]
+                    
+                    # Equipment-related modules
+                    equipment_modules = [
+                        "data_model/equipment/__init__.py",
+                        "data_model/equipment/equipment.py"
+                    ]
+                    
+                    # Additional textual modules
+                    textual_modules = [
+                        "textual/master_view.py",
+                        "textual/message_system.py",
+                        "textual/bases/__init__.py",
+                        "textual/bases/earth_view.py",
+                        "textual/facilities/__init__.py",
+                        "textual/facilities/training_view.py",
+                        "textual/facilities/research_view.py"
+                    ]
+                    
+                    # Combine all modules
+                    all_modules = (
+                        base_files + 
+                        resource_modules + 
+                        system_modules + 
+                        location_modules + 
+                        base_modules + 
+                        equipment_modules + 
+                        textual_modules
+                    )
+                    
+                    # Load all required files
+                    for file in all_modules:
+                        try:
+                            # Determine URL (handle special case for game-web.py)
+                            url = file
+                            if file == "game_web.py":
+                                url = "game-web.py"
+                            
+                            # Ensure the directory exists
+                            directory = os.path.dirname(file)
+                            ensure_dir(directory)
+                            
+                            # Fetch and save the file
+                            code = await load_python_file(url)
+                            if code is not None:
+                                with open(file, 'w') as f:
+                                    f.write(code)
+                                print(f"Loaded {file}")
+                            else:
+                                print(f"Failed to load {file}, continuing...")
+                        except Exception as e:
+                            print(f"Error processing {file}: {str(e)}")
+                    
+                    # Create empty __init__.py files for any missing directories
+                    directories = [
+                        "coordinators",
+                        "data_model",
+                        "data_model/resource",
+                        "data_model/system",
+                        "data_model/location",
+                        "data_model/base",
+                        "data_model/equipment",
+                        "data_model/rank",
+                        "data_model/personnel",
+                        "data_model/facility",
+                        "data_model/vehicle",
+                        "data_model/grapplable",
+                        "data_model/game_progression",
+                        "textual",
+                        "textual/bases",
+                        "textual/facilities"
+                    ]
+                    
+                    for directory in directories:
+                        ensure_dir(directory)
+                        init_file = os.path.join(directory, "__init__.py")
+                        if not os.path.exists(init_file):
+                            try:
+                                with open(init_file, 'w') as f:
+                                    f.write("# Auto-generated __init__.py file")
+                                print(f"Created {init_file}")
+                            except Exception as e:
+                                print(f"Error creating {init_file}: {str(e)}")
+                `);
+                
+                // Start the game
+                printOutput("Starting game...");
+                const result = await pyodide.runPythonAsync(`
+                    try:
+                        # Import the game module (renamed to avoid hyphen)
+                        import game_web
+                        # Start the game
+                        result = game_web.start_game()
+                        result
+                    except Exception as e:
+                        import traceback
+                        traceback.print_exc()
+                        f"Error: {str(e)}"
+                `);
+                
+                console.log("Game started with result:", result);
+                
+                // Show the game UI
+                loadingElement.style.display = 'none';
+                gameUI.style.display = 'block';
+                
+                // Focus on the input
+                inputElement.focus();
+                
+            } catch (error) {
+                console.error("Error initializing game:", error);
+                loadingElement.textContent = `Error: ${error.message}`;
+                loadingElement.style.color = 'red';
+            }
+        }
+
+        // Load Pyodide script
+        const script = document.createElement('script');
+        script.src = "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js";
+        script.onload = () => {
+            main();
+        };
+        document.head.appendChild(script);
+    </script>
+</body>
+</html> 

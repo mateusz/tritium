@@ -14,7 +14,7 @@ class MasterView:
             
         # Set up interface
         if interface is None:
-            from cli.cli_interface import CliInterface
+            from textual.cli_interface import CliInterface
             self.interface = CliInterface()
         else:
             self.interface = interface

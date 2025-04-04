@@ -8,17 +8,8 @@ from coordinators.game_coordinator import GameCoordinator
 class GameRunner:
     """Runs the game using a specific TextInterface implementation."""
     
-    def __init__(self, interface: TextInterface = None):
-        """Initialize the game runner with an interface.
-        
-        Args:
-            interface: The TextInterface implementation to use. Defaults to CliInterface.
-        """
-        if interface is None:
-            self.interface = CliInterface()
-        else:
-            self.interface = interface
-            
+    def __init__(self, interface: TextInterface):
+        self.interface = interface
         self.game_coordinator = GameCoordinator()
     
     def run(self):

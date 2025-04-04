@@ -1,6 +1,6 @@
 from typing import List, Optional, Dict
 from textual.interface import TextInterface, TextColor
-
+import readline
 # Import colorama conditionally, so it's only needed for CLI interface
 try:
     from colorama import Fore, Back, Style, init
@@ -91,7 +91,46 @@ class CliInterface(TextInterface):
             TextColor.STYLE_NORMAL: Style.NORMAL,
             TextColor.STYLE_RESET_ALL: Style.RESET_ALL,
         }
+        self.command_history = {}  # Dictionary to store history for each view
+        
+    def add_command_to_history(self, view_name, command):
+        """Add a command to the history for a specific view"""
+        if view_name not in self.command_history:
+            self.command_history[view_name] = []
+        
+        # Don't add empty commands or duplicates at the end
+        if command and (not self.command_history[view_name] or command != self.command_history[view_name][-1]):
+            self.command_history[view_name].append(command)
     
+    def get_history(self, view_name):
+        """Get command history for a specific view"""
+        return self.command_history.get(view_name, [])
+    
+    def setup_readline(self, view_name):
+        """Set up readline with the history for the current view"""
+        # Clear existing history
+        readline.clear_history()
+        
+        # Add view-specific history
+        for cmd in self.get_history(view_name):
+            readline.add_history(cmd)
+    
+    def read_command(self, prompt="", history=None):
+        """Read a command with view-specific history support."""
+        # If a view name is provided in history, set up readline
+        if history and isinstance(history, str):
+            self.setup_readline(history)
+        
+        # Get user input
+        processed_prompt = self._process_color_tags(prompt)
+        command = input(processed_prompt)
+        
+        # Add to history if view name provided
+        if history and isinstance(history, str) and command.strip():
+            self.add_command_to_history(history, command)
+            
+        return command 
+
     def print_line(self, text: str) -> None:
         """Print a line of text to the console."""
         # Process any color tags before printing
@@ -106,14 +145,6 @@ class CliInterface(TextInterface):
         """Read a line of input from the console."""
         processed_prompt = self._process_color_tags(prompt)
         return input(processed_prompt)
-    
-    def read_command(self, prompt: str = "", history: Optional[List[str]] = None) -> str:
-        """Read a command from the console.
-        
-        Note: This basic implementation doesn't support command history navigation.
-        A more advanced implementation could use a library like 'readline' or 'prompt_toolkit'.
-        """
-        return self.read_line(prompt)
     
     def colorize(self, text: str, color_code: str) -> str:
         """Apply a color to the given text using colorama codes."""

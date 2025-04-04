@@ -10,51 +10,6 @@ from textual.game_runner import GameRunner
 from textual.interface import TextColor
 from textual.cli_interface import CliInterface
 
-class CommandHistoryCliInterface(CliInterface):
-    """CLI interface implementation with command history support."""
-    
-    def __init__(self):
-        super().__init__()
-        self.command_history = {}  # Dictionary to store history for each view
-        
-    def add_command_to_history(self, view_name, command):
-        """Add a command to the history for a specific view"""
-        if view_name not in self.command_history:
-            self.command_history[view_name] = []
-        
-        # Don't add empty commands or duplicates at the end
-        if command and (not self.command_history[view_name] or command != self.command_history[view_name][-1]):
-            self.command_history[view_name].append(command)
-    
-    def get_history(self, view_name):
-        """Get command history for a specific view"""
-        return self.command_history.get(view_name, [])
-    
-    def setup_readline(self, view_name):
-        """Set up readline with the history for the current view"""
-        # Clear existing history
-        readline.clear_history()
-        
-        # Add view-specific history
-        for cmd in self.get_history(view_name):
-            readline.add_history(cmd)
-    
-    def read_command(self, prompt="", history=None):
-        """Read a command with view-specific history support."""
-        # If a view name is provided in history, set up readline
-        if history and isinstance(history, str):
-            self.setup_readline(history)
-        
-        # Get user input
-        processed_prompt = self._process_color_tags(prompt)
-        command = input(processed_prompt)
-        
-        # Add to history if view name provided
-        if history and isinstance(history, str) and command.strip():
-            self.add_command_to_history(history, command)
-            
-        return command
-
 def main():
     # Check for a saved game and offer to load it
     saved_game = load_game()
