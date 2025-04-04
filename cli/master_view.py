@@ -1,6 +1,7 @@
 from colorama import Fore, Back, Style
 from cli.message_system import MessageManager
 from controllers.game_controller import GameController
+from data_model.persistence import save_game
 
 class MasterView:
     def __init__(self, game_controller: GameController = None):
@@ -36,6 +37,7 @@ class MasterView:
         print(Fore.GREEN + "\nCommands:")
         print(Fore.WHITE + "  " + Fore.CYAN + ".    " + Fore.WHITE + "- Advance time by one round")
         print(Fore.WHITE + "  " + Fore.CYAN + "e    " + Fore.WHITE + "- Switch to Earth view")
+        print(Fore.WHITE + "  " + Fore.CYAN + "s    " + Fore.WHITE + "- Save game")
         print(Fore.WHITE + "  " + Fore.CYAN + "q    " + Fore.WHITE + "- Quit game")
     
     def advance_time(self):
@@ -68,6 +70,13 @@ class MasterView:
         
         if command == "q":
             return ('quit', None)
+        elif command == "s":
+            # Save the game
+            if save_game(self.game_controller.game_state):
+                self.log_message("Game saved successfully!", "success")
+            else:
+                self.log_message("Failed to save game", "error")
+            return ('continue', None)
         elif command == ".":
             self.advance_time()
             return ('continue', None)

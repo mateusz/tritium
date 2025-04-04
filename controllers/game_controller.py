@@ -24,6 +24,16 @@ class GameController(Controller):
         # Initialize controllers
         self._initialize_controllers()
     
+    @property
+    def game_state(self) -> GameState:
+        """
+        Get the current game state.
+        
+        Returns:
+            The current game state
+        """
+        return self._game_state
+    
     def _initialize_controllers(self):
         """Initialize all controller subsystems."""
         

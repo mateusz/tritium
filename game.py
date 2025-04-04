@@ -4,6 +4,7 @@ from colorama import init, Fore, Back, Style
 from data_model.game_state import GameState
 from controllers.game_controller import GameController
 from cli.master_view import MasterView
+from data_model.persistence import save_game, load_game
 
 # Initialize colorama
 init(autoreset=True)
@@ -35,8 +36,20 @@ def setup_readline(history, view_name):
         readline.add_history(cmd)
 
 def main():
-    # Initialize game state, game controller, and command history
-    game_state = GameState()
+    # Check for a saved game and offer to load it
+    saved_game = load_game()
+    game_state = None
+    
+    if saved_game:
+        load_choice = input(Fore.CYAN + "Saved game found. Load it? (y/n): " + Style.RESET_ALL).lower()
+        if load_choice == 'y' or load_choice == 'yes':
+            game_state = saved_game
+            print(Fore.GREEN + "Game loaded successfully!" + Style.RESET_ALL)
+    
+    # Initialize game state if not loaded
+    if not game_state:
+        game_state = GameState()
+    
     game_controller = GameController(game_state)
     command_history = CommandHistory()
     
@@ -63,6 +76,9 @@ def main():
         
         # Handle the action
         if action == 'quit':
+            # Save the game when quitting
+            if save_game(game_state):
+                print(Fore.GREEN + "Game saved successfully!")
             running = False
         elif action == 'switch' and new_view:
             current_view = new_view
