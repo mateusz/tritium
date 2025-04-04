@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from enum import Enum, auto
 from typing import Dict, Optional
 from data_model.resource.resource import Resource
-
+from data_model.rank.researcher_rank import ResearcherRank
 class EquipmentType(Enum):
     # Base Equipment
     DERRICK = auto()
@@ -58,7 +58,7 @@ class Equipment:
     type: EquipmentType
     costs: Optional[Dict[Resource, int]] = None 
     mass: Optional[int] = None
-    required_rank: Optional[int] = None
+    required_rank: Optional[ResearcherRank] = None
     required_location: Optional[RequiredLocation] = None 
     
     @staticmethod
@@ -181,8 +181,15 @@ class Equipment:
         # Base research time
         base_days = 700
         
-        # Rank multiplier (default to 1 if rank is None)
-        rank_multiplier = self.required_rank if self.required_rank is not None else 1
+        # Rank multiplier based on ResearcherRank enum
+        rank_multiplier = 1.0  # Default for no rank requirement
+        if self.required_rank is not None:
+            if self.required_rank == ResearcherRank.TECHNICIAN:
+                rank_multiplier = 1.0
+            elif self.required_rank == ResearcherRank.DOCTOR:
+                rank_multiplier = 1.5
+            elif self.required_rank == ResearcherRank.PROFESSOR:
+                rank_multiplier = 2.0
         
         # Count rare elements in costs
         rare_elements_count = 0

@@ -1,10 +1,16 @@
-from data_model.game_state import GameState
 from colorama import Fore, Back, Style
 from cli.message_system import MessageManager
+from controllers.game_controller import GameController
 
 class MasterView:
-    def __init__(self, game_state: GameState):
-        self.game_state = game_state
+    def __init__(self, game_controller: GameController = None):
+        # Ensure we have a game controller
+        if game_controller is None:
+            # Create a game controller if one wasn't provided
+            self.game_controller = GameController()
+        else:
+            self.game_controller = game_controller
+            
         self.view_name = "master"
         self.message_manager = MessageManager.get_instance()
     
@@ -24,7 +30,7 @@ class MasterView:
             
         # Header with background color
         print(Back.BLUE + Fore.WHITE + Style.BRIGHT + "=== TRITIUM - Main View ===".center(80) + Style.RESET_ALL)
-        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_state.game_time}")
+        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_controller.get_game_time()}")
         
         # Commands section
         print(Fore.GREEN + "\nCommands:")
@@ -34,7 +40,7 @@ class MasterView:
     
     def advance_time(self):
         """Progress the game time by one round"""
-        self.game_state.update()
+        self.game_controller.advance_time()
         self.message_manager.add_info("Advanced time by one round")
     
     def log_message(self, message: str, message_type: str = "info"):
@@ -66,9 +72,8 @@ class MasterView:
             self.advance_time()
             return ('continue', None)
         elif command == "e":
-            # Switch to Earth view - create and hydrate the new view
-            from cli.bases.earth_view import EarthView
-            earth_view = EarthView(self.game_state)
+            # Create Earth view via controller
+            earth_view = self.game_controller.create_earth_view()
             return ('switch', earth_view)
         else:
             self.log_message(f"Unknown command: {command}", "error")

@@ -24,3 +24,7 @@ Also, operate on EquipmentType where you can.
 --- 
 
 Ok pretty good. Now update @research.py to replace research_progress and research_total_days with: current_technician_days_remaining, which tracks number of tech-days to go, and current_technician_days_total which holds the tech-days to go through to achieve current tech.
+
+---
+
+Now, update @research.py to take game progress state into consideration in can_research, and also list available_technologies.

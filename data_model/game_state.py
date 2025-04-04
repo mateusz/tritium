@@ -1,8 +1,15 @@
 from data_model.initialise import initialize_solar_system
 from data_model.base.earth_base import EarthBase
-
+from data_model.system.solar_system import SolarSystem
+from data_model.game_progression.game_progression import GameProgression
+from data_model.game_progression.initial_progress import InitialProgress
 class GameState:
+    solar_system: SolarSystem
+    game_time: int
+    current_game_progression: GameProgression
+
     def __init__(self):
+        self.current_game_progression = InitialProgress()
         self.solar_system = initialize_solar_system()
         self.game_time = 0
 

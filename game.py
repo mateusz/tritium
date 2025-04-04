@@ -2,6 +2,7 @@ import sys
 import readline
 from colorama import init, Fore, Back, Style
 from data_model.game_state import GameState
+from controllers.game_controller import GameController
 from cli.master_view import MasterView
 
 # Initialize colorama
@@ -34,12 +35,13 @@ def setup_readline(history, view_name):
         readline.add_history(cmd)
 
 def main():
-    # Initialize game state and command history
+    # Initialize game state, game controller, and command history
     game_state = GameState()
+    game_controller = GameController(game_state)
     command_history = CommandHistory()
     
-    # Start with master view
-    current_view = MasterView(game_state)
+    # Start with master view, passing the game controller
+    current_view = MasterView(game_controller)
     running = True
     
     # Main game loop

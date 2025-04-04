@@ -1,14 +1,17 @@
 from cli.master_view import MasterView
-from data_model.game_state import GameState
+from controllers.game_controller import GameController
 from colorama import Fore, Back, Style
 import re
 
 class TrainingView(MasterView):
-    def __init__(self, game_state: GameState):
-        super().__init__(game_state)
-        self.earth_base = game_state.get_earth_base()
-        self.training_facility = self.earth_base.get_training_facility()
+    def __init__(self, game_controller: GameController = None):
+        super().__init__(game_controller)
         self.view_name = "training"
+        
+        # Get the training controller from the game controller
+        self.training_controller = None
+        if game_controller:
+            self.training_controller = game_controller.get_training_controller()
         
     def display(self):
         """Display Training Facility view"""
@@ -22,51 +25,60 @@ class TrainingView(MasterView):
             
         # Header with background color
         print(Back.MAGENTA + Fore.WHITE + Style.BRIGHT + "=== TRITIUM - Training Facility ===".center(80) + Style.RESET_ALL)
-        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_state.game_time}")
+        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_controller.get_game_time()}")
+        
+        # Get training facility from controller
+        training_facility = self.training_controller.get_training_facility()
         
         # Show training facility status
         print(Fore.LIGHTBLUE_EX + Style.BRIGHT + f"\nAvailable Population for Recruitment: " + 
-              Fore.YELLOW + f"{self.training_facility.available_population}" + Style.RESET_ALL)
+              Fore.YELLOW + f"{self.training_controller.get_available_population()}" + Style.RESET_ALL)
         
         # Show marines training status
         print(Fore.LIGHTRED_EX + Style.BRIGHT + "\nMarines Training:" + Style.RESET_ALL)
-        if self.training_facility.marines_in_training:
+        marines_in_training = self.training_controller.get_marines_in_training()
+        if marines_in_training:
             print(Fore.WHITE + "  Status: " + Fore.YELLOW + "TRAINING IN PROGRESS")
-            print(Fore.WHITE + f"  Amount: " + Fore.YELLOW + f"{self.training_facility.marines_in_training.amount}")
-            print(Fore.WHITE + f"  Days Remaining: " + Fore.YELLOW + f"{self.training_facility.marines_in_training.days_remaining}")
+            print(Fore.WHITE + f"  Amount: " + Fore.YELLOW + f"{marines_in_training.amount}")
+            print(Fore.WHITE + f"  Days Remaining: " + Fore.YELLOW + f"{marines_in_training.days_remaining}")
         else:
+            marines_selector = self.training_controller.get_marines_selector()
             print(Fore.WHITE + "  Status: " + Fore.GREEN + "Ready for training")
-            print(Fore.WHITE + f"  Current Selection: " + Fore.YELLOW + f"{self.training_facility.marines_selector}" + Fore.WHITE + " marines")
-            if not self.training_facility.can_train_marines(self.training_facility.marines_selector):
+            print(Fore.WHITE + f"  Current Selection: " + Fore.YELLOW + f"{marines_selector}" + Fore.WHITE + " marines")
+            if not self.training_controller.can_train_marines(marines_selector):
                 print(Fore.WHITE + "  NOTE: " + Fore.RED + "Cannot train marines at the current selection level")
         
         # Show researchers training status
         print(Fore.LIGHTBLUE_EX + Style.BRIGHT + "\nResearchers Training:" + Style.RESET_ALL)
-        if self.training_facility.researchers_in_training:
+        researchers_in_training = self.training_controller.get_researchers_in_training()
+        if researchers_in_training:
             print(Fore.WHITE + "  Status: " + Fore.YELLOW + "TRAINING IN PROGRESS")
-            print(Fore.WHITE + f"  Amount: " + Fore.YELLOW + f"{self.training_facility.researchers_in_training.amount}")
-            print(Fore.WHITE + f"  Days Remaining: " + Fore.YELLOW + f"{self.training_facility.researchers_in_training.days_remaining}")
+            print(Fore.WHITE + f"  Amount: " + Fore.YELLOW + f"{researchers_in_training.amount}")
+            print(Fore.WHITE + f"  Days Remaining: " + Fore.YELLOW + f"{researchers_in_training.days_remaining}")
         else:
+            researchers_selector = self.training_controller.get_researchers_selector()
             print(Fore.WHITE + "  Status: " + Fore.GREEN + "Ready for training")
-            print(Fore.WHITE + f"  Current Selection: " + Fore.YELLOW + f"{self.training_facility.researchers_selector}" + Fore.WHITE + " researchers")
-            if not self.training_facility.can_train_researchers(self.training_facility.researchers_selector):
+            print(Fore.WHITE + f"  Current Selection: " + Fore.YELLOW + f"{researchers_selector}" + Fore.WHITE + " researchers")
+            if not self.training_controller.can_train_researchers(researchers_selector):
                 print(Fore.WHITE + "  NOTE: " + Fore.RED + "Cannot train researchers at the current selection level")
         
         # Show producers training status
         print(Fore.LIGHTYELLOW_EX + Style.BRIGHT + "\nProducers Training:" + Style.RESET_ALL)
-        if self.training_facility.producers_in_training:
+        producers_in_training = self.training_controller.get_producers_in_training()
+        if producers_in_training:
             print(Fore.WHITE + "  Status: " + Fore.YELLOW + "TRAINING IN PROGRESS")
-            print(Fore.WHITE + f"  Amount: " + Fore.YELLOW + f"{self.training_facility.producers_in_training.amount}")
-            print(Fore.WHITE + f"  Days Remaining: " + Fore.YELLOW + f"{self.training_facility.producers_in_training.days_remaining}")
+            print(Fore.WHITE + f"  Amount: " + Fore.YELLOW + f"{producers_in_training.amount}")
+            print(Fore.WHITE + f"  Days Remaining: " + Fore.YELLOW + f"{producers_in_training.days_remaining}")
         else:
+            producers_selector = self.training_controller.get_producers_selector()
             print(Fore.WHITE + "  Status: " + Fore.GREEN + "Ready for training")
-            print(Fore.WHITE + f"  Current Selection: " + Fore.YELLOW + f"{self.training_facility.producers_selector}" + Fore.WHITE + " producers")
-            if not self.training_facility.can_train_producers(self.training_facility.producers_selector):
+            print(Fore.WHITE + f"  Current Selection: " + Fore.YELLOW + f"{producers_selector}" + Fore.WHITE + " producers")
+            if not self.training_controller.can_train_producers(producers_selector):
                 print(Fore.WHITE + "  NOTE: " + Fore.RED + "Cannot train producers at the current selection level")
         
         # Show light switch status
-        light_status = 'ON' if self.training_facility.light_switched_on else 'OFF'
-        light_color = Fore.YELLOW if self.training_facility.light_switched_on else Fore.LIGHTBLACK_EX
+        light_status = 'ON' if training_facility.light_switched_on else 'OFF'
+        light_color = Fore.YELLOW if training_facility.light_switched_on else Fore.LIGHTBLACK_EX
         print(Fore.CYAN + f"\nLight Switch: " + light_color + f"{light_status}")
         
         # Show commands
@@ -92,7 +104,7 @@ class TrainingView(MasterView):
         """Increase marines selection by a specific amount"""
         success_count = 0
         for _ in range(amount):
-            if self.training_facility.marines_selector_up():
+            if self.training_controller.marines_selector_up():
                 success_count += 1
             else:
                 break
@@ -107,7 +119,7 @@ class TrainingView(MasterView):
         """Decrease marines selection by a specific amount"""
         success_count = 0
         for _ in range(amount):
-            if self.training_facility.marines_selector_down():
+            if self.training_controller.marines_selector_down():
                 success_count += 1
             else:
                 break
@@ -122,7 +134,7 @@ class TrainingView(MasterView):
         """Increase researchers selection by a specific amount"""
         success_count = 0
         for _ in range(amount):
-            if self.training_facility.researchers_selector_up():
+            if self.training_controller.researchers_selector_up():
                 success_count += 1
             else:
                 break
@@ -137,7 +149,7 @@ class TrainingView(MasterView):
         """Decrease researchers selection by a specific amount"""
         success_count = 0
         for _ in range(amount):
-            if self.training_facility.researchers_selector_down():
+            if self.training_controller.researchers_selector_down():
                 success_count += 1
             else:
                 break
@@ -152,7 +164,7 @@ class TrainingView(MasterView):
         """Increase producers selection by a specific amount"""
         success_count = 0
         for _ in range(amount):
-            if self.training_facility.producers_selector_up():
+            if self.training_controller.producers_selector_up():
                 success_count += 1
             else:
                 break
@@ -167,7 +179,7 @@ class TrainingView(MasterView):
         """Decrease producers selection by a specific amount"""
         success_count = 0
         for _ in range(amount):
-            if self.training_facility.producers_selector_down():
+            if self.training_controller.producers_selector_down():
                 success_count += 1
             else:
                 break
@@ -197,28 +209,36 @@ class TrainingView(MasterView):
         p_minus_match = re.match(r'^p\-(\d+)$', command)
         
         if command == "e":
-            # Return to Earth Base view - create a new Earth view
-            from cli.bases.earth_view import EarthView
-            earth_view = EarthView(self.game_state)
+            # Return to Earth Base view using the controller
+            earth_view = self.game_controller.create_earth_view()
             return ('switch', earth_view)
         elif command == "q":
             # Quit the entire game
             return ('quit', None)
         elif command == ".":
-            self.game_state.update()
+            # Advance time using the controller
+            self.game_controller.advance_time()
+            
+            # Get training status after update
+            training_facility = self.training_controller.get_training_facility()
             
             # Inform user about any training that started automatically
-            if self.training_facility.marines_in_training and self.training_facility.marines_in_training.days_remaining == 7:
-                self.log_message(f"Started training {self.training_facility.marines_in_training.amount} marines", "success")
-            if self.training_facility.researchers_in_training and self.training_facility.researchers_in_training.days_remaining == 14:
-                self.log_message(f"Started training {self.training_facility.researchers_in_training.amount} researchers", "success")
-            if self.training_facility.producers_in_training and self.training_facility.producers_in_training.days_remaining == 7:
-                self.log_message(f"Started training {self.training_facility.producers_in_training.amount} producers", "success")
+            marines_in_training = self.training_controller.get_marines_in_training()
+            if marines_in_training and marines_in_training.days_remaining == 7:
+                self.log_message(f"Started training {marines_in_training.amount} marines", "success")
+                
+            researchers_in_training = self.training_controller.get_researchers_in_training()
+            if researchers_in_training and researchers_in_training.days_remaining == 14:
+                self.log_message(f"Started training {researchers_in_training.amount} researchers", "success")
+                
+            producers_in_training = self.training_controller.get_producers_in_training()
+            if producers_in_training and producers_in_training.days_remaining == 7:
+                self.log_message(f"Started training {producers_in_training.amount} producers", "success")
                 
             return ('continue', None)
         elif command == "l":
-            # Toggle light switch
-            is_on = self.training_facility.toggle_light_switch()
+            # Toggle light switch using the controller
+            is_on = self.training_controller.toggle_light_switch()
             status = "ON" if is_on else "OFF"
             self.log_message(f"Light switch toggled: {status}", "info")
             return ('continue', None)

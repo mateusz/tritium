@@ -1,0 +1,6 @@
+We will now need some sort of a game progression mechanism, aka state machine. Game behaviour will depend on this. 
+
+Add a GameProgression abstract class, to data_model/game_progression, which will for now only track available technologies (via EquipmentEnum). 
+
+Add a single implementation as an InitialState class. Add just the following technologies: Derrick, ShuttleChassis, ShuttleEngine, CryoPod, ResourcePod, ToolPod, OrbitalFactoryFrame.
+

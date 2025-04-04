@@ -1,11 +1,10 @@
 from cli.master_view import MasterView
-from data_model.game_state import GameState
 from colorama import Fore, Back, Style
+from controllers.game_controller import GameController
 
 class EarthView(MasterView):
-    def __init__(self, game_state: GameState):
-        super().__init__(game_state)
-        self.earth_base = game_state.get_earth_base()
+    def __init__(self, game_controller: GameController = None):
+        super().__init__(game_controller)
         self.view_name = "earth"
     
     def display(self):
@@ -20,13 +19,16 @@ class EarthView(MasterView):
             
         # Header with background color
         print(Back.GREEN + Fore.BLACK + Style.BRIGHT + "=== TRITIUM - Earth Base View ===".center(80) + Style.RESET_ALL)
-        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_state.game_time}")
+        print(Fore.CYAN + f"Game Time: " + Fore.YELLOW + f"{self.game_controller.get_game_time()}")
+        
+        # Get Earth base through the controller
+        earth_base = self.game_controller.get_earth_base()
         
         # Display Earth-specific information
         print(Fore.GREEN + Style.BRIGHT + "\nEarth Base Status:" + Style.RESET_ALL)
         # Access and display training facility information if available
         try:
-            training = self.earth_base.get_training_facility()
+            training = earth_base.get_training_facility()
             if training:
                 print(Fore.WHITE + "  Training Facility: " + Fore.LIGHTGREEN_EX + "Active")
         except (AttributeError, NotImplementedError):
@@ -34,7 +36,7 @@ class EarthView(MasterView):
             
         # Access and display research facility information if available
         try:
-            research = self.earth_base.get_research_facility()
+            research = earth_base.get_research_facility()
             if research:
                 print(Fore.WHITE + "  Research Facility: " + Fore.LIGHTGREEN_EX + "Active")
         except (AttributeError, NotImplementedError):
@@ -59,25 +61,23 @@ class EarthView(MasterView):
         command = command.strip().lower()
         
         if command == "m":
-            # Return to main view - create a new master view
-            from cli.master_view import MasterView
-            master_view = MasterView(self.game_state)
+            # Return to main view using the controller
+            master_view = self.game_controller.create_master_view()
             return ('switch', master_view)
         elif command == "q":
             # Quit the entire game
             return ('quit', None)
         elif command == ".":
-            self.game_state.update()
+            # Advance time using the controller
+            self.game_controller.advance_time()
             return ('continue', None)
         elif command == "t":
-            # Switch to Training Facility view - create and hydrate the new view
-            from cli.facilities.training_view import TrainingView
-            training_view = TrainingView(self.game_state)
+            # Switch to Training Facility view using the controller
+            training_view = self.game_controller.create_training_view()
             return ('switch', training_view)
         elif command == "r":
-            # Switch to Research Facility view - create and hydrate the new view
-            from cli.facilities.research_view import ResearchView
-            research_view = ResearchView(self.game_state)
+            # Switch to Research Facility view using the controller
+            research_view = self.game_controller.create_research_view()
             return ('switch', research_view)
         else:
             self.log_message(f"Unknown command: {command}", "error")
