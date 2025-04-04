@@ -8,7 +8,7 @@ from coordinators.game_coordinator import GameCoordinator
 from data_model.persistence import save_game, load_game
 from textual.game_runner import GameRunner
 from textual.interface import TextColor
-from textual.cli_interface import CliInterface
+from cli.interface import CliInterface
 
 def main():
     # Check for a saved game and offer to load it

@@ -11,7 +11,7 @@ from coordinators.game_coordinator import GameCoordinator
 from data_model.persistence import save_game, load_game
 from textual.game_runner import GameRunner
 from textual.interface import TextColor
-from textual.web_interface import WebInterface
+from web.interface import WebInterface
 
 # Global variables to hold state
 web_interface = None

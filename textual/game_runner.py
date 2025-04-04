@@ -40,7 +40,31 @@ class GameRunner:
                 elif next_view == 'research_view':
                     current_view = ResearchView(self.game_coordinator, self.interface)
 
+def start_game(interface_type='cli'):
+    """Start the game with the specified interface type"""
+    if interface_type == 'web':
+        # Import web interface dynamically
+        try:
+            from web.interface import WebInterface
+            interface = WebInterface()
+        except ImportError:
+            # Fall back to CLI if web interface isn't available
+            print("Web interface not available, falling back to CLI")
+            from cli.interface import CliInterface
+            interface = CliInterface()
+    else:
+        # Use CLI interface by default
+        try:
+            from cli.interface import CliInterface
+            interface = CliInterface()
+        except ImportError:
+            # This should not happen in a normal setup
+            raise ImportError("CLI interface not available. Check your installation.")
+    
+    # Create and run the game
+    runner = GameRunner(interface)
+    return runner.run()
+
 if __name__ == "__main__":
     # Create a game runner with the default CLI interface
-    runner = GameRunner()
-    runner.run() 
+    start_game('cli') 

@@ -208,183 +208,51 @@
                     import asyncio
                 `);
                 
-                // Load the game files
-                await pyodide.runPythonAsync(`
-                    import sys
-                    import os
-                    from pyodide.http import pyfetch
-                    
-                    async def load_python_file(url):
-                        try:
-                            response = await pyfetch(url)
-                            if response.status == 200:
-                                return await response.string()
-                            else:
-                                print(f"Failed to load {url}: {response.status}")
-                                return None
-                        except Exception as e:
-                            print(f"Error fetching {url}: {str(e)}")
-                            return None
-                    
-                    # Function to ensure directory exists
-                    def ensure_dir(directory):
-                        try:
-                            if directory and not os.path.exists(directory):
-                                os.makedirs(directory, exist_ok=True)
-                                print(f"Created directory: {directory}")
-                        except Exception as e:
-                            print(f"Error creating directory {directory}: {str(e)}")
-                    
-                    # Basic files needed for immediate imports
-                    base_files = [
-                        "data_model/__init__.py",
-                        "data_model/game_state.py",
-                        "data_model/persistence.py",
-                        "data_model/initialise.py",
-                        "coordinators/__init__.py",
-                        "coordinators/game_coordinator.py",
-                        "textual/__init__.py",
-                        "textual/interface.py",
-                        "textual/game_runner.py",
-                        "textual/web_interface.py",
-                        "game_web.py"
-                    ]
-                    
-                    # Resource-related modules
-                    resource_modules = [
-                        "data_model/resource/__init__.py",
-                        "data_model/resource/resource.py"
-                    ]
-                    
-                    # System-related modules
-                    system_modules = [
-                        "data_model/system/__init__.py",
-                        "data_model/system/solar_system.py"
-                        "data_model/system/system.py"
-                    ]
-                    
-                    # Location-related modules
-                    location_modules = [
-                        "data_model/location/__init__.py",
-                        "data_model/location/planet.py",
-                        "data_model/location/moon.py",
-                        "data_model/location/asteroid.py"
-                    ]
-                    
-                    # Base-related modules
-                    base_modules = [
-                        "data_model/base/__init__.py",
-                        "data_model/base/earth_base.py",
-                        "data_model/base/moon_base.py",
-                        "data_model/base/resource_base.py"
-                    ]
-                    
-                    # Equipment-related modules
-                    equipment_modules = [
-                        "data_model/equipment/__init__.py",
-                        "data_model/equipment/equipment.py"
-                    ]
-                    
-                    # Additional textual modules
-                    textual_modules = [
-                        "textual/master_view.py",
-                        "textual/message_system.py",
-                        "textual/bases/__init__.py",
-                        "textual/bases/earth_view.py",
-                        "textual/facilities/__init__.py",
-                        "textual/facilities/training_view.py",
-                        "textual/facilities/research_view.py"
-                    ]
-                    
-                    # Combine all modules
-                    all_modules = (
-                        base_files + 
-                        resource_modules + 
-                        system_modules + 
-                        location_modules + 
-                        base_modules + 
-                        equipment_modules + 
-                        textual_modules
-                    )
-                    
-                    # Load all required files
-                    for file in all_modules:
-                        try:
-                            # Determine URL (handle special case for game-web.py)
-                            url = file
-                            if file == "game_web.py":
-                                url = "game-web.py"
-                            
-                            # Ensure the directory exists
-                            directory = os.path.dirname(file)
-                            ensure_dir(directory)
-                            
-                            # Fetch and save the file
-                            code = await load_python_file(url)
-                            if code is not None:
-                                with open(file, 'w') as f:
-                                    f.write(code)
-                                print(f"Loaded {file}")
-                            else:
-                                print(f"Failed to load {file}, continuing...")
-                        except Exception as e:
-                            print(f"Error processing {file}: {str(e)}")
-                    
-                    # Create empty __init__.py files for any missing directories
-                    directories = [
-                        "coordinators",
-                        "data_model",
-                        "data_model/resource",
-                        "data_model/system",
-                        "data_model/location",
-                        "data_model/base",
-                        "data_model/equipment",
-                        "data_model/rank",
-                        "data_model/personnel",
-                        "data_model/facility",
-                        "data_model/vehicle",
-                        "data_model/grapplable",
-                        "data_model/game_progression",
-                        "textual",
-                        "textual/bases",
-                        "textual/facilities"
-                    ]
-                    
-                    for directory in directories:
-                        ensure_dir(directory)
-                        init_file = os.path.join(directory, "__init__.py")
-                        if not os.path.exists(init_file):
+                // Load the bundled game file
+                printOutput("Loading bundled game file...");
+                try {
+                    const response = await fetch('tritium_bundle.py');
+                    if (response.status === 200) {
+                        const bundleCode = await response.text();
+                        
+                        // Save the code to the filesystem
+                        pyodide.FS.writeFile('tritium_bundle.py', bundleCode);
+                        printOutput("Game code loaded successfully!");
+                        
+                        // Run the bundled code
+                        await pyodide.runPythonAsync(`
                             try:
-                                with open(init_file, 'w') as f:
-                                    f.write("# Auto-generated __init__.py file")
-                                print(f"Created {init_file}")
+                                # Import the bundled code
+                                import tritium_bundle
+                                
+                                # Ensure web mode
+                                import sys
+                                sys.argv = ['tritium_bundle.py', '--web']
+                                
+                                # Start the web game
+                                from textual.web_interface import start_game
+                                result = start_game()
+                                print(f"Game started with result: {result}")
                             except Exception as e:
-                                print(f"Error creating {init_file}: {str(e)}")
-                `);
-                
-                // Start the game
-                printOutput("Starting game...");
-                const result = await pyodide.runPythonAsync(`
-                    try:
-                        # Import the game module (renamed to avoid hyphen)
-                        import game_web
-                        # Start the game
-                        result = game_web.start_game()
-                        result
-                    except Exception as e:
-                        import traceback
-                        traceback.print_exc()
-                        f"Error: {str(e)}"
-                `);
-                
-                console.log("Game started with result:", result);
-                
-                // Show the game UI
-                loadingElement.style.display = 'none';
-                gameUI.style.display = 'block';
-                
-                // Focus on the input
-                inputElement.focus();
+                                import traceback
+                                traceback.print_exc()
+                                print(f"Error: {str(e)}")
+                        `);
+                        
+                        // Show the game UI
+                        loadingElement.style.display = 'none';
+                        gameUI.style.display = 'block';
+                        
+                        // Focus on the input
+                        inputElement.focus();
+                    } else {
+                        throw new Error(`Failed to load game bundle: HTTP ${response.status}`);
+                    }
+                } catch (fetchError) {
+                    console.error("Error loading bundle:", fetchError);
+                    loadingElement.textContent = `Error loading game code: ${fetchError.message}`;
+                    loadingElement.style.color = 'red';
+                }
                 
             } catch (error) {
                 console.error("Error initializing game:", error);
