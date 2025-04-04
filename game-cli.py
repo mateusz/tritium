@@ -1,33 +1,21 @@
 import sys
+import os
 import readline
-from colorama import init, Fore, Back, Style
+
+# Now import the modules
 from data_model.game_state import GameState
 from coordinators.game_coordinator import GameCoordinator
 from data_model.persistence import save_game, load_game
 from textual.game_runner import GameRunner
-from textual.interface import TextInterface
+from textual.interface import TextColor
+from textual.cli_interface import CliInterface
 
-# Initialize colorama
-init(autoreset=True)
-
-class CommandHistoryCliInterface(TextInterface):
+class CommandHistoryCliInterface(CliInterface):
+    """CLI interface implementation with command history support."""
     
     def __init__(self):
         super().__init__()
         self.command_history = {}  # Dictionary to store history for each view
-        
-    """CLI interface implementation with command history support."""
-    def print_line(self, text: str) -> None:
-        """Print a line of text to the console."""
-        print(text)
-    
-    def clear_screen(self) -> None:
-        """Clear the console screen."""
-        print("\033[H\033[J", end="")
-    
-    def read_line(self, prompt: str = "") -> str:
-        """Read a line of input from the console."""
-        return input(prompt)
         
     def add_command_to_history(self, view_name, command):
         """Add a command to the history for a specific view"""
@@ -58,7 +46,8 @@ class CommandHistoryCliInterface(TextInterface):
             self.setup_readline(history)
         
         # Get user input
-        command = input(prompt)
+        processed_prompt = self._process_color_tags(prompt)
+        command = input(processed_prompt)
         
         # Add to history if view name provided
         if history and isinstance(history, str) and command.strip():
@@ -72,13 +61,13 @@ def main():
     game_state = None
     
     # Initialize our CLI interface with history support
-    cli_interface = CommandHistoryCliInterface()
+    cli_interface = CliInterface()
     
     if saved_game:
-        load_choice = cli_interface.read_line(Fore.CYAN + "Saved game found. Load it? (y/n): " + Style.RESET_ALL).lower()
-        if load_choice == 'y' or load_choice == 'yes':
+        load_choice = cli_interface.read_line(cli_interface.colorize("Saved game found. Load it? (y/n): ", TextColor.FG_CYAN))
+        if load_choice.lower() == 'y' or load_choice.lower() == 'yes':
             game_state = saved_game
-            cli_interface.print_line(Fore.GREEN + "Game loaded successfully!" + Style.RESET_ALL)
+            cli_interface.print_line(cli_interface.colorize("Game loaded successfully!", TextColor.FG_GREEN))
     
     # Initialize game state if not loaded
     if not game_state:
@@ -94,9 +83,9 @@ def main():
     
     # Save the game when quitting
     if save_game(game_state):
-        cli_interface.print_line(Fore.GREEN + "Game saved successfully!")
+        cli_interface.print_line(cli_interface.colorize("Game saved successfully!", TextColor.FG_GREEN))
     
-    cli_interface.print_line(Fore.YELLOW + "Game ended. Goodbye!")
+    cli_interface.print_line(cli_interface.colorize("Game ended. Goodbye!", TextColor.FG_YELLOW))
     return 0
 
 if __name__ == "__main__":

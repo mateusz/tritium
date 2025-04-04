@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Tuple
-from colorama import Fore, Style
+from textual.interface import TextColor
 import time
 
 @dataclass
@@ -11,7 +11,7 @@ class Message:
     timestamp: float
     
     def __str__(self):
-        return f"{self.color}{self.text}{Style.RESET_ALL}"
+        return f"<{self.color}>{self.text}<{TextColor.STYLE_RESET_ALL}>"
 
 class MessageManager:
     """Manages messages to be displayed to the user across screen refreshes"""
@@ -32,7 +32,7 @@ class MessageManager:
         self.message_ttl = 10.0  # Time to live for messages in seconds
         self.fixed_height = 5  # Fixed height of the message area (1 for top border + max_messages + 1 for bottom border)
     
-    def add_message(self, text: str, color: str = Fore.WHITE):
+    def add_message(self, text: str, color: str = TextColor.FG_WHITE):
         """Add a message to the buffer"""
         self.messages.append(Message(text, color, time.time()))
         # Clean up old messages
@@ -40,19 +40,19 @@ class MessageManager:
     
     def add_info(self, text: str):
         """Add an info message"""
-        self.add_message(text, Fore.CYAN)
+        self.add_message(text, TextColor.FG_CYAN)
     
     def add_success(self, text: str):
         """Add a success message"""
-        self.add_message(text, Fore.GREEN)
+        self.add_message(text, TextColor.FG_GREEN)
     
     def add_warning(self, text: str):
         """Add a warning message"""
-        self.add_message(text, Fore.YELLOW)
+        self.add_message(text, TextColor.FG_YELLOW)
     
     def add_error(self, text: str):
         """Add an error message"""
-        self.add_message(text, Fore.RED)
+        self.add_message(text, TextColor.FG_RED)
     
     def _clean_old_messages(self):
         """Remove messages that are too old"""
