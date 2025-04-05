@@ -3,8 +3,10 @@ from coordinators.game_coordinator import GameCoordinator
 from data_model.equipment.equipment import EquipmentType, Equipment
 import re
 from textual.interface import TextInterface, TextColor
-class ResearchView(MasterView):
-    def __init__(self, game_coordinator: GameCoordinator = None, interface: TextInterface = None):
+from textual.view import View
+
+class ResearchView(View):
+    def __init__(self, game_coordinator: GameCoordinator, interface: TextInterface):
         super().__init__(game_coordinator, interface)
         self.view_name = "research"
         

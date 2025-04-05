@@ -1,9 +1,10 @@
 from textual.master_view import MasterView
 from textual.interface import TextInterface, TextColor
 from coordinators.game_coordinator import GameCoordinator
+from textual.persistence import Persistence
 
 class EarthView(MasterView):
-    def __init__(self, game_coordinator: GameCoordinator = None, interface: TextInterface = None):
+    def __init__(self, game_coordinator: GameCoordinator, interface: TextInterface):
         super().__init__(game_coordinator, interface)
         self.view_name = "earth"
         self.time_coordinator = game_coordinator.get_time_coordinator()

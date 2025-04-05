@@ -1,18 +1,11 @@
 from textual.message_system import MessageManager
 from textual.interface import TextInterface, TextColor
 from coordinators.game_coordinator import GameCoordinator
-from data_model.persistence import save_game
+from textual.view import View
 
-class MasterView:
-    def __init__(self, game_coordinator: GameCoordinator = None, interface: TextInterface = None):
-        # Ensure we have a game coordinator
-        if game_coordinator is None:
-            # Create a game coordinator if one wasn't provided
-            self.game_coordinator = GameCoordinator()
-        else:
-            self.game_coordinator = game_coordinator
-            
-        # Set up interface
+class MasterView(View):
+    def __init__(self, game_coordinator: GameCoordinator, interface: TextInterface):
+        self.game_coordinator = game_coordinator
         self.interface = interface
             
         self.view_name = "master"
@@ -53,12 +46,14 @@ class MasterView:
         cmd_1 = "  " + self.interface.colorize(".    ", TextColor.FG_CYAN) + self.interface.colorize("- Advance time by one round", TextColor.FG_WHITE)
         cmd_2 = "  " + self.interface.colorize("e    ", TextColor.FG_CYAN) + self.interface.colorize("- Switch to Earth view", TextColor.FG_WHITE)
         cmd_3 = "  " + self.interface.colorize("s    ", TextColor.FG_CYAN) + self.interface.colorize("- Save game", TextColor.FG_WHITE)
-        cmd_4 = "  " + self.interface.colorize("q    ", TextColor.FG_CYAN) + self.interface.colorize("- Quit game", TextColor.FG_WHITE)
+        cmd_4 = "  " + self.interface.colorize("l    ", TextColor.FG_CYAN) + self.interface.colorize("- Load game", TextColor.FG_WHITE)
+        cmd_5 = "  " + self.interface.colorize("q    ", TextColor.FG_CYAN) + self.interface.colorize("- Quit game", TextColor.FG_WHITE)
         
         self.interface.print_line(cmd_1)
         self.interface.print_line(cmd_2)
         self.interface.print_line(cmd_3)
         self.interface.print_line(cmd_4)
+        self.interface.print_line(cmd_5)
     
     def advance_time(self):
         """Progress the game time by one round"""
@@ -83,20 +78,17 @@ class MasterView:
         
         Returns:
             tuple: (action, new_view)
-            action: 'quit', 'continue', or 'switch'
+            action: 'quit', 'continue', 'switch', or 'load'
             new_view: New view instance to switch to, or None
         """
         command = command.strip().lower()
         
         if command == "q":
             return ('quit', None)
+        elif command == "l":
+            return ('load', None)
         elif command == "s":
-            # Save the game
-            if save_game(self.game_coordinator.game_state):
-                self.log_message("Game saved successfully!", "success")
-            else:
-                self.log_message("Failed to save game", "error")
-            return ('continue', None)
+            return ('save', None)
         elif command == ".":
             self.advance_time()
             return ('continue', None)

@@ -1,10 +1,10 @@
 from textual.interface import TextInterface, TextColor
-from textual.master_view import MasterView
 from coordinators.game_coordinator import GameCoordinator
+from textual.view import View
 import re
 
-class TrainingView(MasterView):
-    def __init__(self, game_coordinator: GameCoordinator = None, interface: TextInterface = None):
+class TrainingView(View):
+    def __init__(self, game_coordinator: GameCoordinator, interface: TextInterface):
         super().__init__(game_coordinator, interface)
         self.view_name = "training"
         

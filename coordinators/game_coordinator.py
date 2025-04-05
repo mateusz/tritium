@@ -12,14 +12,14 @@ class GameCoordinator(Coordinator):
     specific coordinator subsystems.
     """
     
-    def __init__(self, game_state: Optional[GameState] = None):
+    def __init__(self, game_state: GameState):
         """
         Initialize the game coordinator with all subsystem coordinators.
         
         Args:
             game_state: The game state to use, or create a new one if None
         """
-        self._game_state = game_state or GameState()
+        super().__init__(game_state)
         self._coordinators: Dict[str, Coordinator] = {}
         
         # Initialize coordinators

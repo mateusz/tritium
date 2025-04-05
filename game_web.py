@@ -8,7 +8,7 @@ from pyodide.ffi import create_proxy
 # Import the modules
 from data_model.game_state import GameState
 from coordinators.game_coordinator import GameCoordinator
-from data_model.persistence import save_game, load_game
+from web.web_persistence import WebPersistence
 from textual.game_runner import GameRunner
 from textual.interface import TextColor
 from web.web_interface import WebInterface
@@ -16,6 +16,7 @@ from web.web_interface import WebInterface
 # Global variables to hold state
 web_interface = None
 game_runner = None
+web_persistence = None
 
 def setup_js_bindings():
     """Setup the JavaScript bindings for the interface."""
@@ -55,7 +56,7 @@ def history_down():
 
 def save_game_wrapper():
     """Wrapper for saving the game to browser storage."""
-    global game_runner
+    global game_runner, web_persistence
     
     if not game_runner or not game_runner.game_coordinator:
         js.window.showSaveStatus("No game to save!", "error")
@@ -65,17 +66,16 @@ def save_game_wrapper():
         # Get game state from the game coordinator
         game_state = game_runner.game_coordinator.game_state
         
-        # Serialize the game state to a string
-        serialized_data = pickle.dumps(game_state)
-        # Convert to base64 for storage
-        base64_data = base64.b64encode(serialized_data).decode('utf-8')
+        # Use WebPersistence to save the game
+        success = web_persistence.save_game_instance(game_state)
         
-        # Save to browser storage
-        js.window.localStorage.setItem('game_save', base64_data)
+        if success:
+            # Update status
+            js.window.showSaveStatus("Game saved successfully!", "success")
+        else:
+            js.window.showSaveStatus("Failed to save game", "error")
         
-        # Update status
-        js.window.showSaveStatus("Game saved successfully!", "success")
-        return True
+        return success
     except Exception as e:
         error_msg = f"Failed to save game: {str(e)}"
         print(error_msg)
@@ -84,18 +84,11 @@ def save_game_wrapper():
 
 def load_game_from_storage():
     """Load a game from browser storage if available."""
+    global web_persistence
+    
     try:
-        # Check if there's a saved game in localStorage
-        if hasattr(js.window, 'localStorage') and js.window.localStorage.getItem('game_save'):
-            # Get the saved data
-            base64_data = js.window.localStorage.getItem('game_save')
-            # Convert from base64
-            serialized_data = base64.b64decode(base64_data)
-            # Deserialize to a GameState object
-            game_state = pickle.loads(serialized_data)
-            return game_state
-        # If not in browser storage, try regular file storage
-        return load_game()
+        # Use WebPersistence to load the game
+        return web_persistence.load_game_instance()
     except Exception as e:
         error_msg = f"Failed to load game: {str(e)}"
         print(error_msg)
@@ -104,17 +97,32 @@ def load_game_from_storage():
 async def run_game_async(game_runner):
     """Run the game in an async context."""
     try:
-        # Wrap the synchronous run method in a way that doesn't block the event loop
-        # Use asyncio.to_thread if available (Python 3.9+) or run_in_executor otherwise
-        import inspect
-        if inspect.iscoroutinefunction(game_runner.run):
-            # If run is already async, just call it
-            return await game_runner.run()
-        else:
-            # If run is synchronous, run it in a separate thread/task
-            loop = asyncio.get_event_loop()
-            # Create a separate task that runs the synchronous function
-            return await loop.run_in_executor(None, game_runner.run)
+        # Instead of running the game in a separate thread, we'll call the run method directly
+        # but first check if we need to modify the run method to avoid tasks being returned
+        from types import MethodType
+        
+        # Save the original run method
+        original_run = game_runner.run
+        
+        # Define a wrapper that ensures we don't return Task objects
+        def safe_run(self):
+            try:
+                result = original_run()
+                # If the result is a Task, we'll just return None instead
+                if hasattr(result, '__class__') and result.__class__.__name__ == '_asyncio.Task':
+                    return None
+                return result
+            except Exception as e:
+                print(f"Error in game runner: {str(e)}")
+                import traceback
+                traceback.print_exc()
+                return None
+        
+        # Replace the run method with our safe version
+        game_runner.run = MethodType(safe_run, game_runner)
+        
+        # Now call the run method directly
+        return game_runner.run()
     except Exception as e:
         error_msg = f"Error running game: {str(e)}"
         print(error_msg)
@@ -125,11 +133,14 @@ async def run_game_async(game_runner):
 
 def start_game():
     """Initialize and start the game."""
-    global web_interface, game_runner
+    global web_interface, game_runner, web_persistence
     
     try:
         # Initialize web interface
         web_interface = WebInterface()
+        
+        # Initialize persistence
+        web_persistence = WebPersistence()
         
         # Set up JavaScript bindings
         setup_js_bindings()
@@ -141,7 +152,7 @@ def start_game():
         
         # Check for a saved game after initial setup
         has_save = False
-        if hasattr(js.window, 'localStorage') and js.window.localStorage.getItem('game_save'):
+        if hasattr(js.window, 'localStorage') and js.window.localStorage.getItem(web_persistence.storage_key):
             has_save = True
             
         if has_save:
@@ -171,7 +182,7 @@ def start_game():
 
 def load_saved_game():
     """Load a saved game from storage."""
-    global web_interface, game_runner
+    global web_interface, game_runner, web_persistence
     
     # Clear any callback
     web_interface.set_input_callback(None)
@@ -186,17 +197,17 @@ def load_saved_game():
             # Create game runner
             game_runner = GameRunner(web_interface)
             game_runner.game_coordinator = game_coordinator
+            game_runner.persistence = web_persistence  # Pass persistence to the runner
             
             web_interface.print_line(web_interface.colorize("Game loaded successfully!", TextColor.FG_GREEN))
             
-            # Start the game in the background using asyncio
-            # We need to use a trick to make sure this doesn't block but also doesn't
-            # return the task object which could cause strip() errors
-            async def run_game_wrapper():
-                await run_game_async(game_runner)
-                
-            # Create and forget the task
-            asyncio.create_task(run_game_wrapper())
+            # Run the game directly, don't try to use async here
+            try:
+                run_game_async(game_runner)
+            except Exception as e:
+                error_msg = f"Error starting game: {str(e)}"
+                print(error_msg)
+                web_interface.print_line(web_interface.colorize(error_msg, TextColor.FG_RED))
         else:
             web_interface.print_line(web_interface.colorize("Failed to load saved game. Starting new game...", TextColor.FG_RED))
             start_new_game()
@@ -208,7 +219,7 @@ def load_saved_game():
 
 def start_new_game():
     """Start a new game."""
-    global web_interface, game_runner
+    global web_interface, game_runner, web_persistence
     
     # Clear any callback
     web_interface.set_input_callback(None)
@@ -222,17 +233,17 @@ def start_new_game():
     # Create game runner
     game_runner = GameRunner(web_interface)
     game_runner.game_coordinator = game_coordinator
+    game_runner.persistence = web_persistence  # Pass persistence to the runner
     
     web_interface.print_line(web_interface.colorize("Starting new game...", TextColor.FG_GREEN))
     
-    # Start the game in the background using asyncio
-    # We need to use a trick to make sure this doesn't block but also doesn't
-    # return the task object which could cause strip() errors
-    async def run_game_wrapper():
-        await run_game_async(game_runner)
-        
-    # Create and forget the task
-    asyncio.create_task(run_game_wrapper())
+    # Run the game directly, don't try to use async here
+    try:
+        run_game_async(game_runner)
+    except Exception as e:
+        error_msg = f"Error starting game: {str(e)}"
+        print(error_msg)
+        web_interface.print_line(web_interface.colorize(error_msg, TextColor.FG_RED))
 
 # Export functions to be called from JavaScript
 js.window.startGame = create_proxy(start_game)
