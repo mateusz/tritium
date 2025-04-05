@@ -5,6 +5,7 @@ from textual.bases.earth_view import EarthView
 from textual.facilities.training_view import TrainingView
 from textual.facilities.research_view import ResearchView
 from coordinators.game_coordinator import GameCoordinator
+from coordinators.initialisation_coordinator import InitialisationCoordinator
 from textual.persistence import Persistence
 
 class GameRunner:
@@ -14,6 +15,10 @@ class GameRunner:
         self.interface = interface
         self.persistence = persistence
         self.game_state = GameState()
+
+        initialisation = InitialisationCoordinator(self.game_state)
+        initialisation.initialize_solar_system()
+
         self.game_coordinator = GameCoordinator(self.game_state)
     
     def run(self):
