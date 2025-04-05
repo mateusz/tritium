@@ -153,13 +153,21 @@
         inputElement.addEventListener('keydown', function(event) {
             if (event.key === 'ArrowUp') {
                 event.preventDefault();
-                if (pyodide) {
-                    pyodide.globals.get('history_up')();
+                if (pyodide && pyodide.globals) {
+                    try {
+                        pyodide.globals.history_up();
+                    } catch (error) {
+                        console.error("Error in history_up:", error);
+                    }
                 }
             } else if (event.key === 'ArrowDown') {
                 event.preventDefault();
-                if (pyodide) {
-                    pyodide.globals.get('history_down')();
+                if (pyodide && pyodide.globals) {
+                    try {
+                        pyodide.globals.history_down();
+                    } catch (error) {
+                        console.error("Error in history_down:", error);
+                    }
                 }
             } else if (event.key === 'Enter') {
                 event.preventDefault();
@@ -175,8 +183,13 @@
                 printOutput(`<span style="color: #4caf50;">${promptElement.innerHTML}</span> ${inputText}`);
                 
                 // Pass the input to Python
-                if (pyodide) {
-                    pyodide.globals.get('handle_user_input')(inputText);
+                if (pyodide && pyodide.globals) {
+                    try {
+                        pyodide.globals.handle_user_input(inputText);
+                    } catch (error) {
+                        console.error("Error handling input:", error);
+                        printOutput(`<span style="color: red;">Error: ${error.message}</span>`);
+                    }
                 }
                 
                 // Clear the input field
@@ -189,8 +202,13 @@
 
         // Set up the save button
         saveButton.addEventListener('click', function() {
-            if (pyodide) {
-                pyodide.globals.get('save_game_wrapper')();
+            if (pyodide && pyodide.globals) {
+                try {
+                    pyodide.globals.save_game_wrapper();
+                } catch (error) {
+                    console.error("Error saving game:", error);
+                    showSaveStatus(`Error: ${error.message}`, "error");
+                }
             }
         });
 
@@ -219,19 +237,39 @@
                         pyodide.FS.writeFile('tritium_bundle.py', bundleCode);
                         printOutput("Game code loaded successfully!");
                         
-                        // Run the bundled code
+                        // Make Python functions directly accessible in JavaScript
+                        await pyodide.runPythonAsync(`
+                            import sys
+                            from pyodide.ffi import to_js
+                            
+                            # Ensure our Python functions are callable from JS
+                            def expose_functions():
+                                import tritium_bundle
+                                
+                                # These are the functions we want to expose
+                                global handle_user_input, history_up, history_down, save_game_wrapper
+                                handle_user_input = tritium_bundle.handle_user_input
+                                history_up = tritium_bundle.history_up
+                                history_down = tritium_bundle.history_down
+                                save_game_wrapper = tritium_bundle.save_game_wrapper
+                                
+                                # Mark these as globals to ensure they're available to JS
+                                to_js({"handle_user_input": handle_user_input,
+                                       "history_up": history_up,
+                                       "history_down": history_down,
+                                       "save_game_wrapper": save_game_wrapper})
+                            
+                            expose_functions()
+                        `);
+                        
+                        // Now start the game
                         await pyodide.runPythonAsync(`
                             try:
                                 # Import the bundled code
                                 import tritium_bundle
                                 
-                                # Ensure web mode
-                                import sys
-                                sys.argv = ['tritium_bundle.py', '--web']
-                                
-                                # Start the web game
-                                from textual.web_interface import start_game
-                                result = start_game()
+                                # Now start the game
+                                result = tritium_bundle.start_game()
                                 print(f"Game started with result: {result}")
                             except Exception as e:
                                 import traceback

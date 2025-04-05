@@ -11,7 +11,7 @@ from coordinators.game_coordinator import GameCoordinator
 from data_model.persistence import save_game, load_game
 from textual.game_runner import GameRunner
 from textual.interface import TextColor
-from web.interface import WebInterface
+from web.web_interface import WebInterface
 
 # Global variables to hold state
 web_interface = None
@@ -104,12 +104,24 @@ def load_game_from_storage():
 async def run_game_async(game_runner):
     """Run the game in an async context."""
     try:
-        # This will run the game's main loop
-        game_runner.run()
+        # Wrap the synchronous run method in a way that doesn't block the event loop
+        # Use asyncio.to_thread if available (Python 3.9+) or run_in_executor otherwise
+        import inspect
+        if inspect.iscoroutinefunction(game_runner.run):
+            # If run is already async, just call it
+            return await game_runner.run()
+        else:
+            # If run is synchronous, run it in a separate thread/task
+            loop = asyncio.get_event_loop()
+            # Create a separate task that runs the synchronous function
+            return await loop.run_in_executor(None, game_runner.run)
     except Exception as e:
         error_msg = f"Error running game: {str(e)}"
         print(error_msg)
+        import traceback
+        traceback.print_exc()
         js.window.showError(error_msg)
+        return None
 
 def start_game():
     """Initialize and start the game."""
@@ -177,8 +189,14 @@ def load_saved_game():
             
             web_interface.print_line(web_interface.colorize("Game loaded successfully!", TextColor.FG_GREEN))
             
-            # Start the game asynchronously
-            asyncio.ensure_future(run_game_async(game_runner))
+            # Start the game in the background using asyncio
+            # We need to use a trick to make sure this doesn't block but also doesn't
+            # return the task object which could cause strip() errors
+            async def run_game_wrapper():
+                await run_game_async(game_runner)
+                
+            # Create and forget the task
+            asyncio.create_task(run_game_wrapper())
         else:
             web_interface.print_line(web_interface.colorize("Failed to load saved game. Starting new game...", TextColor.FG_RED))
             start_new_game()
@@ -207,8 +225,14 @@ def start_new_game():
     
     web_interface.print_line(web_interface.colorize("Starting new game...", TextColor.FG_GREEN))
     
-    # Start the game asynchronously
-    asyncio.ensure_future(run_game_async(game_runner))
+    # Start the game in the background using asyncio
+    # We need to use a trick to make sure this doesn't block but also doesn't
+    # return the task object which could cause strip() errors
+    async def run_game_wrapper():
+        await run_game_async(game_runner)
+        
+    # Create and forget the task
+    asyncio.create_task(run_game_wrapper())
 
 # Export functions to be called from JavaScript
 js.window.startGame = create_proxy(start_game)
