@@ -22,3 +22,6 @@ all: test
 
 build-web:
 	stickytape game_web.py --add-python-path web --add-python-path data_model --add-python-path coordinators --add-python-path textual --output-file tritium_bundle.py
+
+build-cli:
+	stickytape game_cli.py --add-python-path web --add-python-path data_model --add-python-path coordinators --add-python-path textual --output-file tritium_cli.py

@@ -11,11 +11,10 @@ from textual.interface import TextColor
 from cli.cli_interface import CliInterface
 
 def main():
-    game_state = None
-    cli_interface = CliInterface()
+    interface = CliInterface()
     persistence = CliPersistence()
 
-    runner = GameRunner(cli_interface, persistence)
+    runner = GameRunner(interface, persistence)
     runner.run()
     return 0
 

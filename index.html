@@ -1,307 +1,362 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Tritium Game</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tritium - Space Strategy Game</title>
     <style>
+        :root {
+            --primary-color: #32a852;
+            --secondary-color: #34495e;
+            --background-color: #0a0a0a;
+            --text-color: #cccccc;
+            --highlight-color: #2ecc71;
+            --error-color: #e74c3c;
+            --success-color: #27ae60;
+        }
+        
         body {
-            font-family: monospace;
-            background-color: #1e1e1e;
-            color: #f0f0f0;
+            font-family: 'Courier New', Courier, monospace;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
-        #game-container {
-            max-width: 800px;
+        
+        .container {
+            max-width: 1000px;
             margin: 0 auto;
-            border: 1px solid #444;
-            border-radius: 5px;
-            padding: 10px;
-            background-color: #2d2d2d;
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
+        
+        header {
+            text-align: center;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin: 0;
+        }
+        
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .loading-text {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .game-container {
+            display: none;
+            flex: 1;
+            flex-direction: column;
+            height: 100%;
+        }
+        
         #output {
-            height: 400px;
+            flex: 1;
             overflow-y: auto;
-            border: 1px solid #555;
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #0d0d0d;
+            background-color: #111;
+            border: 1px solid #333;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            min-height: 300px;
             white-space: pre-wrap;
         }
-        #prompt {
-            color: #4caf50;
-            margin-bottom: 5px;
-        }
-        #input-container {
+        
+        .input-container {
             display: flex;
-            margin-top: 10px;
+            margin-bottom: 1rem;
         }
-        #input {
-            flex-grow: 1;
-            background-color: #333;
-            color: #fff;
-            border: 1px solid #555;
-            padding: 5px;
-            font-family: monospace;
+        
+        .prompt {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
         }
-        button {
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            margin-left: 5px;
-            cursor: pointer;
+        
+        #game-input {
+            flex: 1;
+            background-color: #222;
+            border: 1px solid #444;
+            color: var(--text-color);
+            padding: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
         }
-        button:hover {
-            background-color: #45a049;
+        
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+            color: #666;
         }
-        #status {
-            margin-top: 10px;
-            padding: 5px;
-            border-radius: 3px;
+        
+        .success {
+            color: var(--success-color);
+        }
+        
+        .error {
+            color: var(--error-color);
+        }
+        
+        .hidden {
             display: none;
         }
-        .success {
-            background-color: #4caf50;
-            color: white;
+        
+        /* Loading animation */
+        .loader {
+            border: 5px solid #333;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
         }
-        .error {
-            background-color: #f44336;
-            color: white;
-        }
-        .loading {
-            text-align: center;
-            margin: 20px;
-            font-size: 18px;
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <div id="game-container">
-        <h1>Tritium Game</h1>
-        <div id="loading" class="loading">Loading Pyodide and game files...</div>
-        <div id="game-ui" style="display: none;">
-            <div id="output"></div>
-            <div id="prompt"></div>
-            <div id="input-container">
-                <input type="text" id="input" placeholder="Enter command..." autocomplete="off">
-                <button id="submit">Submit</button>
-                <button id="save">Save Game</button>
-            </div>
-            <div id="status"></div>
+    <div class="container">
+        <header>
+            <h1>Tritium - Space Strategy Game</h1>
+        </header>
+        
+        <!-- Loading section -->
+        <div id="loading" class="loading">
+            <div class="loader"></div>
+            <div id="loading-text" class="loading-text">Loading Pyodide...</div>
         </div>
+        
+        <!-- Game section (hidden until loaded) -->
+        <div id="game-container" class="game-container">
+            <div id="output"></div>
+            <div class="input-container">
+                <div id="prompt" class="prompt">> </div>
+                <input id="game-input" type="text" autocomplete="off" />
+            </div>
+        </div>
+        
+        <footer>
+            <p>Powered by Pyodide | &copy; Tritium</p>
+        </footer>
     </div>
-
+    
+    <!-- Import Pyodide -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    
     <script>
-        // Global variables
-        let pyodide;
-        let inputElement = document.getElementById('input');
-        let outputElement = document.getElementById('output');
-        let promptElement = document.getElementById('prompt');
-        let submitButton = document.getElementById('submit');
-        let saveButton = document.getElementById('save');
-        let statusElement = document.getElementById('status');
-        let gameUI = document.getElementById('game-ui');
-        let loadingElement = document.getElementById('loading');
-
-        // Function to print output to the game console
-        function printOutput(text) {
-            outputElement.innerHTML += text + '<br>';
-            outputElement.scrollTop = outputElement.scrollHeight;
-        }
-
-        // Function to clear the output console
-        function clearOutput() {
-            outputElement.innerHTML = '';
-        }
-
-        // Function to set the prompt text
-        function setPrompt(text) {
-            promptElement.innerHTML = text;
-        }
-
-        // Function to set the input value
-        function setInputValue(text) {
-            inputElement.value = text;
-        }
-
-        // Function to show status messages
-        function showSaveStatus(message, type) {
-            statusElement.textContent = message;
-            statusElement.className = type;
-            statusElement.style.display = 'block';
-            
-            // Hide after 3 seconds
-            setTimeout(() => {
-                statusElement.style.display = 'none';
-            }, 3000);
-        }
-
-        // Function to show errors
-        function showError(message) {
-            showSaveStatus(message, 'error');
-        }
-
-        // Function to enable history navigation
-        function enableHistoryNavigation(enabled) {
-            if (enabled) {
-                // History navigation is handled by keyboard events
-            }
-        }
-
-        // Handle keyboard navigation for command history
-        inputElement.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowUp') {
-                event.preventDefault();
-                window.historyUp();
-            } else if (event.key === 'ArrowDown') {
-                event.preventDefault();
-                window.historyDown();
-            } else if (event.key === 'Enter') {
-                event.preventDefault();
-                submitInput();
-            }
-        });
-
-        // Function to submit input
-        function submitInput() {
-            const inputText = inputElement.value;
-            if (inputText.trim() !== '') {
-                // Display the input in the output area
-                printOutput(`<span style="color: #4caf50;">${promptElement.innerHTML}</span> ${inputText}`);
-                
-                // Pass the input to Python
-                window.handleUserInput(inputText);
-                
-                // Clear the input field
-                inputElement.value = '';
-            }
-        }
-
-        // Set up the submit button
-        submitButton.addEventListener('click', submitInput);
-
-        // Set up the save button
-        saveButton.addEventListener('click', function() {
-            window.saveGameWrapper();
-        });
-
-        // Initialize and load Pyodide
+        /*
+         * SETUP INSTRUCTIONS:
+         * 1. Make sure you have the following files in the same directory as this HTML file:
+         *    - tritium_bundle.py (bundled Python code including game_web.py)
+         * 
+         * 2. Host these files with a local web server. For example using Python:
+         *    python -m http.server
+         * 
+         * 3. Open the page in your browser at http://localhost:8000
+         */
+         
+        // DOM Elements
+        const loading = document.getElementById('loading');
+        const loadingText = document.getElementById('loading-text');
+        const gameContainer = document.getElementById('game-container');
+        const outputElement = document.getElementById('output');
+        const promptElement = document.getElementById('prompt');
+        const inputElement = document.getElementById('game-input');
+        
+        // Game state
+        let pyodide = null;
+        let gameStarted = false;
+        
+        // Initialize Pyodide and load the game
         async function main() {
             try {
                 // Load Pyodide
+                loadingText.textContent = "Loading Pyodide...";
                 pyodide = await loadPyodide();
-                printOutput("Pyodide loaded successfully!");
                 
-                // Install required packages
-                await pyodide.loadPackagesFromImports(`
-                    import pickle
-                    import base64
-                    import asyncio
-                `);
+                // Load game bundle
+                loadingText.textContent = "Loading game files...";
                 
-                // Load the bundled game file
-                printOutput("Loading bundled game file...");
-                try {
-                    const response = await fetch('tritium_bundle.py');
-                    if (response.status === 200) {
-                        const bundleCode = await response.text();
-                        
-                        // Save the code to the filesystem
-                        pyodide.FS.writeFile('tritium_bundle.py', bundleCode);
-                        printOutput("Game code loaded successfully!");
-                        
-                        // Create JavaScript wrappers for the Python functions we need
-                        window.handleUserInput = (input) => {
-                            try {
-                                return pyodide.runPython(`
-                                    import tritium_bundle
-                                    tritium_bundle.handle_user_input("""${input.replace(/"/g, '\\"')}""")
-                                `);
-                            } catch (error) {
-                                console.error("Error in handleUserInput:", error);
-                                printOutput(`<span style="color: red;">Error: ${error.message}</span>`);
-                            }
-                        };
-                        
-                        window.historyUp = () => {
-                            try {
-                                return pyodide.runPython(`
-                                    import tritium_bundle
-                                    tritium_bundle.history_up()
-                                `);
-                            } catch (error) {
-                                console.error("Error in historyUp:", error);
-                            }
-                        };
-                        
-                        window.historyDown = () => {
-                            try {
-                                return pyodide.runPython(`
-                                    import tritium_bundle
-                                    tritium_bundle.history_down()
-                                `);
-                            } catch (error) {
-                                console.error("Error in historyDown:", error);
-                            }
-                        };
-                        
-                        window.saveGameWrapper = () => {
-                            try {
-                                return pyodide.runPython(`
-                                    import tritium_bundle
-                                    tritium_bundle.save_game_wrapper()
-                                `);
-                            } catch (error) {
-                                console.error("Error in saveGameWrapper:", error);
-                                showSaveStatus(`Error: ${error.message}`, "error");
-                            }
-                        };
-                        
-                        // Now start the game
-                        await pyodide.runPythonAsync(`
-                            try:
-                                # Import the bundled code
-                                import tritium_bundle
-                                
-                                # Now start the game
-                                result = tritium_bundle.start_game()
-                                print(f"Game started with result: {result}")
-                            except Exception as e:
-                                import traceback
-                                traceback.print_exc()
-                                print(f"Error: {str(e)}")
-                        `);
-                        
-                        // Show the game UI
-                        loadingElement.style.display = 'none';
-                        gameUI.style.display = 'block';
-                        
-                        // Focus on the input
-                        inputElement.focus();
-                    } else {
-                        throw new Error(`Failed to load game bundle: HTTP ${response.status}`);
-                    }
-                } catch (fetchError) {
-                    console.error("Error loading bundle:", fetchError);
-                    loadingElement.textContent = `Error loading game code: ${fetchError.message}`;
-                    loadingElement.style.color = 'red';
+                // Directly fetch the bundle file instead of using micropip
+                const response = await fetch('tritium_bundle.py');
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch bundle file: ${response.status} ${response.statusText}`);
                 }
                 
+                const bundleCode = await response.text();
+                
+                // Write the bundle code to the Pyodide virtual filesystem
+                pyodide.FS.writeFile('tritium_bundle.py', bundleCode);
+                
+                // Import the game module
+                loadingText.textContent = "Initializing game...";
+                await pyodide.runPythonAsync(`
+                    import sys
+                    import js
+                    
+                    # Initialize logging
+                    def log_to_console(msg):
+                        js.console.log(msg)
+                    
+                    sys.stdout.write = log_to_console
+                    sys.stderr.write = log_to_console
+                    
+                    # Import the bundle
+                    import tritium_bundle
+                `);
+                
+                // Set up the interface and game
+                setupGameInterface();
+                
+                // Hide loading and show game container
+                loading.style.display = 'none';
+                gameContainer.style.display = 'flex';
+                
+                // Start the game
+                startGame();
+                
             } catch (error) {
+                loadingText.innerHTML = `
+                    <span class="error">Error loading game:</span><br>
+                    ${error.message}
+                `;
                 console.error("Error initializing game:", error);
-                loadingElement.textContent = `Error: ${error.message}`;
-                loadingElement.style.color = 'red';
             }
         }
-
-        // Load Pyodide script
-        const script = document.createElement('script');
-        script.src = "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js";
-        script.onload = () => {
-            main();
-        };
-        document.head.appendChild(script);
+        
+        // Setup game interface and connect Python functions
+        function setupGameInterface() {
+            // JavaScript functions for the Python interface to call
+            window.printOutput = (text) => {
+                outputElement.innerHTML += text;
+                outputElement.scrollTop = outputElement.scrollHeight;
+            };
+            
+            window.clearOutput = () => {
+                outputElement.innerHTML = '';
+            };
+            
+            window.setPrompt = (text) => {
+                promptElement.innerHTML = text;
+            };
+            
+            window.setInputValue = (text) => {
+                inputElement.value = text;
+            };
+            
+            window.enableHistoryNavigation = (enabled) => {
+                // History navigation is always enabled in this implementation
+            };
+            
+            // Initialize game interface and connect JS functions
+            pyodide.runPython(`
+                import tritium_bundle
+                
+                # Create references to JavaScript functions without using PyProxy
+                from js import window
+                
+                # Initialize the game with the JavaScript functions
+                tritium_bundle.init_web_game(
+                    window.printOutput, 
+                    window.clearOutput, 
+                    window.setPrompt, 
+                    window.setInputValue
+                )
+                
+                # Export Python functions to be called from JavaScript
+                tritium_bundle.export_python_functions()
+            `);
+            
+            // Set up input event handlers
+            inputElement.addEventListener('keydown', handleInputKeydown);
+        }
+        
+        // Handle input keydown events
+        function handleInputKeydown(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                
+                // Get input text
+                const inputText = inputElement.value;
+                
+                // Clear input field
+                inputElement.value = '';
+                
+                // Pass input to Python
+                if (window.python_handle_input) {
+                    window.python_handle_input(inputText);
+                }
+            } else if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                if (window.python_history_up) {
+                    window.python_history_up();
+                }
+            } else if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                if (window.python_history_down) {
+                    window.python_history_down();
+                }
+            }
+        }
+        
+        // Start the game
+        function startGame() {
+            if (gameStarted) return;
+            
+            try {
+                gameStarted = true;
+                
+                // Start the game on a small delay to ensure UI is ready
+                setTimeout(() => {
+                    if (window.python_start_game) {
+                        window.python_start_game();
+                    } else {
+                        console.error("Python start_game function not found");
+                        outputElement.innerHTML += `<div class="error">Error: Python start_game function not found</div>`;
+                    }
+                }, 100);
+                
+            } catch (error) {
+                console.error("Error starting game:", error);
+                outputElement.innerHTML += `<div class="error">Error starting game: ${error.message}</div>`;
+            }
+        }
+        
+        // Show error to the user
+        function showError(message) {
+            outputElement.innerHTML += `<div class="error">${message}</div>`;
+            outputElement.scrollTop = outputElement.scrollHeight;
+        }
+        
+        // Show save status to the user
+        function showSaveStatus(message, type) {
+            const className = type === 'error' ? 'error' : 'success';
+            outputElement.innerHTML += `<div class="${className}">${message}</div>`;
+            outputElement.scrollTop = outputElement.scrollHeight;
+        }
+        
+        // Start loading when the page is ready
+        window.onload = main;
     </script>
 </body>
 </html> 
